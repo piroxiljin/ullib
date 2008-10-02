@@ -71,15 +71,3 @@
 			CULToolBar::GetButton
 			CULToolBar::CULWnd(HWND hwnd)
 	5 добавлен фаил аналогичный ULLib.h фаил ULLibNS.h, но с прописыванием пространств имен
-
-2.2.2 <07.09.2008>
-	1 исправлена CULComboBox::Create. была ошибка в классе окна
-	2 Добавлена	CULEdit::SetReadOnly
-			CULListCtrl::HitTest
-			CULListCtrl::SetItemData
-			CULListCtrl::GetItemData
-	3 исправлена CULMessageMap::AddNotify.  было неверное приведение типов
-
-2.2.3 <07.09,2008>
-	1 Осуществлен перевод под версию vc9express
-	2 исправлен ряд багов

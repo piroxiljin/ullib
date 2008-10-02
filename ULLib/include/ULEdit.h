@@ -79,11 +79,6 @@ namespace ULWnds
 			///\param lpRect - форматируемая область
 			inline void GetRect(LPRECT lpRect)
 				{SendMessage(EM_GETRECT,(WPARAM)0,(LPARAM)lpRect);}
-			///\brief Устанавливает/снимает режим только для чтения
-			///\param fReadOnly - флаг режима 
-			inline void SetReadOnly(BOOL fReadOnly=TRUE)
-				{SendMessage(EM_SETREADONLY,(WPARAM)fReadOnly);}
-			
 		protected:
 			///\brief Обработчик сообщения WM_DROPFILES
 			virtual LRESULT OnDropFiles(WPARAM,LPARAM);

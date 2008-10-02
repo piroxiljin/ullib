@@ -67,8 +67,8 @@ LRESULT CMDIFrame::OnCreate(WPARAM,LPARAM lParam)
   if(m_ToolBar2.m_hWnd!=NULL)
 		m_ToolBar2.AddButton(0/*ID_MENU_OPEN*/,TBSTATE_ENABLED, BTNS_BUTTON ,_T("Open"),NULL,STD_FILEOPEN,IDB_STD_LARGE_COLOR);
 
-	m_RebarCtrl.GetRebar().InsertBand(0,m_ToolBar,_T("qwerty"),NULL);
-	m_RebarCtrl.GetRebar().InsertBand(1,m_ToolBar2,_T("qwerty2"),NULL);
+	m_RebarCtrl.GetRebar().InsertBand(m_ToolBar,_T("qwerty"),NULL);
+	m_RebarCtrl.GetRebar().InsertBand(m_ToolBar2,_T("qwerty2"),NULL);
 
 
 	m_WndCtrlList.AddWndCtrl(&m_RebarCtrl);

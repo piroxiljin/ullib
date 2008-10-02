@@ -211,7 +211,7 @@ public:
 			m_pNotifyStorage[m_pNotifyStorage.GetSize()-1].nsNMHDR.hwndFrom=NULL;
 			m_pNotifyStorage[m_pNotifyStorage.GetSize()-1].nsNMHDR.idFrom=CtrlID;
 			m_pNotifyStorage[m_pNotifyStorage.GetSize()-1].nsNMHDR.code=NotifyCode;
-			m_pNotifyStorage[m_pNotifyStorage.GetSize()-1].nsNotifyProc=reinterpret_cast<NOTIFYPROC>(NotifyProc);
+			m_pNotifyStorage[m_pNotifyStorage.GetSize()-1].nsNotifyProc=reinterpret_cast<NOTIFYPROC>NotifyProc;
 			return TRUE;
 		}
 		else

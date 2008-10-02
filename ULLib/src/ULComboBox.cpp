@@ -17,7 +17,7 @@ namespace ULWnds
 			int cx,int cy,DWORD dwStyle,DWORD dwStyleEx)
 		{
 			m_hParentWnd=hParentWnd;
-			m_hWnd = CreateWindowEx(dwStyleEx,_T("COMBOBOX"),
+			m_hWnd = CreateWindowEx(dwStyleEx,WC_LISTVIEW,
 				NULL,
 				dwStyle, 
 				x, y, cx, cy, 

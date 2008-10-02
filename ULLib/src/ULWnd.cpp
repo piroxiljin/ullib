@@ -21,9 +21,13 @@ namespace ULWnds
 	CULWnd::CULWnd(HWND hwnd):m_hWnd(hwnd)
 	{
 		m_hParentWnd=GetParent();
+		m_lpSubClassWndProc=NULL;
 		CULWnd* pWnd=FromHandle(hwnd);
 		if(pWnd)
-			*this=*pWnd;
+		{
+			m_lpSubClassWndProc=pWnd->m_lpSubClassWndProc;
+			MessageMap=pWnd->MessageMap;
+		}
 	}
 
 	CULWnd::~CULWnd(void)

@@ -71,35 +71,6 @@ namespace ULWnds
 			///\param pCol - указатель на структуру с информацией о столбце
 			///\return  TRUE в случае успеха
 			BOOL GetColumn(int nCol,LPLVCOLUMN pCol);
-			///\brief Определение позиции в листконтроле по координате
-			///\param pInfo - указатель на структуру с инфой
-			///\return индекс итема по которому, на котором координата, иначе -1
-			int HitTest(LPLVHITTESTINFO pInfo)
-				{return(int)SendMessage(LVM_HITTEST,0,(LPARAM)pInfo);}
-			///\brief Привязывает к итему данные
-			///\param nItem - номер итема
-			///\param dwData - данные
-			///\return TRUE в случае успеха
-			BOOL SetItemData(int nItem,DWORD_PTR dwData)
-			{
-				LVITEM it={0};
-				it.mask=LVIF_PARAM;
-				it.iItem=nItem;
-				it.lParam=dwData;
-				return (BOOL)SendMessage(LVM_SETITEM,0,(LPARAM)&it);
-			}
-			///\brief возвращает привязанные данныеданные 
-			///\param nItem - номер итема
-			///\return данные
-			DWORD_PTR GetItemData(int nItem)
-			{
-				LVITEM it={0};
-				it.mask=LVIF_PARAM;
-				it.iItem=nItem;
-				SendMessage(LVM_GETITEM,0,(LPARAM)&it);
-				return it.lParam;
-			}
-
 		};
 	}
 }
