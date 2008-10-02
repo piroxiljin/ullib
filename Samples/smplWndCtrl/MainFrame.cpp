@@ -57,8 +57,7 @@ LRESULT CMainFrame::OnCreate(WPARAM,LPARAM lParam)
 		MAKEINTRESOURCE(IDB_BITMAP_TB_HELP),IMAGE_BITMAP,0,0,
 		0);
 	m_ToolBarCtrl.GetToolBar().InsertButton(7,ID_HELP_ABOUT,TBSTATE_ENABLED,
-		BTNS_BUTTON|BTNS_DROPDOWN,_T("Типа About"),NULL,0,hBitmap,
-		::LoadMenu(ULOther::ULGetResourceHandle(),MAKEINTRESOURCE(IDR_MENU_MAIN)));
+		BTNS_BUTTON|BTNS_DROPDOWN,_T("Типа About"),NULL,0,hBitmap,IDR_MENU_MAIN);
     
 	m_ToolBarCtrl.ShowWindow(SW_SHOW);
 	//=====================Создание контейнера панелек=============

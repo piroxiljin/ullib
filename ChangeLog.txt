@@ -79,7 +79,3 @@
 			CULListCtrl::SetItemData
 			CULListCtrl::GetItemData
 	3 исправлена CULMessageMap::AddNotify.  было неверное приведение типов
-
-2.2.3 <07.09,2008>
-	1 Осуществлен перевод под версию vc9express
-	2 исправлен ряд багов

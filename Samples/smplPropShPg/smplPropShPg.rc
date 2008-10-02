@@ -7,9 +7,8 @@
 //
 // Generated from the TEXTINCLUDE 2 resource.
 //
-#include "ULResDef.h"
-#include <winuser.h>
-#include <winnt.h>
+#include "afxres.h"
+
 /////////////////////////////////////////////////////////////////////////////
 #undef APSTUDIO_READONLY_SYMBOLS
 
@@ -27,7 +26,7 @@ LANGUAGE LANG_RUSSIAN, SUBLANG_DEFAULT
 // Dialog
 //
 
-CREATEPROCESS_MANIFEST_RESOURCE_ID    23             "manifest.xml"
+MANIFEST_RESOURCE_ID    23             "manifest.xml"
 
 
 IDD_PROPPAGE_FINISH DIALOGEX 0, 0, 297, 154
