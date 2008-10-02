@@ -19,12 +19,8 @@ namespace ULWnds
 		public:
 			///\brief  онструктор
 			CULRebar();
-			///\brief  онструктор копировани€
-			CULRebar(CULRebar	&);
 			///\brief ƒеструктор
 			virtual ~CULRebar();
-			///\brief оператор копировани€
-			void operator=(CULRebar&);
 			///\brief Ќабор флагов дл€ размещени€ ребара по кра€м родител€
 			///\param afTop - по верхнему краю
 			///\param afBottom - по нижнему краю
@@ -47,18 +43,16 @@ namespace ULWnds
 				WS_CHILD|WS_VISIBLE|WS_BORDER|/*WS_CLIPSIBLINGS|*/
 				/*WS_CLIPCHILDREN|*/RBS_VARHEIGHT|CCS_NODIVIDER|RBS_AUTOSIZE);
 			///\brief ‘унки€ вставки новой клиентской секции 
-			///\param nInto - позици€ вставки
 			///\param hClientWnd-хендл клиента
 			///\param szName-им€ клиентской секции
 			///\param hBitmap-фонова€ картинка
 			///\param wID - идентификатор банда
 			///\param pszClient - размер клиента
 			///\param dwStyle=свойства
-			BOOL InsertBand(int nInto,HWND hClientWnd,TCHAR* szName,HBITMAP hBitmap,
+			BOOL InsertBand(HWND hClientWnd,TCHAR* szName,HBITMAP hBitmap,
 				WORD wID=0,SIZE* pszClient=NULL,
 				DWORD dwStyle=/*RBBS_GRIPPERALWAYS|*/RBBS_FIXEDBMP|/*RBS_BANDBORDERS|/*RBBS_BREAK|*/RBBS_CHILDEDGE);
 			///\brief ‘унки€ вставки новой клиентской секции 
-			///\param nInto - позици€ вставки
 			///\param hClientWnd-хендл клиента
 			///\param szName-им€ клиентской секции
 			///\param clrFore-цвет подписи szName
@@ -66,7 +60,7 @@ namespace ULWnds
 			///\param wID - идентификатор банда
 			///\param pszClient - размер клиента
 			///\param dwStyle=свойства
-			BOOL InsertBand(int nInto,HWND hClientWnd, TCHAR* szName,	COLORREF clrFore, COLORREF clrBack,
+			BOOL InsertBand(HWND hClientWnd, TCHAR* szName,	COLORREF clrFore, COLORREF clrBack,
 				WORD wID=0,SIZE* pszClient=NULL,
 				DWORD dwStyle= RBBS_GRIPPERALWAYS|RBBS_BREAK|RBBS_CHILDEDGE);
 			///\brief ”бирает все клиентские секции с ребара
@@ -75,30 +69,7 @@ namespace ULWnds
 					в зависимости от местоположени€
 			¬ставить в обработчик WM_SIZE окна родител€ */
 			void AutoSize();
-			///\brief возвращает число добавленых бандов
-			///\return число добавленых бандов
-			int GetBandCount()
-				{return (int)SendMessage(RB_GETBANDCOUNT);}
-			///\brief возвращает информацию о банде
-			///\param nBand - номер банда
-			///\param lprbbi - указатель на структуру банда
-			///\return TRUE  в случае успеха
-			BOOL GetBandInfo(int nBand,LPREBARBANDINFO lprbbi)
-				{return (SendMessage(RB_GETBANDINFO,(WPARAM)nBand,(LPARAM)lprbbi)!=0);}
-			///\brief заносит информацию о банде
-			///\param nBand - номер банда
-			///\param lprbbi - указатель на структуру банда
-			///\return TRUE  в случае успеха
-			BOOL SetBandInfo(int nBand,LPREBARBANDINFO lprbbi)
-				{return (SendMessage(RB_SETBANDINFO,(WPARAM)nBand,(LPARAM)lprbbi)!=0);}
-			///\brief минимизировать банд
-			///\param nBand - номер банда
-			void MinimizeBand(int nBand)
-				{SendMessage(RB_MINIMIZEBAND,(WPARAM)nBand);}
-			///\brief максимизировать банд
-			///\param nBand - номер банда
-			void MaximizeBand(int nBand)
-				{SendMessage(RB_MAXIMIZEBAND,(WPARAM)nBand);}
+
 		};
 	}
 }

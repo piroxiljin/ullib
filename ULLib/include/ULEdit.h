@@ -20,11 +20,11 @@ namespace ULWnds
 			///\brief Функция для создания эдита
 			///\param hParentWnd - хендл родительского окна
 			///\param pszText - текст
-			///\param uID - ID эдита
+			///\param uID - ID кнопки
 			///\param x,y - координата кнопки
-			///\param cx,cy - размер 
-			///\param dwStyle - стиль 
-			///\param dwStyleEx - расширенный стиль эдита
+			///\param cx,cy - размер кнопки
+			///\param dwStyle - стиль эдита
+			///\param dwStyleEx - расштренный стиль эдита
 			///\return TRUE в случае успеха
 			BOOL Create(HWND hParentWnd,TCHAR* pszText,UINT uID,int x,int y,
 				int cx,int cy,DWORD dwStyle=WS_CHILD|WS_VISIBLE|ES_LEFT|WS_TABSTOP|ES_AUTOHSCROLL,
@@ -79,11 +79,6 @@ namespace ULWnds
 			///\param lpRect - форматируемая область
 			inline void GetRect(LPRECT lpRect)
 				{SendMessage(EM_GETRECT,(WPARAM)0,(LPARAM)lpRect);}
-			///\brief Устанавливает/снимает режим только для чтения
-			///\param fReadOnly - флаг режима 
-			inline void SetReadOnly(BOOL fReadOnly=TRUE)
-				{SendMessage(EM_SETREADONLY,(WPARAM)fReadOnly);}
-			
 		protected:
 			///\brief Обработчик сообщения WM_DROPFILES
 			virtual LRESULT OnDropFiles(WPARAM,LPARAM);

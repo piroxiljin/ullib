@@ -7,7 +7,7 @@
 #include <assert.h>
 #include "Component2.h"
 
-UL_DECLARE_DLLMAIN();
+UL_DECLARE_DLLMAIN
 
 class CCOM2DllApp:
 	public ULApps::CULCOMDllApp

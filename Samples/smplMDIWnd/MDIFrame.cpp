@@ -5,7 +5,6 @@
 
 
 
-
 CMDIFrame::CMDIFrame(void):CULMDIFrameWnd()
 {
 	MessageMap.AddCommand<CMDIFrame>(ID_NEW,&CMDIFrame::OnFileNew);
@@ -41,38 +40,12 @@ LRESULT CMDIFrame::OnCreate(WPARAM,LPARAM lParam)
 		TBSTYLE_AUTOSIZE|CCS_NODIVIDER|TBSTYLE_FLAT,
 		ULWnds::ULWndCtrls::CULToolBarCtrl::dsDrawGripperDocked|ULWnds::ULWndCtrls::CULToolBarCtrl::dsDrawGripperFloating|
 		ULWnds::ULWndCtrls::CULToolBarCtrl::dsAllowDockAll);
-	m_ToolBarCtrl.GetToolBar().AddButton(ID_NEW,TBSTATE_ENABLED,  BTNS_BUTTON ,_T("New"),NULL,STD_FILENEW,IDB_STD_LARGE_COLOR);
-	m_ToolBarCtrl.GetToolBar().AddButton(101,TBSTATE_ENABLED,  BTNS_BUTTON ,_T("Open"),NULL,STD_FILEOPEN,IDB_STD_LARGE_COLOR);
-	m_ToolBarCtrl.GetToolBar().AddButton(102,TBSTATE_ENABLED,  BTNS_BUTTON ,_T("Save"),NULL,STD_FILESAVE,IDB_STD_LARGE_COLOR);
+	m_ToolBarCtrl.GetToolBar().AddButton(ID_NEW,TBSTATE_ENABLED,  BTNS_BUTTON ,_T("New"),STD_FILENEW,IDB_STD_LARGE_COLOR);
+	m_ToolBarCtrl.GetToolBar().AddButton(101,TBSTATE_ENABLED,  BTNS_BUTTON ,_T("Open"),STD_FILEOPEN,IDB_STD_LARGE_COLOR);
+	m_ToolBarCtrl.GetToolBar().AddButton(102,TBSTATE_ENABLED,  BTNS_BUTTON ,_T("Save"),STD_FILESAVE,IDB_STD_LARGE_COLOR);
 
 	m_WndCtrlList.AddWndCtrl(&m_StatusBarCtrl);
 	m_WndCtrlList.AddWndCtrl(&m_ToolBarCtrl);
-
-//=================
-	m_RebarCtrl.CreateRebarCtrl(*this,0,0,ULWnds::ULWndCtrls::CULToolBarCtrl::dsAllowDockTop);
-
-  m_ToolBar.Create(/*m_ReBarTop*/*this,
-		ID_TOOLBAR,24, 24+15, 24, 24,ULWnds::ULBars::CULToolBar::afNon|ULWnds::ULBars::CULToolBar::afTop,
-    WS_CHILD|WS_VISIBLE|WS_CLIPCHILDREN|TBSTYLE_TOOLTIPS|/*TBSTYLE_AUTOSIZE|*/CCS_NODIVIDER/*|
-		TBSTYLE_FLAT*/,TBSTYLE_EX_DRAWDDARROWS);
-
-  if(m_ToolBar.m_hWnd!=NULL)
-		m_ToolBar.AddButton(0/*ID_MENU_NEW*/,TBSTATE_ENABLED,  BTNS_BUTTON ,_T("New"),NULL,STD_FILENEW,IDB_STD_LARGE_COLOR);
-
-  m_ToolBar2.Create(/*m_ReBarTop*/*this,
-		ID_TOOLBAR,24, 24+15, 24, 24,ULWnds::ULBars::CULToolBar::afNon|ULWnds::ULBars::CULToolBar::afTop,
-    WS_CHILD|WS_VISIBLE|WS_CLIPCHILDREN|TBSTYLE_TOOLTIPS|/*TBSTYLE_AUTOSIZE|*/CCS_NODIVIDER/*|
-		TBSTYLE_FLAT*/,TBSTYLE_EX_DRAWDDARROWS);
-
-  if(m_ToolBar2.m_hWnd!=NULL)
-		m_ToolBar2.AddButton(0/*ID_MENU_OPEN*/,TBSTATE_ENABLED, BTNS_BUTTON ,_T("Open"),NULL,STD_FILEOPEN,IDB_STD_LARGE_COLOR);
-
-	m_RebarCtrl.GetRebar().InsertBand(0,m_ToolBar,_T("qwerty"),NULL);
-	m_RebarCtrl.GetRebar().InsertBand(1,m_ToolBar2,_T("qwerty2"),NULL);
-
-
-	m_WndCtrlList.AddWndCtrl(&m_RebarCtrl);
-
 
 	SendMessage(WM_COMMAND,ID_NEW);
 

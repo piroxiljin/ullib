@@ -21,8 +21,6 @@ namespace ULWnds
 		CULWnd(void);
 		///\brief Конструктор копирования
 		CULWnd(CULWnd& Wnd);
-		///\brief Конструктор 
-		CULWnd(HWND hwnd);
 		///\brief Десруктор
 		virtual ~CULWnd(void);
 		///\brief Объект класса добавления и обработки сообщений
@@ -339,17 +337,6 @@ namespace ULWnds
 		///\return меню окна
 		HMENU GetMenu()
 			{return ::GetMenu(*this);}
-		///\brief возвращает запрашиваемое окно
-		///\param uCmd - параметр запроса
-		///\return хендл запрашиваемого окна
-		HWND GetWindow(UINT uCmd)
-			{return ::GetWindow(*this,uCmd);}
-		///\brief функция для изменения полей класса окна
-		///\param nIndex - индекс поля
-		///\param dwNewLong - значение поля
-		///\return предыдущее значение
-		DWORD SetClassLong(int nIndex,LONG dwNewLong)
-			{return ::SetClassLong(*this,nIndex,dwNewLong);}
 	};
 }
 #endif //__ULWND_H__

@@ -20,12 +20,8 @@ namespace ULWnds
 		public:
 			///\brief Конструктор
 			CULStatusBarCtrl(void);
-			///\brief Конструктор копирования
-			CULStatusBarCtrl(CULStatusBarCtrl&);
 			///\brief Деструктор
 			virtual ~CULStatusBarCtrl(void);
-			///\brief оператор копирования
-			void operator=(CULStatusBarCtrl&);
 			///\brief Функция возвращает ссылку на статубар
 			inline ULBars::CULStatusBar& GetStatusBar(){return m_StatusBar;};
 			///\brief Функция создания статусбарконтрола

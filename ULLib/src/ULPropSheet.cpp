@@ -6,10 +6,8 @@ namespace ULWnds
 {
 	namespace ULDlgs
 	{
-		CULPropSheet* g_thisPreCreate;
-
 		CULPropSheet::CULPropSheet():
-			CULWnd(),m_fWizard(FALSE)
+			CULWnd()
 		{
 		};
 
@@ -47,9 +45,6 @@ namespace ULWnds
 			PropSheetHeader.dwFlags|=PSH_PROPTITLE;			
 			PropSheetHeader.pszCaption=szCaption;
 			PropSheetHeader.dwFlags|=nWizardFlags;
-			m_fWizard=(nWizardFlags)?TRUE:FALSE;
-//			PropSheetHeader.dwFlags|=PSH_USECALLBACK;
-//			PropSheetHeader.pfnCallback=(PFNPROPSHEETCALLBACK)PropSheetProc;
 			if(hbmHeader!=NULL)
 			{
 				PropSheetHeader.dwFlags|=PSH_USEHBMHEADER;
@@ -65,10 +60,8 @@ namespace ULWnds
 			if(fModal!=TRUE)
 				PropSheetHeader.dwFlags|=PSH_MODELESS;
 
-			g_thisPreCreate=this;
 			return PropertySheet(&PropSheetHeader);		 
-		}
-
+		};
 		INT_PTR CULPropSheet::Create(HWND hParenWnd,
 				TCHAR* szCaption,
 				int rscHeader,
@@ -80,26 +73,6 @@ namespace ULWnds
 				::LoadBitmap(ULOther::ULGetResourceHandle(),MAKEINTRESOURCE(rscHeader)),
 				::LoadBitmap(ULOther::ULGetResourceHandle(),MAKEINTRESOURCE(rscWatermark)),
 				nWizardFlags,fModal);
-		}
-
-		BOOL CULPropSheet::IsWizard()
-		{
-			return m_fWizard;
-		}
-
-		BOOL CULPropSheet::OnInitialized(HWND hWnd)
-		{
-			m_hWnd=hWnd;
-			SetWindowLong(GWL_USERDATA,(LONG)(LONG_PTR)this);
-			g_thisPreCreate=NULL;
-			return TRUE;
-		}
-
-		int CULPropSheet::PropSheetProc(HWND hDlg,UINT uMsg,LPARAM /*lParam*/)
-		{
-			if(uMsg==PSCB_INITIALIZED)
-				g_thisPreCreate->OnInitialized(hDlg);
-			return 0;
-		}
+		};
 	}
 }

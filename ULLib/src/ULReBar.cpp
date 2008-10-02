@@ -6,24 +6,13 @@ namespace ULWnds
 {
 	namespace ULBars
 	{
-		CULRebar::CULRebar():CULSubClass()
+		CULRebar::CULRebar()
 		{
-		}
-
-		CULRebar::CULRebar(CULRebar& rebar):CULSubClass(rebar),
-			m_afFlag(rebar.m_afFlag)
-		{
-		}
+		};
 
 		CULRebar::~CULRebar()
 		{
-		}
-
-		void CULRebar::operator=(CULRebar& rebar)
-		{
-			m_afFlag=rebar.m_afFlag;
-			ULWnds::CULSubClass::operator=(rebar);
-		}
+		};
 
 		HWND CULRebar::Create(HWND hParentWnd,enAlignFlags afFlag,DWORD dwStyle)
 		{
@@ -53,7 +42,7 @@ namespace ULWnds
 			return (Attach(m_hWnd))?m_hWnd:NULL;
 		};
 
-		BOOL CULRebar::InsertBand(int nInto,HWND hClientWnd,TCHAR* szName, HBITMAP hBitmap,
+		BOOL CULRebar::InsertBand(HWND hClientWnd,TCHAR* szName, HBITMAP hBitmap,
 								WORD wID,SIZE* pszClient,DWORD dwStyle)
 		{
 			REBARBANDINFO rbBand;
@@ -80,10 +69,10 @@ namespace ULWnds
 				rbBand.cxMinChild = rect.bottom-rect.top+2*::GetSystemMetrics(SM_CYEDGE);
 				rbBand.cyMinChild = rect.right-rect.left+2*::GetSystemMetrics(SM_CXEDGE);
 			}
-			return (SendMessage(RB_INSERTBAND, (WPARAM)nInto, (LPARAM)&rbBand)!=NULL);
+			return (SendMessage(RB_INSERTBAND, (WPARAM)-1, (LPARAM)&rbBand)!=NULL);
 		}
 
-		BOOL CULRebar::InsertBand(int nInto,HWND hClientWnd, TCHAR* szName, 
+		BOOL CULRebar::InsertBand(HWND hClientWnd, TCHAR* szName, 
 								COLORREF clrFore, COLORREF clrBack,
 								WORD wID,SIZE* pszClient,DWORD dwStyle)
 		{
@@ -111,7 +100,7 @@ namespace ULWnds
 				rbBand.cxMinChild = rect.bottom-rect.top+2*::GetSystemMetrics(SM_CYEDGE);
 				rbBand.cyMinChild = rect.right-rect.left+2*::GetSystemMetrics(SM_CXEDGE);
 			}
-			return (SendMessage(RB_INSERTBAND, (WPARAM)nInto, (LPARAM)&rbBand)!=NULL);
+			return (SendMessage(RB_INSERTBAND, (WPARAM)-1, (LPARAM)&rbBand)!=NULL);
 		}
 
 		BOOL CULRebar::DeleteBand(int numBand)

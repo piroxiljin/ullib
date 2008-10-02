@@ -2,13 +2,14 @@
 
 CIntroPage::CIntroPage(void):ULWnds::ULDlgs::CULPropPage()
 {
+	MessageMap.AddMessage<CIntroPage>(WM_INITDIALOG,&CIntroPage::OnInitDialog);
 }
 
 CIntroPage::~CIntroPage(void)
 {
 }
 
-LRESULT CIntroPage::OnInitDialog(WPARAM w,LPARAM l)
+LRESULT CIntroPage::OnInitDialog(WPARAM,LPARAM)
 {
 	ULGDI::ULDC::CULClientDC dc(*this);
 	int nHeight = -MulDiv(20, dc.GetDeviceCaps(LOGPIXELSY), 96);
@@ -18,7 +19,7 @@ LRESULT CIntroPage::OnInitDialog(WPARAM w,LPARAM l)
 		DEFAULT_QUALITY,DEFAULT_PITCH | FF_SWISS,_T("Vernanda"));
 	::SendMessage(GetDlgItem(IDC_STATIC_HEADER),WM_SETFONT,WPARAM((HFONT)font),TRUE);
 	font.Detach();
-	return ULWnds::ULDlgs::CULPropPage::OnInitDialog(w,l);;
+	return FALSE;
 }
 
 LRESULT CIntroPage::OnSetActive(DWORD dwFlags)

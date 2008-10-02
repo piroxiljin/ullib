@@ -5,7 +5,7 @@
 namespace ULThreads
 {
 	CULThread::CULThread(void):
-		m_hThread(NULL)
+		m_hThread(NULL),m_fRunThread(TRUE)
 	{
 		
 	};
@@ -30,7 +30,6 @@ namespace ULThreads
 			else
 				if (!pThread->Run())
 					break;
-		pThread->m_fRunThread=FALSE;
 		return 0;
 	}
 
@@ -50,8 +49,6 @@ namespace ULThreads
 			(LPVOID)this,
 			dwCreationFlags,
 			(unsigned*)&m_dwThreadId); 
-		if(m_hThread)
-			m_fRunThread=TRUE;
 		ResumeThread();
 		return (m_hThread!=NULL);
 	};

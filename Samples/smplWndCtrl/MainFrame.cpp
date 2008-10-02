@@ -39,26 +39,25 @@ LRESULT CMainFrame::OnCreate(WPARAM,LPARAM lParam)
 	m_ToolBarCtrl.ShowWindow(SW_HIDE);
 	//===============добавление стандартных кнопок на тулбар=======
 	m_ToolBarCtrl.GetToolBar().AddButton(ID_FILE_NEW,TBSTATE_ENABLED,
-		BTNS_BUTTON,_T("Типа New"),NULL,STD_FILENEW,(UINT_PTR)IDB_STD_LARGE_COLOR);
+		BTNS_BUTTON,_T("Типа New"),STD_FILENEW,(UINT_PTR)IDB_STD_LARGE_COLOR);
 	m_ToolBarCtrl.GetToolBar().AddButton(ID_FILE_OPEN,TBSTATE_ENABLED,
-		BTNS_BUTTON,_T("Типа Open"),NULL,STD_FILEOPEN,IDB_STD_LARGE_COLOR);
+		BTNS_BUTTON,_T("Типа Open"),STD_FILEOPEN,IDB_STD_LARGE_COLOR);
 	m_ToolBarCtrl.GetToolBar().AddButton(ID_FILE_SAVE,TBSTATE_ENABLED,
-		BTNS_BUTTON,_T("Типа Save"),NULL,STD_FILESAVE,IDB_STD_LARGE_COLOR);
-	m_ToolBarCtrl.GetToolBar().AddButton(0,0,BTNS_SEP,NULL,NULL,0);
+		BTNS_BUTTON,_T("Типа Save"),STD_FILESAVE,IDB_STD_LARGE_COLOR);
+	m_ToolBarCtrl.GetToolBar().AddButton(0,0,BTNS_SEP,NULL,0);
 	m_ToolBarCtrl.GetToolBar().AddButton(ID_EDIT_CUT,TBSTATE_ENABLED,
-		BTNS_BUTTON,_T("Типа Cut"),NULL,STD_CUT,IDB_STD_LARGE_COLOR);
+		BTNS_BUTTON,_T("Типа Cut"),STD_CUT,IDB_STD_LARGE_COLOR);
 	m_ToolBarCtrl.GetToolBar().AddButton(ID_EDIT_COPY,TBSTATE_ENABLED,
-		BTNS_BUTTON,_T("Типа Copy"),NULL,STD_COPY,IDB_STD_LARGE_COLOR);
+		BTNS_BUTTON,_T("Типа Copy"),STD_COPY,IDB_STD_LARGE_COLOR);
 	m_ToolBarCtrl.GetToolBar().AddButton(ID_EDIT_PASTE,TBSTATE_ENABLED,
-		BTNS_BUTTON,_T("Типа Paste"),NULL,STD_PASTE,IDB_STD_LARGE_COLOR);
-	m_ToolBarCtrl.GetToolBar().AddButton(1,0,BTNS_SEP,NULL,NULL,0);
+		BTNS_BUTTON,_T("Типа Paste"),STD_PASTE,IDB_STD_LARGE_COLOR);
+	m_ToolBarCtrl.GetToolBar().AddButton(1,0,BTNS_SEP,NULL,0);
 	//===============добавление кнопки из ресурсов на тулбар=======
 	HBITMAP hBitmap=(HBITMAP)::LoadImage(::GetModuleHandle(NULL),
 		MAKEINTRESOURCE(IDB_BITMAP_TB_HELP),IMAGE_BITMAP,0,0,
 		0);
 	m_ToolBarCtrl.GetToolBar().InsertButton(7,ID_HELP_ABOUT,TBSTATE_ENABLED,
-		BTNS_BUTTON|BTNS_DROPDOWN,_T("Типа About"),NULL,0,hBitmap,
-		::LoadMenu(ULOther::ULGetResourceHandle(),MAKEINTRESOURCE(IDR_MENU_MAIN)));
+		BTNS_BUTTON|BTNS_DROPDOWN,_T("Типа About"),0,hBitmap,0,IDR_MENU_MAIN);
     
 	m_ToolBarCtrl.ShowWindow(SW_SHOW);
 	//=====================Создание контейнера панелек=============

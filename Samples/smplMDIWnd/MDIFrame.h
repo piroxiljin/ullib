@@ -5,9 +5,7 @@
 #include "..\..\ULLib\Include\ULControls.h"
 #include "..\..\ULLib\Include\ULWndCtrls.h"
 
-#include "..\..\ULLib\Include\ULRebarCtrl.h"
-
-
+#include "..\..\ULLib\Include\ULRebar.h"
 
 class CMDIClientWnd: public ULWnds::ULFrames::CULMDIClientWnd
 {
@@ -36,13 +34,6 @@ protected:
 	ULWnds::ULWndCtrls::CULToolBarCtrl m_ToolBarCtrl;
 
 	CMDIClientWnd* m_pMDIClient;
-
-
-
-	ULWnds::ULWndCtrls::CULRebarCtrl m_RebarCtrl;
-	ULWnds::ULBars::CULToolBar m_ToolBar;
-	ULWnds::ULBars::CULToolBar m_ToolBar2;
-
 public:
 	CMDIFrame(void);
 	~CMDIFrame(void);

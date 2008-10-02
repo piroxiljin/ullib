@@ -7,7 +7,6 @@
 #include "ULProfileReg.h"
 #include "ULPtr.inl"
 #include "ULFileVersionInfo.h"
-#include "ULRes.h"
 ///\namespace ULOther
 ///\brief Пространство имён просто для полезных функций(25.08.2007)
 namespace ULOther

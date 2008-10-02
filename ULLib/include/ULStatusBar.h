@@ -22,12 +22,8 @@ namespace ULWnds
 		public:
 			///\brief Конструктор
 			CULStatusBar();
-			///\brief Конструктор копирования
-			CULStatusBar(CULStatusBar& statusBar);
 			///\brief Деструктор
 			virtual ~CULStatusBar();
-			///\brief оператор копирования
-			void operator=(CULStatusBar&);
 			///\brief Функция создания статусбара
 			///\param hParentWnd-хендл родителя для статусбара
 			///\param nStatusID - ID статусбара

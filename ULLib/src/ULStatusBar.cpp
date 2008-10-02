@@ -7,24 +7,14 @@ namespace ULWnds
 {
 	namespace ULBars
 	{
-		CULStatusBar::CULStatusBar():CULSubClass(),
-			m_nParts(0)
+		CULStatusBar::CULStatusBar():
+		m_nParts(0)
 		{
-		}
-
-		CULStatusBar::CULStatusBar(CULStatusBar& statusBar):CULSubClass(statusBar),
-			m_nParts(statusBar.m_nParts)
-		{
-		}
+		};
 
 		CULStatusBar::~CULStatusBar()
 		{
-		}
-		void CULStatusBar::operator=(CULStatusBar& statusBar)
-		{
-			m_nParts=statusBar.m_nParts;
-			ULWnds::CULSubClass::operator=(statusBar);
-		}
+		};
 
 		HWND CULStatusBar::Create(HWND hParentWnd,short nStatusID,BOOL fGrip)
 		{

@@ -7,7 +7,7 @@ namespace ULOther
 	HINSTANCE ULSetResourceHandle(HINSTANCE hNewRes)
 	{
 		static HINSTANCE hRes=NULL;
-		if(hNewRes)
+		if(hRes)
 		{
 			HINSTANCE hTmpRes=hRes;
 			hRes=hNewRes;

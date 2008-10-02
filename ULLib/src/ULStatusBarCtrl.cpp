@@ -10,19 +10,8 @@ namespace ULWnds
 			MessageMap.AddMessage<CULStatusBarCtrl>(WM_SIZE,&CULStatusBarCtrl::OnSize);
 		}
 
-		CULStatusBarCtrl::CULStatusBarCtrl(CULStatusBarCtrl& statusBarCtrl):CULWndCtrl(statusBarCtrl),
-			m_StatusBar(statusBarCtrl.m_StatusBar)
-		{
-		}
-
 		CULStatusBarCtrl::~CULStatusBarCtrl(void)
 		{
-		}
-
-		void CULStatusBarCtrl::operator=(CULStatusBarCtrl& statusBarCtrl)
-		{
-			m_StatusBar=statusBarCtrl.m_StatusBar;
-			ULWnds::ULWndCtrls::CULWndCtrl::operator=(statusBarCtrl);
 		}
 
 		BOOL CULStatusBarCtrl::CreateStatusBar(HWND hParentWnd,short nStatusID,BOOL fGrip)

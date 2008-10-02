@@ -101,11 +101,6 @@ namespace ULWnds
 			///\return число итемов
 			inline int GetMenuItemCount()
 				{return ::GetMenuItemCount(*this);}
-			///\brief получает ID итема меню
-			///\param nPos - позиция меню
-			///\return идентификатор
-			UINT GetMenuItemID(int nPos)
-				{return ::GetMenuItemID(*this,nPos);}
 		};
 	}
 }

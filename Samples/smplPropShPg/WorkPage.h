@@ -9,10 +9,11 @@ class CPage1:public ULWnds::ULDlgs::CULPropPage
 public:
 	CPage1():ULWnds::ULDlgs::CULPropPage()
 	{
-		MessageMap.AddCommand<CPage1>(IDC_BUTTON1,&CPage1::OnBtn1);		
+		MessageMap.AddCommand<CPage1>(IDC_BUTTON1,&CPage1::OnBtn1);
+		MessageMap.AddMessage<CPage1>(WM_INITDIALOG,&CPage1::OnInitDialog);
 	};
 	virtual ~CPage1(){};
-	virtual LRESULT OnInitDialog(WPARAM w,LPARAM l)
+	virtual LRESULT OnInitDialog(WPARAM,LPARAM)
 	{
 		HWND hBtnOK=::GetDlgItem(GetParent(),IDOK);
 		HWND hBtnCancel=::GetDlgItem(GetParent(),IDCANCEL);
@@ -31,7 +32,7 @@ public:
 		btnOk.Detach();
 
 		::SendMessage(GetParent(),WM_NEXTDLGCTL, (WPARAM)hBtnOK, TRUE);
-		return ULWnds::ULDlgs::CULPropPage::OnInitDialog(w,l);
+		return 1;
 	}
 	void OnBtn1(WORD,HWND)
 	{
@@ -45,9 +46,10 @@ public:
 	CPage2():ULWnds::ULDlgs::CULPropPage()
 	{
 		MessageMap.AddCommand<CPage2>(IDC_BUTTON1,&CPage2::OnBtn1);
+		MessageMap.AddMessage<CPage2>(WM_INITDIALOG,&CPage2::OnInitDialog);
 	};
 	~CPage2(){};
-	virtual LRESULT OnInitDialog(WPARAM w,LPARAM l)
+	virtual LRESULT OnInitDialog(WPARAM,LPARAM)
 	{
 	/*	HWND hBtnOK=::GetDlgItem(GetParent(),IDOK);
 		HWND hBtnCancel=::GetDlgItem(GetParent(),IDCANCEL);
@@ -66,7 +68,7 @@ public:
 		btnOk.Detach();
 
 		::SendMessage(GetParent(),WM_NEXTDLGCTL, (WPARAM)hBtnOK, TRUE);
-	*/	return ULWnds::ULDlgs::CULPropPage::OnInitDialog(w,l);;
+	*/	return 1;
 	}
 	void OnBtn1(WORD,HWND)
 	{

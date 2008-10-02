@@ -1,11 +1,10 @@
 ///\file ULButtons.cpp
 ///\brief cpp файл пространства имен классов кнопок(21.07.2007)
 #define _WIN32_WINNT 0x0400
-#define WINVER 0x0500
+
 #include "..\..\ULLib\Include\ULButtons.h"
 #include "..\..\ULLib\Include\ULRes.h"
 #include <tchar.h>
-
 namespace ULWnds
 {
 	namespace ULControls
@@ -524,7 +523,7 @@ namespace ULWnds
 			{
 				//изменение курсора на руку
 				HCURSOR hCursor=::LoadCursor(NULL, IDC_HAND);
-				SetClassLong(GCL_HCURSOR,(LONG)(LONG_PTR)hCursor);
+				SetClassLong(*this,GCL_HCURSOR,(LONG)(LONG_PTR)hCursor);
 				//сабклассирование
 				BOOL fRet=CULSubClass::Attach(*this);
 				ModifySyle(0,SS_OWNERDRAW);			
