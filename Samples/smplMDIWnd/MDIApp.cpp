@@ -23,7 +23,8 @@ public:
 	~CMDIApp()
 	{
 #ifdef _DEBUG
-		delete m_pMainWnd;m_pMainWnd=NULL;
+		delete m_pMainWnd;
+		m_pMainWnd=NULL;
 #endif 
 		LOGFILE_SAVE(_T("CMDIApp"))
 	};

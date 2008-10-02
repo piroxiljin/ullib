@@ -21,8 +21,6 @@ namespace ULWnds
 		CULWnd(void);
 		///\brief Конструктор копирования
 		CULWnd(CULWnd& Wnd);
-		///\brief Конструктор 
-		CULWnd(HWND hwnd);
 		///\brief Десруктор
 		virtual ~CULWnd(void);
 		///\brief Объект класса добавления и обработки сообщений
@@ -320,36 +318,6 @@ namespace ULWnds
 		///\return хендл окна
 		inline HWND Detach()
 			{HWND hTmp=m_hWnd;m_hWnd=NULL;return hTmp;}
-		///\brief Функция заносит/изменяет свойство в списке свойств окна
-		///\param lpString - имя свойства
-		///\param hData - даннык
-		///\return TRUE в случае успеха
-		BOOL SetProp(LPTSTR lpString,HANDLE hData)
-			{return ::SetProp(*this,lpString,hData);}
-		///\brief Функция получает свойство из списка свойств окна
-		///\param lpString - имя свойства
-		///\return данные
-		HANDLE GetProp(LPTSTR lpString)
-			{return ::GetProp(*this,lpString);}
-		///\brief сворачивает окно
-		///\return TRUE в слуыае успеха
-		BOOL CloseWindow()
-			{return ::CloseWindow(*this);};
-		///\brief возвращает меню окна
-		///\return меню окна
-		HMENU GetMenu()
-			{return ::GetMenu(*this);}
-		///\brief возвращает запрашиваемое окно
-		///\param uCmd - параметр запроса
-		///\return хендл запрашиваемого окна
-		HWND GetWindow(UINT uCmd)
-			{return ::GetWindow(*this,uCmd);}
-		///\brief функция для изменения полей класса окна
-		///\param nIndex - индекс поля
-		///\param dwNewLong - значение поля
-		///\return предыдущее значение
-		DWORD SetClassLong(int nIndex,LONG dwNewLong)
-			{return ::SetClassLong(*this,nIndex,dwNewLong);}
 	};
 }
 #endif //__ULWND_H__

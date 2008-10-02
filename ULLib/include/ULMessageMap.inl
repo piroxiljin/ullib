@@ -211,7 +211,7 @@ public:
 			m_pNotifyStorage[m_pNotifyStorage.GetSize()-1].nsNMHDR.hwndFrom=NULL;
 			m_pNotifyStorage[m_pNotifyStorage.GetSize()-1].nsNMHDR.idFrom=CtrlID;
 			m_pNotifyStorage[m_pNotifyStorage.GetSize()-1].nsNMHDR.code=NotifyCode;
-			m_pNotifyStorage[m_pNotifyStorage.GetSize()-1].nsNotifyProc=reinterpret_cast<NOTIFYPROC>(NotifyProc);
+			m_pNotifyStorage[m_pNotifyStorage.GetSize()-1].nsNotifyProc=reinterpret_cast<NOTIFYPROC>NotifyProc;
 			return TRUE;
 		}
 		else
@@ -239,7 +239,7 @@ public:
 
 	///\brief Функция для добаления функций, вызываемых перед обработкой сообщений
 	///	CULCurClass_t - класс окна, содержащего функцию
-	///\param lpObject - указатель на объект, содержащий функцию
+	///\param lpOject - указатель на объект, содержащий функцию
 	///\param lpPreTranslateMessageProc - функция
 	///\return TRUE в случае успеха
 	template<class CULCurClass_t>
@@ -257,7 +257,7 @@ public:
 	};
 	///\brief Функция для удаления функций, вызываемых перед обработкой сообщений
 	///	CULCurClass_t - класс окна, содержащего функцию
-	///\param lpObject - указатель на объект, содержащий функцию
+	///\param lpOject - указатель на объект, содержащий функцию
 	///\param lpPreTranslateMessageProc - функция
 	template<class CULCurClass_t>
 	void UnInitializePreTranslateMessage(CULCurClass_t* lpObject, BOOL(CULCurClass_t::*lpPreTranslateMessageProc)(MSG*))	

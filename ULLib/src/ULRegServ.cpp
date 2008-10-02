@@ -1,4 +1,4 @@
-///\file ULRegServ.cpp
+///\file ULRegServ.h
 ///\brief cpp фаил класса регистрации COM - объекта
 #include "..\\include\\ULRegServ.h"
 #include <objbase.h>

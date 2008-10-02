@@ -18,8 +18,6 @@ namespace ULWnds
 		private:
 			///\brief Массив для кранения хендлов созданных стариц свойств
 			ULOther::CULArr<HPROPSHEETPAGE> m_phPropSheetPage;
-			///\brief флаг режима отображения
-			BOOL m_fWizard;
 		public:
 			///\brief Перечисление типов мастера
 			enum enWizardFlags
@@ -73,14 +71,6 @@ namespace ULWnds
 				int rscWatermark=0,
 				UINT nWizardFlags=wfNonWizard,
 				BOOL fModal=TRUE);
-			///\brief аозвращает режим отображения
-			///\return TRUE, если визард
-			BOOL IsWizard();
-		protected:
-			///\brief вызывается при инициализации PropertySheet
-			BOOL OnInitialized(HWND /*hWnd*/);
-			///\brief функция, вызываемая при инициализации PropertySheet
-			int static PropSheetProc(HWND,UINT,LPARAM);
 		};
 	}
 }

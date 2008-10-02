@@ -11,7 +11,6 @@ class CULCFrameWnd :
 public:
 //========================================
 	ULWnds::ULBars::CULToolBar m_ToolBar;
-	ULWnds::ULBars::CULToolBar m_ToolBar2;
 	ULWnds::ULBars::CULRebar m_ReBarTop;
 	ULWnds::ULBars::CULStatusBar m_StatusBar;
 	HWND m_hwndCombo;

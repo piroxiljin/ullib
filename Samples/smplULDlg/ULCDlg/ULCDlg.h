@@ -79,7 +79,5 @@ public:
 	CULBitmapButton m_BitmapButton;
 
 	CULHyperLink m_HyperLink,m_HyperLink2;
-
-	CULThemeClient ThemeClient;
 };
 #endif//__UL_UDLG_H__

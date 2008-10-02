@@ -1,5 +1,5 @@
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual C++ Express 2008
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "smplPropShPg", "smplPropShPg.vcproj", "{E5E02D0B-F5F2-48C2-AF17-C8AB75CE6C23}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ULLibPrj", "..\..\ULLibPrj\ULLibPrj.vcproj", "{3F3D1FF7-4130-4CE2-BE94-DC955C45FC27}"
@@ -22,12 +22,12 @@ Global
 		{E5E02D0B-F5F2-48C2-AF17-C8AB75CE6C23}.ReleaseU|Win32.Build.0 = Release|Win32
 		{3F3D1FF7-4130-4CE2-BE94-DC955C45FC27}.Debug|Win32.ActiveCfg = Debug|Win32
 		{3F3D1FF7-4130-4CE2-BE94-DC955C45FC27}.Debug|Win32.Build.0 = Debug|Win32
-		{3F3D1FF7-4130-4CE2-BE94-DC955C45FC27}.DebugU|Win32.ActiveCfg = UDebug|Win32
-		{3F3D1FF7-4130-4CE2-BE94-DC955C45FC27}.DebugU|Win32.Build.0 = UDebug|Win32
+		{3F3D1FF7-4130-4CE2-BE94-DC955C45FC27}.DebugU|Win32.ActiveCfg = DebugU|Win32
+		{3F3D1FF7-4130-4CE2-BE94-DC955C45FC27}.DebugU|Win32.Build.0 = DebugU|Win32
 		{3F3D1FF7-4130-4CE2-BE94-DC955C45FC27}.Release|Win32.ActiveCfg = Release|Win32
 		{3F3D1FF7-4130-4CE2-BE94-DC955C45FC27}.Release|Win32.Build.0 = Release|Win32
-		{3F3D1FF7-4130-4CE2-BE94-DC955C45FC27}.ReleaseU|Win32.ActiveCfg = Release|Win32
-		{3F3D1FF7-4130-4CE2-BE94-DC955C45FC27}.ReleaseU|Win32.Build.0 = Release|Win32
+		{3F3D1FF7-4130-4CE2-BE94-DC955C45FC27}.ReleaseU|Win32.ActiveCfg = ReleaseU|Win32
+		{3F3D1FF7-4130-4CE2-BE94-DC955C45FC27}.ReleaseU|Win32.Build.0 = ReleaseU|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

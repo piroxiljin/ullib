@@ -25,13 +25,10 @@ public:
 	}
 	~CULCApp()
 	{
-#ifdef _DEBUG
-		delete m_pMainWnd;m_pMainWnd=NULL;
-#endif
 		LOGFILE_SAVE(_T("CULCApp"));
 	}
 	virtual int InitInstance()
-	{
+	{		
 		CULCFrameWnd* m_pFrameWnd=new CULCFrameWnd;
 		this->m_pMainWnd=m_pFrameWnd;
 		m_pFrameWnd->Create(_T("MyFrameWnd"),IDC_SMPLULFRAMEWND,IDI_ICON_LOGO,IDI_ICON_LOGO,COLOR_GRAYTEXT);

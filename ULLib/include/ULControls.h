@@ -6,9 +6,6 @@
 #include "ULListBox.h"
 #include "ULToolTip.h"
 #include "ULMenu.h"
-#include "ULListCtrl.h"
-#include "ULComboBox.h"
-
 namespace ULWnds
 {
 	///\namespace ULControls

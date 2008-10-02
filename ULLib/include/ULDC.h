@@ -170,18 +170,6 @@ namespace ULGDI
 			///\return число скопированных линий в буфер
 			inline int GetDIBits(HBITMAP hbmp, UINT uStartScan,UINT cScanLines,LPVOID lpvBits,LPBITMAPINFO lpbi,UINT uUsage)
 				{return ::GetDIBits(*this,hbmp, uStartScan,cScanLines,lpvBits,lpbi,uUsage);	}
-			///\brief ресует закрашеный прямоугольник
-			///\param lprc - указатель на структуру прямоугольника
-			///\param hbr - хендл кисти, которой будет осуществлено закрашивание
-			///\return TRUE в случае успеха
-			inline int FillRect(CONST RECT *lprc,HBRUSH hbr)
-				{return (0!=::FillRect(*this,lprc,hbr));};
-			///\brief ресует закрашеный прямоугольник
-			///\param hrgn - хендл закрашиваемого региона
-			///\param hbr - хендл кисти, которой будет осуществлено закрашивание
-			///\return TRUE в случае успеха
-			inline int FillRgn(HRGN hrgn,HBRUSH hbr)
-				{return (0!=::FillRgn(*this,hrgn,hbr));};
 	};
 		///\class CULWindowDC
 		///\brief Класс контекста окна(10.09.2007)

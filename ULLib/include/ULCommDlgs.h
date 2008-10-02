@@ -83,12 +83,11 @@ namespace ULWnds
 				OPENFILENAME m_ofn;
 			public:
 				///\brief Конструктор
-				///\param fOpenFileDlg - TRUE диалог отрытия фаила, FALSE диалог сохранения фаила
+				///\param fOpenFileDialog - TRUE диалог отрытия фаила, FALSE диалог сохранения фаила
 				///\param lpszDefExt - расширение фаила поумолчанию
 				///\param lpszFileName - Имя фаила поумолчанию
 				///\param dwFlags - флаги диалога открытия фаилов
 				///\param lpszFilter - фильтр открытия фаилов
-				///\param dwFilterIndex - индекс текущего выбранного фильтра
 				explicit CULFileDlg(BOOL fOpenFileDlg,
 					LPCTSTR lpszDefExt = NULL,
 					LPCTSTR lpszFileName = NULL,

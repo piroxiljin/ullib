@@ -35,11 +35,12 @@ namespace ULApps
 		///\brief Вызывается при уменьшении колличества активных фабрик классов
 		///\или еще каких либо значимых объектов
 		void ServerUnlock();
-		///\brief Создаёт компонент посредством фабрики классов, тип которой указывается в ClassFactory_t
+		///\brief Создаёт компонент посредством фабрики классов
+		///\param ClassFactory_t - тип фабрики классов
 		///\param clsidComponent - идентификатор имеющегося класса компонента
-		///\param clsidRequest - идентификатор класса компонета
+		///\param clsid - идентификатор класса компонета
 		///\param iid - идентификатор интерфейса фабрики классов
-		///\param ppvObject - возвращаемый указатель на интерфейс фабрики классов
+		///\param ppv - возвращаемый указатель на интерфейс фабрики классов
 		///\return Код возврата COM
 		template<class ClassFactory_t>HRESULT GetClassObjectFromClassFactory(const CLSID& clsidComponent,
 			const CLSID& clsidRequest,
@@ -70,7 +71,7 @@ namespace ULApps
 		///\классов наследников. Вызывается из DllGetClassObject
 		///\param clsid - идентификатор класса компонета
 		///\param iid - идентификатор интерфейса фабрики классов
-		///\param ppvObject - возвращаемый указатель на интерфейс фабрики классов
+		///\param ppv - возвращаемый указатель на интерфейс фабрики классов
 		///\return Код возврата COM
 		virtual HRESULT OnGetClassObject(const CLSID& clsid,const IID& iid,void** ppvObject)=0;
 		///\brief Возвращает опрашивоему клиенту, по  CoCreateUnusedLibraries
@@ -89,7 +90,7 @@ namespace ULApps
 		///\brief Точка входа DLL для создания фабрики класса компонента (см. CoGetClassObject)
 		///\param clsid - идентификатор класса компонета
 		///\param iid - идентификатор интерфейса фабрики классов
-		///\param ppvObject - возвращаемый указатель на интерфейс фабрики классов
+		///\param ppv - возвращаемый указатель на интерфейс фабрики классов
 		///\return Код возврата COM
 		HRESULT DllGetClassObject(const CLSID& clsid,
 			const IID& iid,

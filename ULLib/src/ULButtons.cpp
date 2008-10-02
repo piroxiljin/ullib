@@ -1,11 +1,9 @@
 ///\file ULButtons.cpp
 ///\brief cpp файл пространства имен классов кнопок(21.07.2007)
 #define _WIN32_WINNT 0x0400
-#define WINVER 0x0500
-#include "..\..\ULLib\Include\ULButtons.h"
-#include "..\..\ULLib\Include\ULRes.h"
-#include <tchar.h>
 
+#include "..\..\ULLib\Include\ULButtons.h"
+#include <tchar.h>
 namespace ULWnds
 {
 	namespace ULControls
@@ -21,7 +19,7 @@ namespace ULWnds
 				UINT uID,DWORD dwStyle)
 			{
 				m_hWnd=::CreateWindow(_T("BUTTON"),szCaption,dwStyle,
-					x,y,cx,cy,hParentWnd,(HMENU)(LONG_PTR)uID,ULOther::ULGetResourceHandle(),0);
+					x,y,cx,cy,hParentWnd,(HMENU)(LONG_PTR)uID,::GetModuleHandle(NULL),0);
 				m_hParentWnd=hParentWnd;
 				//Сабклассирование
 				return CULSubClass::Attach(m_hWnd);
@@ -366,12 +364,12 @@ namespace ULWnds
 				WORD wUpID,WORD wDownID,WORD wFocusedID,WORD wHiLiteID,WORD wDisableID,WORD wMaskID)
 			{
 				return CreateBitmapButton(hParentWnd,x,y,uID,
-					::LoadBitmap(ULOther::ULGetResourceHandle(),MAKEINTRESOURCE(wUpID)),
-					::LoadBitmap(ULOther::ULGetResourceHandle(),MAKEINTRESOURCE(wDownID)),
-					::LoadBitmap(ULOther::ULGetResourceHandle(),MAKEINTRESOURCE(wFocusedID)),
-					::LoadBitmap(ULOther::ULGetResourceHandle(),MAKEINTRESOURCE(wHiLiteID)),
-					::LoadBitmap(ULOther::ULGetResourceHandle(),MAKEINTRESOURCE(wDisableID)),
-					::LoadBitmap(ULOther::ULGetResourceHandle(),MAKEINTRESOURCE(wMaskID)));
+					::LoadBitmap(::GetModuleHandle(NULL),MAKEINTRESOURCE(wUpID)),
+					::LoadBitmap(::GetModuleHandle(NULL),MAKEINTRESOURCE(wDownID)),
+					::LoadBitmap(::GetModuleHandle(NULL),MAKEINTRESOURCE(wFocusedID)),
+					::LoadBitmap(::GetModuleHandle(NULL),MAKEINTRESOURCE(wHiLiteID)),
+					::LoadBitmap(::GetModuleHandle(NULL),MAKEINTRESOURCE(wDisableID)),
+					::LoadBitmap(::GetModuleHandle(NULL),MAKEINTRESOURCE(wMaskID)));
 			};
 
 			BOOL CULBitmapButton::CreateBitmapButton(HWND hParentWnd,int x,int y,UINT uID,
@@ -404,12 +402,12 @@ namespace ULWnds
 				WORD wUpID,WORD wDownID,WORD wFocusedID,WORD wHiLiteID,WORD wDisableID,WORD wMaskID)
 			{
 				return Attach(hWnd,
-					::LoadBitmap(ULOther::ULGetResourceHandle(),MAKEINTRESOURCE(wUpID)),
-					::LoadBitmap(ULOther::ULGetResourceHandle(),MAKEINTRESOURCE(wDownID)),
-					::LoadBitmap(ULOther::ULGetResourceHandle(),MAKEINTRESOURCE(wFocusedID)),
-					::LoadBitmap(ULOther::ULGetResourceHandle(),MAKEINTRESOURCE(wHiLiteID)),
-					::LoadBitmap(ULOther::ULGetResourceHandle(),MAKEINTRESOURCE(wDisableID)),
-					::LoadBitmap(ULOther::ULGetResourceHandle(),MAKEINTRESOURCE(wMaskID)));
+					::LoadBitmap(::GetModuleHandle(NULL),MAKEINTRESOURCE(wUpID)),
+					::LoadBitmap(::GetModuleHandle(NULL),MAKEINTRESOURCE(wDownID)),
+					::LoadBitmap(::GetModuleHandle(NULL),MAKEINTRESOURCE(wFocusedID)),
+					::LoadBitmap(::GetModuleHandle(NULL),MAKEINTRESOURCE(wHiLiteID)),
+					::LoadBitmap(::GetModuleHandle(NULL),MAKEINTRESOURCE(wDisableID)),
+					::LoadBitmap(::GetModuleHandle(NULL),MAKEINTRESOURCE(wMaskID)));
 			};
 
 			BOOL CULBitmapButton::Attach(HWND hWnd,
@@ -524,7 +522,7 @@ namespace ULWnds
 			{
 				//изменение курсора на руку
 				HCURSOR hCursor=::LoadCursor(NULL, IDC_HAND);
-				SetClassLong(GCL_HCURSOR,(LONG)(LONG_PTR)hCursor);
+				SetClassLong(*this,GCL_HCURSOR,(LONG)(LONG_PTR)hCursor);
 				//сабклассирование
 				BOOL fRet=CULSubClass::Attach(*this);
 				ModifySyle(0,SS_OWNERDRAW);			
@@ -549,7 +547,7 @@ namespace ULWnds
 				//создание статика
 				m_hWnd=::CreateWindowEx(WS_EX_TRANSPARENT,_T("STATIC"),szName,WS_CHILD|WS_CLIPCHILDREN|WS_TABSTOP|
 					WS_VISIBLE|SS_NOTIFY|SS_OWNERDRAW,x,y,1,1,
-					hParentWnd,(HMENU)(LONG_PTR)uID,ULOther::ULGetResourceHandle(),0);
+					hParentWnd,(HMENU)(LONG_PTR)uID,::GetModuleHandle(NULL),0);
 				//инициализация гиперссылки
 				return Init();
 			};

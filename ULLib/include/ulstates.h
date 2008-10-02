@@ -10,7 +10,6 @@
 #include <crtdbg.h>
 #include <TCHAR.H>
 #include "ULOther.h"
-#include "ULRes.h"
 ///\namespace ULStates
 /*!\brief Пространство имен классов состояния памяти,времени 
 выполнения и лог-файла(21.07.2007)*/
@@ -190,15 +189,11 @@ namespace ULStates
 		{
 			//определение имениисполняемого файла
 			TCHAR szPath[5][MAX_PATH];
-			::GetModuleFileName(ULOther::ULGetResourceHandle(),szPath[0],MAX_PATH);
+			::GetModuleFileName(::GetModuleHandle(NULL),szPath[0],MAX_PATH);
 			 _tsplitpath_s(szPath[0],szPath[1],MAX_PATH,szPath[2],MAX_PATH,szPath[3],MAX_PATH,szPath[4],MAX_PATH);
 			//имя файла лога = имя исполняемого файла.log
 			_tcscmp(szPath[3],_T(".log"));
 			_tfopen_s(&m_LogFile,szPath[3],_T("w+"));
-#ifdef UNICODE
-			unsigned short usLittleEndian=0xfeff;
-			fwrite(&usLittleEndian,2,1,m_LogFile);
-#endif
 		};
 		///\brief Деструктор
 		~CULLogFile()
@@ -246,16 +241,17 @@ namespace ULStates
 		BOOL SaveLog(TCHAR* szLogName)
 		{
 			for(unsigned int i=0;i<m_pLogFileData.GetSize();i++)
-				if((_tcscmp(m_pLogFileData[i].lfdszName,szLogName)==0))
+				if((_tcsspn(m_pLogFileData[i].lfdszName,szLogName)==0)&&
+					(_tcslen(m_pLogFileData[i].lfdszName)==_tcslen(szLogName)))
 				{
 					TCHAR szSaveLog[MAX_PATH];
-					_stprintf_s(szSaveLog,MAX_PATH,_T("%s: утечка памяти %d байт,время выполнения %.3f мс,полное время %.3f мс\r"),
+					_stprintf_s(szSaveLog,MAX_PATH,_T("%s: утечка памяти %d байт,время выполнения %.3f мс,полное время %.3f мс\n"),
 						m_pLogFileData[i].lfdszName,
 						//исключаем из лога издержки LOGFILEDATA
 						m_pLogFileData[i].lfdMemState.MemVerify()-(m_pLogFileData.GetSize()-1-i)*sizeof(tagLogFileData),
 						m_pLogFileData[i].lfdTimeState.TimeVerify(),
 						m_pLogFileData[i].lfdWatchState.WatchVerify());
-					fwrite(szSaveLog,_tcslen(szSaveLog)*sizeof(TCHAR),1,m_LogFile);
+					fwrite(szSaveLog,_tcslen(szSaveLog),1,m_LogFile);
 					return TRUE;
 				}
 			return FALSE;

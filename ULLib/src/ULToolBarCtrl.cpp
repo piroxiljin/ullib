@@ -10,19 +10,8 @@ namespace ULWnds
 			MessageMap.AddMessage<CULToolBarCtrl>(WM_SIZE,&CULToolBarCtrl::OnSize);
 		}
 
-		CULToolBarCtrl::CULToolBarCtrl(CULToolBarCtrl& toolBarCtrl):CULWndCtrl(toolBarCtrl),
-			m_ToolBar(toolBarCtrl.m_ToolBar)
-		{
-		}
-
 		CULToolBarCtrl::~CULToolBarCtrl(void)
 		{
-		}
-
-		void CULToolBarCtrl::operator=(CULToolBarCtrl& toolBarCtrl)
-		{
-			m_ToolBar=toolBarCtrl.m_ToolBar;
-			ULWnds::ULWndCtrls::CULWndCtrl::operator=(toolBarCtrl);
 		}
 
 		BOOL CULToolBarCtrl::CreateToolBarCtrl(HWND hParentWnd,

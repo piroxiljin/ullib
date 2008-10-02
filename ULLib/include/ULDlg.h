@@ -31,13 +31,15 @@ namespace ULWnds
 			///\brief деструктор
 			virtual ~CULDlg(void);
 			///\brief Создаёт немодальный диалог
-			///\param idTempl - идентификатор шаблона диалога
-			///\param hParentWnd - хэндл родительского окна
+			///\param TemplID - идентификатор шаблона диалога
+			///\param IconID - идентификатор иконки
+			///\param hParentHWND - хэндл родительского окна
 			HWND Create(short idTempl,	
 				HWND hParentWnd=NULL);	
 			///\brief Создаёт модальный диалог
-			///\param idTempl - идентификатор шаблона диалога
-			///\param hParentWnd - хэндл родительского окна
+			///\param TemplID - идентификатор шаблона диалога
+			///\param IconID - идентификатор иконки
+			///\param hParentHWND - хэндл родительского окна
 			///\return IDOK или IDCANCEL
 			int CreateModal(short idTempl,
 				HWND hParentWnd=NULL);	  

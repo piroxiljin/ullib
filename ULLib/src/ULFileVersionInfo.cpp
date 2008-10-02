@@ -22,7 +22,7 @@ LPTSTR ULOther::CULFileVersionInfo::SetFileName(LPTSTR lpszFileName)
 	LPTSTR lpszOldName=m_lpszFileName;
 	m_lpszFileName=lpszFileName;
 	return lpszOldName;
-}
+};
 
 LPTSTR ULOther::CULFileVersionInfo::GetFileName(LPTSTR lpszFileName,UINT nLen)
 {
@@ -31,7 +31,7 @@ LPTSTR ULOther::CULFileVersionInfo::GetFileName(LPTSTR lpszFileName,UINT nLen)
 		return NULL;
 	_tcscpy_s(lpszFileName,nLen,m_lpszFileName);
 	return lpszFileName;
-}
+};
 
 LPTSTR ULOther::CULFileVersionInfo::GetVersionString(LPTSTR szType, LPTSTR szBuffer, ULONG nLength)
 {
@@ -66,36 +66,31 @@ LPTSTR ULOther::CULFileVersionInfo::GetVersionString(LPTSTR szType, LPTSTR szBuf
 LPTSTR ULOther::CULFileVersionInfo::GetFileDescription(LPTSTR lpszDescription,UINT nLen)
 {
 	return GetVersionString(_T("FileDescription"),lpszDescription,nLen);
-}
+};
 
 LPTSTR ULOther::CULFileVersionInfo::GetFileVersion(LPTSTR lpszVersion,UINT nLen)
 {
 	return GetVersionString(_T("FileVersion"),lpszVersion,nLen);
-}
+};
 LPTSTR ULOther::CULFileVersionInfo::GetInternalName(LPTSTR lpszInternalName,UINT nLen)
 {
 	return GetVersionString(_T("InternalName"),lpszInternalName,nLen);
-}
+};
 LPTSTR ULOther::CULFileVersionInfo::GetProductName(LPTSTR lpszProductName,UINT nLen)
 {
 	return GetVersionString(_T("ProductName"),lpszProductName,nLen);
-}
+};
 LPTSTR ULOther::CULFileVersionInfo::GetProductVersion(LPTSTR lpszProductVersion,UINT nLen)
 {
 	return GetVersionString(_T("ProductVersion"),lpszProductVersion,nLen);
-}
+};
 
 LPTSTR ULOther::CULFileVersionInfo::GetComments(LPTSTR lpszComments,UINT nLen)
 {
 	return GetVersionString(_T("Comments"),lpszComments,nLen);
-}
+};
 
 LPTSTR ULOther::CULFileVersionInfo::GetLegalCopyright(LPTSTR lpszLegalCopyright,UINT nLen)
 {
 	return GetVersionString(_T("LegalCopyright"),lpszLegalCopyright,nLen);
-}
-
-LPTSTR ULOther::CULFileVersionInfo::GetCompanyName(LPTSTR lpszCompanyName,UINT nLen)
-{
-	return GetVersionString(_T("CompanyName"),lpszCompanyName,nLen);
-}
+};

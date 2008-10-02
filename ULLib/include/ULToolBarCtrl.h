@@ -32,12 +32,8 @@ namespace ULWnds
 			///\brief Конструктор
 			//================================================
 			CULToolBarCtrl(void);
-			///\brief Конструктор копирования
-			CULToolBarCtrl(CULToolBarCtrl&);
 			///\brief Деструктор
 			virtual ~CULToolBarCtrl(void);
-			///\brief оператор копирования
-			void operator=(CULToolBarCtrl&);
 			///\brief Функция возвращает ссылку на тулбар
 			inline ULBars::CULToolBar& GetToolBar(){return m_ToolBar;};
 			///\brief Функция создания тулбарконтрола

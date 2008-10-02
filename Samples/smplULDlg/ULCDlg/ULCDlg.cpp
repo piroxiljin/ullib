@@ -16,14 +16,11 @@ CULCDlg::~CULCDlg(void)
 		delete m_pAboutDlg;
 }
 
-//==============================================================================
 LRESULT CULCDlg::OnInitDialog(WPARAM,LPARAM)
 {
 	LOGFILE_ADD(_T("OnInitDialog"));
 	CULDlg::OnInitDialog(0,0);
-	ThemeClient.Create(*this);
-//	ThemeClient.SetRadius(20);
-//	ThemeClient.SetColors(0x666666,0xffffff);
+
 //========================================================
 	m_StyleButton.CreateStyleButton(*this,_T("Create"),IDC_BUTTON_OWNERDRAW,
 		10,100,100,40);
@@ -49,7 +46,7 @@ LRESULT CULCDlg::OnInitDialog(WPARAM,LPARAM)
 	m_BitmapButton.CreateBitmapButton(*this,150,100,IDC_BUTTON_BITMAP,IDB_BITMAP_UP,IDB_BITMAP_DOWN,
 		IDB_BITMAP_FOCUSED,IDB_BITMAP_HILITE,IDB_BITMAP_DISABLE,IDB_BITMAP_MASK);
 //==============================================================
-	m_HyperLink.CreateHyperLink(*this,20,55,_T("ñ:\\"),_T("c:\\"),IDC_HYPERLINK);
+	m_HyperLink.CreateHyperLink(*this,10,45,_T("ñ:\\"),_T("c:\\"),IDC_HYPERLINK);
 	m_HyperLink.SetStyles(CULHyperLink::tDefault,CULHyperLink::sUnderLine,0x00ff00);
 	m_HyperLink2.Attach(GetDlgItem(IDC_HYPERLINK2),_T("http://forum.sources.ru"));
 //==============================================================

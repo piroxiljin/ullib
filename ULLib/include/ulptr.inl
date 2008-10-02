@@ -44,6 +44,7 @@ namespace ULOther
 		}
 		///\brief Изменение размера выделенной памяти с сохранением элементов
 		///\param nObjSize новый размер
+		///\param fStore если true, то оставшаяся часть данных будет сохранена
 		///\return указатеь на буфер
 		object_t* Resize(size_t nObjSize)
 		{

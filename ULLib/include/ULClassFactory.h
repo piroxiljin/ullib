@@ -99,7 +99,7 @@ namespace ULCOMs
 		//=================Реализация  интерфейса IUnknown==========================
 		///\brief Возвращает указатель на IClassFactory
 		///\param iid - Идентификатор интерфейса
-		///\param ppvObject - Указатель на указатель на интерфейс
+		///\param ppv - Указатель на указатель на интерфейс
 		///\return S_OK в случае создания интерфеса, 
 		///\ E_NOINTERFACE - в слечае отсутствия запрашиваемого интерфейса
 		virtual HRESULT __stdcall CULClassFactory::QueryInterface(const IID& iid, void** ppvObject)
@@ -149,7 +149,7 @@ namespace ULCOMs
 		///\param pUnknownOuter - если поддерживается агрегирование, 
 		/// то к нему присваевается указатель на компонент
 		///\param iid - Идентификатор интерфейса, поддерживаемого компонентом
-		///\param ppvObject - Указатель на указатель на интерфейс
+		///\param ppv - Указатель на указатель на интерфейс
 		///\return COM код возврата
 		HRESULT __stdcall CreateInstance(IUnknown* pUnknownOuter,
 												 const IID& iid,

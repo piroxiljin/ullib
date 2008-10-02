@@ -2,8 +2,6 @@
 ///\brief cpp файл класса дочернего окна архетектуры MDI(03.08.2007)
 #include "..\..\ULLib\Include\ULMDIChildWnd.h"
 #include "..\..\ULLib\Include\ULApp.h"
-#include "..\..\ULLib\Include\ULFrameWnd.h"
-#include "..\..\ULLib\Include\ULRes.h"
 namespace ULWnds
 {
 	namespace ULFrames
@@ -92,7 +90,7 @@ namespace ULWnds
 			wc.lpfnWndProc   = (WNDPROC) WndProc; 
 			wc.cbClsExtra    = 0; 
 			wc.cbWndExtra    = 0; 
-			wc.hInstance     = ULOther::ULGetResourceHandle(); 
+			wc.hInstance     = ::GetModuleHandle(NULL); 
 			wc.hIcon         = LoadIcon(wc.hInstance,MAKEINTRESOURCE(IconID)); 
 			wc.hCursor       = LoadCursor( NULL, IDC_ARROW); 
 			wc.hbrBackground = (HBRUSH) BGColor; 
@@ -106,7 +104,7 @@ namespace ULWnds
 		#endif//UNICODE	
 			RegisterClass(&wc);
 			m_hWnd=CreateMDIWindow(wc.lpszClassName,szWindowName,dwChildStyle,
-				x,y,cx,cy,hClientWnd,ULOther::ULGetResourceHandle(),LPARAM(this));
+				x,y,cx,cy,hClientWnd,::GetModuleHandle(NULL),LPARAM(this));
 
 			return m_hWnd;
 		}
