@@ -22,8 +22,8 @@ LRESULT CULCDlg::OnInitDialog(WPARAM,LPARAM)
 	LOGFILE_ADD(_T("OnInitDialog"));
 	CULDlg::OnInitDialog(0,0);
 	ThemeClient.Create(*this);
-//	ThemeClient.SetRadius(20);
-//	ThemeClient.SetColors(0x666666,0xffffff);
+	ThemeClient.SetRadius(20);
+	ThemeClient.SetColors(0x666666,0xffffff);
 //========================================================
 	m_StyleButton.CreateStyleButton(*this,_T("Create"),IDC_BUTTON_OWNERDRAW,
 		10,100,100,40);

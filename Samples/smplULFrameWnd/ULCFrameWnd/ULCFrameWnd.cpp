@@ -1,8 +1,6 @@
 #include ".\ulcframewnd.h"
 #include "..\..\..\ULLib\Include\ULDlgs.h"
-#include "..\..\..\ULLib\Include\ULMenu.h"
 #include "..\resource.h"
-
 #include "stdio.h"
 #define ID_TB 1
 #define ID_CB 2
@@ -54,32 +52,29 @@ LRESULT CULCFrameWnd::OnCreate(WPARAM /*wParam*/,LPARAM /*lParam*/)
 
   m_ToolBar.Create(/*m_ReBarTop*/*this,
 		ID_TOOLBAR,24, 24+15, 24, 24,ULWnds::ULBars::CULToolBar::afNon|ULWnds::ULBars::CULToolBar::afTop,
-    WS_CHILD|WS_VISIBLE|WS_CLIPCHILDREN| TBSTYLE_LIST| TBSTYLE_TOOLTIPS|CCS_ADJUSTABLE|/*TBSTYLE_AUTOSIZE|*/CCS_NODIVIDER|
+    WS_CHILD|WS_VISIBLE|WS_CLIPCHILDREN|TBSTYLE_TOOLTIPS|TBSTYLE_AUTOSIZE|CCS_NODIVIDER|
 		TBSTYLE_FLAT,TBSTYLE_EX_DRAWDDARROWS);
 
   if(m_ToolBar.m_hWnd!=NULL)
 	{
-		m_ToolBar.AddButton(ID_MENU_NEW,TBSTATE_ENABLED,  BTNS_BUTTON ,_T("New"),NULL,STD_FILENEW,IDB_STD_LARGE_COLOR);
-		m_ToolBar.AddButton(ID_MENU_OPEN,TBSTATE_ENABLED, BTNS_BUTTON ,_T("Open"),NULL,STD_FILEOPEN,IDB_STD_LARGE_COLOR);
-		m_ToolBar.AddButton(ID_MENU_SAVE,TBSTATE_ENABLED,BTNS_BUTTON,_T("Save"),NULL,STD_FILESAVE,IDB_STD_LARGE_COLOR);
-		m_ToolBar.AddButton(0,TBSTATE_ENABLED,BTNS_SEP,NULL,NULL,0);
-		m_ToolBar.AddButton(ID_MENU_DELETE,TBSTATE_ENABLED,BTNS_BUTTON,_T("Delete"),NULL,STD_DELETE,IDB_STD_LARGE_COLOR);
-		m_ToolBar.AddButton(0,TBSTATE_ENABLED,BTNS_SEP,NULL,NULL,0);
+		m_ToolBar.AddButton(ID_MENU_NEW,TBSTATE_ENABLED,  BTNS_BUTTON ,_T("New"),STD_FILENEW,IDB_STD_LARGE_COLOR);
+		m_ToolBar.AddButton(ID_MENU_OPEN,TBSTATE_ENABLED, BTNS_BUTTON ,_T("Open"),STD_FILEOPEN,IDB_STD_LARGE_COLOR);
+		m_ToolBar.AddButton(ID_MENU_SAVE,TBSTATE_ENABLED,BTNS_BUTTON,_T("Save"),STD_FILESAVE,IDB_STD_LARGE_COLOR);
+		m_ToolBar.AddButton(0,TBSTATE_ENABLED,BTNS_SEP,NULL,0);
+		m_ToolBar.AddButton(ID_MENU_DELETE,TBSTATE_ENABLED,BTNS_BUTTON,_T("Delete"),STD_DELETE,IDB_STD_LARGE_COLOR);
+		m_ToolBar.AddButton(0,TBSTATE_ENABLED,BTNS_SEP,NULL,0);
 		HBITMAP hBitmap=::LoadBitmap(::GetModuleHandle(NULL),
 			MAKEINTRESOURCE(IDB_BITMAP_CUSTOM));
-		static TCHAR szStr[]=_T("ID_MENU_OTHER");
 		m_ToolBar.AddButton(ID_MENU_OTHER,TBSTATE_ENABLED,BTNS_BUTTON,
-			_T("Other1"),szStr,0,hBitmap);
+			_T("Other"),0,hBitmap);
 //		::DeleteObject(hBitmap);
 
 //пробуем вставить
 		hBitmap=::LoadBitmap(::GetModuleHandle(NULL),MAKEINTRESOURCE(IDB_BITMAP_CUSTOM2));
-		ULWnds::ULControls::CULMenu popupMenu;
-		popupMenu.LoadMenu(ULOther::ULGetResourceHandle(),MAKEINTRESOURCE(IDC_SMPLULFRAMEWND));
 		m_ToolBar.InsertButton(7,ID_MENU_OTHER2,TBSTATE_ENABLED, BTNS_DROPDOWN |BTNS_BUTTON ,
-			_T("insert button"),NULL,0,hBitmap,popupMenu.GetSubMenu(1));
+			_T("insert button"),0,hBitmap,NULL,IDC_SMPLULFRAMEWND);
 		::DeleteObject(hBitmap);
-//		m_ToolBar.AutoSize();
+		m_ToolBar.AutoSize();
 
 //пробуем удалить
 //		m_ToolBar.DeleteButton(2);
@@ -100,44 +95,9 @@ LRESULT CULCFrameWnd::OnCreate(WPARAM /*wParam*/,LPARAM /*lParam*/)
 
 	SIZE szCombo={rect.right-rect.left,rcTBWidth.bottom};
 
-	fRet=m_ReBarTop.InsertBand(0,m_hwndCombo,_T("Комбик"),hBmp,(WORD)ID_CB,NULL/*&szCombo*/);
+	fRet=m_ReBarTop.InsertBand(m_hwndCombo,_T("Комбик"),hBmp,(WORD)ID_CB,NULL/*&szCombo*/);
 
-	fRet=m_ReBarTop.InsertBand(0,m_ToolBar,_T("Тулбар"),NULL/*hBmp*/,(WORD)ID_TB,&szToolBar);
-
-  m_ToolBar2.Create(/*m_ReBarTop*/*this,
-		ID_TOOLBAR,24, 24+15, 24, 24,ULWnds::ULBars::CULToolBar::afNon|ULWnds::ULBars::CULToolBar::afTop,
-    WS_CHILD|WS_VISIBLE|WS_CLIPCHILDREN|TBSTYLE_TOOLTIPS|/*TBSTYLE_AUTOSIZE|*/CCS_NODIVIDER/*|
-		TBSTYLE_FLAT*/,TBSTYLE_EX_DRAWDDARROWS);
-
-  if(m_ToolBar2.m_hWnd!=NULL)
-	{
-		m_ToolBar2.AddButton(ID_MENU_NEW,TBSTATE_ENABLED,  BTNS_BUTTON ,_T("New"),NULL,STD_FILENEW,IDB_STD_LARGE_COLOR);
-		m_ToolBar2.AddButton(ID_MENU_OPEN,TBSTATE_ENABLED, BTNS_BUTTON ,_T("Open"),NULL,STD_FILEOPEN,IDB_STD_LARGE_COLOR);
-		m_ToolBar2.AddButton(ID_MENU_SAVE,TBSTATE_ENABLED,BTNS_BUTTON,_T("Save"),NULL,STD_FILESAVE,IDB_STD_LARGE_COLOR);
-		m_ToolBar2.AddButton(0,TBSTATE_ENABLED,BTNS_SEP,NULL,NULL,0);
-		m_ToolBar2.AddButton(ID_MENU_DELETE,TBSTATE_ENABLED,BTNS_BUTTON,_T("Delete"),NULL,STD_DELETE,IDB_STD_LARGE_COLOR);
-		m_ToolBar2.AddButton(0,TBSTATE_ENABLED,BTNS_SEP,NULL,NULL,0);
-		HBITMAP hBitmap=::LoadBitmap(::GetModuleHandle(NULL),
-			MAKEINTRESOURCE(IDB_BITMAP_CUSTOM));
-		m_ToolBar2.AddButton(ID_MENU_OTHER,TBSTATE_ENABLED,BTNS_BUTTON,
-			_T("Other"),NULL,0,hBitmap);
-//		::DeleteObject(hBitmap);
-
-//пробуем вставить
-		hBitmap=::LoadBitmap(::GetModuleHandle(NULL),MAKEINTRESOURCE(IDB_BITMAP_CUSTOM2));
-		ULWnds::ULControls::CULMenu popupMenu;
-		popupMenu.LoadMenu(ULOther::ULGetResourceHandle(),MAKEINTRESOURCE(IDC_SMPLULFRAMEWND));
-		m_ToolBar2.InsertButton(7,ID_MENU_OTHER2,TBSTATE_ENABLED, BTNS_DROPDOWN |BTNS_BUTTON ,
-			_T("insert button"),NULL,0,hBitmap,popupMenu.GetSubMenu(0));
-		popupMenu.Detach();
-		::DeleteObject(hBitmap);
-//		m_ToolBar2.AutoSize();
-
-//пробуем удалить
-//		m_ToolBar.DeleteButton(2);
-	}
-
-	fRet=m_ReBarTop.InsertBand(0,m_ToolBar2,_T("Тулбар2"),NULL/*hBmp*/,(WORD)ID_TB,&szToolBar);
+	fRet=m_ReBarTop.InsertBand(m_ToolBar,_T("Тулбар"),hBmp,(WORD)ID_TB,&szToolBar);
 
 	//====================================================================
 

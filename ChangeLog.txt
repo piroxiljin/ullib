@@ -1,85 +1,12 @@
-2.0.0 <05.08.2008>
-	Старт с 2.0.0
+v2.0.0 <05.08.2008>
+Старт с 2.0.0
 
-2.1.0 <06.08.2008>
-	1 добавлены некоторые классовые функции
-		ULWnds::CULWnd::SetProp
-		ULWnds::CULWnd::GetProp
-		ULGDI::ULDC::CULDC::FillRect
-		ULGDI::ULDC::CULDC::FillRgn
-		ULWnds::CULWnd::CloseWindow
+v.2.1.0 <06.08.2008>
+1 добавлены некоторые классовые функции
+ULWnds::CULWnd::SetProp
+ULWnds::CULWnd::GetProp
+ULGDI::ULDC::CULDC::FillRect
+ULGDI::ULDC::CULDC::FillRgn
+ULWnds::CULWnd::CloseWindow
 
-	2написан класс темы для диалога ULWnds::ULThemeClient
-
-2.1.1 <07.08.2008>
-	1 переконфигурирована справка
-	2 исправлены коментарии и регистры имен фаилов
-	3 перекомпилина справка
-	4 ULStates::CULLogFile::SaveLog - неверно искал нужную метку. исправлено
-	5 ULStates::CULLogFile::SaveLog - исправлен перенос между сохраняемыми строками
-	6 ULStates::CULLogFile::CULLogFile() - при юникоде записывает в заголовок метку little endian
-
-2.1.2 <20.08.2008>
-	1 ULWnds::CULThemeClient::Create - если при создании кнопок закрыть,свернуть существуют контролы с таким именем,
-		то создаваемые не отображаются. Добавлено условие ошибки.
-	2 удалена папка ULLib/lib
-	3 сделано нормальное описание ULGDI::ULGDIObj::CULRgn::CombineRgn(...)
-	4 добавлена перегрузка
-		CULWnd::GetMenu
-		CULMenu::GetMenuString
-		CULMenu::GetMenuItemCount
-		CULMenu::InsertMenu
-	5 Поменнено название у UL_DECLARE_DLLMAIN на UL_DECLARE_DLLMAIN()
-	6 Добавлена приставка On к 
-		BOOL CULDllApp::ProcessAttach(HINSTANCE hInstance)
-		BOOL CULDllApp::ProcessDetach()
-		BOOL CULDllApp::ThreadAttach()
-		BOOL CULDllApp::ThreadDetach()
-	7 исправлено везде GetModuleHandle на ULGetResourceHandle
-	8 исправлено
-		CreateDialogParam(GetModuleHandle(NULL), (LPCTSTR)idTempl на MAKEINTRESOURCE, m_hParentWnd, (DLGPROC)WndProc,LPARAM(this));
-	9 сделано в ULLib ULOther::ULSet/ULGetResourceHandle
-	10 обновлена справка
-2.2.0 <31.08.2008>
-	1 добавлена реализация 	CULWnd::GetWindow
-				CULWnd::SetClassLong
-				CULMenu::GetMenuItemID
-				CULRebar::GetBandCount
-				CULRebar::GetBandInfo
-				CULRebar::SetBandInfo
-	2 исправлено: ребар для Samples\smplULFrameWnd (когда ребар слева, а комбик справа)				
-	3 исключены hlp/html/*
-	4 при заершении CULThread::ThreadProc сделан сброс флага работы потока, а установка перенесена из конструктора в CULThread::Create
-	5 исправлено в CULToolBar::AddButton строку tb.hInst=(nID>IDB_HIST_LARGE_COLOR)?NULL:hInst; на tb.hInst=(nID>IDB_HIST_LARGE_COLOR)?ULOther::ULGetResourceHandle():hInst;
-	6 исправлен m_pInfoButtons[i].szToolTip. то есть сделать размерный массив и в него копирование строки
-	7 исправлено ///\param dwStyleEx - расштренный стиль эдита в CULHotKey. у едита в описании похоже тоже самое
-	8 включен ULRes.h в заголовочные ULOther.h
-	9 исправлена HINSTANCE ULSetResourceHandle(HINSTANCE hNewRes)
-	10 добавлено в ULOther::CULFileVersionInfo определение CompanyName
-	11 сделан класс CULRebarCtrl. Пока только Docked. Тестирована только в позиции сверху
-	12 исправлен вариант добавления в тулбар текстовой кнопки
-	13 доработана CULToolBar::OnDropDown(LPARAM lParam). то есть сделано задание хендло выпадающего меню
-	14 добавлены классы 
-		ULWnds::ULControls::CULListCtrl
-		ULWnds::ULControls::CULComboBox
-2.2.1 <04.09.2008>
-	1 исправлены коменты
-	2 исправлена CULRebar::InsertBand
-	3 исправлена CULToolBar::DeleteButton(int nButton). было некоректное копирование
-	4 добавлена 	CULRebar::MinimizeBand
-			CULRebar::MaximizeBand
-			CULToolBar::GetButton
-			CULToolBar::CULWnd(HWND hwnd)
-	5 добавлен фаил аналогичный ULLib.h фаил ULLibNS.h, но с прописыванием пространств имен
-
-2.2.2 <07.09.2008>
-	1 исправлена CULComboBox::Create. была ошибка в классе окна
-	2 Добавлена	CULEdit::SetReadOnly
-			CULListCtrl::HitTest
-			CULListCtrl::SetItemData
-			CULListCtrl::GetItemData
-	3 исправлена CULMessageMap::AddNotify.  было неверное приведение типов
-
-2.2.3 <07.09,2008>
-	1 Осуществлен перевод под версию vc9express
-	2 исправлен ряд багов
+написан класс темы для диалога ULWnds::ULThemeClient

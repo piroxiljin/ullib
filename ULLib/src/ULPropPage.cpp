@@ -1,10 +1,6 @@
 ///\file ULPropPage.cpp
 ///\brief cpp файл класса root окна(21.07.2007)
 #include "..\..\ULLib\Include\ULPropPage.h"
-#include "..\..\ULLib\Include\ULPropSheet.h"
-#include "..\..\ULLib\Include\ULRes.h"
-#include <uxtheme.h>
-#pragma comment(lib,"UxTheme.lib")
 namespace ULWnds
 {
 	namespace ULDlgs
@@ -12,7 +8,6 @@ namespace ULWnds
 		CULPropPage::CULPropPage()
 		{
 			MessageMap.AddMessage<CULPropPage>(WM_NOTIFY,&CULPropPage::OnNotify);
-			MessageMap.AddMessage<CULPropPage>(WM_INITDIALOG,&CULPropPage::OnInitDialog);
 		};
 
 		CULPropPage::~CULPropPage()
@@ -65,7 +60,7 @@ namespace ULWnds
 		{
 			PROPSHEETPAGE psp;
 			psp.dwSize = sizeof(psp);
-			psp.hInstance = ULOther::ULGetResourceHandle();
+			psp.hInstance = ::GetModuleHandle(NULL);
 			psp.lParam = (LPARAM)this;
 			psp.pszTemplate = MAKEINTRESOURCE(TemplID);
 			psp.dwFlags=PSP_DEFAULT;
@@ -92,24 +87,17 @@ namespace ULWnds
 				psp.dwFlags|=PSP_HIDEHEADER;
 				psp.pfnDlgProc = (DLGPROC)WndProc;
 			return CreatePropertySheetPage(&psp);
-		}
+		};
 
 		void CULPropPage::DoChange()
 		{
 			::SendMessage(GetParent(),PSM_CHANGED,0,0);
-		}
+		};
 		void CULPropPage::DoUnChange()
 		{
 			::SendMessage(GetParent(),PSM_UNCHANGED,0,0);
-		}
-		
-		LRESULT CULPropPage::OnInitDialog(WPARAM /*wParam*/,LPARAM /*lParam*/)
-		{
-//			ULWnds::ULDlgs::CULPropSheet* ps=(ULWnds::ULDlgs::CULPropSheet*)FromHandle(GetParent());
-			//if(ps&&!ps->IsWizard())
-//				EnableThemeDialogTexture(*this,ETDT_USETABTEXTURE);
-			return 0;
-		}
+		};
+
 
 		LRESULT CULPropPage::OnNotify(WPARAM,LPARAM lParam)
 		{

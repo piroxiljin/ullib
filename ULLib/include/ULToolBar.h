@@ -24,9 +24,7 @@ namespace ULWnds
 			class CTBToolTip:public ULControls::CULToolTip
 			{			
 			public:
-				///\brief конструктор
 				CTBToolTip();
-				///\brief деструктор
 				virtual ~CTBToolTip();
 				///\brief Указатель на текущий класс тулбара
 				CULToolBar* m_pULToolBar;
@@ -40,13 +38,13 @@ namespace ULWnds
 			///\brief Cтруктура данных, которая несет необходимую информацию о кнопках
 			///\param szToolTip - Тект подсказки
 			///\param idCommand - ID команды
-			///\param hMenu - хендл контекстного меню для 
+			///\param idMenu - ID контекстного меню для 
 			///	кнопки(если btnStyle==BTNS_DROPDOWN)
 			struct tagInfoButtons
 			{
-				ULOther::CULStr szToolTip;
+				TCHAR* szToolTip;
 				UINT idCommand;	
-				HMENU hMenu;	
+				UINT idMenu;	
 			};
 			///\brief массив, который несет необходимую информацию о кнопках
 			ULOther::CULArr<tagInfoButtons> m_pInfoButtons;
@@ -61,12 +59,8 @@ namespace ULWnds
 		public:
 			///\brief Конструктор
 			CULToolBar(void);
-			///\brief Конструктор копирования
-			CULToolBar(CULToolBar& toolBar);
 			///\brief Деструктор
 			virtual ~CULToolBar(void);
-			///\brief оператор копирования
-			void operator=(CULToolBar&);
 			///\brief Набор флагов для размещения тулбара по краям родителя
 			///\param afTop - по верхнему краю
 			///\param afBottom - по нижнему краю
@@ -106,77 +100,77 @@ namespace ULWnds
 			///\param btnState - состояние кнопки
 			///\param btnStyle - стиль кнопки
 			///\param szTTip - подсказка для кнопки
-			///\param pszStr - подпись для кнопки(с TBSTYLE_LIST)
 			///\param nBitmap - номер картинки для кнопки тулбара с лева направо и ресурса nID
 			///\param nID - ID ресурса для картинки
 			///\param hInst - HINSTANCE модуля ресурса
-			///\param hMenu - ID контекстного меню для кнопки, если (btnStyle&BTNS_DROPDOWN)==BTNS_DROPDOWN)
+			///\param iString - подпись для кнопки
+			///\param idMenu - ID контекстного меню для кнопки, если (btnStyle&BTNS_DROPDOWN)==BTNS_DROPDOWN)
 			int AddButton(int idCommand,					
 						BYTE btnState,						
 						BYTE btnStyle,						
 						TCHAR* szTTip,						
-						TCHAR* pszStr,					
 						int nBitmap,						
 						UINT_PTR nID=IDB_STD_SMALL_COLOR,	
 						HINSTANCE hInst=HINST_COMMCTRL,		
-						HMENU hMenu=NULL);						
+						INT_PTR iString=0,					
+						int idMenu=0);						
 			///\brief Функция добавляет кнопку на тулбар
 			///\param idCommand - ID контрола(кнопки)
 			///\param btnState - состояние кнопки
 			///\param btnStyle - стиль кнопки
 			///\param szTTip - подсказка для кнопки
-			///\param pszStr - подпись для кнопки(с TBSTYLE_LIST)
 			///\param nBitmap - номер картинки для кнопки тулбара с лева направо и ресурса nID
 			///\param hBitmap - хендл картинки
-			///\param hMenu - ID контекстного меню для кнопки, если (btnStyle&BTNS_DROPDOWN)==BTNS_DROPDOWN)
+			///\param iString - подпись для кнопки
+			///\param idMenu - ID контекстного меню для кнопки, если (btnStyle&BTNS_DROPDOWN)==BTNS_DROPDOWN)
 			int AddButton(int idCommand,	
 						BYTE btnState,		
 						BYTE btnStyle,		
 						TCHAR* szTTip,		
-						TCHAR* pszStr,
 						int nBitmap,		
 						HBITMAP hBitmap,	
-						HMENU hMenu=NULL);	  	
+						INT_PTR iString=0,	
+						int idMenu=0);	  	
 			///\brief Функция вставляет кнопку в тулбар
 			///\param nInto - позиция вставки
 			///\param idCommand - ID контрола(кнопки)
 			///\param btnState - состояние кнопки
 			///\param btnStyle - стиль кнопки
 			///\param szTTip - подсказка для кнопки
-			///\param pszStr - подпись для кнопки(с TBSTYLE_LIST)
 			///\param nBitmap - номер картинки для кнопки тулбара с лева направо и ресурса nID
 			///\param nID - ID ресурса для картинки
 			///\param hInst - HINSTANCE модуля ресурса
-			///\param hMenu - ID контекстного меню для кнопки, если (btnStyle&BTNS_DROPDOWN)==BTNS_DROPDOWN)
+			///\param iString - подпись для кнопки
+			///\param idMenu - ID контекстного меню для кнопки, если (btnStyle&BTNS_DROPDOWN)==BTNS_DROPDOWN)
 			int InsertButton(int nInto,		
 						int idCommand,		
 						BYTE btnState,		
 						BYTE btnStyle,		
 						TCHAR* szTTip,		
-						TCHAR* pszStr,
 						int nBitmap,  		
 						UINT_PTR nID=IDB_STD_SMALL_COLOR,
 						HINSTANCE hInst=HINST_COMMCTRL,	 
-						HMENU hMenu=NULL);					 
+						INT_PTR iString=0,				 
+						int idMenu=0);					 
 			///\brief Функция вставляет кнопку в тулбар
 			///\param nInto - позиция вставки
 			///\param idCommand - ID контрола(кнопки)
 			///\param btnState - состояние кнопки
 			///\param btnStyle - стиль кнопки
 			///\param szTTip - подсказка для кнопки
-			///\param pszStr - подпись для кнопки(с TBSTYLE_LIST)
 			///\param nBitmap - номер картинки для кнопки тулбара с лева направо и ресурса nID
 			///\param hBitmap - хендл картинки
-			///\param hMenu - ID контекстного меню для кнопки, если (btnStyle&BTNS_DROPDOWN)==BTNS_DROPDOWN)
+			///\param iString - подпись для кнопки
+			///\param idMenu - ID контекстного меню для кнопки, если (btnStyle&BTNS_DROPDOWN)==BTNS_DROPDOWN)
 			int InsertButton(int nInto,
 						int idCommand,
 						BYTE btnState,
 						BYTE btnStyle,
 						TCHAR* szTTip,
-						TCHAR* pszStr,
 						int nBitmap,
 						HBITMAP hBitmap,
-						HMENU hMenu=NULL);
+						INT_PTR iString=0,
+						int idMenu=0);
 			///\brief Функция удаляет указанную кнопку
 			int DeleteButton(int nButton/*!<Номер кнопки*/);
 			/*!\brief Изменяет размер тулбара по ширине или высоте родителя
@@ -186,25 +180,17 @@ namespace ULWnds
 			void AutoSize();
 			///\brief Функция возвращает колличество кнопок на тулбаре
 			inline unsigned int GetButtonCount()
-				{return (unsigned int)m_pInfoButtons.GetSize();}
-			///\brief получение размера кнопки
-			///\param nItem - номер итема
-			///\param lpRect - указатель на структура с размером
-			///\return TRUE  в случае успеха
+			{
+				return (unsigned int)m_pInfoButtons.GetSize();
+			};
       BOOL GetItemRect(int nItem,RECT* lpRect)
-			  {return (BOOL)SendMessage(TB_GETITEMRECT,(WPARAM)nItem,(LPARAM)lpRect);}
-			///\brief получает информацию о кнопке
-			///\param nButton - номер кнопки
-			///\param lpButton - указатель на структуру с информацией о кнопке
-			///\return TRUE  в случае успеха
-			BOOL GetButton(int nButton,LPTBBUTTON lpButton)
-				{return (BOOL)SendMessage(TB_GETBUTTON,(WPARAM)nButton,(LPARAM)lpButton);}
+      {return (BOOL)SendMessage(TB_GETITEMRECT,(WPARAM)nItem,(LPARAM)lpRect);}
 		protected:
 			///\brief Функция обработчик WM_WINDOWPOSCHANGING
 			virtual LRESULT OnWindowPosChanging(WPARAM,LPARAM);
 			///\brief Обработчик TBN_DROPDOWN
       ///\bug переписать так чтоб меню можно было модифицировать
-			virtual LRESULT OnDropDown(LPARAM);			
+			virtual LRESULT OnDropDown(LPARAM);
 		};
 	}
 }

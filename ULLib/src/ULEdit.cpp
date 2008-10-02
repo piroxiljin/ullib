@@ -1,7 +1,6 @@
 ///\file ULEdit.cpp
 ///\brief cpp файл класса обёртки лдя EDIT контрола(16.08.2007)
 #include "..\..\ULLib\Include\ULEdit.h"
-#include "..\..\ULLib\Include\ULRes.h"
 #include <tchar.h>
 namespace ULWnds
 {
@@ -24,7 +23,7 @@ namespace ULWnds
 				dwStyle, 
 				x, y, cx, cy, 
 				hParentWnd,(HMENU)(LONG_PTR)uID,   
-				ULOther::ULGetResourceHandle(), 
+				GetModuleHandle(NULL), 
 				NULL);
  			SendMessage(WM_SETTEXT, 0, (LPARAM) pszText); 
 			return CULSubClass::Attach(m_hWnd);

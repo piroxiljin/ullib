@@ -1,8 +1,6 @@
 ///\file ULCommDlgs.cpp
 ///\brief cpp файл классов стандартных диалоговых окон(02.01.2007)
 #include "..\\include\\ULCommDlgs.h"
-#include "..\\include\\ULRes.h"
-
 
 namespace ULWnds
 {
@@ -64,7 +62,7 @@ namespace ULWnds
 					CULCommDlg()				
 			{
 				m_cc.lStructSize=sizeof(m_cc);
-				m_cc.hInstance=(HWND)ULOther::ULGetResourceHandle();
+				m_cc.hInstance=(HWND)GetModuleHandle(NULL);
 				m_cc.Flags=dwFlags;
 				m_cc.lpCustColors=m_acrCustClr;
 				m_cc.rgbResult=clrInit;
@@ -95,7 +93,7 @@ namespace ULWnds
 				m_fOpenFileDlg=fOpenFileDlg;
 				ZeroMemory(&m_ofn, sizeof(m_ofn));
 				m_ofn.lStructSize = sizeof(m_ofn);
-				m_ofn.hInstance=ULOther::ULGetResourceHandle();
+				m_ofn.hInstance=GetModuleHandle(NULL);
 				m_ofn.lpstrDefExt=lpszDefExt;
 				m_ofn.nFileExtension=0;
 				m_ofn.lpstrFile=const_cast<LPTSTR>(lpszFileName);

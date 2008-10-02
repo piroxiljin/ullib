@@ -9,7 +9,7 @@
 namespace ULWnds
 {
 	///\class CULThemeClient
-	///\brief класс оконной темы(06.08.2008)
+	///\brief класс оконной темы
 	class CULThemeClient
 	{
 	private:
@@ -66,10 +66,10 @@ namespace ULWnds
 		///\param dc - объект контейнер контекста
 		///\return TRUE  в случае успеха
 		virtual BOOL OnEraseBkGndClient(ULGDI::ULDC::CULDC& dc);
-		///\brief обработчик события создания региона
+		///\brif обработчик события создания региона
 		///\return TRUE  в случае успеха
 		virtual BOOL OnCreateRgn();
-		///\brief обработчик события создания фона
+		///\brif обработчик события создания фона
 		///\return TRUE  в случае успеха
 		virtual BOOL OnCreateBkGnd();
 		///\brief устанавливает значения цветов

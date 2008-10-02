@@ -1,8 +1,6 @@
 ///\file ULDlg.cpp
 ///\brief cpp файл класса диалогого окна(2006)
-#include "..\..\ULLib\Include\ULDlg.h"
-#include "..\..\ULLib\Include\ULRes.h"
-
+#include "..\..\ULLib\Include\uldlg.h"
 namespace ULWnds
 {
 	namespace ULDlgs
@@ -66,7 +64,7 @@ namespace ULWnds
 			m_idTempl=idTempl;
 			m_hParentWnd=hParentWnd;
 			m_fModal=TRUE;
-			return (int)DialogBoxParam(ULOther::ULGetResourceHandle(),
+			return (int)DialogBoxParam(GetModuleHandle(NULL),
 				(LPCTSTR)m_idTempl, 
 				m_hParentWnd,
 				(DLGPROC)WndProc,
@@ -78,7 +76,7 @@ namespace ULWnds
 			m_idTempl=idTempl;
 			m_hParentWnd=hParentWnd;
 			m_fModal=FALSE;
-			m_hWnd=CreateDialogParam(ULOther::ULGetResourceHandle(),MAKEINTRESOURCE(m_idTempl), m_hParentWnd, (DLGPROC)WndProc,LPARAM(this));
+			m_hWnd=CreateDialogParam(GetModuleHandle(NULL), (LPCTSTR)m_idTempl, m_hParentWnd, (DLGPROC)WndProc,LPARAM(this));
 			return m_hWnd;
 		};
 
@@ -88,7 +86,7 @@ namespace ULWnds
 			{
 				SendMessage(WM_SETICON,
 							WPARAM(ICON_SMALL),
-							(LPARAM)LoadIcon(ULOther::ULGetResourceHandle(), (LPCTSTR)m_idIcon));
+							(LPARAM)LoadIcon(GetModuleHandle(NULL), (LPCTSTR)m_idIcon));
 			}
 			RECT rect;
 			int nHorScrSize;

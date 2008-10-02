@@ -34,7 +34,7 @@ namespace ULThreads
 		virtual ~CULThread(void);
 		///\brief Создаёт поток
 		///\param lpThreadAttributes атрибуты доступа
-		///\param uiStackSize размер стэка
+		///\param dwStackSize размер стэка
 		///\param dwCreationFlags флаг
 		///\return TRUE в случае успеха
 		BOOL Create(LPSECURITY_ATTRIBUTES lpThreadAttributes=NULL,

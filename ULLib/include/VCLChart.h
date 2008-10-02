@@ -68,7 +68,7 @@ public:
 	///\param uiColor - цвет графика
 	///\param szName - подпись графика
 	///\param nWidth - ширина линии
-	///\param PenStyle - тип линии
+	///\param lType - тип линии
 	///\return TRUE в случае успеха, иначе FALSE
 	BOOL AddSeries(double* pBufX,double* pBufY, int nBufLen, UINT uiColor, LPTSTR szName,int nWidth,enPenStyle PenStyle)
 	{

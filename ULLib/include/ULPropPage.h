@@ -37,8 +37,6 @@ namespace ULWnds
 			///\brief Делает неактивной Apply
 			void DoUnChange();
 		protected:
-			///\brief обработчик сообщений от WM_ONINITDIALOGz
-			LRESULT OnInitDialog(WPARAM,LPARAM);
 			///\brief обработчик сообщений от WM_NOTIFY
 			virtual LRESULT OnNotify(WPARAM,LPARAM);
 			///\brief Обработчик сообщений от PSN_SETACTIVE

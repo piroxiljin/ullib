@@ -19,9 +19,6 @@ public:
 	}
 	~CCWApp()
 	{
-#ifdef _DEBUG
-		delete m_pMainWnd;m_pMainWnd=NULL;
-#endif
 		LOGFILE_SAVE(_T("CCWApp"));
 	}
 	virtual BOOL InitInstance()

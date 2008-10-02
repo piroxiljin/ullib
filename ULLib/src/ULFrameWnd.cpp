@@ -1,7 +1,6 @@
 ///\file ULFrameWnd.cpp
 ///\brief cpp файл класса главного окна(2006)
-#include "..\..\ULLib\Include\ULFrameWnd.h"
-#include "..\..\ULLib\Include\ULRes.h"
+#include "..\..\ULLib\Include\ulframewnd.h"
 namespace ULWnds
 {
 	namespace ULFrames
@@ -34,7 +33,7 @@ namespace ULWnds
 								DWORD dwStyleEx)
 		{
 			WNDCLASSEX wcex;
-			HINSTANCE hInstance=ULOther::ULGetResourceHandle(); 
+			HINSTANCE hInstance=GetModuleHandle(NULL); 
 		    
 			wcex.cbSize = sizeof(WNDCLASSEX); 		
 
