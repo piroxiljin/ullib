@@ -57,10 +57,10 @@ namespace ULWnds
 			///\brief Функция для создания хоткея
 			///\param hParentWnd - хендл родительского окна
 			///\param uID - ID кнопки
-			///\param x,y - координаты
-			///\param cx,cy - размер 
-			///\param dwStyle - стиль 
-			///\param dwStyleEx - расширенный 
+			///\param x,y - координата кнопки
+			///\param cx,cy - размер кнопки
+			///\param dwStyle - стиль эдита
+			///\param dwStyleEx - расштренный стиль эдита
 			///\return TRUE в случае успеха
 			BOOL Create(HWND hParentWnd,UINT uID,int x,int y,
 				int cx,int cy,DWORD dwStyle=WS_CHILD|WS_VISIBLE|WS_TABSTOP,

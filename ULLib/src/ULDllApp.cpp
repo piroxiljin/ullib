@@ -1,7 +1,6 @@
 ///\file ULDllApp.cpp
 ///\brief cpp файл класса динамической библиотеки(03.01.2007)
 #include "..\..\ULLib\Include\ULDllApp.h"
-#include "..\..\ULLib\Include\ULRes.h"
 namespace ULApps
 {
 	HINSTANCE CULDllApp::m_hInstance=NULL;
@@ -16,24 +15,23 @@ namespace ULApps
 	{
 	};
 
-	BOOL CULDllApp::OnProcessAttach(HINSTANCE hInstance)
+	BOOL CULDllApp::ProcessAttach(HINSTANCE hInstance)
 	{
-		ULOther::ULSetResourceHandle(hInstance);
 		m_hInstance=hInstance;
 		return TRUE;
 	};
 
-	BOOL CULDllApp::OnProcessDetach()
+	BOOL CULDllApp::ProcessDetach()
 	{
 		return TRUE;
 	};
 
-	BOOL CULDllApp::OnThreadAttach()
+	BOOL CULDllApp::ThreadAttach()
 	{
 		return TRUE;
 	};
 
-	BOOL CULDllApp::OnThreadDetach()
+	BOOL CULDllApp::ThreadDetach()
 	{
 		return TRUE;
 	};
@@ -51,13 +49,13 @@ namespace ULApps
 		switch(fdwReason)
 		{
 		case DLL_PROCESS_ATTACH:
-			return OnProcessAttach(hinstDLL);
+			return ProcessAttach(hinstDLL);
 		case DLL_THREAD_ATTACH:
-			return OnThreadAttach();
+			return ThreadAttach();
 		case DLL_THREAD_DETACH:
-			return OnThreadDetach();
+			return ThreadDetach();
 		case DLL_PROCESS_DETACH:
-			return OnProcessDetach();
+			return ProcessDetach();
 		default:
 			return TRUE;
 		}

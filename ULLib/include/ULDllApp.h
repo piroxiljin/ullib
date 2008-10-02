@@ -21,13 +21,13 @@ namespace ULApps
 		///\brief HINSTANCE приложения, передаваемый в WinMain
 		static HINSTANCE m_hInstance;
 		///\brief Вызывается при загрузке длл процессом
-		virtual BOOL OnProcessAttach(HINSTANCE hInstance);
+		virtual BOOL ProcessAttach(HINSTANCE hInstance);
 		///\brief Вызывается при выгрузке длл процессом
-		virtual BOOL OnProcessDetach();
+		virtual BOOL ProcessDetach();
 		///\brief Вызывается при инициализации длл потоком
-		virtual BOOL OnThreadAttach();
+		virtual BOOL ThreadAttach();
 		///\brief Вызывается при выгрузке длл потоком
-		virtual BOOL OnThreadDetach();
+		virtual BOOL ThreadDetach();
 		///\brief Функций DllMain сделана френдом CULDllApp, чтоб 
 		///при подключении заголовочного файла к разным 
 		///модулям не было повторения определения
@@ -39,7 +39,7 @@ namespace ULApps
 	};
 }
 ///\brief Объявление функции DllMain
-#define UL_DECLARE_DLLMAIN() \
+#define UL_DECLARE_DLLMAIN \
 	BOOL WINAPI DllMain(HINSTANCE hinstDLL,DWORD fdwReason,LPVOID /*lpvReserved*/)\
 		{return ULApps::CULDllApp::GetULDllApp()->DllMain(hinstDLL,fdwReason);}
 

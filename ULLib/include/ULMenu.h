@@ -47,15 +47,6 @@ namespace ULWnds
 			///\return TRUE в случае успеха
 			inline BOOL AppendOwnerDrawMenu(UINT uFlags,UINT_PTR uIDNewItem)
 				{return ::AppendMenu(*this,uFlags|MF_OWNERDRAW,uIDNewItem,(LPTSTR)this);}
-			///\brief  вставляет пункт меню
-			///\param uPosition - позиция для вставки
-			///\param uFlags - флаг для создания меню(для строки MF_STRING)
-			///\param uIDNewItem - ID пункта меню
-			///\param lpNewItem - для MF_STRING строка
-			///	для MF_BITMAP ресурс битмапа
-			///\return TRUE в случае успеха
-			inline BOOL InsertMenu(UINT uPosition,UINT uFlags,UINT_PTR uIDNewItem,LPCTSTR lpNewItem)
-				{return ::InsertMenu(*this,uPosition,uFlags,uIDNewItem,lpNewItem);}				
 			///\brief Показывает всплывающее меню
 			///\param uFlags - Фла или набор флагов выравнивания относительно опорной точки
 			///\param pt - опорная точка
@@ -89,23 +80,6 @@ namespace ULWnds
 			///\return хендл меню
 			inline HMENU Detach()
 				{HMENU hTmp=m_hMenu;m_hMenu=NULL;return hTmp;}
-			///\brief получение названия меню
-			///\param uIDItem - ID или позиция итема взависимости от флага flags
-			///\param lpString - указатель на буфер с возвращаемой строкой
-			///\param cchMax - длина буфера
-			///\param flags - принимает следующее значение MF_BYCOMMAND или MF_BYPOSITION
-			///\return колличество символов
-			inline int GetMenuString(UINT uIDItem,LPTSTR lpString,int cchMax,UINT flags)
-				{return ::GetMenuString(*this,uIDItem,lpString,cchMax,flags);}
-			///\brief получение числа итемов в меню
-			///\return число итемов
-			inline int GetMenuItemCount()
-				{return ::GetMenuItemCount(*this);}
-			///\brief получает ID итема меню
-			///\param nPos - позиция меню
-			///\return идентификатор
-			UINT GetMenuItemID(int nPos)
-				{return ::GetMenuItemID(*this,nPos);}
 		};
 	}
 }

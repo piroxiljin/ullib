@@ -3,13 +3,14 @@
 
 CFinishPage::CFinishPage(void):ULWnds::ULDlgs::CULPropPage()
 {
+	MessageMap.AddMessage<CFinishPage>(WM_INITDIALOG,&CFinishPage::OnInitDialog);
 }
 
 CFinishPage::~CFinishPage(void)
 {
 }
 
-LRESULT CFinishPage::OnInitDialog(WPARAM w,LPARAM l)
+LRESULT CFinishPage::OnInitDialog(WPARAM,LPARAM)
 {
 	ULGDI::ULDC::CULClientDC dc(*this);
 	int nHeight = -MulDiv(20, dc.GetDeviceCaps(LOGPIXELSY), 96);
@@ -19,7 +20,7 @@ LRESULT CFinishPage::OnInitDialog(WPARAM w,LPARAM l)
 		DEFAULT_QUALITY,DEFAULT_PITCH | FF_SWISS,_T("Vernanda"));
 	::SendMessage(GetDlgItem(IDC_STATIC_END),WM_SETFONT,WPARAM((HFONT)font),TRUE);
 	font.Detach();
-	return ULWnds::ULDlgs::CULPropPage::OnInitDialog(w,l);;
+	return FALSE;
 }
 
 LRESULT CFinishPage::OnSetActive(DWORD dwFlags)

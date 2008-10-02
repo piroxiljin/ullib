@@ -1,7 +1,6 @@
 ///\file ULListBox.cpp
 ///\brief cpp файл класса обёртки лдя LISTBOX контрола(08.09.2007)
 #include "..\..\ULLib\Include\ULListBox.h"
-#include "..\..\ULLib\Include\ULRes.h"
 namespace ULWnds
 {
 	namespace ULControls
@@ -22,7 +21,7 @@ namespace ULWnds
 				dwStyle, 
 				x, y, cx, cy, 
 				hParentWnd,(HMENU)(LONG_PTR)uID,   
-				ULOther::ULGetResourceHandle(),
+				GetModuleHandle(NULL), 
 				NULL);
 			return CULSubClass::Attach(m_hWnd);
 		};

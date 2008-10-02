@@ -1,7 +1,6 @@
 ///\file ULMDIClientWnd.cpp
 ///\brief cpp файл класса клиентского окна архетектуры MDI(26.07.2007)
 #include "..\..\ULLib\Include\ULMDIClientWnd.h"
-#include "..\..\ULLib\Include\ULRes.h"
 namespace ULWnds
 {
 	namespace ULFrames
@@ -37,7 +36,7 @@ namespace ULWnds
 									DWORD dwClientStyleEx)
 		{
 			CLIENTCREATESTRUCT ccs;
-			HMENU hMenu=::GetMenu(hParentWnd);
+			HMENU hMenu=GetMenu(hParentWnd);
 			ccs.hWindowMenu  = ::GetSubMenu(hMenu, idSubMenu);
 			ccs.idFirstChild = idFirstChild;
 		#ifndef UNICODE
@@ -48,7 +47,7 @@ namespace ULWnds
 			m_hWnd = ::CreateWindowEx(dwClientStyleEx, szClassName,
 				NULL,dwClientStyle,
 				CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT,
-				hParentWnd, NULL, ULOther::ULGetResourceHandle(), (LPVOID)&ccs);
+				hParentWnd, NULL, GetModuleHandle(NULL), (LPVOID)&ccs);
 			ShowWindow(SW_SHOW);	
 
 			return ((Attach(m_hWnd))?m_hWnd:NULL);

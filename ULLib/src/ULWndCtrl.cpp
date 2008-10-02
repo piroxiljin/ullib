@@ -1,7 +1,6 @@
 ///\file ULWndCtrl.cpp
 ///\brief cpp файл класса окна типа тулвиндоу(21.07.2007)
-#include "..\..\ULLib\Include\ULWndCtrl.h"
-#include "..\..\ULLib\Include\ULRes.h"
+#include "..\..\ULLib\Include\ulwndctrl.h"
 namespace ULWnds
 {
 	namespace ULWndCtrls
@@ -463,7 +462,7 @@ namespace ULWnds
 			wndclass.lpfnWndProc	= (WNDPROC)WndProc;
 			wndclass.cbClsExtra		= 0;
 			wndclass.cbWndExtra		= 0;
-			wndclass.hInstance		= ULOther::ULGetResourceHandle();
+			wndclass.hInstance		= GetModuleHandle(NULL);
 			wndclass.hIcon			= 0;
 			wndclass.hCursor		= LoadCursor(NULL, IDC_ARROW);
 			wndclass.hbrBackground	= (HBRUSH)(COLOR_WINDOW);
@@ -477,7 +476,7 @@ namespace ULWnds
 				wndclass.lpszClassName, szWndName,
 				(m_fDocked)?twsChildStyles:twsPopupStyles,
 				x, y, cx, cy,
-				hParentWnd, NULL, ULOther::ULGetResourceHandle(), this);
+				hParentWnd, NULL, GetModuleHandle(0), this);
 			SetWindowPos(HWND_TOP, x, y, cx, cy, SWP_SHOWWINDOW);
 
 		//////////////////////////

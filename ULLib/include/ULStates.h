@@ -10,7 +10,6 @@
 #include <crtdbg.h>
 #include <TCHAR.H>
 #include "ULOther.h"
-#include "ULRes.h"
 ///\namespace ULStates
 /*!\brief Пространство имен классов состояния памяти,времени 
 выполнения и лог-файла(21.07.2007)*/
@@ -190,7 +189,7 @@ namespace ULStates
 		{
 			//определение имениисполняемого файла
 			TCHAR szPath[5][MAX_PATH];
-			::GetModuleFileName(ULOther::ULGetResourceHandle(),szPath[0],MAX_PATH);
+			::GetModuleFileName(::GetModuleHandle(NULL),szPath[0],MAX_PATH);
 			 _tsplitpath_s(szPath[0],szPath[1],MAX_PATH,szPath[2],MAX_PATH,szPath[3],MAX_PATH,szPath[4],MAX_PATH);
 			//имя файла лога = имя исполняемого файла.log
 			_tcscmp(szPath[3],_T(".log"));

@@ -16,15 +16,7 @@ namespace ULWnds
 		m_lpSubClassWndProc(Wnd.m_lpSubClassWndProc),
 		MessageMap(Wnd.MessageMap)
 	{
-	}
-
-	CULWnd::CULWnd(HWND hwnd):m_hWnd(hwnd)
-	{
-		m_hParentWnd=GetParent();
-		CULWnd* pWnd=FromHandle(hwnd);
-		if(pWnd)
-			*this=*pWnd;
-	}
+	};
 
 	CULWnd::~CULWnd(void)
 	{

@@ -1,15 +1,12 @@
 ///\file ULPropSheet.cpp
 ///\brief cpp файл класса root окна(2006)
 #include "..\..\ULLib\Include\ULPropSheet.h"
-#include "..\..\ULLib\Include\ULRes.h"
 namespace ULWnds
 {
 	namespace ULDlgs
 	{
-		CULPropSheet* g_thisPreCreate;
-
 		CULPropSheet::CULPropSheet():
-			CULWnd(),m_fWizard(FALSE)
+			CULWnd()
 		{
 		};
 
@@ -38,7 +35,7 @@ namespace ULWnds
 			PROPSHEETHEADER PropSheetHeader;
 			memset(&PropSheetHeader,0,sizeof(PropSheetHeader));
 			PropSheetHeader.dwSize=sizeof(PropSheetHeader);
-			PropSheetHeader.hInstance=ULOther::ULGetResourceHandle();
+			PropSheetHeader.hInstance=::GetModuleHandle(NULL);
 			PropSheetHeader.hwndParent=hParenWnd;
 			PropSheetHeader.dwFlags=PSH_USEPSTARTPAGE;
 			PropSheetHeader.nStartPage=0;
@@ -47,9 +44,6 @@ namespace ULWnds
 			PropSheetHeader.dwFlags|=PSH_PROPTITLE;			
 			PropSheetHeader.pszCaption=szCaption;
 			PropSheetHeader.dwFlags|=nWizardFlags;
-			m_fWizard=(nWizardFlags)?TRUE:FALSE;
-//			PropSheetHeader.dwFlags|=PSH_USECALLBACK;
-//			PropSheetHeader.pfnCallback=(PFNPROPSHEETCALLBACK)PropSheetProc;
 			if(hbmHeader!=NULL)
 			{
 				PropSheetHeader.dwFlags|=PSH_USEHBMHEADER;
@@ -65,10 +59,8 @@ namespace ULWnds
 			if(fModal!=TRUE)
 				PropSheetHeader.dwFlags|=PSH_MODELESS;
 
-			g_thisPreCreate=this;
 			return PropertySheet(&PropSheetHeader);		 
-		}
-
+		};
 		INT_PTR CULPropSheet::Create(HWND hParenWnd,
 				TCHAR* szCaption,
 				int rscHeader,
@@ -77,29 +69,9 @@ namespace ULWnds
 				BOOL fModal)
 		{
 			return Create(hParenWnd,szCaption,
-				::LoadBitmap(ULOther::ULGetResourceHandle(),MAKEINTRESOURCE(rscHeader)),
-				::LoadBitmap(ULOther::ULGetResourceHandle(),MAKEINTRESOURCE(rscWatermark)),
+				::LoadBitmap(::GetModuleHandle(NULL),MAKEINTRESOURCE(rscHeader)),
+				::LoadBitmap(::GetModuleHandle(NULL),MAKEINTRESOURCE(rscWatermark)),
 				nWizardFlags,fModal);
-		}
-
-		BOOL CULPropSheet::IsWizard()
-		{
-			return m_fWizard;
-		}
-
-		BOOL CULPropSheet::OnInitialized(HWND hWnd)
-		{
-			m_hWnd=hWnd;
-			SetWindowLong(GWL_USERDATA,(LONG)(LONG_PTR)this);
-			g_thisPreCreate=NULL;
-			return TRUE;
-		}
-
-		int CULPropSheet::PropSheetProc(HWND hDlg,UINT uMsg,LPARAM /*lParam*/)
-		{
-			if(uMsg==PSCB_INITIALIZED)
-				g_thisPreCreate->OnInitialized(hDlg);
-			return 0;
-		}
+		};
 	}
 }

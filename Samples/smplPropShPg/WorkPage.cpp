@@ -17,9 +17,8 @@ void CWorkPage::OnBtnPushMe(WORD,HWND)
 		::LoadIcon(::GetModuleHandle(NULL),MAKEINTRESOURCE(IDI_ICON_MAIN))));
 	PropSheet.AddPage(m_Page2.Create(IDD_PROPPAGE_PAGE2,_T("Page2"),NULL,
 		::LoadIcon(::GetModuleHandle(NULL),MAKEINTRESOURCE(IDI_ICON_MAIN))));
-//	PropSheet.Create(*this,_T("Не визардмоде"),0);
-	if(PropSheet.Create(*this,_T("Не визардмоде"),0)==IDOK)
-		m_bNext=TRUE;
+	assert(PropSheet.Create(*this,_T("Не визардмоде"),0)==IDOK);	
+	m_bNext=TRUE;
 }
 
 LRESULT CWorkPage::OnWizNext(short Result)

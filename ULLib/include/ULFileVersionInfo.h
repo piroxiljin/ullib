@@ -72,13 +72,11 @@ namespace ULOther
 		///\brief Возвращает владельца авторских прав	
 		///\param lpszLegalCopyright - буфер, в который будет скопирован владелец авторских прав	
 		///\param nLen - длина буфера
-		///\return Владелец авторских прав, иначе NULL
+		///\return Владельц авторских прав, иначе NULL
 		LPTSTR GetLegalCopyright(LPTSTR lpszLegalCopyright,UINT nLen);
-		///\brief Возвращает название компании производителя
-		///\param lpszCompanyName - буфер, в который будет скопирован название компании производителя
-		///\param nLen - длина буфера
-		///\return название компании производителя, иначе NULL
-		LPTSTR GetCompanyName(LPTSTR lpszCompanyName,UINT nLen);	
+
+
+		
 	};
 };
 #endif //__ULFILE_VERSION_INFO__H_

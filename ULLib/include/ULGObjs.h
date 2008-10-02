@@ -128,9 +128,6 @@ namespace ULGDI
 			inline int CombineRgn(HRGN hrgnSrc1,HRGN hrgnSrc2,int fnCombineMode)
 				{return ::CombineRgn(*this,hrgnSrc1,hrgnSrc2,fnCombineMode);}
 			///\brief Комбинирует текущий регион с hrgnSrc2 (см. CombineRgn)
-			///\param hrgnSrc2 - второй регион
-			///\param fnCombineMode - режим комбинирования см. CombineRgn
-			///\return см. CombineRgn			
 			inline int CombineRgn(HRGN hrgnSrc2,int fnCombineMode)
 				{return ::CombineRgn(*this,*this,hrgnSrc2,fnCombineMode);}
 			///\brief Удаляет регион

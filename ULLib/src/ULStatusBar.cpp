@@ -1,30 +1,19 @@
 ///\file ULStatusBar.cpp
 ///\brief cpp файл класса статусбара(21.07.2007)
-#include "..\..\ULLib\Include\ULStatusbar.h"
-#include "..\..\ULLib\Include\ULOther.h"
-#include "..\..\ULLib\Include\ULRes.h"
+#include "..\..\ULLib\Include\ulstatusbar.h"
+#include "..\..\ULLib\Include\ulother.h"
 namespace ULWnds
 {
 	namespace ULBars
 	{
-		CULStatusBar::CULStatusBar():CULSubClass(),
-			m_nParts(0)
+		CULStatusBar::CULStatusBar():
+		m_nParts(0)
 		{
-		}
-
-		CULStatusBar::CULStatusBar(CULStatusBar& statusBar):CULSubClass(statusBar),
-			m_nParts(statusBar.m_nParts)
-		{
-		}
+		};
 
 		CULStatusBar::~CULStatusBar()
 		{
-		}
-		void CULStatusBar::operator=(CULStatusBar& statusBar)
-		{
-			m_nParts=statusBar.m_nParts;
-			ULWnds::CULSubClass::operator=(statusBar);
-		}
+		};
 
 		HWND CULStatusBar::Create(HWND hParentWnd,short nStatusID,BOOL fGrip)
 		{
@@ -34,7 +23,7 @@ namespace ULWnds
 				(LPCTSTR) NULL,((fGrip)?SBARS_SIZEGRIP:0) |         
 				SBT_TOOLTIPS |WS_CHILD|WS_VISIBLE,     
 				0, 0, 0, 0,	hParentWnd,	(HMENU) nStatusID,       
-				ULOther::ULGetResourceHandle(),NULL);
+				GetModuleHandle(NULL),NULL);                   
 			return (Attach(m_hWnd))?m_hWnd:NULL;
 		}
 
@@ -88,7 +77,7 @@ namespace ULWnds
 
 		BOOL CULStatusBar::SetIcon(int nPart, short uiID)
 		{
-			HICON hIcon=::LoadIcon(ULOther::ULGetResourceHandle(),MAKEINTRESOURCE(uiID));
+			HICON hIcon=::LoadIcon(GetModuleHandle(NULL),MAKEINTRESOURCE(uiID));
 			return (SendMessage(SB_SETICON,WPARAM(nPart),LPARAM(hIcon))!=0)
 				?TRUE:FALSE;
 		}

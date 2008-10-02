@@ -344,18 +344,12 @@ namespace ULWnds
 			
 		if(m_pClientWnd->GetWindowLong(GWL_STYLE)&WS_SYSMENU)
 		{
-			assert(m_pClientWnd->GetDlgItem(IDCANCEL)==NULL);
-			if(m_pClientWnd->GetDlgItem(IDCANCEL))
-				return FALSE;
 			assert(m_hlX.CreateHyperLink(*m_pClientWnd,rc.right-m_nRadius-12,m_nRadius,_T("X"),NULL,IDCANCEL));
 			m_hlX.SetStyles(ULWnds::ULControls::ULButtons::CULHyperLink::tDefault,ULWnds::ULControls::ULButtons::CULHyperLink::sBold,m_clrOuter);
 			m_hlX.SetStyles(ULWnds::ULControls::ULButtons::CULHyperLink::tDown,ULWnds::ULControls::ULButtons::CULHyperLink::sNone,m_clrOuter);
 			m_hlX.SetStyles(ULWnds::ULControls::ULButtons::CULHyperLink::tHiLite,ULWnds::ULControls::ULButtons::CULHyperLink::sBold,m_clrOuter);
 			if(m_pClientWnd->GetWindowLong(GWL_STYLE)&WS_MINIMIZEBOX)
 			{
-				assert(m_pClientWnd->GetDlgItem(CTM_MINIMIZE)==NULL);
-				if(m_pClientWnd->GetDlgItem(CTM_MINIMIZE))
-					return FALSE;
 				assert(m_hl_.CreateHyperLink(*m_pClientWnd,rc.right-m_nRadius-12-12-1,m_nRadius-2,_T("_"),NULL,CTM_MINIMIZE));
 				m_hl_.SetStyles(ULWnds::ULControls::ULButtons::CULHyperLink::tDefault,ULWnds::ULControls::ULButtons::CULHyperLink::sBold,m_clrOuter);
 				m_hl_.SetStyles(ULWnds::ULControls::ULButtons::CULHyperLink::tDown,ULWnds::ULControls::ULButtons::CULHyperLink::sNone,m_clrOuter);

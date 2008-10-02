@@ -1,7 +1,6 @@
 ///\file ULApp.cpp
 ///\brief cpp файл класса приложения(01.05.2007)
-#include "..\..\ULLib\Include\ULApp.h"
-#include "..\..\ULLib\Include\ULRes.h"
+#include "..\..\ULLib\Include\ulapp.h"
 namespace ULApps
 {	
 	CULApp::CULApp(void):
@@ -76,7 +75,6 @@ int APIENTRY WinMain(HINSTANCE hInstance,
 					LPSTR lpCmdLine,
 					int nCmdShow)
 {
-	ULOther::ULSetResourceHandle(hInstance);
 	ULApps::CULApp::GetULApp()->m_hInstance=hInstance;
 	ULApps::CULApp::GetULApp()->m_lpCmdLine=lpCmdLine;
 	ULApps::CULApp::GetULApp()->m_nCmdShow=nCmdShow;
