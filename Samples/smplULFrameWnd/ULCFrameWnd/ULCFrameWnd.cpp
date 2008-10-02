@@ -100,9 +100,9 @@ LRESULT CULCFrameWnd::OnCreate(WPARAM /*wParam*/,LPARAM /*lParam*/)
 
 	SIZE szCombo={rect.right-rect.left,rcTBWidth.bottom};
 
-	fRet=m_ReBarTop.InsertBand(0,m_hwndCombo,_T("Комбик"),hBmp,(WORD)ID_CB,NULL/*&szCombo*/);
+	fRet=m_ReBarTop.InsertBand(m_hwndCombo,_T("Комбик"),hBmp,(WORD)ID_CB,NULL/*&szCombo*/);
 
-	fRet=m_ReBarTop.InsertBand(0,m_ToolBar,_T("Тулбар"),NULL/*hBmp*/,(WORD)ID_TB,&szToolBar);
+	fRet=m_ReBarTop.InsertBand(m_ToolBar,_T("Тулбар"),NULL/*hBmp*/,(WORD)ID_TB,&szToolBar);
 
   m_ToolBar2.Create(/*m_ReBarTop*/*this,
 		ID_TOOLBAR,24, 24+15, 24, 24,ULWnds::ULBars::CULToolBar::afNon|ULWnds::ULBars::CULToolBar::afTop,
@@ -137,7 +137,7 @@ LRESULT CULCFrameWnd::OnCreate(WPARAM /*wParam*/,LPARAM /*lParam*/)
 //		m_ToolBar.DeleteButton(2);
 	}
 
-	fRet=m_ReBarTop.InsertBand(0,m_ToolBar2,_T("Тулбар2"),NULL/*hBmp*/,(WORD)ID_TB,&szToolBar);
+	fRet=m_ReBarTop.InsertBand(m_ToolBar2,_T("Тулбар2"),NULL/*hBmp*/,(WORD)ID_TB,&szToolBar);
 
 	//====================================================================
 

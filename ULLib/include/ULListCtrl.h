@@ -47,13 +47,11 @@ namespace ULWnds
 			int GetColumnWidth(int nCol);
 			///\brief вставляет итем 
 			///\param nItem - позиция вставки
-			///\param lpszItem - строка
 			///\return номер вставленного итема
 			int InsertItem(int nItem,LPCTSTR lpszItem);	
 			///\brief устанавливает текст в нужную позицию
 			///\param nItem - № итема для вставки
 			///\param nSubItem - № сабитема для вставки
-			///\param lpszText - текст для вставки
 			///\return TRUE в случае успеха
 			BOOL SetItemText(int nItem,int nSubItem,LPCTSTR lpszText);
 			///\brief Получение колличества итемов
@@ -71,35 +69,6 @@ namespace ULWnds
 			///\param pCol - указатель на структуру с информацией о столбце
 			///\return  TRUE в случае успеха
 			BOOL GetColumn(int nCol,LPLVCOLUMN pCol);
-			///\brief Определение позиции в листконтроле по координате
-			///\param pInfo - указатель на структуру с инфой
-			///\return индекс итема по которому, на котором координата, иначе -1
-			int HitTest(LPLVHITTESTINFO pInfo)
-				{return(int)SendMessage(LVM_HITTEST,0,(LPARAM)pInfo);}
-			///\brief Привязывает к итему данные
-			///\param nItem - номер итема
-			///\param dwData - данные
-			///\return TRUE в случае успеха
-			BOOL SetItemData(int nItem,DWORD_PTR dwData)
-			{
-				LVITEM it={0};
-				it.mask=LVIF_PARAM;
-				it.iItem=nItem;
-				it.lParam=dwData;
-				return (BOOL)SendMessage(LVM_SETITEM,0,(LPARAM)&it);
-			}
-			///\brief возвращает привязанные данныеданные 
-			///\param nItem - номер итема
-			///\return данные
-			DWORD_PTR GetItemData(int nItem)
-			{
-				LVITEM it={0};
-				it.mask=LVIF_PARAM;
-				it.iItem=nItem;
-				SendMessage(LVM_GETITEM,0,(LPARAM)&it);
-				return it.lParam;
-			}
-
 		};
 	}
 }

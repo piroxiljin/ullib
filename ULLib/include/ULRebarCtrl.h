@@ -9,8 +9,8 @@ namespace ULWnds
 {
 	namespace ULWndCtrls
 	{
-		///\class CULRebarCtrl
-		///\brief Класс ребара размещенного на плавающей панельке(31.08.2008)
+		///\class CULToolBarCtrl
+		///\brief Класс тулбара размещенного на плавающей панельке(12.10.2007)
 		class CULRebarCtrl :
 			public CULWndCtrl
 		{
@@ -38,9 +38,16 @@ namespace ULWnds
 			inline ULBars::CULRebar& GetRebar(){return m_Rebar;};
 			///\brief Функция создания тулбарконтрола
 			///\param hParentWnd - хендл родителя(носителя)
+			///\param tbID - идентификатор тулбара
 			///\param nXPos,nYPos - позиция тулбарконтрола при создании в
 			///	плавающем состоянии
+			///\param dxButton,dyButton - размер кнопки тулбара
+			///\param dxBitmap,dyBitmap - размер картинки для кнопки тулюара
 			///\param dwDockedState - назначение стыковки на момент создания
+			///\param fDocked - состояние стыковки на момент создания
+			///\param tbStyle - стиль тулбара
+			///\param tbExStyle - рачширенный стиль тулбара
+			///\param dwDockingStyles - стили панели
 			BOOL CreateRebarCtrl(HWND hParentWnd,
 							int nXPos,
 							int nYPos,

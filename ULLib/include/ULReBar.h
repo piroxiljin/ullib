@@ -47,18 +47,16 @@ namespace ULWnds
 				WS_CHILD|WS_VISIBLE|WS_BORDER|/*WS_CLIPSIBLINGS|*/
 				/*WS_CLIPCHILDREN|*/RBS_VARHEIGHT|CCS_NODIVIDER|RBS_AUTOSIZE);
 			///\brief Функия вставки новой клиентской секции 
-			///\param nInto - позиция вставки
 			///\param hClientWnd-хендл клиента
 			///\param szName-имя клиентской секции
 			///\param hBitmap-фоновая картинка
 			///\param wID - идентификатор банда
 			///\param pszClient - размер клиента
 			///\param dwStyle=свойства
-			BOOL InsertBand(int nInto,HWND hClientWnd,TCHAR* szName,HBITMAP hBitmap,
+			BOOL InsertBand(HWND hClientWnd,TCHAR* szName,HBITMAP hBitmap,
 				WORD wID=0,SIZE* pszClient=NULL,
 				DWORD dwStyle=/*RBBS_GRIPPERALWAYS|*/RBBS_FIXEDBMP|/*RBS_BANDBORDERS|/*RBBS_BREAK|*/RBBS_CHILDEDGE);
 			///\brief Функия вставки новой клиентской секции 
-			///\param nInto - позиция вставки
 			///\param hClientWnd-хендл клиента
 			///\param szName-имя клиентской секции
 			///\param clrFore-цвет подписи szName
@@ -66,7 +64,7 @@ namespace ULWnds
 			///\param wID - идентификатор банда
 			///\param pszClient - размер клиента
 			///\param dwStyle=свойства
-			BOOL InsertBand(int nInto,HWND hClientWnd, TCHAR* szName,	COLORREF clrFore, COLORREF clrBack,
+			BOOL InsertBand(HWND hClientWnd, TCHAR* szName,	COLORREF clrFore, COLORREF clrBack,
 				WORD wID=0,SIZE* pszClient=NULL,
 				DWORD dwStyle= RBBS_GRIPPERALWAYS|RBBS_BREAK|RBBS_CHILDEDGE);
 			///\brief Убирает все клиентские секции с ребара
@@ -91,14 +89,6 @@ namespace ULWnds
 			///\return TRUE  в случае успеха
 			BOOL SetBandInfo(int nBand,LPREBARBANDINFO lprbbi)
 				{return (SendMessage(RB_SETBANDINFO,(WPARAM)nBand,(LPARAM)lprbbi)!=0);}
-			///\brief минимизировать банд
-			///\param nBand - номер банда
-			void MinimizeBand(int nBand)
-				{SendMessage(RB_MINIMIZEBAND,(WPARAM)nBand);}
-			///\brief максимизировать банд
-			///\param nBand - номер банда
-			void MaximizeBand(int nBand)
-				{SendMessage(RB_MAXIMIZEBAND,(WPARAM)nBand);}
 		};
 	}
 }

@@ -186,25 +186,17 @@ namespace ULWnds
 			void AutoSize();
 			///\brief Функция возвращает колличество кнопок на тулбаре
 			inline unsigned int GetButtonCount()
-				{return (unsigned int)m_pInfoButtons.GetSize();}
-			///\brief получение размера кнопки
-			///\param nItem - номер итема
-			///\param lpRect - указатель на структура с размером
-			///\return TRUE  в случае успеха
+			{
+				return (unsigned int)m_pInfoButtons.GetSize();
+			};
       BOOL GetItemRect(int nItem,RECT* lpRect)
-			  {return (BOOL)SendMessage(TB_GETITEMRECT,(WPARAM)nItem,(LPARAM)lpRect);}
-			///\brief получает информацию о кнопке
-			///\param nButton - номер кнопки
-			///\param lpButton - указатель на структуру с информацией о кнопке
-			///\return TRUE  в случае успеха
-			BOOL GetButton(int nButton,LPTBBUTTON lpButton)
-				{return (BOOL)SendMessage(TB_GETBUTTON,(WPARAM)nButton,(LPARAM)lpButton);}
+      {return (BOOL)SendMessage(TB_GETITEMRECT,(WPARAM)nItem,(LPARAM)lpRect);}
 		protected:
 			///\brief Функция обработчик WM_WINDOWPOSCHANGING
 			virtual LRESULT OnWindowPosChanging(WPARAM,LPARAM);
 			///\brief Обработчик TBN_DROPDOWN
       ///\bug переписать так чтоб меню можно было модифицировать
-			virtual LRESULT OnDropDown(LPARAM);			
+			virtual LRESULT OnDropDown(LPARAM);
 		};
 	}
 }

@@ -21,8 +21,6 @@ namespace ULWnds
 		CULWnd(void);
 		///\brief Конструктор копирования
 		CULWnd(CULWnd& Wnd);
-		///\brief Конструктор 
-		CULWnd(HWND hwnd);
 		///\brief Десруктор
 		virtual ~CULWnd(void);
 		///\brief Объект класса добавления и обработки сообщений

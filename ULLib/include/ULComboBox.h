@@ -10,7 +10,7 @@ namespace ULWnds
 	namespace ULControls
 	{
 		///\class CULComboBox
-		///\brief класс комбобокса
+		///\brief класс лист контрола
 		class CULComboBox:
 			public ULWnds::CULSubClass
 		{

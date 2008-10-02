@@ -228,20 +228,13 @@ namespace ULWnds
 		{
 		//========================удаление из массива m_InfoButtons===============
 			ULOther::CULArr<tagInfoButtons> tmppInfoButtons(m_pInfoButtons.GetSize());
-			for(unsigned int i=0;i<m_pInfoButtons.GetSize();++i)
-			{
-				tmppInfoButtons,m_pInfoButtons[i].hMenu=m_pInfoButtons[i].hMenu;
-				tmppInfoButtons,m_pInfoButtons[i].idCommand=m_pInfoButtons[i].idCommand;
-				tmppInfoButtons,m_pInfoButtons[i].szToolTip=m_pInfoButtons[i].szToolTip;
-			}	
+			memcpy(tmppInfoButtons,m_pInfoButtons,(m_pInfoButtons.GetSize())*sizeof(tagInfoButtons));
 			m_pInfoButtons.Resize(m_pInfoButtons.GetSize()-1);
 			int counter=0;
 			for(int i=0;i<signed(m_pInfoButtons.GetSize()+1);i++)
 				if(i!=nButton)
 				{
-					m_pInfoButtons,m_pInfoButtons[counter].hMenu=tmppInfoButtons[i].hMenu;
-					m_pInfoButtons,m_pInfoButtons[counter].idCommand=tmppInfoButtons[i].idCommand;
-					m_pInfoButtons,m_pInfoButtons[counter].szToolTip=tmppInfoButtons[i].szToolTip;
+					memcpy(m_pInfoButtons+counter,tmppInfoButtons+i,sizeof(tagInfoButtons));
 					counter++;
 				};
 		//=========================================================================	

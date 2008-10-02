@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="windows-1251"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="9,00"
+	Version="8,00"
 	Name="ULLibPrj"
 	ProjectGUID="{3F3D1FF7-4130-4CE2-BE94-DC955C45FC27}"
 	RootNamespace="ULLibPrj"
 	Keyword="Win32Proj"
-	TargetFrameworkVersion="131072"
 	>
 	<Platforms>
 		<Platform
@@ -50,7 +49,7 @@
 				UsePrecompiledHeader="0"
 				WarningLevel="4"
 				WarnAsError="true"
-				Detect64BitPortabilityProblems="false"
+				Detect64BitPortabilityProblems="true"
 				DebugInformationFormat="4"
 			/>
 			<Tool
@@ -91,7 +90,7 @@
 			IntermediateDirectory="Release"
 			ConfigurationType="4"
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
-			ATLMinimizesCRunTimeLibraryUsage="false"
+			ATLMinimizesCRunTimeLibraryUsage="true"
 			CharacterSet="2"
 			>
 			<Tool
@@ -116,7 +115,7 @@
 				RuntimeLibrary="0"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
-				Detect64BitPortabilityProblems="false"
+				Detect64BitPortabilityProblems="true"
 				DebugInformationFormat="3"
 			/>
 			<Tool
@@ -146,7 +145,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine=""
+				CommandLine="buildver /F  $(OutDir)/.."
 			/>
 		</Configuration>
 		<Configuration
@@ -184,7 +183,7 @@
 				UsePrecompiledHeader="0"
 				WarningLevel="4"
 				WarnAsError="false"
-				Detect64BitPortabilityProblems="false"
+				Detect64BitPortabilityProblems="true"
 				DebugInformationFormat="4"
 			/>
 			<Tool
@@ -215,7 +214,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine=""
+				CommandLine="buildver /F  W:\VCPP\WINAPI\ULLibPrj"
 			/>
 		</Configuration>
 		<Configuration
@@ -224,7 +223,7 @@
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="4"
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
-			ATLMinimizesCRunTimeLibraryUsage="false"
+			ATLMinimizesCRunTimeLibraryUsage="true"
 			CharacterSet="1"
 			>
 			<Tool
@@ -249,7 +248,7 @@
 				RuntimeLibrary="0"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
-				Detect64BitPortabilityProblems="false"
+				Detect64BitPortabilityProblems="true"
 				DebugInformationFormat="3"
 			/>
 			<Tool
@@ -279,7 +278,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine=""
+				CommandLine="buildver /F  $(OutDir)/.."
 			/>
 		</Configuration>
 	</Configurations>
@@ -494,6 +493,10 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
+				RelativePath=".\resource.h"
+				>
+			</File>
+			<File
 				RelativePath="..\ULLib\include\ULApp.h"
 				>
 			</File>
@@ -659,10 +662,6 @@
 			</File>
 			<File
 				RelativePath="..\ULLib\include\ULRes.h"
-				>
-			</File>
-			<File
-				RelativePath="..\ULLib\include\ULResDef.h"
 				>
 			</File>
 			<File
