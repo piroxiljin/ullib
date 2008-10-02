@@ -6,10 +6,25 @@ namespace ULWnds
 {
 	namespace ULDlgs
 	{
-		CULPropSheet* g_thisPreCreate;
+		CULPropSheet* g_thisPreCreate=NULL;
+		HHOOK m_CBTHook=NULL;
+
+		LRESULT CALLBACK PropSheetCBTProc(int nCode,WPARAM wParam,LPARAM lParam)
+		{
+			if(nCode==HCBT_ACTIVATE)
+			{
+//				g_thisPreCreate->m_hWnd=(HWND)wParam;
+//				g_thisPreCreate->SetWindowLong(GWL_USERDATA,(LONG)(LONG_PTR)g_thisPreCreate);
+				g_thisPreCreate->Attach((HWND)wParam);
+//				g_thisPreCreate->m_=g_thisPreCreate->SetWindowLong(GWL_WNDPROC,(LONG)(LONG_PTR)CULPropSheet::WndProc);
+				g_thisPreCreate=NULL;
+				UnhookWindowsHookEx(m_CBTHook);
+			}
+			return CallNextHookEx(m_CBTHook,nCode,wParam,lParam);
+		}
 
 		CULPropSheet::CULPropSheet():
-			CULWnd(),m_fWizard(FALSE)
+			CULSubClass(),m_fWizard(FALSE)
 		{
 		};
 
@@ -66,6 +81,11 @@ namespace ULWnds
 				PropSheetHeader.dwFlags|=PSH_MODELESS;
 
 			g_thisPreCreate=this;
+
+
+			m_CBTHook=SetWindowsHookEx(WH_CBT,PropSheetCBTProc,
+				ULOther::ULGetResourceHandle(),GetCurrentThreadId());
+
 			return PropertySheet(&PropSheetHeader);		 
 		}
 
@@ -85,21 +105,6 @@ namespace ULWnds
 		BOOL CULPropSheet::IsWizard()
 		{
 			return m_fWizard;
-		}
-
-		BOOL CULPropSheet::OnInitialized(HWND hWnd)
-		{
-			m_hWnd=hWnd;
-			SetWindowLong(GWL_USERDATA,(LONG)(LONG_PTR)this);
-			g_thisPreCreate=NULL;
-			return TRUE;
-		}
-
-		int CULPropSheet::PropSheetProc(HWND hDlg,UINT uMsg,LPARAM /*lParam*/)
-		{
-			if(uMsg==PSCB_INITIALIZED)
-				g_thisPreCreate->OnInitialized(hDlg);
-			return 0;
 		}
 	}
 }

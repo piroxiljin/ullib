@@ -3,14 +3,14 @@
 #pragma once
 #ifndef __UL_PROPPAGE_H__
 #define __UL_PROPPAGE_H__
-#include "ULWnd.h"
+#include "ULDlg.h"
 namespace ULWnds
 {
 	namespace ULDlgs
 	{
 		///\class CULPropPage
 		///\brief Класс страницы для окна свойств(2006)
-		class CULPropPage:public CULWnd
+		class CULPropPage:public CULDlg
 		{
 		protected:
 			///\brief Функция окна для созданной страницы
@@ -38,7 +38,7 @@ namespace ULWnds
 			void DoUnChange();
 		protected:
 			///\brief обработчик сообщений от WM_ONINITDIALOGz
-			LRESULT OnInitDialog(WPARAM,LPARAM);
+			virtual LRESULT OnInitDialog(WPARAM,LPARAM);
 			///\brief обработчик сообщений от WM_NOTIFY
 			virtual LRESULT OnNotify(WPARAM,LPARAM);
 			///\brief Обработчик сообщений от PSN_SETACTIVE

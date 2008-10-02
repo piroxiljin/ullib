@@ -35,7 +35,7 @@ namespace ULWnds
 		LRESULT CULRebarCtrl::ClientWndProc(HWND hWnd , UINT uMsg , WPARAM wParam , LPARAM lParam)
 		{
 			ULBars::CULRebar* pULWnd=(ULBars::CULRebar*)CULWnd::FromHandle(hWnd);			
-			CULRebarCtrl* pRebarCtrl=(CULRebarCtrl*)pULWnd->GetProp(_T("ULThemeClient"));
+			CULRebarCtrl* pRebarCtrl=(CULRebarCtrl*)pULWnd->GetProp(_T("ULRebarCtrl"));
 			switch(uMsg)
 			{
 			case WM_SIZE:
@@ -80,7 +80,7 @@ namespace ULWnds
 			m_Rebar.Create(hParentWnd,rbAlignFlags);
 			if(!m_Rebar)
 				return FALSE;
-			m_Rebar.SetProp(_T("ULThemeClient"),(HANDLE)this);
+			m_Rebar.SetProp(_T("ULRebarCtrl"),(HANDLE)this);
 			m_lpSubClassWndProc=(WNDPROC)(LONG_PTR)m_Rebar.SetWindowLong(GWL_WNDPROC,(LONG)(LONG_PTR)ClientWndProc);
 			RECT rcRebar;
 			m_Rebar.GetWindowRect(&rcRebar);

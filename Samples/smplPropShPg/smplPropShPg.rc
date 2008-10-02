@@ -7,7 +7,7 @@
 //
 // Generated from the TEXTINCLUDE 2 resource.
 //
-#include "ULResDef.h"
+#include "..\..\ULLib\Include\ULResDef.h"
 #include <winuser.h>
 #include <winnt.h>
 /////////////////////////////////////////////////////////////////////////////

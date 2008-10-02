@@ -36,7 +36,7 @@ LRESULT CULCFrameWnd::OnCreate(WPARAM /*wParam*/,LPARAM /*lParam*/)
 //	m_StatusBar.DeleteAll();
 
 
-	m_ReBarTop.Create(m_hWnd,ULWnds::ULBars::CULRebar::afTop);
+	assert(m_ReBarTop.Create(*this,ULWnds::ULBars::CULRebar::afTop));
 
 	DWORD dwBaseUnits = GetDialogBaseUnits(); 
 	m_hwndCombo = CreateWindow(_T("COMBOBOX"), NULL, 
@@ -45,16 +45,16 @@ LRESULT CULCFrameWnd::OnCreate(WPARAM /*wParam*/,LPARAM /*lParam*/)
 		(3 * HIWORD(dwBaseUnits)) / 8, 
 		(50 * LOWORD(dwBaseUnits)) / 4, 
 		(250 * HIWORD(dwBaseUnits)) / 8, 
-		m_ReBarTop, NULL, GetModuleHandle(NULL), NULL); 
+		*this, NULL, GetModuleHandle(NULL), NULL); 
 	::SendMessage(m_hwndCombo,CB_ADDSTRING,NULL,LPARAM(_T("строка 1")));
 	::SendMessage(m_hwndCombo,CB_ADDSTRING,NULL,LPARAM(_T("строка 2")));
 
 
 
 
-  m_ToolBar.Create(/*m_ReBarTop*/*this,
+  m_ToolBar.Create(*this,
 		ID_TOOLBAR,24, 24+15, 24, 24,ULWnds::ULBars::CULToolBar::afNon|ULWnds::ULBars::CULToolBar::afTop,
-    WS_CHILD|WS_VISIBLE|WS_CLIPCHILDREN| TBSTYLE_LIST| TBSTYLE_TOOLTIPS|CCS_ADJUSTABLE|/*TBSTYLE_AUTOSIZE|*/CCS_NODIVIDER|
+    WS_CHILD|WS_VISIBLE|WS_CLIPCHILDREN| TBSTYLE_LIST| TBSTYLE_TOOLTIPS|CCS_ADJUSTABLE|CCS_NODIVIDER|
 		TBSTYLE_FLAT,TBSTYLE_EX_DRAWDDARROWS);
 
   if(m_ToolBar.m_hWnd!=NULL)
@@ -93,21 +93,20 @@ LRESULT CULCFrameWnd::OnCreate(WPARAM /*wParam*/,LPARAM /*lParam*/)
 	m_ToolBar.GetItemRect(m_ToolBar.GetButtonCount()-1,&rcTBWidth);
 	SIZE szToolBar={rcTBWidth.right,rcTBWidth.bottom};
 
-  BOOL fRet;
+//  BOOL fRet;
 
 	RECT rect;
 	::GetWindowRect(m_hwndCombo,&rect);
 
-	SIZE szCombo={rect.right-rect.left,rcTBWidth.bottom};
+//	SIZE szCombo={rect.right-rect.left,rcTBWidth.bottom};
 
-	fRet=m_ReBarTop.InsertBand(0,m_hwndCombo,_T("Комбик"),hBmp,(WORD)ID_CB,NULL/*&szCombo*/);
+	assert(m_ReBarTop.InsertBand(0,m_hwndCombo,NULL,NULL));
 
-	fRet=m_ReBarTop.InsertBand(0,m_ToolBar,_T("Тулбар"),NULL/*hBmp*/,(WORD)ID_TB,&szToolBar);
-
-  m_ToolBar2.Create(/*m_ReBarTop*/*this,
+	assert(m_ReBarTop.InsertBand(0,m_ToolBar,NULL,NULL));
+/*
+  m_ToolBar2.Create(*this,
 		ID_TOOLBAR,24, 24+15, 24, 24,ULWnds::ULBars::CULToolBar::afNon|ULWnds::ULBars::CULToolBar::afTop,
-    WS_CHILD|WS_VISIBLE|WS_CLIPCHILDREN|TBSTYLE_TOOLTIPS|/*TBSTYLE_AUTOSIZE|*/CCS_NODIVIDER/*|
-		TBSTYLE_FLAT*/,TBSTYLE_EX_DRAWDDARROWS);
+    WS_CHILD|WS_VISIBLE|WS_CLIPCHILDREN|TBSTYLE_TOOLTIPS|CCS_NODIVIDER,TBSTYLE_EX_DRAWDDARROWS);
 
   if(m_ToolBar2.m_hWnd!=NULL)
 	{
@@ -137,7 +136,8 @@ LRESULT CULCFrameWnd::OnCreate(WPARAM /*wParam*/,LPARAM /*lParam*/)
 //		m_ToolBar.DeleteButton(2);
 	}
 
-	fRet=m_ReBarTop.InsertBand(0,m_ToolBar2,_T("Тулбар2"),NULL/*hBmp*/,(WORD)ID_TB,&szToolBar);
+	fRet=m_ReBarTop.InsertBand(0,m_ToolBar2,_T("Тулбар2"),NULL,(WORD)ID_TB,&szToolBar);
+	*/
 
 	//====================================================================
 

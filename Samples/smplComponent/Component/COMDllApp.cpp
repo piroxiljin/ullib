@@ -1,11 +1,16 @@
 ///\file ULCOMDllApp.cpp
 ///\brief cpp файл класса динамической библиотеки COM-сервера(05.01.2007)
-#include "ULLib.h"
-#include "ULLibLink.h"
-#include "ULClassFactory.h"
+#include "..\..\..\ULLib\Include\ULLib.h"
+#include "..\..\..\ULLib\Include\ULClassFactory.h"
 #include "..\\IFaces.h"
 #include <assert.h>
 #include "ULComponent.h"
+
+#ifdef _DEBUG
+	#pragma comment(lib,"..\\..\\..\\ULLib\\Lib\\uULLibd.lib")
+#else
+	#pragma comment(lib,"..\\..\\..\\ULLib\\Lib\\uULLib.lib")
+#endif
 
 UL_DECLARE_DLLMAIN();
 

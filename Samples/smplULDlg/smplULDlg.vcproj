@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="windows-1251"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="9,00"
+	Version="8,00"
 	Name="smplULDlg"
 	ProjectGUID="{501ED027-4D40-4F0E-9836-3ECA7EE19E39}"
 	RootNamespace="smplULDlg"

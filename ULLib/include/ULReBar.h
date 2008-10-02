@@ -43,9 +43,10 @@ namespace ULWnds
 			///\param hParentWnd - хендл родителя
 			///\param afFlag - флаг размещения
 			///\param dwStyle - свойства
-			HWND Create(HWND hParentWnd,enAlignFlags afFlag,DWORD dwStyle=
-				WS_CHILD|WS_VISIBLE|WS_BORDER|/*WS_CLIPSIBLINGS|*/
-				/*WS_CLIPCHILDREN|*/RBS_VARHEIGHT|CCS_NODIVIDER|RBS_AUTOSIZE);
+			///\return TRUE в случае успеха
+			BOOL Create(HWND hParentWnd,enAlignFlags afFlag,DWORD dwStyle=
+				WS_CHILD|WS_VISIBLE|WS_BORDER|WS_CLIPSIBLINGS|
+				WS_CLIPCHILDREN|RBS_VARHEIGHT|CCS_NODIVIDER|RBS_AUTOSIZE);
 			///\brief Функия вставки новой клиентской секции 
 			///\param nInto - позиция вставки
 			///\param hClientWnd-хендл клиента
@@ -54,9 +55,10 @@ namespace ULWnds
 			///\param wID - идентификатор банда
 			///\param pszClient - размер клиента
 			///\param dwStyle=свойства
+			///\return TRUE в случае успеха
 			BOOL InsertBand(int nInto,HWND hClientWnd,TCHAR* szName,HBITMAP hBitmap,
 				WORD wID=0,SIZE* pszClient=NULL,
-				DWORD dwStyle=/*RBBS_GRIPPERALWAYS|*/RBBS_FIXEDBMP|/*RBS_BANDBORDERS|/*RBBS_BREAK|*/RBBS_CHILDEDGE);
+				DWORD dwStyle=RBBS_GRIPPERALWAYS|RBBS_FIXEDBMP|RBS_BANDBORDERS|RBBS_CHILDEDGE|RBBS_USECHEVRON);
 			///\brief Функия вставки новой клиентской секции 
 			///\param nInto - позиция вставки
 			///\param hClientWnd-хендл клиента
@@ -66,10 +68,13 @@ namespace ULWnds
 			///\param wID - идентификатор банда
 			///\param pszClient - размер клиента
 			///\param dwStyle=свойства
+			///\return TRUE в случае успеха
 			BOOL InsertBand(int nInto,HWND hClientWnd, TCHAR* szName,	COLORREF clrFore, COLORREF clrBack,
 				WORD wID=0,SIZE* pszClient=NULL,
-				DWORD dwStyle= RBBS_GRIPPERALWAYS|RBBS_BREAK|RBBS_CHILDEDGE);
+				DWORD dwStyle= RBBS_GRIPPERALWAYS|RBBS_CHILDEDGE|RBBS_USECHEVRON);
 			///\brief Убирает все клиентские секции с ребара
+			///\param numBand - номер банда
+			///\return TRUE в случае успеха
 			BOOL DeleteBand(int numBand);
 			/*!\brief Изменяет размер ребара по ширине или высоте родителя
 					в зависимости от местоположения

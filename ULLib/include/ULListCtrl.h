@@ -56,6 +56,13 @@ namespace ULWnds
 			///\param lpszText - текст для вставки
 			///\return TRUE в случае успеха
 			BOOL SetItemText(int nItem,int nSubItem,LPCTSTR lpszText);
+			///\brief получает текст из нужнйо позиции
+			///\param nItem - № итема 
+			///\param nSubItem - № сабитема 
+			///\param lpszText - буфер для получения текста
+			///\param nLen - длина буфера
+			///\return TRUE в случае успеха
+			BOOL GetItemText(int nItem,int nSubItem,LPTSTR lpszText,int nLen);
 			///\brief Получение колличества итемов
 			///\return колличествj итемов
 			int GetItemCount();
@@ -99,7 +106,21 @@ namespace ULWnds
 				SendMessage(LVM_GETITEM,0,(LPARAM)&it);
 				return it.lParam;
 			}
-
+			///\brief получение номера первого выбранного элемента
+			///\return номер выбранного элемента
+			int GetFirstSelectedItemPosition()
+				{return (int)SendMessage(LVM_GETNEXTITEM,(WPARAM)-1,(LPARAM)LVNI_SELECTED);}
+			///\brief получение номера следующего выбранного элемента
+			///\param pos - номер позиции
+			///\return номер выбранного элемента
+			int GetNextSelectedItemPosition(int pos)
+				{return (int)SendMessage(LVM_GETNEXTITEM,(WPARAM)pos,(LPARAM)LVNI_SELECTED);}
+			///\brief удаляет выбранную позицию
+			///\param nItem - позиция для удаления
+			///\return TRUE в случае успеха
+			BOOL DeleteItem(int nItem)
+				{return (BOOL)SendMessage(LVM_DELETEITEM,(WPARAM)nItem);}
+			
 		};
 	}
 }

@@ -68,8 +68,21 @@ namespace ULWnds
 			lvi.iSubItem=nSubItem;
 			lvi.pszText=(LPTSTR)lpszText;
 			lvi.cchTextMax=static_cast<int>(_tcslen(lpszText)+1);
-			return (int)SendMessage(LVM_SETITEM,0,(LPARAM)&lvi);
+			return (BOOL)SendMessage(LVM_SETITEM,0,(LPARAM)&lvi);
 		}
+
+		BOOL CULListCtrl::GetItemText(int nItem,int nSubItem,LPTSTR lpszText,int nLen)
+		{
+			LVITEM lvi;
+			lvi.mask=LVIF_TEXT;
+			lvi.iItem=nItem;
+			lvi.iSubItem=nSubItem;
+			lvi.pszText=(LPTSTR)lpszText;
+			lvi.cchTextMax=nLen;
+			return (BOOL)SendMessage(LVM_GETITEM,0,(LPARAM)&lvi);
+		}
+
+
 		int CULListCtrl::GetItemCount()
 		{
 			return (int)SendMessage(LVM_GETITEMCOUNT);

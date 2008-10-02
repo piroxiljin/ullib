@@ -1,5 +1,5 @@
 #include "Component2.h"
-#include "ULCOMDllApp.h"
+#include "..\..\..\ULLib\Include\ULCOMDllApp.h"
 
 CComponent2::CComponent2(void):m_nRef(1)
 {
