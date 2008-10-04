@@ -77,7 +77,6 @@ namespace ULApps
 		///\что данная DLL поддерживает еще какие либо объекты
 		///\return S_OK - можно выгрузить DLL,S_FALSE - нельзя выгрузить DLL
 		virtual HRESULT OnCanUnloadNow();
-
 		///\brief Служит для регистрации компонента(ов).
 		///\Вызывается через regsvr32.exe my.dll
 		///\return возвращает код возврата регистрации сервера
