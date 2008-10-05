@@ -44,8 +44,11 @@ namespace ULWnds
 			PropSheetHeader.nStartPage=0;
 			PropSheetHeader.nPages=(UINT)m_phPropSheetPage.GetSize();
 			PropSheetHeader.phpage=m_phPropSheetPage;
-			PropSheetHeader.dwFlags|=PSH_PROPTITLE;			
-			PropSheetHeader.pszCaption=szCaption;
+			if(szCaption)
+			{
+				PropSheetHeader.dwFlags|=PSH_PROPTITLE;			
+				PropSheetHeader.pszCaption=szCaption;
+			}
 			PropSheetHeader.dwFlags|=nWizardFlags;
 			m_fWizard=(nWizardFlags)?TRUE:FALSE;
 //			PropSheetHeader.dwFlags|=PSH_USECALLBACK;

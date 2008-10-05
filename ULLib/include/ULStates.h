@@ -193,7 +193,8 @@ namespace ULStates
 			::GetModuleFileName(ULOther::ULGetResourceHandle(),szPath[0],MAX_PATH);
 			 _tsplitpath_s(szPath[0],szPath[1],MAX_PATH,szPath[2],MAX_PATH,szPath[3],MAX_PATH,szPath[4],MAX_PATH);
 			//имя файла лога = имя исполняемого файла.log
-			_tcscmp(szPath[3],_T(".log"));
+			_tcscat_s(szPath[3],MAX_PATH,szPath[4]);
+			_tcscat_s(szPath[3],MAX_PATH,_T(".log"));
 			_tfopen_s(&m_LogFile,szPath[3],_T("w+"));
 #ifdef UNICODE
 			unsigned short usLittleEndian=0xfeff;
