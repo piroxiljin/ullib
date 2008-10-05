@@ -46,6 +46,9 @@ namespace ULWnds
 			///\brief получает номер выбранной строки в комбике
 			///\return индекс выбранного итема. если ничего не выбрано, то  CB_ERR
 			int GetCurSel();
+			///\brief Удаляет все итемы
+			inline void ResetContent()
+				{SendMessage(CB_RESETCONTENT);}			
 		};
 	}
 }

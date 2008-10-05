@@ -1,5 +1,5 @@
 #include "ULComponent.h"
-#include "ULCOMDllApp.h"
+#include "..\..\..\ULLib\Include\ULCOMDllApp.h"
 
 CULComponent::CULComponent(void):
 	CUnknown(NULL),

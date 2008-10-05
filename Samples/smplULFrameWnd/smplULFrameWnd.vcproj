@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="windows-1251"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="9,00"
+	Version="8,00"
 	Name="smplULFrameWnd"
 	ProjectGUID="{E74641CE-2A93-41A8-BEBD-B3EADD35ACA6}"
 	Keyword="Win32Proj"
