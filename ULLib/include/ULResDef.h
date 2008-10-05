@@ -5,13 +5,27 @@
 
 
 // Window commands
+#ifndef ID_WINDOW_NEW
 #define ID_WINDOW_NEW                   0xE130
+#endif
+#ifndef ID_WINDOW_ARRANGE
 #define ID_WINDOW_ARRANGE               0xE131
+#endif
+#ifndef ID_WINDOW_CASCADE
 #define ID_WINDOW_CASCADE               0xE132
+#endif
+#ifndef ID_WINDOW_TILE_HORZ
 #define ID_WINDOW_TILE_HORZ             0xE133
+#endif
+#ifndef ID_WINDOW_TILE_VERT
 #define ID_WINDOW_TILE_VERT             0xE134
+#endif
+#ifndef ID_WINDOW_SPLIT
 #define ID_WINDOW_SPLIT                 0xE135
-#define IDC_STATIC						0xFFFF
+#endif
+#ifndef IDC_STATIC
+	#define IDC_STATIC					0xFFFF
+#endif
 
 // Next default values for new objects
 // 

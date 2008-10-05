@@ -4,7 +4,7 @@
 #ifndef __UL_PROPSHEET_H__
 #define __UL_PROPSHEET_H__
 
-#include "ULWnd.h"
+#include "ULSubClass.h"
 #include "ULOther.h"
 #pragma comment(lib,"comctl32.lib")
 namespace ULWnds
@@ -13,13 +13,15 @@ namespace ULWnds
 	{
 		///\class CULPropSheet
 		///\brief Класс окна свойств(2006)
-		class CULPropSheet:public CULWnd
+		class CULPropSheet:
+			public CULSubClass
 		{
 		private:
-			///\brief Массив для кранения хендлов созданных стариц свойств
-			ULOther::CULArr<HPROPSHEETPAGE> m_phPropSheetPage;
 			///\brief флаг режима отображения
 			BOOL m_fWizard;
+		protected:
+			///\brief Массив для кранения хендлов созданных стариц свойств
+			ULOther::CULArr<HPROPSHEETPAGE> m_phPropSheetPage;
 		public:
 			///\brief Перечисление типов мастера
 			enum enWizardFlags
@@ -76,11 +78,6 @@ namespace ULWnds
 			///\brief аозвращает режим отображения
 			///\return TRUE, если визард
 			BOOL IsWizard();
-		protected:
-			///\brief вызывается при инициализации PropertySheet
-			BOOL OnInitialized(HWND /*hWnd*/);
-			///\brief функция, вызываемая при инициализации PropertySheet
-			int static PropSheetProc(HWND,UINT,LPARAM);
 		};
 	}
 }

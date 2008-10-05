@@ -46,7 +46,14 @@ namespace ULWnds
 			{
 				ULOther::CULStr szToolTip;
 				UINT idCommand;	
-				HMENU hMenu;	
+				HMENU hMenu;
+				tagInfoButtons& operator=(tagInfoButtons& InfoButtons)
+				{
+					szToolTip=InfoButtons.szToolTip;
+					idCommand=InfoButtons.idCommand;
+					hMenu=InfoButtons.hMenu;
+					return *this;
+				}
 			};
 			///\brief массив, который несет необходимую информацию о кнопках
 			ULOther::CULArr<tagInfoButtons> m_pInfoButtons;

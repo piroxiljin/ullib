@@ -9,7 +9,8 @@ namespace ULWnds
 {
 	namespace ULDlgs
 	{
-		CULPropPage::CULPropPage()
+		CULPropPage::CULPropPage():
+			CULDlg()
 		{
 			MessageMap.AddMessage<CULPropPage>(WM_NOTIFY,&CULPropPage::OnNotify);
 			MessageMap.AddMessage<CULPropPage>(WM_INITDIALOG,&CULPropPage::OnInitDialog);

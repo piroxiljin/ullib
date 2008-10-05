@@ -25,7 +25,7 @@ namespace ULWnds
 			ULWnds::CULSubClass::operator=(rebar);
 		}
 
-		HWND CULRebar::Create(HWND hParentWnd,enAlignFlags afFlag,DWORD dwStyle)
+		BOOL CULRebar::Create(HWND hParentWnd,enAlignFlags afFlag,DWORD dwStyle)
 		{
 			REBARINFO     rbi;
 			INITCOMMONCONTROLSEX icex;
@@ -33,11 +33,11 @@ namespace ULWnds
 			icex.dwSize = sizeof(INITCOMMONCONTROLSEX);
 			icex.dwICC   = ICC_COOL_CLASSES;
 			InitCommonControlsEx(&icex);
-			m_hWnd = CreateWindowEx(WS_EX_TOOLWINDOW,
+			m_hWnd = CreateWindowEx(0/*WS_EX_TOOLWINDOW*/,
 									REBARCLASSNAME,
 									NULL,
 									dwStyle|afFlag,
-									0,0,0,0,//200,0,500,500,
+									0,0,500,500,
 									hParentWnd,
 									NULL,
 									hinst,
@@ -46,20 +46,19 @@ namespace ULWnds
 			if(!m_hWnd)
 				return NULL;
 			rbi.cbSize = sizeof(REBARINFO);  
-			rbi.fMask  = 0;
+			rbi.fMask  =  RBIM_IMAGELIST;
 			rbi.himl   = (HIMAGELIST)NULL;
-			if(!SendMessage(RB_SETBARINFO, 0, (LPARAM)&rbi))
-				return NULL;
-			return (Attach(m_hWnd))?m_hWnd:NULL;
+//			if(!SendMessage(RB_SETBARINFO, 0, (LPARAM)&rbi))
+//				return FALSE;
+			return Attach(m_hWnd);
 		};
 
 		BOOL CULRebar::InsertBand(int nInto,HWND hClientWnd,TCHAR* szName, HBITMAP hBitmap,
 								WORD wID,SIZE* pszClient,DWORD dwStyle)
 		{
-			REBARBANDINFO rbBand;
+			REBARBANDINFO rbBand={0};
 			rbBand.cbSize = sizeof(REBARBANDINFO);  
-			rbBand.fMask = RBBIM_STYLE|
-				RBBIM_CHILD|RBBIM_CHILDSIZE|RBBIM_SIZE|RBBIM_BACKGROUND;
+			rbBand.fMask = RBBIM_STYLE|RBBIM_CHILDSIZE|RBBIM_IDEALSIZE/*|RBBIM_SIZE*/;
 			rbBand.fMask |=((rbBand.lpText=szName)!=NULL)?RBBIM_TEXT:0;
 			rbBand.fMask |=((rbBand.hbmBack=hBitmap)!=NULL)?RBBIM_BACKGROUND:0;
 			rbBand.fMask |=((rbBand.wID=wID)!=NULL)?RBBIM_ID:0;
@@ -69,7 +68,7 @@ namespace ULWnds
 				::GetWindowRect(hClientWnd,&rect);
 			else
 				::SetRect(&rect,0,0,pszClient->cx,pszClient->cy);
-			rbBand.hwndChild  = hClientWnd;
+			rbBand.fMask|=((rbBand.hwndChild=hClientWnd)!=NULL)?RBBIM_CHILD:0;
 			if((m_afFlag==afTop)||(m_afFlag==afBottom))
 			{
 				rbBand.cxMinChild = rect.right-rect.left+((dwStyle&RBBS_CHILDEDGE)?2*::GetSystemMetrics(SM_CXEDGE):0);
@@ -80,6 +79,7 @@ namespace ULWnds
 				rbBand.cxMinChild = rect.bottom-rect.top+2*::GetSystemMetrics(SM_CYEDGE);
 				rbBand.cyMinChild = rect.right-rect.left+2*::GetSystemMetrics(SM_CXEDGE);
 			}
+			rbBand.cxIdeal=rbBand.cxMinChild;
 			return (SendMessage(RB_INSERTBAND, (WPARAM)nInto, (LPARAM)&rbBand)!=NULL);
 		}
 
@@ -87,9 +87,9 @@ namespace ULWnds
 								COLORREF clrFore, COLORREF clrBack,
 								WORD wID,SIZE* pszClient,DWORD dwStyle)
 		{
-      REBARBANDINFO rbBand={0};
+			REBARBANDINFO rbBand={0};
 			rbBand.cbSize = sizeof(REBARBANDINFO);  // Required
-			rbBand.fMask = RBBIM_STYLE|RBBIM_CHILD|RBBIM_CHILDSIZE|RBBIM_SIZE|RBBIM_BACKGROUND;
+			rbBand.fMask = RBBIM_STYLE|RBBIM_CHILD|RBBIM_IDEALSIZE|RBBIM_CHILDSIZE|/*RBBIM_SIZE|*/RBBIM_BACKGROUND;
 			rbBand.fMask |=((rbBand.lpText=szName)!=NULL)?RBBIM_TEXT:0;
 			rbBand.fMask |=((rbBand.wID=wID)!=NULL)?RBBIM_ID:0;
 			rbBand.fMask |=((rbBand.clrFore=clrFore)!=NULL)?RBBIM_COLORS:0;
@@ -111,6 +111,7 @@ namespace ULWnds
 				rbBand.cxMinChild = rect.bottom-rect.top+2*::GetSystemMetrics(SM_CYEDGE);
 				rbBand.cyMinChild = rect.right-rect.left+2*::GetSystemMetrics(SM_CXEDGE);
 			}
+			rbBand.cxIdeal=rbBand.cxMinChild;
 			return (SendMessage(RB_INSERTBAND, (WPARAM)nInto, (LPARAM)&rbBand)!=NULL);
 		}
 
@@ -121,15 +122,15 @@ namespace ULWnds
 
 		void CULRebar::AutoSize()
 		{
-		/* 	SendMessage((HWND) m_hWnd,      
-				(UINT) RB_SHOWBAND,    
+/*		 	SendMessage(RB_SHOWBAND,    
 				(WPARAM) 0,
 				(LPARAM) TRUE);  
-		*/
-			SendMessage(WM_SIZE,0,0);
-		//	InvalidateRect(NULL,TRUE);
-
-			 
+*/		
+			RECT rect;
+			GetClientRect(&rect);
+			SendMessage(WM_SIZE,  SIZE_RESTORED,
+				MAKELPARAM(rect.right-rect.left,rect.bottom-rect.top));
+//			InvalidateRect(NULL,TRUE);			 
 		};
 	}
 }

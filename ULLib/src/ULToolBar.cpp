@@ -160,7 +160,7 @@ namespace ULWnds
 						HMENU hMenu)
 		{
 		//========================вставка в массив m_InfoButtons===============
-			ULOther::CULArr<tagInfoButtons> tmppInfoButtons(m_pInfoButtons.GetSize());
+			ULOther::CULArr<tagInfoButtons> tmppInfoButtons(m_pInfoButtons);
 			m_pInfoButtons.Resize(m_pInfoButtons.GetSize()+1);
 			if((btnStyle&BTNS_SEP)==0)
 			{
@@ -175,7 +175,8 @@ namespace ULWnds
 				m_pInfoButtons[m_pInfoButtons.GetSize()-1].szToolTip[0]=0;
 				m_pInfoButtons[m_pInfoButtons.GetSize()-1].idCommand=0;
 			}
-			memcpy(m_pInfoButtons+nInto+1,tmppInfoButtons+nInto,(m_pInfoButtons.GetSize()-nInto-1)*sizeof(tagInfoButtons));
+			for(size_t i=0;i<(m_pInfoButtons.GetSize()-nInto-1);++i)
+				m_pInfoButtons[i+nInto+1]=tmppInfoButtons[i+nInto];
 		//===========================================================
 			btnState|=(m_afFlag&CCS_VERT)?TBSTATE_WRAP:0;
 			TBBUTTON tbButtonsAdd={nBitmap, idCommand, 
@@ -254,7 +255,7 @@ namespace ULWnds
 		{
 			if((m_afFlag&CCS_VERT)!=CCS_VERT)
 				SendMessage(TB_AUTOSIZE); 
-		};
+		}
 
 		LRESULT CULToolBar::OnWindowPosChanging(WPARAM,LPARAM lParam)
 		{
@@ -266,9 +267,9 @@ namespace ULWnds
 					GetButtonCount()-1,(LPARAM)&rcTBWidth);
 				if((pWP->cx>rcTBWidth.right))
 						pWP->cx=rcTBWidth.right;
-		}
+			}
 			return FALSE;
-		};
+		}
 
 		LRESULT CULToolBar::OnDropDown(LPARAM lParam)
 		{
