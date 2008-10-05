@@ -325,8 +325,8 @@ namespace ULWnds
 		m_pClientWnd=ULWnds::CULWnd::FromHandle(hClientWnd);
 		m_pClientWnd->SetProp(_T("ULThemeClient"),(HANDLE)this);
 		m_lpSubClassWndProc=(WNDPROC)(LONG_PTR)m_pClientWnd->SetWindowLong(GWL_WNDPROC,(LONG)(LONG_PTR)ClientWndProc);
-			m_pClientWnd->ModifySyle(WS_BORDER|DS_3DLOOK|WS_DLGFRAME,0);
-		m_pClientWnd->ModifySyleEx(WS_EX_CLIENTEDGE,0);
+			m_pClientWnd->ModifyStyle(WS_BORDER|DS_3DLOOK|WS_DLGFRAME,0);
+		m_pClientWnd->ModifyStyleEx(WS_EX_CLIENTEDGE,0);
 			ULGDI::ULDC::CULWindowDC dcDT(::GetDesktopWindow());
 		m_MemDC.CreateCompatibleDC(dcDT);
 		ULGDI::ULGObjs::CULBitmap Bitmap;

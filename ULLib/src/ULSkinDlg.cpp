@@ -17,7 +17,7 @@ namespace ULWnds
 		CULSkinDlg::~CULSkinDlg(){};
 		LRESULT CULSkinDlg::OnInitDialog(WPARAM wParam,LPARAM lParam)
 		{
-			ModifySyle(WS_BORDER|DS_3DLOOK|WS_DLGFRAME,0);
+			ModifyStyle(WS_BORDER|DS_3DLOOK|WS_DLGFRAME,0);
 			//проверка версии
 			OSVERSIONINFOEX osvi;
 			DWORDLONG dwlConditionMask = 0;
@@ -38,7 +38,7 @@ namespace ULWnds
 				dwExLayered=WS_EX_LAYERED;
 			else
 				dwExLayered=0;
-			ModifySyleEx((DWORD)-1,/*WS_EX_CONTROLPARENT|*/dwExLayered);
+			ModifyStyleEx((DWORD)-1,/*WS_EX_CONTROLPARENT|*/dwExLayered);
 		#if _WIN32_WINNT>=0x0501	
 	//			SetLayeredWindowAttributes(*this,0,255,LWA_ALPHA);
 		#endif	

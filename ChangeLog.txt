@@ -95,3 +95,4 @@
 	7 СULPropertysheet::m_phPropSheetPage перенесена в секцию protected
 	8 изменено именование фаила в CULLogFile
 	9 добавлен класс ULOther::CStrTable. для ускорения загрузки строк из StringTable
+	10 исправлена во всей либе ModifySyle(Ex) на ModifyStyle(Ex)
