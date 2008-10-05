@@ -80,7 +80,7 @@
 			CULListCtrl::GetItemData
 	3 исправлена CULMessageMap::AddNotify.  было неверное приведение типов
 
-2.2.3 <15.09.2008>
+2.2.3 <05.15.2008>
 	1 исправлен ряд багов
 	2 Добавлены	CULListCtrl::GetFirstSelectedItemPosition
 			CULListCtrl::GetNextSelectedItemPosition
@@ -95,4 +95,9 @@
 	7 СULPropertysheet::m_phPropSheetPage перенесена в секцию protected
 	8 изменено именование фаила в CULLogFile
 	9 добавлен класс ULOther::CStrTable. для ускорения загрузки строк из StringTable
-	10 исправлена во всей либе ModifySyle(Ex) на ModifyStyle(Ex)
+2.2.4 <05.15.2008>
+	1 исправлена во всей либе ModifySyle(Ex) на ModifyStyle(Ex)
+	2 добавлены реализации
+		BOOL CULListCtrl::GetItemRect(int nItem,LPRECT lpRect,UINT nCode);
+		BOOL CULListCtrl::GetSubItemRect(int iItem, int iSubItem, int nArea, RECT* lpRect);
+		HFONT CULWnd::GetFont();

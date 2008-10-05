@@ -198,6 +198,10 @@ namespace ULWnds
 		///\param fRedraw - Перерисует себя если TRUE
 		inline void SetFont(HFONT hFont,BOOL fRedraw)
 			{SendMessage(WM_SETFONT,(WPARAM)hFont,(LPARAM)fRedraw);}
+		///\brief Возвращает шрифт окна
+		inline HFONT GetFont()
+			{return (HFONT)SendMessage(WM_GETFONT);}
+		
 		///\brief Обновляет указанный прямоугольник на окне
 		///\param lpRect - прямоугольник для обновления, если NULL, то обновиться всё окно
 		///\param fErase - при TRUE стерает содержимое

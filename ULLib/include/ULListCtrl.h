@@ -49,20 +49,20 @@ namespace ULWnds
 			///\param nItem - позиция вставки
 			///\param lpszItem - строка
 			///\return номер вставленного итема
-			int InsertItem(int nItem,LPCTSTR lpszItem);	
+			virtual int InsertItem(int nItem,LPCTSTR lpszItem);	
 			///\brief устанавливает текст в нужную позицию
 			///\param nItem - № итема для вставки
 			///\param nSubItem - № сабитема для вставки
 			///\param lpszText - текст для вставки
 			///\return TRUE в случае успеха
-			BOOL SetItemText(int nItem,int nSubItem,LPCTSTR lpszText);
+			virtual BOOL SetItemText(int nItem,int nSubItem,LPCTSTR lpszText);
 			///\brief получает текст из нужнйо позиции
 			///\param nItem - № итема 
 			///\param nSubItem - № сабитема 
 			///\param lpszText - буфер для получения текста
 			///\param nLen - длина буфера
 			///\return TRUE в случае успеха
-			BOOL GetItemText(int nItem,int nSubItem,LPTSTR lpszText,int nLen);
+			virtual BOOL GetItemText(int nItem,int nSubItem,LPTSTR lpszText,int nLen);
 			///\brief Получение колличества итемов
 			///\return колличествj итемов
 			int GetItemCount();
@@ -120,7 +120,19 @@ namespace ULWnds
 			///\return TRUE в случае успеха
 			BOOL DeleteItem(int nItem)
 				{return (BOOL)SendMessage(LVM_DELETEITEM,(WPARAM)nItem);}
-			
+			///\brief возвращает координаты и размер области итема
+			///\param nItem - номер итема
+			///\param lpRect - указатель на объект RECT для координат
+			///\param nCode - параметр запроса
+			///\return TRUE в случае успеха
+			BOOL GetItemRect(int nItem,LPRECT lpRect,UINT nCode);
+			///\brief возвращает координаты и размер области сабитема
+			///\param nItem - номер итема
+			///\param iSubItem - номер сабитема
+			///\param nArea - параметр запроса
+			///\param lpRect - указатель на объект RECT для координат
+			///\return TRUE в случае успеха
+			BOOL GetSubItemRect(int iItem, int iSubItem, int nArea, RECT* lpRect);
 		};
 	}
 }

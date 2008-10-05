@@ -102,5 +102,18 @@ namespace ULWnds
 		{
 			return (BOOL)SendMessage(LVM_GETCOLUMN,(WPARAM)nCol,(LPARAM)pCol);	
 		}
+
+		BOOL CULListCtrl::GetItemRect(int nItem,LPRECT lpRect,UINT nCode)
+		{
+			lpRect->left = nCode;
+			return (BOOL)SendMessage(LVM_GETITEMRECT, (WPARAM)nItem,(LPARAM)lpRect);
+		}
+
+		BOOL CULListCtrl::GetSubItemRect(int iItem, int iSubItem, int nArea, RECT* lpRect)
+		{
+			lpRect->top = iSubItem;
+			lpRect->left = nArea;
+			return (BOOL)SendMessage(LVM_GETSUBITEMRECT,iItem, (LPARAM)lpRect);
+		}
 	}
 }
