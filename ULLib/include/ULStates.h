@@ -283,7 +283,8 @@ namespace ULStates
 		///\brief Функция сохраняет поле лога
 		#define LOGFILE_SAVE(szLogName)		\
 			GetLogFile<ULStates::CULLogFile>().SaveLog(szLogName);
-
+		///\brief определение ассерта
+		#define ASSERT assert
 	#else
 		///\brief Макрос добавляет поле лога
 		#define LOGFILE_ADD(szLogName)
@@ -291,6 +292,8 @@ namespace ULStates
 		#define LOGFILE_RESET(szLogName)
 		///\brief Функция сохраняет поле лога
 		#define LOGFILE_SAVE(szLogName)
+		///\brief определение ассерта
+		#define ASSERT
 	#endif //_DEBUG
 
 #endif //__STATES__H_
