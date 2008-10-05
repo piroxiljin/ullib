@@ -94,3 +94,4 @@
 	6 изменен родитель СULPropertysheet с CULWnd на CULSubClass
 	7 СULPropertysheet::m_phPropSheetPage перенесена в секцию protected
 	8 изменено именование фаила в CULLogFile
+	9 добавлен класс ULOther::CStrTable. для ускорения загрузки строк из StringTable

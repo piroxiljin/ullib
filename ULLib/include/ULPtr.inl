@@ -2,6 +2,7 @@
 ///\brief «аголовочный файл классов указатель и строк(29.12.2007)
 #include <windows.h>
 #include <tchar.h>
+#include "ULRes.h"
 namespace ULOther
 {
 	///\ ласс динамического массива указател€ (30.07.2007)
@@ -181,4 +182,23 @@ namespace ULOther
 	};
 	///\brief переопределенный тип класса строки
 	typedef CULStrT<TCHAR> CULStr;	
+	///\class CStrTable
+	///\brief  ласс дл€ ускорени€ загрузки строк из StringTable(05.10.2008)
+	class CStrTable
+	{
+		///\brief id строки
+		UINT m_uID;
+	public:
+		///\brief конструктор
+		///\param uID - идентификатор строки
+		CStrTable(UINT uID):m_uID(uID)
+		{}
+		///\оператор LPTSTR
+		operator LPTSTR()
+		{
+			static TCHAR szStr[MAX_PATH];
+			LoadString(ULGetResourceHandle(),m_uID,szStr,MAX_PATH);
+			return szStr;
+		}		
+	};
 }
