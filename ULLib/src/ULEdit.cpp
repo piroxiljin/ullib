@@ -15,7 +15,7 @@ namespace ULWnds
 		{
 		};
 
-		BOOL CULEdit::Create(HWND hParentWnd,TCHAR* pszText,UINT uID,int x,int y,
+		BOOL CULEdit::Create(HWND hParentWnd,LPCTSTR pszText,UINT uID,int x,int y,
 			int cx,int cy,DWORD dwStyle,DWORD dwStyleEx)
 		{
 			m_hParentWnd=hParentWnd;

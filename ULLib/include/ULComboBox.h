@@ -47,8 +47,11 @@ namespace ULWnds
 			///\return индекс выбранного итема. если ничего не выбрано, то  CB_ERR
 			int GetCurSel();
 			///\brief ”дал€ет все итемы
-			inline void ResetContent()
-				{SendMessage(CB_RESETCONTENT);}			
+			void ResetContent();
+			///\brief показывает/пр€чет листбокс
+			///\param fShowIt - флаг (показывает/пр€чет)
+			void ShowDropDown(BOOL fShowIt);
+
 		};
 	}
 }

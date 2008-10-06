@@ -101,3 +101,5 @@
 		BOOL CULListCtrl::GetItemRect(int nItem,LPRECT lpRect,UINT nCode);
 		BOOL CULListCtrl::GetSubItemRect(int iItem, int iSubItem, int nArea, RECT* lpRect);
 		HFONT CULWnd::GetFont();
+		CULComboBox::ShowDropDown(BOOL fShowIt)
+	3 исправлен тип строки с TCHAR* на LPCTSTR в CULEdit::Create

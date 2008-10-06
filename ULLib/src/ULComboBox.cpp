@@ -51,5 +51,14 @@ namespace ULWnds
 		{
 			return (int)SendMessage(CB_GETCURSEL);
 		}
+		void CULComboBox::ResetContent()
+		{
+			SendMessage(CB_RESETCONTENT);
+		}
+		void CULComboBox::ShowDropDown(BOOL fShowIt)
+		{
+			SendMessage(CB_SHOWDROPDOWN,(WPARAM)fShowIt);
+		}
+
 	}
 }

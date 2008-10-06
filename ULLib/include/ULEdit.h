@@ -26,7 +26,7 @@ namespace ULWnds
 			///\param dwStyle - стиль 
 			///\param dwStyleEx - расширенный стиль эдита
 			///\return TRUE в случае успеха
-			BOOL Create(HWND hParentWnd,TCHAR* pszText,UINT uID,int x,int y,
+			BOOL Create(HWND hParentWnd,LPCTSTR pszText,UINT uID,int x,int y,
 				int cx,int cy,DWORD dwStyle=WS_CHILD|WS_VISIBLE|ES_LEFT|WS_TABSTOP|ES_AUTOHSCROLL,
 				DWORD dwStyleEx=WS_EX_CLIENTEDGE|WS_EX_ACCEPTFILES);
 		//==================inline functions============================
