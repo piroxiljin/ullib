@@ -103,3 +103,4 @@
 		HFONT CULWnd::GetFont();
 		CULComboBox::ShowDropDown(BOOL fShowIt)
 	3 исправлен тип строки с TCHAR* на LPCTSTR в CULEdit::Create
+	4 изменено ULGDI::ULGObjs::CULFont::CULFont(HFONT &hFont) на ULGDI::ULGObjs::CULFont::CULFont(HFONT hFont)
