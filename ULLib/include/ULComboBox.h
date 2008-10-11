@@ -51,7 +51,10 @@ namespace ULWnds
 			///\brief показывает/пр€чет листбокс
 			///\param fShowIt - флаг (показывает/пр€чет)
 			void ShowDropDown(BOOL fShowIt);
-
+			///\brief ¬озвращает информациб о комбобоксе
+			///\param pcbi - указатель на экземпл€р структуры с информацией
+			///\return TRUE в случае успеха
+			BOOL GetComboBoxInfo(PCOMBOBOXINFO pcbi);
 		};
 	}
 }

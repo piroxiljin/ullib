@@ -182,16 +182,16 @@ namespace ULOther
 	};
 	///\brief переопределенный тип класса строки
 	typedef CULStrT<TCHAR> CULStr;	
-	///\class CStrTable
+	///\class CULStrTable
 	///\brief Класс для ускорения загрузки строк из StringTable(05.10.2008)
-	class CStrTable
+	class CULStrTable
 	{
 		///\brief id строки
 		UINT m_uID;
 	public:
 		///\brief конструктор
 		///\param uID - идентификатор строки
-		CStrTable(UINT uID):m_uID(uID)
+		CULStrTable(UINT uID):m_uID(uID)
 		{}
 		///\оператор LPTSTR
 		operator LPTSTR()

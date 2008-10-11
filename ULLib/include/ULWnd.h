@@ -60,6 +60,9 @@ namespace ULWnds
 		///\brief Вызов функции окна
 		inline virtual LRESULT CallWindowProc(UINT uMsg,WPARAM wParam,LPARAM lParam)
 			{return ::CallWindowProc(m_lpSubClassWndProc,*this, uMsg, wParam, lParam);}	
+		///\brief Функция вызывающаяся из WndProc по приходу сообщения
+		///\return если возвращает не ноль, то пропускается обработка этого сообщения другими обработчиками
+		virtual LRESULT OnMessage(UINT uMsg,WPARAM wParam,LPARAM lParam);
 		///\brief Получение текста окна
 		///\param lpString - строка
 		///\param nMaxCount - максимальная лдина строки

@@ -49,20 +49,20 @@ namespace ULWnds
 			///\param nItem - позиция вставки
 			///\param lpszItem - строка
 			///\return номер вставленного итема
-			virtual int InsertItem(int nItem,LPCTSTR lpszItem);	
+			int InsertItem(int nItem,LPCTSTR lpszItem);	
 			///\brief устанавливает текст в нужную позицию
 			///\param nItem - № итема для вставки
 			///\param nSubItem - № сабитема для вставки
 			///\param lpszText - текст для вставки
 			///\return TRUE в случае успеха
-			virtual BOOL SetItemText(int nItem,int nSubItem,LPCTSTR lpszText);
+			BOOL SetItemText(int nItem,int nSubItem,LPCTSTR lpszText);
 			///\brief получает текст из нужнйо позиции
 			///\param nItem - № итема 
 			///\param nSubItem - № сабитема 
 			///\param lpszText - буфер для получения текста
 			///\param nLen - длина буфера
 			///\return TRUE в случае успеха
-			virtual BOOL GetItemText(int nItem,int nSubItem,LPTSTR lpszText,int nLen);
+			BOOL GetItemText(int nItem,int nSubItem,LPTSTR lpszText,int nLen);
 			///\brief Получение колличества итемов
 			///\return колличествj итемов
 			int GetItemCount();

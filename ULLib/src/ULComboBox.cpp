@@ -59,6 +59,9 @@ namespace ULWnds
 		{
 			SendMessage(CB_SHOWDROPDOWN,(WPARAM)fShowIt);
 		}
-
+		BOOL CULComboBox::GetComboBoxInfo(PCOMBOBOXINFO pcbi)
+		{
+			return ::GetComboBoxInfo(*this,pcbi);
+		}
 	}
 }
