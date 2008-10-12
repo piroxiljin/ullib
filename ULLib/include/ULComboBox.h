@@ -55,6 +55,9 @@ namespace ULWnds
 			///\param pcbi - указатель на экземпляр структуры с информацией
 			///\return TRUE в случае успеха
 			BOOL GetComboBoxInfo(PCOMBOBOXINFO pcbi);
+			///\brief Возвращает число элементов в комбобоксе
+			///\return число элементов. CB_ERR в случае ошибки
+			int GetCount();
 		};
 	}
 }

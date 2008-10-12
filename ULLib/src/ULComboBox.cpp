@@ -63,5 +63,9 @@ namespace ULWnds
 		{
 			return ::GetComboBoxInfo(*this,pcbi);
 		}
+		int CULComboBox::GetCount()
+		{
+			return (int)SendMessage(CB_GETCOUNT);
+		}
 	}
 }

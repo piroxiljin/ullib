@@ -2,6 +2,7 @@
 ///\brief фаил реализации класса лист контрола
 #include "..\..\ULLib\Include\ULListCtrl.h"
 #include "..\..\ULLib\Include\ULRes.h"
+
 namespace ULWnds
 {
 	namespace ULControls
@@ -114,6 +115,14 @@ namespace ULWnds
 			lpRect->top = iSubItem;
 			lpRect->left = nArea;
 			return (BOOL)SendMessage(LVM_GETSUBITEMRECT,iItem, (LPARAM)lpRect);
+		}
+		int CULListCtrl::GetSubItemCount()
+		{
+			HWND hwndHeader=(HWND)SendMessage(LVM_GETHEADER);
+			if(!hwndHeader)
+				return -1;
+			return (int)::SendMessage(hwndHeader,HDM_GETITEMCOUNT,0,0);
+			
 		}
 	}
 }

@@ -133,6 +133,9 @@ namespace ULWnds
 			///\param lpRect - указатель на объект RECT для координат
 			///\return TRUE в случае успеха
 			BOOL GetSubItemRect(int iItem, int iSubItem, int nArea, RECT* lpRect);
+			///\brief возвращает число сабитемов в итеме
+			///\return число сабитемов в итеме
+			int GetSubItemCount();
 		};
 	}
 }

@@ -95,7 +95,7 @@
 	7 СULPropertysheet::m_phPropSheetPage перенесена в секцию protected
 	8 изменено именование фаила в CULLogFile
 	9 добавлен класс ULOther::CStrTable. для ускорения загрузки строк из StringTable
-2.2.4 <09.10.2008>
+2.2.4 <12.10.2008>
 	1 исправлена во всей либе ModifySyle(Ex) на ModifyStyle(Ex)
 	2 добавлены реализации
 		BOOL CULListCtrl::GetItemRect(int nItem,LPRECT lpRect,UINT nCode);
@@ -103,6 +103,8 @@
 		HFONT CULWnd::GetFont();
 		CULComboBox::ShowDropDown(BOOL fShowIt)
 		CULComboBox::GetComboBoxInfo(PCOMBOBOXINFO pcbi)
+		int CULListCtrl::GetSubItemCount()
+		int CULComboBox::GetCount()
 	3 исправлен тип строки с TCHAR* на LPCTSTR в CULEdit::Create
 	4 изменено ULGDI::ULGObjs::CULFont::CULFont(HFONT &hFont) на ULGDI::ULGObjs::CULFont::CULFont(HFONT hFont)
 	5 CStrTable -> CULStrTable
