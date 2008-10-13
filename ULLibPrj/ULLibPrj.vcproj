@@ -6,7 +6,6 @@
 	ProjectGUID="{3F3D1FF7-4130-4CE2-BE94-DC955C45FC27}"
 	RootNamespace="ULLibPrj"
 	Keyword="Win32Proj"
-	TargetFrameworkVersion="131072"
 	>
 	<Platforms>
 		<Platform

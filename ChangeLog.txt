@@ -80,7 +80,7 @@
 			CULListCtrl::GetItemData
 	3 исправлена CULMessageMap::AddNotify.  было неверное приведение типов
 
-2.2.3 <05.15.2008>
+2.2.3 <05.10.2008>
 	1 исправлен ряд багов
 	2 Добавлены	CULListCtrl::GetFirstSelectedItemPosition
 			CULListCtrl::GetNextSelectedItemPosition
@@ -95,7 +95,8 @@
 	7 СULPropertysheet::m_phPropSheetPage перенесена в секцию protected
 	8 изменено именование фаила в CULLogFile
 	9 добавлен класс ULOther::CStrTable. для ускорения загрузки строк из StringTable
-2.2.4 <12.10.2008>
+
+2.2.4 <13.10.2008>
 	1 исправлена во всей либе ModifySyle(Ex) на ModifyStyle(Ex)
 	2 добавлены реализации
 		BOOL CULListCtrl::GetItemRect(int nItem,LPRECT lpRect,UINT nCode);
@@ -105,9 +106,12 @@
 		CULComboBox::GetComboBoxInfo(PCOMBOBOXINFO pcbi)
 		int CULListCtrl::GetSubItemCount()
 		int CULComboBox::GetCount()
+		CULListCtrl::SubItemHitTest
 	3 исправлен тип строки с TCHAR* на LPCTSTR в CULEdit::Create
 	4 изменено ULGDI::ULGObjs::CULFont::CULFont(HFONT &hFont) на ULGDI::ULGObjs::CULFont::CULFont(HFONT hFont)
 	5 CStrTable -> CULStrTable
 	6 добавлена функция LRESULT CULWnd::OnMessage(UINT uMsg,WPARAM wParam,LPARAM lParam); в каждую WndProc
 		её вызов первичный, и ненулевой возврат пропускает остальные обработчики
+	7 в классе CULStrTable убран статический массив и добавлено поля этого же массива
+	
 		

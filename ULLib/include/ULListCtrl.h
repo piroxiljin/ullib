@@ -78,11 +78,14 @@ namespace ULWnds
 			///\param pCol - указатель на структуру с информацией о столбце
 			///\return  TRUE в случае успеха
 			BOOL GetColumn(int nCol,LPLVCOLUMN pCol);
-			///\brief ќпределение позиции в листконтроле по координате
+			///\brief ќпределение позиции итема в листконтроле по координате
 			///\param pInfo - указатель на структуру с инфой
 			///\return индекс итема по которому, на котором координата, иначе -1
-			int HitTest(LPLVHITTESTINFO pInfo)
-				{return(int)SendMessage(LVM_HITTEST,0,(LPARAM)pInfo);}
+			int HitTest(LPLVHITTESTINFO pInfo);
+			///\brief ќпределение позиции сабитема в листконтроле по координате
+			///\param pInfo - указатель на структуру с инфой
+			///\return индекс итема по которому, на котором координата, иначе -1
+			int SubItemHitTest(LPLVHITTESTINFO pInfo);
 			///\brief ѕрив€зывает к итему данные
 			///\param nItem - номер итема
 			///\param dwData - данные
