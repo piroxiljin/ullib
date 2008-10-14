@@ -103,5 +103,9 @@ namespace ULWnds
 	{
 		return 0;
 	}
+	BOOL CULWnd::IsWindowEnabled()
+	{
+		return ::IsWindowEnabled(*this);
+	}
 }
 

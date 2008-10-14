@@ -30,6 +30,14 @@ namespace ULWnds
 			///\param pszStr - строка
 			///\return номер добавленой строки в случае успеха иначе CB_ERR или CB_ERRSPACE
 			int AddString(LPCTSTR pszStr);
+			///\brief вставляет строку в комбобокс
+			///\param pszStr - строка
+			///\param pszStr - строка
+			///\return номер добавленой строки в случае успеха иначе CB_ERR или CB_ERRSPACE
+			int InsertString(int nItem,LPCTSTR pszStr);
+			///\brief удалят строку из комбобокса
+			///\return колличество оставшихся строк. CB_ERR в случае ошибки
+			int DeleteString(int nItem);
 			///\brief привязывает данные к итему
 			///\param nItem - номер итема
 			///\param dwData - данные

@@ -32,6 +32,16 @@ namespace ULWnds
 			return (int)SendMessage(CB_ADDSTRING,0,(LPARAM)pszStr);
 		}
 
+		int CULComboBox::InsertString(int nItem,LPCTSTR pszStr)
+		{
+			return (int)SendMessage(CB_INSERTSTRING,(WPARAM)nItem,(LPARAM)pszStr);
+		}
+
+		int CULComboBox::DeleteString(int nItem)
+		{
+			return (int)SendMessage(CB_DELETESTRING,(WPARAM)nItem);
+		}
+
 		BOOL CULComboBox::SetItemData(int nItem,DWORD dwData)
 		{
 			return (SendMessage(CB_SETITEMDATA,(WPARAM)nItem,(LPARAM)dwData)!=CB_ERR);

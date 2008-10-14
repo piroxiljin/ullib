@@ -107,6 +107,9 @@
 		int CULListCtrl::GetSubItemCount()
 		int CULComboBox::GetCount()
 		CULListCtrl::SubItemHitTest
+		int CULComboBox::DeleteString(int nItem)
+		int CULComboBox::InsertString(int nItem,LPCTSTR pszStr);
+		BOOL CULWnd::IsWindowEnabled()
 	3 исправлен тип строки с TCHAR* на LPCTSTR в CULEdit::Create
 	4 изменено ULGDI::ULGObjs::CULFont::CULFont(HFONT &hFont) на ULGDI::ULGObjs::CULFont::CULFont(HFONT hFont)
 	5 CStrTable -> CULStrTable

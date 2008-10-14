@@ -298,6 +298,9 @@ namespace ULWnds
 		///\return TRUE если видимо
 		inline BOOL IsWindowVisible()
 			{return ::IsWindowVisible(*this);}
+		///\brief ѕровер€ет доступность окна
+		///\return TRUE если видимо
+		BOOL IsWindowEnabled();
 		///\brief ќпредел€ет существует ли окно
 		///\return TRUE если существует
 		inline BOOL IsWindow()
