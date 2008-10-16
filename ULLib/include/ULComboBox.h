@@ -66,6 +66,15 @@ namespace ULWnds
 			///\brief Возвращает число элементов в комбобоксе
 			///\return число элементов. CB_ERR в случае ошибки
 			int GetCount();
+			///\brief возвращает текст указанного итема листбокса
+			///\param nItem - номер итема 
+			///\param pszText - буфер для получаемого текста 
+			///\return длина возвращаемой строки, в случае ошибки CB_ERR
+			int GetLBText(int nItem,LPTSTR pszText);
+			///\brief аозвращает длину строки в указанном итеме
+			///\param nItem - номер итема 
+			///\return длина строки, в случае ошибки CB_ERR
+			int GetLBTextLen(int nItem);			
 		};
 	}
 }

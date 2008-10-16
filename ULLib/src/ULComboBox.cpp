@@ -77,5 +77,13 @@ namespace ULWnds
 		{
 			return (int)SendMessage(CB_GETCOUNT);
 		}
+		int CULComboBox::GetLBText(int nItem,LPTSTR pszText)
+		{
+			return (int)SendMessage(CB_GETLBTEXT,(WPARAM)nItem,(LPARAM)pszText);
+		}
+		int CULComboBox::GetLBTextLen(int nItem)
+		{
+			return (int)SendMessage(CB_GETLBTEXT,(WPARAM)nItem);
+		}
 	}
 }
