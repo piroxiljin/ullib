@@ -300,7 +300,7 @@ namespace ULGDI
 			///\brief Конструктор
 			CULFont():m_hFont(NULL){};
 			///\brief Конструктор копирования
-			CULFont(HFONT& hFont):m_hFont(hFont){};
+			CULFont(HFONT hFont):m_hFont(hFont){};
 			///\brief Деструктор
 			virtual ~CULFont(){DeleteFont();}
 			///\brief Для подстановки объекта класса там где требуется 

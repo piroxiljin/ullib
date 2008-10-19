@@ -32,6 +32,16 @@ namespace ULWnds
 			return (int)SendMessage(CB_ADDSTRING,0,(LPARAM)pszStr);
 		}
 
+		int CULComboBox::InsertString(int nItem,LPCTSTR pszStr)
+		{
+			return (int)SendMessage(CB_INSERTSTRING,(WPARAM)nItem,(LPARAM)pszStr);
+		}
+
+		int CULComboBox::DeleteString(int nItem)
+		{
+			return (int)SendMessage(CB_DELETESTRING,(WPARAM)nItem);
+		}
+
 		BOOL CULComboBox::SetItemData(int nItem,DWORD dwData)
 		{
 			return (SendMessage(CB_SETITEMDATA,(WPARAM)nItem,(LPARAM)dwData)!=CB_ERR);
@@ -50,6 +60,30 @@ namespace ULWnds
 		int CULComboBox::GetCurSel()
 		{
 			return (int)SendMessage(CB_GETCURSEL);
+		}
+		void CULComboBox::ResetContent()
+		{
+			SendMessage(CB_RESETCONTENT);
+		}
+		void CULComboBox::ShowDropDown(BOOL fShowIt)
+		{
+			SendMessage(CB_SHOWDROPDOWN,(WPARAM)fShowIt);
+		}
+		BOOL CULComboBox::GetComboBoxInfo(PCOMBOBOXINFO pcbi)
+		{
+			return ::GetComboBoxInfo(*this,pcbi);
+		}
+		int CULComboBox::GetCount()
+		{
+			return (int)SendMessage(CB_GETCOUNT);
+		}
+		int CULComboBox::GetLBText(int nItem,LPTSTR pszText)
+		{
+			return (int)SendMessage(CB_GETLBTEXT,(WPARAM)nItem,(LPARAM)pszText);
+		}
+		int CULComboBox::GetLBTextLen(int nItem)
+		{
+			return (int)SendMessage(CB_GETLBTEXT,(WPARAM)nItem);
 		}
 	}
 }

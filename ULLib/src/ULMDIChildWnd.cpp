@@ -48,6 +48,10 @@ namespace ULWnds
 					pULWnd=FromHandle(hWnd);
 					if(pULWnd!=NULL)
 					{
+						LRESULT lRes=pULWnd->OnMessage(uMsg,wParam,lParam);
+						if(lRes)
+							return lRes;
+
 						if(uMsg==WM_COMMAND)
 						{
 							BOOL fRet=pULWnd->MessageMap.ProcessCommand(pULWnd,wParam,lParam);

@@ -60,6 +60,9 @@ namespace ULWnds
 		///\brief Вызов функции окна
 		inline virtual LRESULT CallWindowProc(UINT uMsg,WPARAM wParam,LPARAM lParam)
 			{return ::CallWindowProc(m_lpSubClassWndProc,*this, uMsg, wParam, lParam);}	
+		///\brief Функция вызывающаяся из WndProc по приходу сообщения
+		///\return если возвращает не ноль, то пропускается обработка этого сообщения другими обработчиками
+		virtual LRESULT OnMessage(UINT uMsg,WPARAM wParam,LPARAM lParam);
 		///\brief Получение текста окна
 		///\param lpString - строка
 		///\param nMaxCount - максимальная лдина строки
@@ -198,6 +201,10 @@ namespace ULWnds
 		///\param fRedraw - Перерисует себя если TRUE
 		inline void SetFont(HFONT hFont,BOOL fRedraw)
 			{SendMessage(WM_SETFONT,(WPARAM)hFont,(LPARAM)fRedraw);}
+		///\brief Возвращает шрифт окна
+		inline HFONT GetFont()
+			{return (HFONT)SendMessage(WM_GETFONT);}
+		
 		///\brief Обновляет указанный прямоугольник на окне
 		///\param lpRect - прямоугольник для обновления, если NULL, то обновиться всё окно
 		///\param fErase - при TRUE стерает содержимое
@@ -291,6 +298,9 @@ namespace ULWnds
 		///\return TRUE если видимо
 		inline BOOL IsWindowVisible()
 			{return ::IsWindowVisible(*this);}
+		///\brief Проверяет доступность окна
+		///\return TRUE если видимо
+		BOOL IsWindowEnabled();
 		///\brief Определяет существует ли окно
 		///\return TRUE если существует
 		inline BOOL IsWindow()

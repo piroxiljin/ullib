@@ -78,11 +78,14 @@ namespace ULWnds
 			///\param pCol - указатель на структуру с информацией о столбце
 			///\return  TRUE в случае успеха
 			BOOL GetColumn(int nCol,LPLVCOLUMN pCol);
-			///\brief Определение позиции в листконтроле по координате
+			///\brief Определение позиции итема в листконтроле по координате
 			///\param pInfo - указатель на структуру с инфой
 			///\return индекс итема по которому, на котором координата, иначе -1
-			int HitTest(LPLVHITTESTINFO pInfo)
-				{return(int)SendMessage(LVM_HITTEST,0,(LPARAM)pInfo);}
+			int HitTest(LPLVHITTESTINFO pInfo);
+			///\brief Определение позиции сабитема в листконтроле по координате
+			///\param pInfo - указатель на структуру с инфой
+			///\return индекс итема по которому, на котором координата, иначе -1
+			int SubItemHitTest(LPLVHITTESTINFO pInfo);
 			///\brief Привязывает к итему данные
 			///\param nItem - номер итема
 			///\param dwData - данные
@@ -120,7 +123,22 @@ namespace ULWnds
 			///\return TRUE в случае успеха
 			BOOL DeleteItem(int nItem)
 				{return (BOOL)SendMessage(LVM_DELETEITEM,(WPARAM)nItem);}
-			
+			///\brief возвращает координаты и размер области итема
+			///\param nItem - номер итема
+			///\param lpRect - указатель на объект RECT для координат
+			///\param nCode - параметр запроса
+			///\return TRUE в случае успеха
+			BOOL GetItemRect(int nItem,LPRECT lpRect,UINT nCode);
+			///\brief возвращает координаты и размер области сабитема
+			///\param nItem - номер итема
+			///\param iSubItem - номер сабитема
+			///\param nArea - параметр запроса
+			///\param lpRect - указатель на объект RECT для координат
+			///\return TRUE в случае успеха
+			BOOL GetSubItemRect(int iItem, int iSubItem, int nArea, RECT* lpRect);
+			///\brief возвращает число сабитемов в итеме
+			///\return число сабитемов в итеме
+			int GetSubItemCount();
 		};
 	}
 }

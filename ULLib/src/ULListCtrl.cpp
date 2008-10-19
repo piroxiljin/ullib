@@ -2,6 +2,7 @@
 ///\brief фаил реализации класса лист контрола
 #include "..\..\ULLib\Include\ULListCtrl.h"
 #include "..\..\ULLib\Include\ULRes.h"
+
 namespace ULWnds
 {
 	namespace ULControls
@@ -102,5 +103,34 @@ namespace ULWnds
 		{
 			return (BOOL)SendMessage(LVM_GETCOLUMN,(WPARAM)nCol,(LPARAM)pCol);	
 		}
+
+		BOOL CULListCtrl::GetItemRect(int nItem,LPRECT lpRect,UINT nCode)
+		{
+			lpRect->left = nCode;
+			return (BOOL)SendMessage(LVM_GETITEMRECT, (WPARAM)nItem,(LPARAM)lpRect);
+		}
+
+		BOOL CULListCtrl::GetSubItemRect(int iItem, int iSubItem, int nArea, RECT* lpRect)
+		{
+			lpRect->top = iSubItem;
+			lpRect->left = nArea;
+			return (BOOL)SendMessage(LVM_GETSUBITEMRECT,iItem, (LPARAM)lpRect);
+		}
+		int CULListCtrl::GetSubItemCount()
+		{
+			HWND hwndHeader=(HWND)SendMessage(LVM_GETHEADER);
+			if(!hwndHeader)
+				return -1;
+			return (int)::SendMessage(hwndHeader,HDM_GETITEMCOUNT,0,0);			
+		}
+		int CULListCtrl::HitTest(LPLVHITTESTINFO pInfo)
+		{
+			return(int)SendMessage(LVM_HITTEST,0,(LPARAM)pInfo);
+		}
+		int CULListCtrl::SubItemHitTest(LPLVHITTESTINFO pInfo)
+		{
+			return(int)SendMessage(LVM_SUBITEMHITTEST,0,(LPARAM)pInfo);
+		}
+
 	}
 }
