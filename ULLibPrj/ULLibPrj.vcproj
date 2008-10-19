@@ -315,6 +315,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\ULLib\src\ULDateTimePicker.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\ULLib\src\ULDB.cpp"
 				>
 				<FileConfiguration
@@ -443,6 +447,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\ULLib\src\ULSplitter.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\ULLib\src\ULStatusBar.cpp"
 				>
 			</File>
@@ -534,6 +542,10 @@
 			</File>
 			<File
 				RelativePath="..\ULLib\include\ULControls.h"
+				>
+			</File>
+			<File
+				RelativePath="..\ULLib\include\ULDateTimePicker.h"
 				>
 			</File>
 			<File
@@ -666,6 +678,10 @@
 			</File>
 			<File
 				RelativePath="..\ULLib\include\ULSkinDlg.h"
+				>
+			</File>
+			<File
+				RelativePath="..\ULLib\include\ULSplitter.h"
 				>
 			</File>
 			<File
