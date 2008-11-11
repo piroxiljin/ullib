@@ -123,3 +123,5 @@
 	1 добавлены реализации классов
 		ULWnds::ULControls::CULDateTimePicker
 		ULWnds::ULControls::CULSplitter
+	2 добавлены реализации
+		CULMenu::EnableMenuItem(UINT uIDEnableItem,UINT uEnable)

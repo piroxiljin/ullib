@@ -106,6 +106,12 @@ namespace ULWnds
 			///\return идентификатор
 			UINT GetMenuItemID(int nPos)
 				{return ::GetMenuItemID(*this,nPos);}
+			///\brief активирует/деактивирует итем меню
+			///\param uIDEnableItem - идентификатор меню
+			///\param uEnable - флаг активизаци
+			///\return TRUE в случае успеха
+			BOOL EnableMenuItem(UINT uIDEnableItem,UINT uEnable)
+				{return ::EnableMenuItem(*this,uIDEnableItem,uEnable);}
 		};
 	}
 }

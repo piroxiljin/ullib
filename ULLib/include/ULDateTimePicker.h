@@ -25,7 +25,7 @@ namespace ULWnds
 			///\param x,y - координаты контрола
 			///\param cx,cy - размеры
 			///\param dwStyle - стиль
-			///\return TRUE в случае успеъха
+			///\return TRUE в случае успеха
 			BOOL Create(HWND hParentWnd,WORD wID,int x,int y,int cx,int cy,DWORD dwStyle=
 				WS_BORDER|WS_CHILD|WS_VISIBLE|DTS_SHOWNONE);
 		};

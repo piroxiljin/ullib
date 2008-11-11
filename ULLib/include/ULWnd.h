@@ -169,7 +169,7 @@ namespace ULWnds
 		///\param dwAddStyle - Устанавливаемый стиль
 		///\param uFlags - Флаг обновления окна
 		///\return TRUE в случае успеха
-		inline BOOL ModifySyle(DWORD dwRemStyle,DWORD dwAddStyle,UINT uFlags=SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER | SWP_FRAMECHANGED)
+		inline BOOL ModifyStyle(DWORD dwRemStyle,DWORD dwAddStyle,UINT uFlags=SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER | SWP_FRAMECHANGED)
 		{	
 			SetWindowLong(GWL_STYLE,
 				(GetWindowLong(GWL_STYLE)&~dwRemStyle)|dwAddStyle);
@@ -180,7 +180,7 @@ namespace ULWnds
 		///\param dwAddStyleEx - Устанавливаемый стиль
 		///\param uFlags - Флаг обновления окна
 		///\return TRUE в случае успеха
-		inline BOOL ModifySyleEx(DWORD dwRemStyleEx,DWORD dwAddStyleEx,UINT uFlags=SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER | SWP_FRAMECHANGED)
+		inline BOOL ModifyStyleEx(DWORD dwRemStyleEx,DWORD dwAddStyleEx,UINT uFlags=SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER | SWP_FRAMECHANGED)
 		{	
 			SetWindowLong(GWL_EXSTYLE,
 				(GetWindowLong(GWL_EXSTYLE)&(~dwRemStyleEx))|dwAddStyleEx);
