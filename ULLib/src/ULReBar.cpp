@@ -1,6 +1,9 @@
 ///\file ULReBar.cpp
 ///\brief cpp файл класса ребара(11.08.2007)
 #include "..\..\ULLib\Include\ULRebar.h"
+#include "..\..\ULLib\Include\ULToolbar.h"
+#include "..\..\ULLib\Include\ULFrameWnd.h"
+#include "..\..\ULLib\Include\ULStates.h"
 #include "..\..\ULLib\Include\ULRes.h"
 namespace ULWnds
 {
@@ -8,11 +11,13 @@ namespace ULWnds
 	{
 		CULRebar::CULRebar():CULSubClass()
 		{
+			MessageMap.AddReflectNotify<CULRebar>(RBN_CHEVRONPUSHED,&CULRebar::OnChevronPushed);
 		}
 
 		CULRebar::CULRebar(CULRebar& rebar):CULSubClass(rebar),
 			m_afFlag(rebar.m_afFlag)
 		{
+			MessageMap.AddReflectNotify<CULRebar>(RBN_CHEVRONPUSHED,&CULRebar::OnChevronPushed);
 		}
 
 		CULRebar::~CULRebar()
@@ -25,7 +30,7 @@ namespace ULWnds
 			ULWnds::CULSubClass::operator=(rebar);
 		}
 
-		BOOL CULRebar::Create(HWND hParentWnd,enAlignFlags afFlag,DWORD dwStyle)
+		BOOL CULRebar::Create(HWND hParentWnd,DWORD dwID,enAlignFlags afFlag,DWORD dwStyle)
 		{
 			REBARINFO     rbi;
 			INITCOMMONCONTROLSEX icex;
@@ -39,7 +44,7 @@ namespace ULWnds
 									dwStyle|afFlag,
 									0,0,500,500,
 									hParentWnd,
-									NULL,
+									(HMENU)dwID,
 									hinst,
 									NULL);
 			m_afFlag=afFlag;
@@ -122,15 +127,106 @@ namespace ULWnds
 
 		void CULRebar::AutoSize()
 		{
-/*		 	SendMessage(RB_SHOWBAND,    
-				(WPARAM) 0,
-				(LPARAM) TRUE);  
-*/		
 			RECT rect;
 			GetClientRect(&rect);
 			SendMessage(WM_SIZE,  SIZE_RESTORED,
 				MAKELPARAM(rect.right-rect.left,rect.bottom-rect.top));
-//			InvalidateRect(NULL,TRUE);			 
 		};
+
+		LRESULT CULRebar::OnChevronPushed(LPARAM lParam)
+		{
+			LPNMREBARCHEVRON nmrc=(LPNMREBARCHEVRON)lParam;
+			ULWnds::ULBars::CULToolBar* pToolBar=(ULWnds::ULBars::CULToolBar*)nmrc->lParam;
+			if(!pToolBar)
+				return 0;
+
+			class CULChevronDownWnd:
+				public ULWnds::ULFrames::CULFrameWnd
+			{
+			protected:
+				ULWnds::ULBars::CULToolBar* m_pToolBar;
+				ULWnds::ULBars::CULToolBar m_ToolBar;
+				RECT m_rcVisibleBtns;
+				HWND m_hwndOwner;
+			public:
+				CULChevronDownWnd(ULWnds::ULBars::CULToolBar* pToolBar,RECT rcVisibleBtns,HWND hwndOwner):
+					ULWnds::ULFrames::CULFrameWnd(),
+					m_pToolBar(pToolBar),
+					m_rcVisibleBtns(rcVisibleBtns),
+					m_hwndOwner(hwndOwner)
+				{
+				}
+				virtual LRESULT OnCreate(WPARAM wParam,LPARAM lParam)
+				{
+					RECT rcTBWidth;
+					UINT nVisiblePos=0;
+					for(;nVisiblePos<m_pToolBar->GetButtonCount();++nVisiblePos)
+					{
+						m_pToolBar->GetItemRect(nVisiblePos,&rcTBWidth);
+						if(rcTBWidth.right>m_rcVisibleBtns.right)
+							break;
+					}
+
+					LONG lStyle=m_pToolBar->GetWindowLong(GWL_STYLE);
+					SIZE szBtn=m_pToolBar->GetButtonSize();
+					SIZE szBmp=m_pToolBar->GetBitmapSize();
+					ASSERT(m_ToolBar.Create(*this,0,szBtn.cx,szBtn.cy,szBmp.cx,szBmp.cy,
+						ULWnds::ULBars::CULToolBar::afNon|ULWnds::ULBars::CULToolBar::afTop,lStyle));
+
+					HIMAGELIST	hHot=m_pToolBar->GetImageList();
+					HIMAGELIST	hImageList=ImageList_Duplicate(hHot);
+					m_ToolBar.SetImageList(0,hImageList);
+
+					for(;nVisiblePos<m_pToolBar->GetButtonCount();++nVisiblePos)
+					{
+						TBBUTTON tbb;				
+						m_pToolBar->GetButton(nVisiblePos,&tbb);
+						m_ToolBar.AddButton(tbb.idCommand,tbb.fsState|TBSTATE_WRAP ,tbb.fsStyle,(TCHAR*)tbb.iString,(TCHAR*)tbb.iString,tbb.iBitmap);
+					}
+					m_ToolBar.AutoSize();
+
+					POINT pt={m_rcVisibleBtns.right,m_rcVisibleBtns.bottom};
+					::ClientToScreen(m_hwndOwner,&pt);
+					int nWindth=0;
+					int nHeight=0;
+					for(UINT i=0;i<m_ToolBar.GetButtonCount();++i)
+					{
+						m_ToolBar.GetItemRect(i,&rcTBWidth);
+						if(rcTBWidth.right>nWindth)
+							nWindth=rcTBWidth.right;
+						nHeight=rcTBWidth.bottom;
+					}
+					MoveWindow(pt.x-nWindth+2,pt.y,nWindth+7,nHeight+7,TRUE);
+
+					return ULWnds::ULFrames::CULFrameWnd::OnCreate(wParam,lParam);
+				}
+				virtual LRESULT OnMessage(UINT uMsg,WPARAM wParam,LPARAM lParam)
+				{
+					switch(uMsg)
+					{
+					case WM_COMMAND:
+						::PostMessage(m_hwndOwner,uMsg,wParam,lParam);
+						break;
+					case WM_KILLFOCUS:
+						DestroyWindow();
+						break;
+					case WM_KEYDOWN:
+						if(wParam==VK_ESCAPE)
+							DestroyWindow();
+						break;
+					}
+					return ULWnds::ULFrames::CULFrameWnd::OnMessage(uMsg,wParam,lParam);
+				}
+			}wndChevronDown(pToolBar,nmrc->rc,*this);	
+
+			wndChevronDown.Create(_T("ChevronDownWnd"),0,0,0,COLOR_BACKGROUND,WS_VISIBLE|WS_POPUP|WS_DLGFRAME);
+			MSG msg;
+			while(::GetMessage(&msg,0,0,0)&&wndChevronDown.IsWindow())
+			{
+				::TranslateMessage(&msg);
+				::DispatchMessage(&msg);
+			}
+			return 0;
+		}
 	}
 }

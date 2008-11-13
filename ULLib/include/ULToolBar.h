@@ -206,6 +206,37 @@ namespace ULWnds
 			///\return TRUE  в случае успеха
 			BOOL GetButton(int nButton,LPTBBUTTON lpButton)
 				{return (BOOL)SendMessage(TB_GETBUTTON,(WPARAM)nButton,(LPARAM)lpButton);}
+			///\brief активирует/деактивирует кнопку
+			///\param idButton - командный идентификатор кнопки
+			///\param fEnable - флаг 
+			///\return TRUE  в случае успеха
+			BOOL EnableButton(int idButton,BOOL fEnable);
+			///\brief нажимает/отжимает кнопку
+			///\param idButton - командный идентификатор кнопки
+			///\param fCheck - флаг 
+			///\return TRUE  в случае успеха
+			BOOL CheckButton(int idButton,BOOL fCheck);
+			///\brief устанавливает расширенный стиль
+			///\param dwExStyle - сам стиль
+			///\return предыдущий стиль
+			DWORD SetExtendedStyle(DWORD dwExStyle);
+			///\brief возвращает расширенный стиль
+			///\return стиль
+			DWORD GetExtendedStyle();
+			///\brief возвращает ширину и высоту кнопок в пикселях
+			///\return структура с размером
+			SIZE GetButtonSize();
+			///\brief возвращает ширину и высоту рисунка в пикселях
+			///\return структура с размером
+			SIZE GetBitmapSize();
+			///\brief Возвращает imagelist тулбара
+			///\return imagelist. NULL в случае ошибки
+			HIMAGELIST GetImageList();
+			///\brief Заменяет imagelist тулбара
+			///\param iImageID - индекс imagelist
+			///\param himlNew - хендл imagelist
+			///\return предыдущий imagelist
+			HIMAGELIST SetImageList(int iImageID,HIMAGELIST himlNew);
 		protected:
 			///\brief Функция обработчик WM_WINDOWPOSCHANGING
 			virtual LRESULT OnWindowPosChanging(WPARAM,LPARAM);

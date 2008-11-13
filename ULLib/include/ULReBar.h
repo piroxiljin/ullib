@@ -41,10 +41,11 @@ namespace ULWnds
 			}m_afFlag;
 			///\brief Функия создания ребара
 			///\param hParentWnd - хендл родителя
+			///\param dwID - идентификатор
 			///\param afFlag - флаг размещения
 			///\param dwStyle - свойства
 			///\return TRUE в случае успеха
-			BOOL Create(HWND hParentWnd,enAlignFlags afFlag,DWORD dwStyle=
+			BOOL Create(HWND hParentWnd,DWORD dwID,enAlignFlags afFlag,DWORD dwStyle=
 				WS_CHILD|WS_VISIBLE|WS_BORDER|WS_CLIPSIBLINGS|
 				WS_CLIPCHILDREN|RBS_VARHEIGHT|CCS_NODIVIDER|RBS_AUTOSIZE);
 			///\brief Функия вставки новой клиентской секции 
@@ -56,9 +57,13 @@ namespace ULWnds
 			///\param pszClient - размер клиента
 			///\param dwStyle=свойства
 			///\return TRUE в случае успеха
+			///\note Если установлен стиль RBBS_USECHEVRON, то необходимо \n
+			///\ установить размер банда при котором будет появляться шеврон \n
+			///\ и в lParam банда занести указатель на класс ULWnds::ULBars::CULToolBar, \n
+			///\ который устанавливаетя в банд
 			BOOL InsertBand(int nInto,HWND hClientWnd,TCHAR* szName,HBITMAP hBitmap,
 				WORD wID=0,SIZE* pszClient=NULL,
-				DWORD dwStyle=RBBS_GRIPPERALWAYS|RBBS_FIXEDBMP|RBS_BANDBORDERS|RBBS_CHILDEDGE|RBBS_USECHEVRON);
+				DWORD dwStyle=RBBS_GRIPPERALWAYS|RBBS_FIXEDBMP|RBS_BANDBORDERS|RBBS_CHILDEDGE);
 			///\brief Функия вставки новой клиентской секции 
 			///\param nInto - позиция вставки
 			///\param hClientWnd-хендл клиента
@@ -104,6 +109,8 @@ namespace ULWnds
 			///\param nBand - номер банда
 			void MaximizeBand(int nBand)
 				{SendMessage(RB_MAXIMIZEBAND,(WPARAM)nBand);}
+		protected:
+			virtual LRESULT OnChevronPushed(LPARAM);
 		};
 	}
 }

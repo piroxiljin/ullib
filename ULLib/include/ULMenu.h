@@ -112,6 +112,13 @@ namespace ULWnds
 			///\return TRUE в случае успеха
 			BOOL EnableMenuItem(UINT uIDEnableItem,UINT uEnable)
 				{return ::EnableMenuItem(*this,uIDEnableItem,uEnable);}
+			///\brief ставить/снимает галочку с итема меню
+			///\param uIDCheckItem - идентификатор меню
+			///\param uCheck - флаг
+			///\return возврщает предыдущее состояние
+			DWORD CheckMenuItem(UINT uIDCheckItem,UINT uCheck)
+				{return ::CheckMenuItem(*this,uIDCheckItem,uCheck);}
+			
 		};
 	}
 }

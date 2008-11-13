@@ -77,7 +77,7 @@ namespace ULWnds
 				break;
 			}
 
-			m_Rebar.Create(hParentWnd,rbAlignFlags);
+			m_Rebar.Create(hParentWnd,0,rbAlignFlags);
 			if(!m_Rebar)
 				return FALSE;
 			m_Rebar.SetProp(_T("ULRebarCtrl"),(HANDLE)this);

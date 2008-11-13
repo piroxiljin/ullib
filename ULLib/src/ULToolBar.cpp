@@ -257,6 +257,49 @@ namespace ULWnds
 				SendMessage(TB_AUTOSIZE); 
 		}
 
+		BOOL CULToolBar::EnableButton(int idButton,BOOL fCheck)
+		{
+			return (BOOL)SendMessage(TB_ENABLEBUTTON,(WPARAM)idButton,(LPARAM)fCheck);
+		}
+
+		BOOL CULToolBar::CheckButton(int idButton,BOOL fCheck)
+		{
+			return (BOOL)SendMessage(TB_CHECKBUTTON,(WPARAM)idButton,(LPARAM)fCheck);
+		}
+
+		DWORD CULToolBar::SetExtendedStyle(DWORD dwExStyle)
+		{
+			return(DWORD)SendMessage(TB_SETEXTENDEDSTYLE,NULL,(LPARAM)dwExStyle);
+		}
+
+		DWORD CULToolBar::GetExtendedStyle()
+		{
+			return(DWORD)SendMessage(TB_GETEXTENDEDSTYLE,NULL,NULL);
+		}
+
+		SIZE CULToolBar::GetButtonSize()
+		{
+			DWORD dwSize=(DWORD)SendMessage(TB_GETBUTTONSIZE);
+			SIZE szRet={LOWORD(dwSize),HIWORD(dwSize)};
+			return szRet;
+		}
+
+		SIZE CULToolBar::GetBitmapSize()
+		{
+			SIZE szRet={m_dxBitmap,m_dyBitmap};
+			return szRet;
+		}
+
+		HIMAGELIST CULToolBar::GetImageList()
+		{
+			return (HIMAGELIST)SendMessage(TB_GETIMAGELIST);
+		}
+
+		HIMAGELIST CULToolBar::SetImageList(int iImageID,HIMAGELIST himlNew)
+		{
+			return (HIMAGELIST)SendMessage(TB_SETIMAGELIST,(WPARAM)iImageID,(LPARAM)himlNew);
+		}
+
 		LRESULT CULToolBar::OnWindowPosChanging(WPARAM,LPARAM lParam)
 		{
 			if((m_tbStyle&TBSTYLE_AUTOSIZE)==0)
