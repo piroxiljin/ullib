@@ -196,7 +196,7 @@ namespace ULWnds
 							nWindth=rcTBWidth.right;
 						nHeight=rcTBWidth.bottom;
 					}
-					MoveWindow(pt.x-nWindth+2,pt.y,nWindth+7,nHeight+7,TRUE);
+					MoveWindow(pt.x-nWindth+2,pt.y,nWindth+6,nHeight+6,TRUE);
 
 					return ULWnds::ULFrames::CULFrameWnd::OnCreate(wParam,lParam);
 				}

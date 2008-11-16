@@ -292,12 +292,14 @@ namespace ULWnds
 		LRESULT CULSplitter::OnSize(WPARAM,LPARAM lParam)
 		{
 			SizeWindowContents(LOWORD(lParam), HIWORD(lParam));
+			InvalidateRect();
 			return FALSE;
 		}
 
 		LRESULT CULSplitter::OnWindowPosChanged(WPARAM,LPARAM lParam)
 		{
 			SizeWindowContents(LOWORD(lParam), HIWORD(lParam));
+			InvalidateRect();
 			return FALSE;
 		}
 	}
