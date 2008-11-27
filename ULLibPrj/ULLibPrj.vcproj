@@ -487,6 +487,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\ULLib\src\ULWaitCursor.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\ULLib\src\ULWnd.cpp"
 				>
 			</File>
@@ -730,6 +734,10 @@
 			</File>
 			<File
 				RelativePath="..\ULLib\include\ULToolTip.h"
+				>
+			</File>
+			<File
+				RelativePath="..\ULLib\include\ULWaitCursor.h"
 				>
 			</File>
 			<File

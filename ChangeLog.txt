@@ -141,3 +141,4 @@
 	6 добавлено пространство имен ULListCtrlEx с реализацией класса расширенного лист контрола CULListCtrlEx
 		и возможных объектов(возможно добавление)
 		CItemText,CItemEdit,CItemComboBox,CItemDateTimePicker,CItemButton
+	7 добавлена реализация класса  ULOther::CULWaitCursor
