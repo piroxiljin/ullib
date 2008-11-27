@@ -395,6 +395,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\ULLib\src\ULListCtrlEx.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\ULLib\src\ULMDIChildWnd.cpp"
 				>
 			</File>
@@ -610,6 +614,10 @@
 			</File>
 			<File
 				RelativePath="..\ULLib\include\ULListCtrl.h"
+				>
+			</File>
+			<File
+				RelativePath="..\ULLib\include\ULListCtrlEx.h"
 				>
 			</File>
 			<File

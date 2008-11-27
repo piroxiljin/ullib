@@ -241,7 +241,6 @@ namespace ULWnds
 			///\brief Функция обработчик WM_WINDOWPOSCHANGING
 			virtual LRESULT OnWindowPosChanging(WPARAM,LPARAM);
 			///\brief Обработчик TBN_DROPDOWN
-      ///\bug переписать так чтоб меню можно было модифицировать
 			virtual LRESULT OnDropDown(LPARAM);			
 		};
 	}

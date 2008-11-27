@@ -76,10 +76,10 @@ namespace ULCOMs
 			}
 		};
 	}
+	template<class CComponent_t,class CAgregate_t=ULAgregation::CULAgregateNone<CComponent_t>>class CULClassFactory:
 	///\class CULClassFactory
 	///\brief класс фабрики классов
 	///\param CComponent_t - тип регистрируемого компонента
-	template<class CComponent_t,class CAgregate_t=ULAgregation::CULAgregateNone<CComponent_t>>class CULClassFactory:
 	public IClassFactory
 	{
 	private: 

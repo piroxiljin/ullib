@@ -1,6 +1,5 @@
 ///\file ULToolBar.cpp
 ///\brief cpp файл класса тулбара(11.08.2007)
-///\bug переписать OnDropDown
 #include "..\..\ULLib\Include\ULToolbar.h"
 #include "..\..\ULLib\Include\ULMenu.h"
 #include "..\..\ULLib\Include\ULRes.h"
