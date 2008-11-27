@@ -36,7 +36,7 @@ LRESULT CULCFrameWnd::OnCreate(WPARAM /*wParam*/,LPARAM /*lParam*/)
 //	m_StatusBar.DeleteAll();
 
 
-	assert(m_ReBarTop.Create(*this,ULWnds::ULBars::CULRebar::afTop));
+	assert(m_ReBarTop.Create(*this,0,ULWnds::ULBars::CULRebar::afTop));
 
 	DWORD dwBaseUnits = GetDialogBaseUnits(); 
 	m_hwndCombo = CreateWindow(_T("COMBOBOX"), NULL, 
@@ -140,6 +140,9 @@ LRESULT CULCFrameWnd::OnCreate(WPARAM /*wParam*/,LPARAM /*lParam*/)
 	*/
 
 	//====================================================================
+
+	m_ToolBar.SendMessage(TB_MARKBUTTON,ID_MENU_NEW,1);
+//	m_ToolBar.SendMessage(TB_CHECKBUTTON,ID_MENU_NEW,0);
 
 	return FALSE;
 } 

@@ -189,7 +189,7 @@ namespace ULOther
 		///\brief id строки
 		UINT m_uID;
 		///\brief строка вывода
-		TCHAR szStr[MAX_PATH];
+		TCHAR m_szStr[MAX_PATH];
 	public:
 		///\brief конструктор
 		///\param uID - идентификатор строки
@@ -198,8 +198,8 @@ namespace ULOther
 		///\оператор LPTSTR
 		operator LPTSTR()
 		{
-			LoadString(ULGetResourceHandle(),m_uID,szStr,MAX_PATH);
-			return szStr;
+			LoadString(ULGetResourceHandle(),m_uID,m_szStr,MAX_PATH);
+			return m_szStr;
 		}		
 	};
 }

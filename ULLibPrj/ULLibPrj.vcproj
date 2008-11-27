@@ -315,6 +315,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\ULLib\src\ULDateTimePicker.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\ULLib\src\ULDB.cpp"
 				>
 				<FileConfiguration
@@ -391,6 +395,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\ULLib\src\ULListCtrlEx.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\ULLib\src\ULMDIChildWnd.cpp"
 				>
 			</File>
@@ -443,6 +451,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\ULLib\src\ULSplitter.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\ULLib\src\ULStatusBar.cpp"
 				>
 			</File>
@@ -472,6 +484,10 @@
 			</File>
 			<File
 				RelativePath="..\ULLib\src\ULToolTip.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\ULLib\src\ULWaitCursor.cpp"
 				>
 			</File>
 			<File
@@ -537,6 +553,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\ULLib\include\ULDateTimePicker.h"
+				>
+			</File>
+			<File
 				RelativePath="..\ULLib\include\ULDB.h"
 				>
 			</File>
@@ -598,6 +618,10 @@
 			</File>
 			<File
 				RelativePath="..\ULLib\include\ULListCtrl.h"
+				>
+			</File>
+			<File
+				RelativePath="..\ULLib\include\ULListCtrlEx.h"
 				>
 			</File>
 			<File
@@ -669,6 +693,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\ULLib\include\ULSplitter.h"
+				>
+			</File>
+			<File
 				RelativePath="..\ULLib\include\ULStates.h"
 				>
 			</File>
@@ -706,6 +734,10 @@
 			</File>
 			<File
 				RelativePath="..\ULLib\include\ULToolTip.h"
+				>
+			</File>
+			<File
+				RelativePath="..\ULLib\include\ULWaitCursor.h"
 				>
 			</File>
 			<File

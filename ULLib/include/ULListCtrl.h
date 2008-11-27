@@ -130,7 +130,7 @@ namespace ULWnds
 			///\return TRUE в случае успеха
 			BOOL GetItemRect(int nItem,LPRECT lpRect,UINT nCode);
 			///\brief возвращает координаты и размер области сабитема
-			///\param nItem - номер итема
+			///\param iItem - номер итема
 			///\param iSubItem - номер сабитема
 			///\param nArea - параметр запроса
 			///\param lpRect - указатель на объект RECT для координат

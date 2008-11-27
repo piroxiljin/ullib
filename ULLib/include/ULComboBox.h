@@ -31,7 +31,7 @@ namespace ULWnds
 			///\return номер добавленой строки в случае успеха иначе CB_ERR или CB_ERRSPACE
 			int AddString(LPCTSTR pszStr);
 			///\brief вставляет строку в комбобокс
-			///\param pszStr - строка
+			///\param nItem - индекс итема
 			///\param pszStr - строка
 			///\return номер добавленой строки в случае успеха иначе CB_ERR или CB_ERRSPACE
 			int InsertString(int nItem,LPCTSTR pszStr);

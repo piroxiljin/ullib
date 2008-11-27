@@ -118,5 +118,27 @@
 	6 добавлена функция LRESULT CULWnd::OnMessage(UINT uMsg,WPARAM wParam,LPARAM lParam); в каждую WndProc
 		её вызов первичный, и ненулевой возврат пропускает остальные обработчики
 	7 в классе CULStrTable убран статический массив и добавлено поля этого же массива
-	
-		
+
+2.3.0 <27.11.2008>
+	1 добавлены реализации классов контролов
+		ULWnds::ULControls::CULDateTimePicker
+		ULWnds::ULControls::CULSplitter
+	2 добавлены реализации
+		CULMenu::EnableMenuItem(UINT uIDEnableItem,UINT uEnable)
+		CULMenu::CheckMenuItem(UINT uIDCheckItem,UINT uCheck)
+		CULToolBar::CheckButton(int idButton,BOOL fCheck)
+		CULToolBar::EnableButton(int idButton,BOOL fCheck)
+		CULToolBar::SetExtendedStyle(DWORD dwExStyle)
+		CULToolBar::GetExtendedStyle()
+		SIZE CULToolBar::GetButtonSize()
+		SIZE CULToolBar::GetBitmapSize()
+		HIMAGELIST CULToolBar::GetImageList()
+		HIMAGELIST CULToolBar::SetImageList(int iImageID,HIMAGELIST himlNew)
+
+	3 изменена функция CULRebar::Create. добавлен параметр идентификатор контрола
+	4 добавлена реализация шевронов на ребаре
+	5 добавлена перерисовка сплитера при изменении его размера
+	6 добавлено пространство имен ULListCtrlEx с реализацией класса расширенного лист контрола CULListCtrlEx
+		и возможных объектов(возможно добавление)
+		CItemText,CItemEdit,CItemComboBox,CItemDateTimePicker,CItemButton
+	7 добавлена реализация класса  ULOther::CULWaitCursor

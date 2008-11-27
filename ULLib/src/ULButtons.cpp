@@ -134,7 +134,7 @@ namespace ULWnds
 				if(!CULSubClass::Attach(hWnd))
 					return FALSE;
 				//Инициализация стилей
-				ModifySyle(0,BS_OWNERDRAW|WS_CLIPCHILDREN);
+				ModifyStyle(0,BS_OWNERDRAW|WS_CLIPCHILDREN);
 				m_Font=hFont;
 				Init();
 				return TRUE;
@@ -431,7 +431,7 @@ namespace ULWnds
 				GetObject(m_ButtonBitmaps.bbUp, sizeof(BITMAP), (LPSTR)&bmp);
 				SetWindowPos(0,0,0,bmp.bmWidth,bmp.bmHeight,SWP_NOMOVE|SWP_NOZORDER);
 				//изменение стиля кнопки
-				ModifySyle(0,BS_OWNERDRAW|WS_CLIPCHILDREN);
+				ModifyStyle(0,BS_OWNERDRAW|WS_CLIPCHILDREN);
 				//инициализация контекстов и региона
 				Init();
 				return TRUE;
@@ -527,7 +527,7 @@ namespace ULWnds
 				SetClassLong(GCL_HCURSOR,(LONG)(LONG_PTR)hCursor);
 				//сабклассирование
 				BOOL fRet=CULSubClass::Attach(*this);
-				ModifySyle(0,SS_OWNERDRAW);			
+				ModifyStyle(0,SS_OWNERDRAW);			
 	//			AutoSize(GetDC());
 				return fRet;
 			};

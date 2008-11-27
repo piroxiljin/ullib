@@ -8,7 +8,8 @@
 #include "ULMenu.h"
 #include "ULListCtrl.h"
 #include "ULComboBox.h"
-
+#include "ULDateTimePicker.h"
+#include "ULSplitter.h"
 namespace ULWnds
 {
 	///\namespace ULControls
