@@ -18,14 +18,16 @@ namespace ULWnds
 			int m_nSplitterPos;
 			//\brief размер сплитера
 			int m_nSplitterBorder;
-			///\brief массив для окон, которые разделяет сплитер
-			ULWnds::CULWnd* m_arPane[2];
 			///\brief предыдущая позиция сплитера
 			int  m_oldPos;
 			///\brief флаги режимов
 			BOOL m_fMoved;
 			BOOL m_fDragMode;
-
+			///\brief флаг, указывающий на возможность изменения размеров областей
+			BOOL m_fResize;
+		protected:
+			///\brief массив для окон, которые разделяет сплитер
+			ULWnds::CULWnd* m_arPane[2];
 		public:
 			///\brief команды посылаемые владельцу слитера
 			///\param scPaneSized - когда сплитер сайзится
@@ -53,13 +55,17 @@ namespace ULWnds
 			///\param cx,cy - размеры
 			///\param SplitterOrientation - ориентация
 			///\param nSplitterPos - текущая позиция сплитера
+			///\param fResize - флаг, указывающий на возможность мышью изменения размеров областей
 			///\return TRUE в случае успеха
-			BOOL Create(HWND hParentWnd,WORD wID,int x,int y,int cx,int cy,enSplitterOrientation SplitterOrientation,int nSplitterPos);
+			BOOL Create(HWND hParentWnd,WORD wID,int x,int y,int cx,int cy,enSplitterOrientation SplitterOrientation,int nSplitterPos,BOOL fResize=TRUE);
 			///\brief устанавливает окно в ячейку
 			///\param nPos - позиция ячейки
 			///\param pwndPane - указатель на окно
 			///\return TRUE в случае успеха
 			BOOL SetPane(int nPos,ULWnds::CULWnd* pwndPane);
+			///\brief установка позиции сплитера
+			///\param nSplitterPos - позиция сплитера
+			void SetSplitterPos(int nSplitterPos);
 		protected:
 			///\brief ресайзит ячейки 
 			///\param nWidth, nHeight - размер сплитера

@@ -12,7 +12,8 @@ namespace ULWnds
 			m_oldPos(-4),
 			m_fMoved(FALSE),
 			m_fDragMode(FALSE),
-			m_SplitterOrientation(soHorz)
+			m_SplitterOrientation(soHorz),
+			m_fResize(TRUE)
 		{		
 			m_arPane[0]=NULL;
 			m_arPane[1]=NULL;
@@ -24,25 +25,30 @@ namespace ULWnds
 			MessageMap.AddMessage<CULSplitter>(WM_WINDOWPOSCHANGED,&CULSplitter::OnWindowPosChanged);
 		}
 		BOOL CULSplitter::Create(HWND hParentWnd,WORD wID,int x,int y,int cx,int cy,
-			enSplitterOrientation SplitterOrientation,int nSplitterPos)
+			enSplitterOrientation SplitterOrientation,int nSplitterPos,BOOL fResize)
 		{
 			m_nSplitterPos=nSplitterPos;
 			m_SplitterOrientation=SplitterOrientation;
-			WNDCLASSEX wcex;
-		    
-			wcex.cbSize = sizeof(WNDCLASSEX); 		
+			m_fResize=fResize;
 
+			WNDCLASSEX wcex;		    
+			wcex.cbSize = sizeof(WNDCLASSEX); 		
 			wcex.style				=CS_HREDRAW | CS_VREDRAW;
 			wcex.lpfnWndProc	=(WNDPROC)WndProc;
 			wcex.cbClsExtra		=0;
 			wcex.cbWndExtra		=0;
 			wcex.hInstance		=ULOther::ULGetResourceHandle();
 			wcex.hIcon				=NULL;
-			if(SplitterOrientation==soHorz)
-				wcex.hCursor		=LoadCursor(NULL,IDC_SIZENS);
+			if(fResize)
+			{
+				if(SplitterOrientation==soHorz)
+					wcex.hCursor		=LoadCursor(NULL,IDC_SIZENS);
+				else
+					if(SplitterOrientation==soVert)
+						wcex.hCursor	=LoadCursor(NULL,IDC_SIZEWE);
+			}
 			else
-				if(SplitterOrientation==soVert)
-					wcex.hCursor	=LoadCursor(NULL,IDC_SIZEWE);
+				wcex.hCursor			=LoadCursor(NULL, IDC_ARROW);
 			wcex.hbrBackground=(HBRUSH)(COLOR_3DFACE+1);
 			wcex.lpszMenuName	=NULL;	
 			wcex.lpszClassName=_T("ULSPLITTER");
@@ -112,6 +118,14 @@ namespace ULWnds
 			DeleteObject(hbm);
 		}
 
+		void CULSplitter::SetSplitterPos(int nSplitterPos)
+		{
+			m_nSplitterPos=nSplitterPos;
+			RECT rc;
+			GetClientRect(&rc);
+			SizeWindowContents(rc.right,rc.bottom);
+		}
+
 		LRESULT CULSplitter::OnMessage(UINT uMsg,WPARAM wParam,LPARAM lParam)
 		{
 			switch(uMsg)
@@ -141,6 +155,8 @@ namespace ULWnds
 
 		LRESULT CULSplitter::OnLButtonDown(WPARAM,LPARAM lParam)
 		{
+			if(!m_fResize)
+				return FALSE;
 			POINT pt={(short)LOWORD(lParam),(short)HIWORD(lParam)};
 			RECT rect;
 			GetWindowRect(&rect);
@@ -181,6 +197,9 @@ namespace ULWnds
 
 		LRESULT CULSplitter::OnLButtonUp(WPARAM,LPARAM lParam)
 		{
+			if(!m_fResize)
+				return FALSE;
+
 			POINT pt={(short)LOWORD(lParam),(short)HIWORD(lParam)};
 
 			if(m_fDragMode == FALSE)
@@ -236,6 +255,9 @@ namespace ULWnds
 
 		LRESULT CULSplitter::OnMouseMove(WPARAM wParam,LPARAM lParam)
 		{
+			if(!m_fResize)
+				return FALSE;
+
 			if(m_fDragMode==FALSE) 
 				return 0;
 
