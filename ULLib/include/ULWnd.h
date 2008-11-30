@@ -315,7 +315,7 @@ namespace ULWnds
 		///\param fBig - если TRUE, то будет установлена большая иконка, иначе маленькая
 		///\return хендл предыдущей установленной иконки в случае успеха, иначе NULL
 		HICON SetIcon(HICON hIcon,BOOL fBig)
-			{return (HICON)SendMessage(WM_SETICON,(WPARAM)hIcon,(LPARAM)((fBig)?ICON_BIG:ICON_SMALL));}
+			{return (HICON)SendMessage(WM_SETICON,(WPARAM)((fBig)?ICON_BIG:ICON_SMALL),(LPARAM)hIcon);}
 		///\brief Утанавливает прозрачность окна по а-каналу и/или по цветовому ключу
 		///\param crKey - цветовой ключ, по по которому окно будет прозрачно
 		///\param bAlpha - альфа-канал
