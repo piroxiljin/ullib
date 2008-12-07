@@ -142,3 +142,12 @@
 		и возможных объектов(возможно добавление)
 		CItemText,CItemEdit,CItemComboBox,CItemDateTimePicker,CItemButton
 	7 добавлена реализация класса  ULOther::CULWaitCursor
+
+2.3.1 <29.11.2008>
+	1 в CULSplitter::Create(HWND hParentWnd,WORD wID,int x,int y,int cx,int cy,enSplitterOrientation SplitterOrientation,int nSplitterPos,BOOL fResize=TRUE);
+		добвлен параметр fResize для указания, возможности изменения размера
+	2 добавлена 
+		CULSplitter::SetSplitterPos(int nSplitterPos) для установки позиции сплитера
+		BOOL CULWnd::Create(LPCTSTR lpClassName,LPCTSTR lpWindowName,DWORD dwStyle,
+			int x,int y,int nWidth,int nHeight,HWND hWndParent,HMENU hMenu)
+	3 исправлена CULWnd::SetIcon, там wParam и lParam наоборот стояли

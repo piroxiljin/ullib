@@ -53,7 +53,18 @@ namespace ULWnds
 		inline operator HWND() const{return m_hWnd;}
 		///\brief Оператор копирования
 		virtual void operator = (CULWnd&);
-	//==================inline functions============================
+	//==============================================================
+		///\brief создает окно
+		///\param lpClassName - класс окна.Если lpClassName равен NULL\n
+		///\ то регистрируеться класс поумолчанию ULWNDCLASS
+		///\param lpWindowName - имя окна
+		///\param dwStyle - стиль окна
+		///\param x,y,nWidth,nHeight - координаты и размеры окна
+		///\param hWndParent - хендл роддительского окна
+		///\param hMenu - хендл меню. для чайлдовых это идентификатор
+		///\return TRUE в случае успеха
+		BOOL Create(LPCTSTR lpClassName,LPCTSTR lpWindowName,DWORD dwStyle,
+			int x,int y,int nWidth,int nHeight,HWND hWndParent,HMENU hMenu);
 		///\brief Дефолтовая функция окна
 		inline virtual LRESULT DefWindowProc(UINT uMsg,WPARAM wParam,LPARAM lParam)
 			{return ::DefWindowProc(*this, uMsg, wParam, lParam);};
@@ -315,7 +326,7 @@ namespace ULWnds
 		///\param fBig - если TRUE, то будет установлена большая иконка, иначе маленькая
 		///\return хендл предыдущей установленной иконки в случае успеха, иначе NULL
 		HICON SetIcon(HICON hIcon,BOOL fBig)
-			{return (HICON)SendMessage(WM_SETICON,(WPARAM)hIcon,(LPARAM)((fBig)?ICON_BIG:ICON_SMALL));}
+			{return (HICON)SendMessage(WM_SETICON,(WPARAM)((fBig)?ICON_BIG:ICON_SMALL),(LPARAM)hIcon);}
 		///\brief Утанавливает прозрачность окна по а-каналу и/или по цветовому ключу
 		///\param crKey - цветовой ключ, по по которому окно будет прозрачно
 		///\param bAlpha - альфа-канал

@@ -103,6 +103,34 @@ namespace ULWnds
 	{
 		return 0;
 	}
+
+	BOOL CULWnd::Create(LPCTSTR lpClassName,LPCTSTR lpWindowName,DWORD dwStyle,
+			int x,int y,int nWidth,int nHeight,HWND hWndParent,HMENU hMenu)
+	{
+		WNDCLASSEX wcex;	    
+		if(!lpClassName)
+		{
+			wcex.cbSize = sizeof(WNDCLASSEX); 		
+			wcex.style			= CS_HREDRAW | CS_VREDRAW;
+			wcex.lpfnWndProc	= (WNDPROC)WndProc;
+			wcex.cbClsExtra		= 0;
+			wcex.cbWndExtra		= 0;
+			wcex.hInstance		= ULOther::ULGetResourceHandle();
+			wcex.hIcon			= NULL;
+			wcex.hCursor		= NULL;
+			wcex.hbrBackground	= NULL;
+			wcex.lpszMenuName	= NULL;	
+			wcex.lpszClassName	= _T("ULWNDCLASS");
+			lpClassName=wcex.lpszClassName;
+			wcex.hIconSm		= NULL;
+			RegisterClassEx(&wcex);
+		}
+		m_hParentWnd=hWndParent;
+		m_hWnd=::CreateWindowW(lpClassName,lpWindowName,dwStyle,
+			x,y,nWidth,nHeight,hWndParent,hMenu,ULOther::ULGetResourceHandle(),this);
+		return (m_hWnd!=NULL);
+	}
+
 	BOOL CULWnd::IsWindowEnabled()
 	{
 		return ::IsWindowEnabled(*this);
