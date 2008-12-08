@@ -59,9 +59,13 @@ namespace ULOther
 		BOOL GetProfileInt(LPCTSTR pcszSection, LPCTSTR pcszEntry,DWORD* pdwValue);
 		///\brief Функция для добавления указанного пути в авторан
 		///\param pcszName - имя параметра
-		///\param pcszFilePath - путь к файлу(если NULL,то пое pcszName удалится)
+		///\param pcszFilePath - путь к файлу(если NULL,то поле pcszName удалится)
 		///\return  возвращает: TRUE в случае успеха, иначе FALSE
 		BOOL AddToAutoRun(LPCTSTR pcszName,LPCTSTR pcszFilePath);
+		///\brief Функция для проверки указанного поля в авторане
+		///\param pcszName - имя параметра
+		///\return  возвращает: TRUE в случае успеха, иначе FALSE
+		BOOL IsAutoRun(LPCTSTR pcszName);
 		///\brief Закрывает сессию профиля
 		void Close();
 		///\brief отсоединяет класс от хендла 

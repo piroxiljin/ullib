@@ -35,6 +35,8 @@ namespace ULWnds
 				wfWizardHasFinish=PSH_WIZARDHASFINISH,
 				wfNonWizard=0
 			};
+			PROPSHEETHEADER m_psh;
+		public:
 			///\brief Конструктор
 			CULPropSheet();
 			///\brief Деструктор

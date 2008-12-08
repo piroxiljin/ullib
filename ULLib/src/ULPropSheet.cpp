@@ -11,7 +11,8 @@ namespace ULWnds
 
 		LRESULT CALLBACK PropSheetCBTProc(int nCode,WPARAM wParam,LPARAM lParam)
 		{
-			if(nCode==HCBT_ACTIVATE)
+//			if(nCode==HCBT_ACTIVATE)
+			if(nCode==HCBT_CREATEWND)
 			{
 //				g_thisPreCreate->m_hWnd=(HWND)wParam;
 //				g_thisPreCreate->SetWindowLong(GWL_USERDATA,(LONG)(LONG_PTR)g_thisPreCreate);
@@ -26,6 +27,7 @@ namespace ULWnds
 		CULPropSheet::CULPropSheet():
 			CULSubClass(),m_fWizard(FALSE)
 		{
+			memset(&m_psh,0,sizeof(m_psh));
 		};
 
 		CULPropSheet::~CULPropSheet()
@@ -50,38 +52,36 @@ namespace ULWnds
 									UINT nWizardFlags,
 									BOOL fModal)
 		{
-			PROPSHEETHEADER PropSheetHeader;
-			memset(&PropSheetHeader,0,sizeof(PropSheetHeader));
-			PropSheetHeader.dwSize=sizeof(PropSheetHeader);
-			PropSheetHeader.hInstance=ULOther::ULGetResourceHandle();
-			PropSheetHeader.hwndParent=hParenWnd;
-			PropSheetHeader.dwFlags=PSH_USEPSTARTPAGE;
-			PropSheetHeader.nStartPage=0;
-			PropSheetHeader.nPages=(UINT)m_phPropSheetPage.GetSize();
-			PropSheetHeader.phpage=m_phPropSheetPage;
+			m_psh.dwSize=sizeof(m_psh);
+			m_psh.hInstance=ULOther::ULGetResourceHandle();
+			m_psh.hwndParent=hParenWnd;
+			m_psh.dwFlags|=PSH_USEPSTARTPAGE;
+			m_psh.nStartPage=0;
+			m_psh.nPages=(UINT)m_phPropSheetPage.GetSize();
+			m_psh.phpage=m_phPropSheetPage;
 			if(szCaption)
 			{
-				PropSheetHeader.dwFlags|=PSH_PROPTITLE;			
-				PropSheetHeader.pszCaption=szCaption;
+//				m_psh.dwFlags|=PSH_PROPTITLE;			
+				m_psh.pszCaption=szCaption;
 			}
-			PropSheetHeader.dwFlags|=nWizardFlags;
+			m_psh.dwFlags|=nWizardFlags;
 			m_fWizard=(nWizardFlags)?TRUE:FALSE;
 //			PropSheetHeader.dwFlags|=PSH_USECALLBACK;
 //			PropSheetHeader.pfnCallback=(PFNPROPSHEETCALLBACK)PropSheetProc;
 			if(hbmHeader!=NULL)
 			{
-				PropSheetHeader.dwFlags|=PSH_USEHBMHEADER;
-				PropSheetHeader.dwFlags|=PSH_HEADER;
-				PropSheetHeader.hbmHeader=hbmHeader;
+				m_psh.dwFlags|=PSH_USEHBMHEADER;
+				m_psh.dwFlags|=PSH_HEADER;
+				m_psh.hbmHeader=hbmHeader;
 			}
 			if(hbmWatermark!=NULL)
 			{
-				PropSheetHeader.dwFlags|=PSH_USEHBMWATERMARK;
-				PropSheetHeader.dwFlags|=PSH_WATERMARK;
-				PropSheetHeader.hbmWatermark=hbmWatermark;
+				m_psh.dwFlags|=PSH_USEHBMWATERMARK;
+				m_psh.dwFlags|=PSH_WATERMARK;
+				m_psh.hbmWatermark=hbmWatermark;
 			}
 			if(fModal!=TRUE)
-				PropSheetHeader.dwFlags|=PSH_MODELESS;
+				m_psh.dwFlags|=PSH_MODELESS;
 
 			g_thisPreCreate=this;
 
@@ -89,7 +89,7 @@ namespace ULWnds
 			m_CBTHook=SetWindowsHookEx(WH_CBT,PropSheetCBTProc,
 				ULOther::ULGetResourceHandle(),GetCurrentThreadId());
 
-			return PropertySheet(&PropSheetHeader);		 
+			return PropertySheet(&m_psh);		 
 		}
 
 		INT_PTR CULPropSheet::Create(HWND hParenWnd,

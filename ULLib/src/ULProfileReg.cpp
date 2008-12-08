@@ -163,6 +163,7 @@ namespace ULOther
 		else
 			if(lResult==ERROR_SUCCESS)
 				lResult=RegSetValueEx(hKey,pcszName,0,REG_SZ,(BYTE*)pcszFilePath,(WORD)_tcslen(pcszFilePath)*sizeof(pcszFilePath[0]));
+		::RegCloseKey(hKey);	
 		return (lResult==ERROR_SUCCESS);
 	};
 	void CULProfileReg::Close()
@@ -172,6 +173,37 @@ namespace ULOther
 			RegCloseKey(m_hAppKey);
 			m_hAppKey=NULL;
 		}
+	}
+	BOOL CULProfileReg::IsAutoRun(LPCTSTR pcszName)
+	{
+		if(pcszName==NULL)
+			return FALSE;
+		HKEY hKey;         
+		TCHAR szKeyName[]=_T("Software\\Microsoft\\Windows\\CurrentVersion\\Run");
+		LONG lResult=RegOpenKeyEx(((m_fAllUsers)?HKEY_LOCAL_MACHINE:HKEY_CURRENT_USER),
+			szKeyName,0,KEY_QUERY_VALUE,&hKey);
+		TCHAR szValNameRet[0xffff]={0};
+		bool fFind=false;
+		for(DWORD i=0;;++i)
+		{
+			DWORD dwSize=0xffff;
+			//RegEnumValue сделан потому, что у меня отсутвует RegGetValue в Advapi32.dll. 
+			//причины не знаю
+			lResult=RegEnumValue(hKey,i,szValNameRet,&dwSize,0,0,0,0);
+			if(lResult==ERROR_SUCCESS)
+			{
+				if(_tcscmp(pcszName,szValNameRet)==0)
+				{
+					fFind=true;
+					break;
+				}
+			}
+			else
+				if(lResult==ERROR_NO_MORE_ITEMS)
+					break;
+		}
+		::RegCloseKey(hKey);	
+		return fFind;
 	}
 }
 

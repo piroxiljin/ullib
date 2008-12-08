@@ -151,3 +151,10 @@
 		BOOL CULWnd::Create(LPCTSTR lpClassName,LPCTSTR lpWindowName,DWORD dwStyle,
 			int x,int y,int nWidth,int nHeight,HWND hWndParent,HMENU hMenu)
 	3 исправлена CULWnd::SetIcon, там wParam и lParam наоборот стояли
+
+
+2.3.2 <09.12.2008>
+	1 в классе CULPropSheet сделан член класса PROPSHEETHEADER m_psh; для более гибкой настройки диалога свойств
+	2 добавлено
+		BOOL CULProfileReg::IsAutoRun(LPCTSTR pcszName)
+	3 в PropSheetCBTProc событие хука для сабкласса изменено на HCBT_CREATEWND
