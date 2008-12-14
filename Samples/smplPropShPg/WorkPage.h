@@ -21,11 +21,11 @@ public:
 		ULWnds::ULControls::ULButtons::CULButton btnOk;
 		ULWnds::ULControls::ULButtons::CULButton btnCancel;
 		btnCancel.Attach(hBtnCancel);
-		btnCancel.ModifySyle(BS_DEFPUSHBUTTON,0);
+		btnCancel.ModifyStyle(BS_DEFPUSHBUTTON,0);
 		btnCancel.Detach();
 
 		btnOk.Attach(hBtnOK);
-		btnOk.ModifySyle(0,BS_DEFPUSHBUTTON);
+		btnOk.ModifyStyle(0,BS_DEFPUSHBUTTON);
 		btnOk.SetActiveWindow();
 		btnOk.SetFocus();
 		btnOk.Detach();
