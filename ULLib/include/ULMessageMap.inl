@@ -242,6 +242,8 @@ public:
 	///\param lpObject - указатель на объект, содержащий функцию
 	///\param lpPreTranslateMessageProc - функция
 	///\return TRUE в случае успеха
+	///\note функция должна вызываться в том же модуле, в \n
+	///\ в котором создан объект CULApp 
 	template<class CULCurClass_t>
 	BOOL InitializePreTranslateMessage(CULCurClass_t* lpObject, BOOL(CULCurClass_t::*lpPreTranslateMessageProc)(MSG*))	
 	{
