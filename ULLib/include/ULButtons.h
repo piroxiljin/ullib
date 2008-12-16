@@ -10,7 +10,7 @@ namespace ULWnds
 {
 	namespace ULControls
 	{
-		///\namespace ULControls::ULButtons
+		///\namespace ULButtons
 		///\brief Пространство имен классов кнопок(15.10.2007)
 		namespace ULButtons
 		{

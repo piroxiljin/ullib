@@ -158,3 +158,4 @@
 	2 добавлено
 		BOOL CULProfileReg::IsAutoRun(LPCTSTR pcszName)
 	3 в PropSheetCBTProc событие хука для сабкласса изменено на HCBT_CREATEWND
+	4 исключены тулзы для работы с vcl чартом(если понадобятся, то откатываемся на нужную ревизию)
