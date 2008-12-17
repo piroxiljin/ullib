@@ -62,14 +62,24 @@ namespace ULWnds
 				}
 				return FALSE;
 			}
+			CULCommDlg::CULCommDlg():
+					ULWnds::ULDlgs::CULDlg()
+			{
+
+			};
 			//==================CULColorDlg=======================================
 			CULColorDlg::CULColorDlg(COLORREF clrInit,
 					DWORD dwFlags):
 					CULCommDlg()				
 			{
+				ZeroMemory(&m_cc, sizeof(m_cc));
 				m_cc.lStructSize=sizeof(m_cc);
 				m_cc.hInstance=(HWND)ULOther::ULGetResourceHandle();
 				m_cc.Flags=dwFlags;
+
+				for(int i=0;i<sizeof(m_acrCustClr)/sizeof(m_acrCustClr[0]);++i)
+					m_acrCustClr[i]=0x00ffffff;
+
 				m_cc.lpCustColors=m_acrCustClr;
 				m_cc.rgbResult=clrInit;
 				m_cc.lpfnHook=(LPCCHOOKPROC)CULCommDlg::WndProc;

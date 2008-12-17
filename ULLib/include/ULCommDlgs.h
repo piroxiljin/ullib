@@ -29,8 +29,7 @@ namespace ULWnds
 				static LRESULT WndProc(HWND hWnd , UINT uMsg , WPARAM wParam , LPARAM lParam);
 			public:
 				///\brief Конструктор
-				CULCommDlg():
-					ULWnds::ULDlgs::CULDlg(){};
+				CULCommDlg();
 				///\brief Деструктор
 					virtual ~CULCommDlg(){};
 			};
