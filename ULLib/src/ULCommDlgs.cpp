@@ -65,7 +65,7 @@ namespace ULWnds
 			CULCommDlg::CULCommDlg():
 					ULWnds::ULDlgs::CULDlg()
 			{
-
+				MessageMap.ClearAll();
 			};
 			//==================CULColorDlg=======================================
 			CULColorDlg::CULColorDlg(COLORREF clrInit,
