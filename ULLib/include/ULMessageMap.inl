@@ -1,5 +1,5 @@
 ///\file ULMessageMap.inl
-///\brief Заголовочный файл класса root окна(23.10.2007)
+///\brief Заголовочный файл класса обработчика сообщений окна(23.10.2007)
 #pragma once
 #ifndef __UL_MESSAGEMAP_H__
 #define __UL_MESSAGEMAP_H__
@@ -7,8 +7,14 @@
 #include "ULOther.h"
 #include <assert.h>
 ///\class CULMessageMap
-/*!\brief CULClass_t - класс родитель, для тех классов, 
-которые используют CULMessageMap*/
+///\brief класс обработчика сообщений окна
+///\param CULClass_t - класс родитель, для тех классов, \n
+///которые используют CULMessageMap
+///\note сообщения обычно добавляются в конструкторе класса окна \n
+/// при помощи фукция Add... . \n
+/// для устранения конфликтов отнаследованных клссов с родительскими \n
+/// в обработчиках сообщений возможна очистка хранилищ сообщений \n
+/// путём вызова соответствующих функций Clear...
 template <class CULClass_t>
 class CULMessageMap
 {
@@ -236,12 +242,53 @@ public:
 		else
 			return FALSE;
 	};
-
+	///\brief Функция очистки хранилища обработчиков сообщений
+	void ClearMessage()
+	{
+		m_pMessageStorage.Resize(0);
+	}
+	///\brief Функция очистки хранилища обработчиков возвращаемых сообщений
+	void ClearReflectMessage()
+	{
+		m_pReflectMessageStorage.Resize(0);
+	}
+	///\brief Функция очистки хранилища обработчиков команд от контролов
+	void ClearCommand()
+	{
+		m_pCommandStorage.Resize(0);
+	}
+	///\brief Функция очистки хранилища обработчиков возвращаемых команд от контролов
+	void ClearReflectCommand()
+	{
+		m_pReflectCommandStorage.Resize(0);
+	}
+	///\brief Функция очистки хранилища обработчиков команд от контролов
+	void ClearNotify()
+	{
+		m_pNotifyStorage.Resize(0);
+	}
+	///\brief Функция очистки хранилища обработчиков возвращаемых команд от контролов
+	void ClearReflectNotify()
+	{
+		m_pReflectNotifyStorage.Resize(0);
+	}
+	///\brief функция очистки всех кранилищь обработчиков
+	void ClearAll()
+	{
+		ClearMessage();
+		ClearReflectMessage();
+		ClearCommand();
+		ClearReflectCommand();
+		ClearNotify();
+		ClearReflectNotify();
+	}
 	///\brief Функция для добаления функций, вызываемых перед обработкой сообщений
 	///	CULCurClass_t - класс окна, содержащего функцию
 	///\param lpObject - указатель на объект, содержащий функцию
 	///\param lpPreTranslateMessageProc - функция
 	///\return TRUE в случае успеха
+	///\note функция должна вызываться в том же модуле, в \n
+	///\ в котором создан объект CULApp 
 	template<class CULCurClass_t>
 	BOOL InitializePreTranslateMessage(CULCurClass_t* lpObject, BOOL(CULCurClass_t::*lpPreTranslateMessageProc)(MSG*))	
 	{
@@ -275,8 +322,6 @@ public:
 		assert(m_pPreTranslateMessageStorage.GetSize());
 		m_pPreTranslateMessageStorage.Resize(m_pPreTranslateMessageStorage.GetSize()-1);
 	};
-	
-
 	///\brief Функция вызова обработчиков сообщений
 	///\param pWnd - указатель на класс, к которому принадлежит WndProc
 	///\param uMsg - идентификатор сообщения

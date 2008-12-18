@@ -764,10 +764,6 @@
 				RelativePath=".\UsingNS.h"
 				>
 			</File>
-			<File
-				RelativePath="..\ULLib\include\VCLChart.h"
-				>
-			</File>
 		</Filter>
 		<Filter
 			Name="Resource Files"
