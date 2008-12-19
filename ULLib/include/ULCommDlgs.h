@@ -34,12 +34,12 @@ namespace ULWnds
 					virtual ~CULCommDlg(){};
 			};
 			///\class CULColorDlg
-			///\brief Класс Выбора цвета
+			///\brief Класс выбора цвета
 			class CULColorDlg:
 				public CULCommDlg
 			{
 			public:
-				///\brief Структура для организации диалога выбора цвета
+				///\brief объект структуры  для организации диалога выбора цвета
 				CHOOSECOLOR m_cc;
 				///\brief Массив спец-цветов
 				COLORREF m_acrCustClr[16]; 
@@ -94,8 +94,6 @@ namespace ULWnds
 					DWORD dwFlags = OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT/*|OFN_ENABLEHOOK*/,
 					LPCTSTR lpszFilter = NULL,
 					DWORD dwFilterIndex=0);
-				///\brief Деструктор
-				virtual ~CULFileDlg(){};
 				///\brief Создание модального диалога
 				///\param idTempl - Шаблон диалога, если утановлен флаг CC_ENABLETEMPLATE
 				///\param hParentWnd - Хендл родителя
@@ -118,6 +116,39 @@ namespace ULWnds
 				LPCTSTR GetFileName()
 					{return m_ofn.lpstrFile;}
 			};
+			///\class CULFontDlg
+			///\brief Класс выбора шрифта
+			class CULFontDlg:
+				public CULCommDlg
+			{
+			public:
+				///\brief объект структуры для организации диалога выбора шрифта
+				CHOOSEFONT m_cf;
+			protected:
+				///\brief структура шрифта
+				LOGFONT m_lf;
+			public:
+				///\brief Конструктор
+				///\param clrInit - цвет поумолчанию
+				///\param dwFlags - флаги для огранизации диалога
+				explicit CULFontDlg();
+				///\brief Создание модального диалога
+				///\param idTempl - Шаблон диалога, если утановлен флаг CC_ENABLETEMPLATE
+				///\param hParentWnd - Хендл родителя
+				///\return Код возврата
+				int CreateModal(short idTempl,HWND hParentWnd);	
+				///\brief возвращает ссылку на структуру шрифта
+				///\return ссылкане видно на структуру шрифта
+				LOGFONT& GetLogFont();
+				///\brief устанавливает цвет шрифта в диалоге выбора
+				///\note требует флага CF_EFFECTS. \n
+				/// Вызов функции добавляет флаг SetFontColor m_cf.Flags
+				void SetFontColor(COLORREF clrFont);
+				///\brief возвращает цвет шрифта в диалоге выбора
+				///\note требует флага CF_EFFECTS 
+				COLORREF GetFontColor();
+
+			};
 		}
 	}
 }
@@ -127,8 +158,6 @@ namespace ULWnds
 CFindReplaceDialog
  Lets user initiate a find or replace operation in a text file.
  
-CFontDialog
- Lets user specify a font.
  
 CPrintDialog
  Lets user specify information for a print job.
