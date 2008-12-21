@@ -85,5 +85,9 @@ namespace ULWnds
 		{
 			return (int)SendMessage(CB_GETLBTEXT,(WPARAM)nItem);
 		}
+		int CULComboBox::FindString(int nItem,LPCTSTR pszStr)
+		{
+			return (int)SendMessage(CB_FINDSTRING,(WPARAM)nItem,(LPARAM)pszStr);
+		}
 	}
 }

@@ -124,14 +124,13 @@ namespace ULWnds
 			public:
 				///\brief объект структуры для организации диалога выбора шрифта
 				CHOOSEFONT m_cf;
-			protected:
 				///\brief структура шрифта
 				LOGFONT m_lf;
 			public:
 				///\brief Конструктор
 				///\param clrInit - цвет поумолчанию
 				///\param dwFlags - флаги для огранизации диалога
-				explicit CULFontDlg();
+				explicit CULFontDlg(DWORD dwFlags=CF_ENABLEHOOK|CF_SCREENFONTS);
 				///\brief Создание модального диалога
 				///\param idTempl - Шаблон диалога, если утановлен флаг CC_ENABLETEMPLATE
 				///\param hParentWnd - Хендл родителя

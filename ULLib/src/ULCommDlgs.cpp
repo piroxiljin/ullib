@@ -2,6 +2,7 @@
 ///\brief cpp файл классов стандартных диалоговых окон(02.01.2007)
 #include "..\\include\\ULCommDlgs.h"
 #include "..\\include\\ULRes.h"
+#include "..\\include\\ULGObjs.h"
 
 
 namespace ULWnds
@@ -83,8 +84,15 @@ namespace ULWnds
 				m_cc.hInstance=(HWND)ULOther::ULGetResourceHandle();
 				m_cc.Flags=dwFlags;
 
-				for(int i=0;i<sizeof(m_acrCustClr)/sizeof(m_acrCustClr[0]);++i)
-					m_acrCustClr[i]=0x00ffffff;
+				ULGDI::ULGObjs::CULPalette pal;
+				pal.m_hPalette=(HPALETTE)GetStockObject(DEFAULT_PALETTE);
+				PALETTEENTRY pe;
+				for(int i=0;i<16;++i)
+				{
+					pal.GetPaletteEntries(i,1,&pe);
+					m_acrCustClr[i]=RGB(pe.peRed,pe.peGreen,pe.peBlue);
+				}
+				pal.Detach();
 
 				m_cc.lpCustColors=m_acrCustClr;
 				m_cc.rgbResult=clrInit;
@@ -151,14 +159,15 @@ namespace ULWnds
 				return lpszOld;
 			}
 			//==================CULFontDialog=======================================
-			CULFontDlg::CULFontDlg():
+			CULFontDlg::CULFontDlg(DWORD dwFlags):
 				CULCommDlg()
 			{
 				::ZeroMemory(&m_cf,sizeof(m_cf));
+				::ZeroMemory(&m_lf,sizeof(m_lf));
 				m_cf.lStructSize=sizeof(m_cf);
 				m_cf.lpLogFont=&m_lf;
 				m_cf.rgbColors=0;
-				m_cf.Flags=CF_ENABLEHOOK|CF_SCREENFONTS;
+				m_cf.Flags=dwFlags;
 				m_cf.lpfnHook=(LPCFHOOKPROC)CULCommDlg::WndProc;
 				m_cf.lCustData=(LPARAM)this;
 			}
