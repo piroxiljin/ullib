@@ -182,6 +182,14 @@ namespace ULGDI
 			///\return TRUE в случае успеха
 			inline int FillRgn(HRGN hrgn,HBRUSH hbr)
 				{return (0!=::FillRgn(*this,hrgn,hbr));};
+			///\brief функция сохраняет текущее состояние контекста
+			///\return TRUE в случае успеха
+			BOOL SaveDC();
+			///\brief функция востанавливает сохранённое состояние контекста
+			///\param nSavedDC - состояние для востановления
+			///\return TRUE в случае успеха
+			BOOL RestoreDC(int nSavedDC);
+
 	};
 		///\class CULWindowDC
 		///\brief Класс контекста окна(10.09.2007)

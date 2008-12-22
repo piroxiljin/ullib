@@ -166,3 +166,5 @@
 	1 добавлен класс диалога выбора шрифта CULFontDlg
 	2 добавлено 
 		CULComboBox::FindString(int nItem,LPCTSTR pszStr)
+		BOOL CULDC::SaveDC()
+		BOOL CULDC::RestoreDC(int nSavedDC)
