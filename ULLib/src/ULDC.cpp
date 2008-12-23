@@ -109,7 +109,7 @@ namespace ULGDI
 			}
 			GlobalFree((HGLOBAL)lpBits);
 			CloseHandle(hf);
-				return TRUE;
+			return TRUE;
 		}
 
 		BOOL CULDC::SaveDC()
