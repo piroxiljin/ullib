@@ -10,6 +10,7 @@
 #include "ULComboBox.h"
 #include "ULDateTimePicker.h"
 #include "ULSplitter.h"
+#include "ULStatic.h"
 namespace ULWnds
 {
 	///\namespace ULControls

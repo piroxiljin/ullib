@@ -164,6 +164,7 @@
 	7 в CULCommDlg в конструкторе сделана очистка зранилищь сообщений для исключения конфликтов с обработчиками CULDlg
 2.3.3. <23.12.2008> 
 	1 добавлен класс диалога выбора шрифта CULFontDlg
+		CULStatic - обёртка для STATIC контрола
 	2 добавлено 
 		CULComboBox::FindString(int nItem,LPCTSTR pszStr)
 		BOOL CULDC::SaveDC()
@@ -172,3 +173,7 @@
 			int x,int y,int nWidth,int nHeight,HWND hWndParent,HMENU hMenu)
 		BOOL CULWnd::RegisterDefClass()
 	3 перенесены все inline функции ULWnd.h в ULWnd.cpp
+	4 функция 
+		CULWnd::SetClassLong(int nIndex,LONG dwNewLong) 
+		заменена на 
+		CULWnd::SetClassLongPtr(int nIndex,LONG dwNewLong)

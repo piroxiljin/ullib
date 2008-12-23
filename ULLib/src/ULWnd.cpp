@@ -135,7 +135,7 @@ namespace ULWnds
 		return (m_hWnd!=NULL);
 	}
 
-	BOOL CULWnd::Create(DWORD dwExStyle,LPCTSTR lpClassName,LPCTSTR lpWindowName,DWORD dwStyle,
+	BOOL CULWnd::CreateEx(DWORD dwExStyle,LPCTSTR lpClassName,LPCTSTR lpWindowName,DWORD dwStyle,
 		int x,int y,int nWidth,int nHeight,HWND hWndParent,HMENU hMenu)
 	{
 		if(!lpClassName)
@@ -365,13 +365,19 @@ namespace ULWnds
 	{
 		return ::GetWindow(*this,uCmd);
 	}
+	/*
 	DWORD CULWnd::SetClassLong(int nIndex,LONG dwNewLong)
 	{
 		return ::SetClassLong(*this,nIndex,dwNewLong);
 	}
+	*/
 	BOOL CULWnd::IsWindowEnabled()
 	{
 		return ::IsWindowEnabled(*this);
+	}
+	DWORD CULWnd::SetClassLongPtr(int nIndex,LONG dwNewLong)
+	{
+		return ::SetClassLongPtr(*this,nIndex,dwNewLong);
 	}
 }
 

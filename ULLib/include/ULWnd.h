@@ -77,7 +77,7 @@ namespace ULWnds
 		///\param hWndParent - хендл роддительского окна
 		///\param hMenu - хендл меню. для чайлдовых это идентификатор
 		///\return TRUE в случае успеха
-		BOOL Create(DWORD dwExStyle,LPCTSTR lpClassName,LPCTSTR lpWindowName,DWORD dwStyle,
+		BOOL CreateEx(DWORD dwExStyle,LPCTSTR lpClassName,LPCTSTR lpWindowName,DWORD dwStyle,
 			int x,int y,int nWidth,int nHeight,HWND hWndParent,HMENU hMenu);
 		///\brief регистрирует класс окна поумолчанию
 		///\return TRUE в случае успеха
@@ -326,7 +326,7 @@ namespace ULWnds
 		///\param nIndex - индекс поля
 		///\param dwNewLong - значение поля
 		///\return предыдущее значение
-		DWORD SetClassLong(int nIndex,LONG dwNewLong);
+		DWORD SetClassLongPtr(int nIndex,LONG dwNewLong);
 	};
 }
 #endif //__ULWND_H__
