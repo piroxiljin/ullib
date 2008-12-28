@@ -102,7 +102,7 @@ namespace ULGDI
 			///\brief удаляет контекст
 			///\return TRUE в случае успеха
 			inline BOOL DeleteDC()
-				{if(m_hDC!=m_hDC)return ::DeleteDC(*this);else return FALSE;}
+				{if(m_hDC!=NULL)return ::DeleteDC(*this);else return FALSE;}
 			///\brief отсоединяет контекст от класса
 			///\return контекст
 			inline HDC Detach()

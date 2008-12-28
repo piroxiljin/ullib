@@ -46,8 +46,7 @@ namespace ULWnds
 						short IconID,
 						HWND hClientWnd,
 						short BGColor=COLOR_WINDOW,
-						DWORD dwChildStyle=MDIS_ALLCHILDSTYLES|
-						WS_CLIPSIBLINGS|WS_CLIPCHILDREN);
+						DWORD dwChildStyle=MDIS_ALLCHILDSTYLES|WS_CLIPCHILDREN);
 		protected:
 			///\brief Обработчик WM_CREATE
 			virtual LRESULT OnCreate(WPARAM /*wParam*/,LPARAM);

@@ -19,11 +19,11 @@ namespace ULWnds
 			///\brief Функция для создания эдита
 			///\param hParentWnd - хендл родительского окна
 			///\param pszText - текст
-			///\param uID - ID эдита
-			///\param x,y - координата кнопки
+			///\param uID - идентификатор контрола
+			///\param x,y - координата контрола
 			///\param cx,cy - размер 
 			///\param dwStyle - стиль 
-			///\param dwStyleEx - расширенный стиль эдита
+			///\param dwStyleEx - расширенный стиль 
 			///\return TRUE в случае успеха
 			BOOL Create(HWND hParentWnd,LPCTSTR pszText,UINT uID,int x,int y,
 				int cx,int cy,DWORD dwStyle=WS_CHILD|WS_VISIBLE,

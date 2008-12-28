@@ -117,7 +117,7 @@ namespace ULWnds
 		wcex.hInstance		= ULOther::ULGetResourceHandle();
 		wcex.hIcon			= NULL;
 		wcex.hCursor		= NULL;
-		wcex.hbrBackground	= NULL;
+		wcex.hbrBackground	= (HBRUSH)COLOR_WINDOW;
 		wcex.lpszMenuName	= NULL;	
 		wcex.lpszClassName	= m_szDefClassName;
 		wcex.hIconSm		= NULL;
