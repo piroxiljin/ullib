@@ -121,5 +121,9 @@ namespace ULGDI
 		{
 			return (::RestoreDC(m_hDC,nSavedDC)!=0);
 		}
+		BOOL CULDC::Polygon(CONST POINT *lpPoints,int nCount)
+		{
+			return ::Polygon(m_hDC,lpPoints,nCount);
+		}
 	}
 }

@@ -189,7 +189,11 @@ namespace ULGDI
 			///\param nSavedDC - состояние для востановления
 			///\return TRUE в случае успеха
 			BOOL RestoreDC(int nSavedDC);
-
+			///\brief функция рисует полигон
+			///\param lpPoints - указатель на массив точек полигона
+			///\param nCount - число точек в массиве
+			///\return TRUE в случае успеха
+			BOOL Polygon(CONST POINT *lpPoints,int nCount);
 	};
 		///\class CULWindowDC
 		///\brief Класс контекста окна(10.09.2007)
