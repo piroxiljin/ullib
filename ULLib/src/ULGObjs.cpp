@@ -58,7 +58,13 @@ namespace ULGDI
 				}
 			}
 			return TRUE;
-		};
+		}
+
+
+		CULPen::CULPen(int fnPenStyle,int nWidth,COLORREF crColor)
+		{
+			m_hPen=::CreatePen(fnPenStyle,nWidth,crColor);
+		}
 	}
 }
 
@@ -170,3 +176,4 @@ HBITMAP ULGDI::ULLoadImage(LPCTSTR szResource,LPCTSTR szResourceType,HINSTANCE h
 		m_pPicture->Release();
 	return hBitmapRet;
 }
+

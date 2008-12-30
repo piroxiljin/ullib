@@ -375,9 +375,17 @@ namespace ULWnds
 	{
 		return ::IsWindowEnabled(*this);
 	}
-	DWORD CULWnd::SetClassLongPtr(int nIndex,LONG dwNewLong)
+	ULONG_PTR CULWnd::SetClassLongPtr(int nIndex,LONG dwNewLong)
 	{
 		return ::SetClassLongPtr(*this,nIndex,dwNewLong);
+	}
+	ULONG_PTR CULWnd::GetClassLongPtr(LONG nIndex)
+	{
+		return ::GetClassLongPtr(m_hWnd,nIndex);
+	}
+	HWND CULWnd::SetCapture()
+	{
+		return ::SetCapture(m_hWnd);
 	}
 }
 

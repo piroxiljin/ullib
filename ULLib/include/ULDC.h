@@ -194,6 +194,15 @@ namespace ULGDI
 			///\param nCount - число точек в массиве
 			///\return TRUE в случае успеха
 			BOOL Polygon(CONST POINT *lpPoints,int nCount);
+			///\brief функция для получения цвета по указанной координате
+			///\param nXPos,nYPos - координата
+			///\return цвет в случае успеха, иначе CLR_INVALID
+			COLORREF GetPixel(int nXPos,int nYPos);
+			///\brief функция для установке цвета по указанной координате
+			///\param nXPos,nYPos - координата
+			///\param crColor - устанавливаемый цвет 
+			///\return TRUE в случае успеха
+			BOOL SetPixel(int nXPos,int nYPos,COLORREF crColor);
 	};
 		///\class CULWindowDC
 		///\brief Класс контекста окна(10.09.2007)

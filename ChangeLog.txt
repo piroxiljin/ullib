@@ -169,10 +169,15 @@
 		CULComboBox::FindString(int nItem,LPCTSTR pszStr)
 		BOOL CULDC::SaveDC()
 		BOOL CULDC::RestoreDC(int nSavedDC)
-		BOOL CULWnd::Create(DWORD dwExStyle,LPCTSTR lpClassName,LPCTSTR lpWindowName,DWORD dwStyle,
+		BOOL CULWnd::CreateEx(DWORD dwExStyle,LPCTSTR lpClassName,LPCTSTR lpWindowName,DWORD dwStyle,
 			int x,int y,int nWidth,int nHeight,HWND hWndParent,HMENU hMenu)
 		BOOL CULWnd::RegisterDefClass()
 		BOLL CULDC::Polygon(CONST POINT *lpPoints,int nCount)
+		HWND CULWnd::SetCapture()
+		ULONG_PTR CULWnd::GetClassLongPtr(LONG nIndex)
+		COLORREF CULDC::GetPixel(int nXPos,int nYPos)
+		BOOL CULDC::SetPixel(int nXPos,int nYPos,COLORREF crColor)
+		CULPen::CULPen(int fnPenStyle,int nWidth,COLORREF crColor)
 	3 перенесены все inline функции ULWnd.h в ULWnd.cpp
 	4 функция 
 		CULWnd::SetClassLong(int nIndex,LONG dwNewLong) 

@@ -125,5 +125,13 @@ namespace ULGDI
 		{
 			return ::Polygon(m_hDC,lpPoints,nCount);
 		}
+		COLORREF CULDC::GetPixel(int nXPos,int nYPos)
+		{
+			return ::GetPixel(m_hDC,nXPos,nYPos);
+		}
+		BOOL CULDC::SetPixel(int nXPos,int nYPos,COLORREF crColor)
+		{
+			return (::SetPixel(m_hDC,nXPos,nYPos,crColor)!=CLR_INVALID);
+		}
 	}
 }
