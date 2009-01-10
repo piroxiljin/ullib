@@ -53,6 +53,9 @@ namespace ULWnds
 				if(!CULListCtrl::Attach(hWnd))
 					return FALSE;
 				ModifyStyle(0,LVS_OWNERDRAWFIXED);
+				RECT rc;
+				GetClientRect(&rc);
+				SetWindowPos(0,0,0,rc.right,rc.bottom,SWP_NOZORDER|SWP_NOMOVE|SWP_FRAMECHANGED);
 				return TRUE;
 			}
 
@@ -343,7 +346,7 @@ namespace ULWnds
 			{
 				rc.top+=3;
 				rc.left+=3;
-				pDC->DrawText(m_strText,m_strText.GetLen(),&rc, DT_WORDBREAK|DT_WORD_ELLIPSIS|DT_LEFT);
+				pDC->DrawText(m_strText,m_strText.GetLen(),&rc,DT_END_ELLIPSIS|DT_LEFT);
 			}
 			void CItemText::Clean()
 			{
@@ -365,6 +368,10 @@ namespace ULWnds
 				if(wParam==WA_INACTIVE)
 					ShowWindow(SW_HIDE);
 				return FALSE;
+			}
+			CItemEdit::~CItemEdit()
+			{
+				m_Edit.DestroyWindow();
 			}
 			BOOL CItemEdit::Create(HWND hParentWnd,UINT uID,LPCTSTR pszStr)
 			{
@@ -427,6 +434,8 @@ namespace ULWnds
 				}
 			CItemComboBox::~CItemComboBox()
 			{
+				m_Edit.Detach();
+				m_ComboBox.DestroyWindow();
 				if(m_hTheme)
 					CloseThemeData(m_hTheme);
 			}
@@ -533,6 +542,7 @@ namespace ULWnds
 				}
 			CItemDateTimePicker::~CItemDateTimePicker()
 			{
+				m_DateTimePicker.DestroyWindow();
 				if(m_hTheme)
 					CloseThemeData(m_hTheme);
 			}
@@ -618,6 +628,7 @@ namespace ULWnds
 					}
 			CItemButton::~CItemButton()
 			{
+				m_Button.DestroyWindow();
 				if(m_hTheme)
 					CloseThemeData(m_hTheme);
 			}

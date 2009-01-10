@@ -7,6 +7,7 @@
 #include "ULToolTip.h"
 #include "ULMenu.h"
 #include "ULListCtrl.h"
+#include "ULListCtrlEx.h"
 #include "ULComboBox.h"
 #include "ULDateTimePicker.h"
 #include "ULSplitter.h"

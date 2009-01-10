@@ -21,6 +21,8 @@ namespace ULWnds
 			///\brief интерфейс объекта помещаемого в €чейку расхиренного листконтрола
 			struct IItemObject
 			{
+				///\brief деструктор
+				virtual ~IItemObject(){};
 				///\brief функци€ отрисовки объекта
 				///\param pDC - указатель на класс контекста, в который производитс€ отрисовка
 				///\param rc - область €чейки, в который производитс€ отрисовка
@@ -175,6 +177,8 @@ namespace ULWnds
 				///\param pszStr - начальный текст в итеме
 				///\return TRUE в случае успеха
 				BOOL Create(HWND hParentWnd,UINT uID,LPCTSTR pszStr);
+				///\brief деструктор
+				~CItemEdit();
 
 				virtual void Draw(ULGDI::ULDC::CULDC* pDC,RECT& rc);
 				virtual void OnLButtonDown(RECT& /*rc*/){}
