@@ -162,3 +162,36 @@
 	5 в конструкторе CULColorDlg сделана начальная инициализация набора цветов в белый
 	6 в CULMessageMap добавлены функции для очистки хранилищ сообщений (см.ClearXXX)
 	7 в CULCommDlg в конструкторе сделана очистка зранилищь сообщений для исключения конфликтов с обработчиками CULDlg
+
+2.3.3. <10.01.2008> 
+	1 добавлен класс диалога выбора шрифта CULFontDlg
+		CULStatic - обёртка для STATIC контрола
+	2 добавлено 
+		CULComboBox::FindString(int nItem,LPCTSTR pszStr)
+		BOOL CULDC::SaveDC()
+		BOOL CULDC::RestoreDC(int nSavedDC)
+		BOOL CULWnd::CreateEx(DWORD dwExStyle,LPCTSTR lpClassName,LPCTSTR lpWindowName,DWORD dwStyle,
+			int x,int y,int nWidth,int nHeight,HWND hWndParent,HMENU hMenu)
+		BOOL CULWnd::RegisterDefClass()
+		BOLL CULDC::Polygon(CONST POINT *lpPoints,int nCount)
+		HWND CULWnd::SetCapture()
+		ULONG_PTR CULWnd::GetClassLongPtr(LONG nIndex)
+		COLORREF CULDC::GetPixel(int nXPos,int nYPos)
+		BOOL CULDC::SetPixel(int nXPos,int nYPos,COLORREF crColor)
+		CULPen::CULPen(int fnPenStyle,int nWidth,COLORREF crColor)
+		BOOL CULDC::DrawIcon(int X,int Y,HICON hIcon)
+		BOOL CULListCtrlEx::DeleteAllItems()
+		BOOL CULListCtrlEx::DeleteItem(int nItem)
+	3 перенесены все inline функции ULWnd.h в ULWnd.cpp
+	4 функция 
+		CULWnd::SetClassLong(int nIndex,LONG dwNewLong) 
+		заменена на 
+		CULWnd::SetClassLongPtr(int nIndex,LONG dwNewLong)
+	5 исправлена ошибка в CULDC::DeleteDC. ранее не происходило удаления контекста
+	6 ULListCtrlEx.h включен в ULControls.h
+	7 в BOOL CULListCtrlEx::Attach(HWND hWnd) добалена генерация посылки сообщения WM_MEASUREITEM
+	8 ULListCtrlEx::CItemText теперь невмещающийся текст заканчивает точками
+	9 в ULListCtrlEx::IItemObject добавлен виртуальный деструктор, а в деструкторы унаследующие этот интерфей добавлено уничтожение клиентских контролов
+	10 если ULListCtrlEx::CItemComboBox disable, то он не появляется
+	11 перегружена в protected CULListCtrlEx::SetItemData
+	12 добавлена LRESULT CULPropSheet::OnDestroy(WPARAM,LPARAM) для очистки полей класса CULPropSheet при уничтожении окна

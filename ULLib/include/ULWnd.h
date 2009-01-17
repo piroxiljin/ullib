@@ -14,6 +14,8 @@ namespace ULWnds
 	class CULWnd
 	{
 	protected:
+		LPCTSTR m_szDefClassName;
+	protected:
 		///\brief Функция окна
 		static LRESULT WndProc(HWND hWnd , UINT uMsg , WPARAM wParam , LPARAM lParam);
 	public:
@@ -65,12 +67,25 @@ namespace ULWnds
 		///\return TRUE в случае успеха
 		BOOL Create(LPCTSTR lpClassName,LPCTSTR lpWindowName,DWORD dwStyle,
 			int x,int y,int nWidth,int nHeight,HWND hWndParent,HMENU hMenu);
+		///\brief создает окно
+		///\param dwExStyle - расширенный стиль окна
+		///\param lpClassName - класс окна.Если lpClassName равен NULL\n
+		///\ то регистрируеться класс поумолчанию ULWNDCLASS
+		///\param lpWindowName - имя окна
+		///\param dwStyle - стиль окна
+		///\param x,y,nWidth,nHeight - координаты и размеры окна
+		///\param hWndParent - хендл роддительского окна
+		///\param hMenu - хендл меню. для чайлдовых это идентификатор
+		///\return TRUE в случае успеха
+		BOOL CreateEx(DWORD dwExStyle,LPCTSTR lpClassName,LPCTSTR lpWindowName,DWORD dwStyle,
+			int x,int y,int nWidth,int nHeight,HWND hWndParent,HMENU hMenu);
+		///\brief регистрирует класс окна поумолчанию
+		///\return TRUE в случае успеха
+		BOOL RegisterDefClass();
 		///\brief Дефолтовая функция окна
-		inline virtual LRESULT DefWindowProc(UINT uMsg,WPARAM wParam,LPARAM lParam)
-			{return ::DefWindowProc(*this, uMsg, wParam, lParam);};
+		virtual LRESULT DefWindowProc(UINT uMsg,WPARAM wParam,LPARAM lParam);
 		///\brief Вызов функции окна
-		inline virtual LRESULT CallWindowProc(UINT uMsg,WPARAM wParam,LPARAM lParam)
-			{return ::CallWindowProc(m_lpSubClassWndProc,*this, uMsg, wParam, lParam);}	
+		virtual LRESULT CallWindowProc(UINT uMsg,WPARAM wParam,LPARAM lParam);
 		///\brief Функция вызывающаяся из WndProc по приходу сообщения
 		///\return если возвращает не ноль, то пропускается обработка этого сообщения другими обработчиками
 		virtual LRESULT OnMessage(UINT uMsg,WPARAM wParam,LPARAM lParam);
@@ -78,64 +93,51 @@ namespace ULWnds
 		///\param lpString - строка
 		///\param nMaxCount - максимальная лдина строки
 		///\return колличество записанных символов в lpString
-		inline int GetWindowText(LPTSTR lpString,int nMaxCount)
-			{return ::GetWindowText(*this,lpString,nMaxCount);}
+		int GetWindowText(LPTSTR lpString,int nMaxCount);
 		///\brief Получение длины текста окна
 		///\return колличество символов в окне
-		inline int GetWindowTextLength()
-			{return ::GetWindowTextLength(*this);}
+		int GetWindowTextLength();
 		///\brief Установка текста в окно
 		///\param lpString - Текст
 		///\return TRUE в случае успеха
-		inline BOOL SetWindowText(LPTSTR lpString)
-			{return ::SetWindowText(*this,lpString);}
+		BOOL SetWindowText(LPTSTR lpString);
 		///\brief отправка сообщения в окно
 		///\param Msg - Сообщение
 		///\param wParam - Параметр 1
 		///\param lParam - Параметр 2
 		///\return ответ обработчика сообщения
-		inline LRESULT SendMessage(UINT Msg,WPARAM wParam=0,LPARAM lParam=0)
-			{return ::SendMessage(*this,Msg,wParam,lParam);}
+		LRESULT SendMessage(UINT Msg,WPARAM wParam=0,LPARAM lParam=0);
 		///\brief постановка сообщения в окна в конец очереди цикла сообщений
 		///\param Msg - Сообщение
 		///\param wParam - Параметр 1
 		///\param lParam - Параметр 2
 		///\return TRUE в случае успеха
-		inline BOOL PostMessage(UINT Msg,WPARAM wParam=0,LPARAM lParam=0)
-			{return ::PostMessage(*this,Msg,wParam,lParam);}
+		BOOL PostMessage(UINT Msg,WPARAM wParam=0,LPARAM lParam=0);
 		///\brief Установка фокуса
 		///\return возвращает фокус предыдущего окна
-		inline HWND SetFocus()
-			{return ::SetFocus(*this);}
+		HWND SetFocus();
 		///\brief Уничтожает окно
 		///\return TRUE в случае успеха
-		inline BOOL DestroyWindow()
-			{return ((m_hWnd!=NULL)?::DestroyWindow(*this):FALSE);}
+		BOOL DestroyWindow();
 		///\brief Делает окно активным
 		///\return Пердыдущее активное окно
-		inline HWND SetActiveWindow()
-			{return ::SetActiveWindow(*this);}
+		HWND SetActiveWindow();
 		///\brief Помещает окно на передний план и делает его активным
 		///\return TRUE в случае успеха
-		inline BOOL SetForegroundWindow()
-			{return ::SetForegroundWindow(*this);}
+		BOOL SetForegroundWindow();
 		///\brief Возвращает родителя
 		///\return Хэндл родителя
-		inline HWND GetParent()
-			{return ::GetParent(*this);};
+		HWND GetParent();
 		///\brief Устанавливает нового родителя
 		///\return Хэндл предыдущего родителя
-		inline HWND SetParent(HWND hWndNewParent)
-			{m_hParentWnd=hWndNewParent;return ::SetParent(*this,hWndNewParent);};
+		HWND SetParent(HWND hWndNewParent);
 		///\brief Изменяет состояние видимости окна
 		///\param nCmdShow - Состояние
 		///\return TRUE в случае предыдущей видимости, иначе FALSE
-		inline BOOL ShowWindow(int nCmdShow)
-			{return ::ShowWindow(*this,nCmdShow);};
+		BOOL ShowWindow(int nCmdShow);
 		///\brief Обновляет окно
 		///\return TRUE в случае предыдущей видимости, иначе FALSE
-		inline BOOL UpdateWindow()
-			{return ::UpdateWindow(*this);}
+		BOOL UpdateWindow();
 		///\brief Изменяет позицию окна
 		///\param hWndInsertAfter - положение окна по Z координате
 		///возможны HWND_BOTTOM,HWND_NOTOPMOST,HWND_TOP,HWND_TOPMOST
@@ -143,8 +145,7 @@ namespace ULWnds
 		///\param cx,cy - Размеры
 		///\param uFlags - флаг отображения
 		///\return TRUE в случае успеха
-		inline BOOL SetWindowPos(HWND hWndInsertAfter,int X,int Y,int cx,int cy,UINT uFlags)
-			{return ::SetWindowPos(*this,hWndInsertAfter,X,Y,cx,cy,uFlags);}
+		BOOL SetWindowPos(HWND hWndInsertAfter,int X,int Y,int cx,int cy,UINT uFlags);
 		///\brief "Изменяет multiple-window – position structure"
 		///\param hWinPosInfo - "Handle to a multiple-window – position structure"
 		///	содержащая информацию об одной или более структур
@@ -154,74 +155,54 @@ namespace ULWnds
 		///\param cx,cy - Размеры
 		///\param uFlags - флаг отображения
 		///\return "Изменяет multiple-window – position structure"
-		inline HDWP DeferWindowPos(HDWP hWinPosInfo,HWND hWndInsertAfter,
-			int x,int y,int cx,int cy,UINT uFlags)
-			{return ::DeferWindowPos(hWinPosInfo,*this,hWndInsertAfter,x,y,cx,cy,uFlags);};
+		HDWP DeferWindowPos(HDWP hWinPosInfo,HWND hWndInsertAfter,
+			int x,int y,int cx,int cy,UINT uFlags);
 		///\brief Перемецает окно
 		///\param X,Y - Координаты
 		///\param nWidth,nHeight - Размеры
 		///\param fRepaint - флаг наличия перерисовки после перемещения
 		///\return TRUE в случае успеха
-		inline BOOL MoveWindow(int X,int Y,int nWidth,int nHeight,BOOL fRepaint)
-			{return ::MoveWindow(*this,X,Y,nWidth,nHeight,fRepaint);}
+		BOOL MoveWindow(int X,int Y,int nWidth,int nHeight,BOOL fRepaint);
 		///\brief Возвращает инфрмацию об окне
 		///\param nIndex - ID поля возвращаемой информации
 		///\param запрашиваемая информация
-		inline LONG GetWindowLong(int nIndex)
-			{return ::GetWindowLong(*this,nIndex);}
+		LONG GetWindowLong(int nIndex);
 		///\brief устанавливает новое значение в поле окна
 		///\param nIndex- ID поля 
 		///\param dwNewLong - новое значение
 		///\return предыдущее значение
-		inline LONG SetWindowLong(int nIndex,LONG dwNewLong)
-			{return ::SetWindowLong(*this,nIndex,dwNewLong);}
+		LONG SetWindowLong(int nIndex,LONG dwNewLong);
 		///\brief Модифицирует стиль окна
 		///\param dwRemStyle - Убираемый стиль
 		///\param dwAddStyle - Устанавливаемый стиль
 		///\param uFlags - Флаг обновления окна
 		///\return TRUE в случае успеха
-		inline BOOL ModifyStyle(DWORD dwRemStyle,DWORD dwAddStyle,UINT uFlags=SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER | SWP_FRAMECHANGED)
-		{	
-			SetWindowLong(GWL_STYLE,
-				(GetWindowLong(GWL_STYLE)&~dwRemStyle)|dwAddStyle);
-			return SetWindowPos(NULL,0,0,0,0,uFlags);
-		}
+		BOOL ModifyStyle(DWORD dwRemStyle,DWORD dwAddStyle,UINT uFlags=SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER | SWP_FRAMECHANGED);
 		///\brief Модифицирует расширенный стиль окна
 		///\param dwRemStyleEx - Убираемый стиль
 		///\param dwAddStyleEx - Устанавливаемый стиль
 		///\param uFlags - Флаг обновления окна
 		///\return TRUE в случае успеха
-		inline BOOL ModifyStyleEx(DWORD dwRemStyleEx,DWORD dwAddStyleEx,UINT uFlags=SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER | SWP_FRAMECHANGED)
-		{	
-			SetWindowLong(GWL_EXSTYLE,
-				(GetWindowLong(GWL_EXSTYLE)&(~dwRemStyleEx))|dwAddStyleEx);
-			return SetWindowPos(NULL,0,0,0,0,uFlags);
-		}
+		BOOL ModifyStyleEx(DWORD dwRemStyleEx,DWORD dwAddStyleEx,UINT uFlags=SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER | SWP_FRAMECHANGED);
 		///\brief Функция для получения размера клиентской области
 		///\param lpRect - Указатель на получаемый размер
 		///\return TRUE в случае успеха
-		inline BOOL GetClientRect(LPRECT lpRect)
-			{return ::GetClientRect(*this,lpRect);}
+		BOOL GetClientRect(LPRECT lpRect);
 		///\brief Функция для получения расположения окна
 		///\param lpRect - Указатель на получаемое расположение
 		///\return TRUE в случае успеха
-		inline BOOL GetWindowRect(LPRECT lpRect)
-			{return ::GetWindowRect(*this,lpRect);}
+		BOOL GetWindowRect(LPRECT lpRect);
 		///\brief Устанавливает шрифт окна
 		///\param hFont - Хэндл шрифта
 		///\param fRedraw - Перерисует себя если TRUE
-		inline void SetFont(HFONT hFont,BOOL fRedraw)
-			{SendMessage(WM_SETFONT,(WPARAM)hFont,(LPARAM)fRedraw);}
+		void SetFont(HFONT hFont,BOOL fRedraw);
 		///\brief Возвращает шрифт окна
-		inline HFONT GetFont()
-			{return (HFONT)SendMessage(WM_GETFONT);}
-		
+		HFONT GetFont();		
 		///\brief Обновляет указанный прямоугольник на окне
 		///\param lpRect - прямоугольник для обновления, если NULL, то обновиться всё окно
 		///\param fErase - при TRUE стерает содержимое
 		///\return TRUE в случае успеха
-		inline BOOL InvalidateRect(CONST RECT *lpRect=NULL,BOOL fErase=FALSE)
-			{return ::InvalidateRect(*this,lpRect,fErase);}
+		BOOL InvalidateRect(CONST RECT *lpRect=NULL,BOOL fErase=FALSE);
 		///\brief Выводит диалоговое окно
 		///\param lpText - тект
 		///\param lpCaption - заголовок
@@ -236,18 +217,15 @@ namespace ULWnds
 		///	IDRETRY Retry button was selected. 
 		///	IDTRYAGAIN Try Again button was selected. 
 		///	IDYES Yes button was selected. 
-		inline int MessageBox(LPCTSTR lpText,LPCTSTR lpCaption,UINT uType)
-			{return ::MessageBox(*this,lpText,lpCaption,uType);}
+		int MessageBox(LPCTSTR lpText,LPCTSTR lpCaption,UINT uType);
 		///\brief Возвращает контекст окна
 		///\return контекст окна
-		inline HDC GetDC()
-			{return ::GetDC(*this);}
+		HDC GetDC();
 		///\brief Задаёт регион для окна
 		///\param hRgn - хэндл региона
 		///\param fRedraw - флаг перерисовки после установки региона
 		///\return TRUE в случае успеха
-		inline BOOL SetWindowRgn(HRGN hRgn,BOOL fRedraw)
-			{return ::SetWindowRgn(*this,hRgn,fRedraw);}
+		BOOL SetWindowRgn(HRGN hRgn,BOOL fRedraw);
 		///\brief Возвращает регион для окна
 		///\param hRgn - хэндл возвращаемого региона
 		///\return 
@@ -256,77 +234,63 @@ namespace ULWnds
 		///	COMPLEXREGION The region is more than one rectangle. 
 		///	ERROR The specified window does not have a region, 
 		///	or an error occurred while attempting to return the region.  
-		inline int GetWindowRgn(HRGN hRgn)
-			{return ::GetWindowRgn(*this,hRgn);}
+		int GetWindowRgn(HRGN hRgn);
 		///\brief Переносит окно на вперёд по Z координате
 		///\return TRUE в случае успеха
-		inline BOOL BringWindowToTop()
-			{return ::BringWindowToTop(*this);}
+		BOOL BringWindowToTop();
 		///\brief Переводит координату относительно текущего окна в абсолютную координату экрана
 		///\param lpPoint - указатель на координату
 		///\return TRUE в случае успеха
-		inline BOOL ScreenToClient(LPPOINT lpPoint)
-			{return ::ScreenToClient(*this,lpPoint);}
+		BOOL ScreenToClient(LPPOINT lpPoint);
 		///\brief Осуществляет перерисовку окна
 		///\param lprcUpdate - перерисовываемый прямоугольник. Если NULL, то перерисовывается весь прямоугольник.
 		///\param hrgnUpdate - перерисовываемый регион. Если NULL, то перерисовывается весь регион.
 		///\param flags - флпг перерисовки
 		///\return TRUE в случае успеха
-		inline BOOL RedrawWindow(CONST RECT *lprcUpdate,HRGN hrgnUpdate,UINT flags)
-			{return ::RedrawWindow(*this,lprcUpdate,hrgnUpdate,flags);}
+		BOOL RedrawWindow(CONST RECT *lprcUpdate,HRGN hrgnUpdate,UINT flags);
 		///brief активирует/дезактивирует перерисовку окна
 		///\param fRedraw - Флаг активации
 		///\return TRUE в случае успеха
-		inline BOOL SetRedraw(BOOL fRedraw)
-			{return (SendMessage(WM_SETREDRAW,WPARAM(fRedraw))!=0);}
+		BOOL SetRedraw(BOOL fRedraw);
 		///\brief "включает/выключает" окно
 		///\param fEnable - флаг включения/выключения
 		///\return TRUE в случае успеха
-		inline BOOL EnableWindow(BOOL fEnable)
-			{return ::EnableWindow(*this,fEnable);}
+		BOOL EnableWindow(BOOL fEnable);
 		///\brief Установка таймера для окна
 		///\param nIDEvent - ID таймера, используется для изменения времени срабатывания
 		///\param uElapse - время срабатывания в мс
 		///\return ID таймера
-		inline UINT_PTR SetTimer(UINT_PTR nIDEvent,UINT uElapse)
-			{return ::SetTimer(*this,nIDEvent,uElapse,NULL);}
+		UINT_PTR SetTimer(UINT_PTR nIDEvent,UINT uElapse);
 		///\brief Уничтожает выбранный таймер
 		///\param uIDEvent - ID таймера, который вернул SetTimer
 		///\return TRUE в случае успеха
-		BOOL KillTimer(UINT_PTR uIDEvent)
-			{return ::KillTimer(*this,uIDEvent);}
+		BOOL KillTimer(UINT_PTR uIDEvent);
 		///\brief Устанавливает меню для окна
 		///\param hMenu - хендл меню
 		///\return TRUE в случае успеха
-		BOOL SetMenu(HMENU hMenu)
-			{return ::SetMenu(*this,hMenu);}
+		BOOL SetMenu(HMENU hMenu);
 		///\brief Получает хендл на дочерний контрол
 		///\param nIDDlgItem - ID контрола
 		///\return Хендл контроа
-		inline HWND GetDlgItem(int nIDDlgItem)
-			{return ::GetDlgItem(*this,nIDDlgItem);}
+		HWND GetDlgItem(int nIDDlgItem);
 		///\brief Проверяет видимость окна
 		///\return TRUE если видимо
-		inline BOOL IsWindowVisible()
-			{return ::IsWindowVisible(*this);}
+		BOOL IsWindowVisible();
 		///\brief Проверяет доступность окна
 		///\return TRUE если видимо
 		BOOL IsWindowEnabled();
 		///\brief Определяет существует ли окно
 		///\return TRUE если существует
-		inline BOOL IsWindow()
-			{return ::IsWindow(*this);}
+		BOOL IsWindow();
 		///\brief Переводит координаты клиента в экранные
 		///\param lpPoint - структура с координатой
 		///\return FALSE в случае неудачи
-		BOOL ClientToScreen(LPPOINT lpPoint)
-			{return ::ClientToScreen(*this,lpPoint);}
+		BOOL ClientToScreen(LPPOINT lpPoint);
 		///\brief Устанавливает иконку на окно
-		///\param hIcon - хендл иконjyrb
+		///\param hIcon - хендл иконки
 		///\param fBig - если TRUE, то будет установлена большая иконка, иначе маленькая
 		///\return хендл предыдущей установленной иконки в случае успеха, иначе NULL
-		HICON SetIcon(HICON hIcon,BOOL fBig)
-			{return (HICON)SendMessage(WM_SETICON,(WPARAM)((fBig)?ICON_BIG:ICON_SMALL),(LPARAM)hIcon);}
+		HICON SetIcon(HICON hIcon,BOOL fBig);
 		///\brief Утанавливает прозрачность окна по а-каналу и/или по цветовому ключу
 		///\param crKey - цветовой ключ, по по которому окно будет прозрачно
 		///\param bAlpha - альфа-канал
@@ -334,43 +298,47 @@ namespace ULWnds
 		///	и/или по альфаканалу(LWA_ALPHA)
 		///\return FALSE в случае неудачи
 	#if(_WIN32_WINNT >= 0x0500)
-		BOOL SetLayeredWindowAttributes(COLORREF crKey,BYTE bAlpha,DWORD dwFlags)
-			{return ::SetLayeredWindowAttributes(*this,crKey,bAlpha,dwFlags);}
+		BOOL SetLayeredWindowAttributes(COLORREF crKey,BYTE bAlpha,DWORD dwFlags);
 	#endif
 		///\brief отсоединяет класс окна от хендла
 		///\return хендл окна
-		inline HWND Detach()
-			{HWND hTmp=m_hWnd;m_hWnd=NULL;return hTmp;}
+		HWND Detach();
 		///\brief Функция заносит/изменяет свойство в списке свойств окна
 		///\param lpString - имя свойства
 		///\param hData - даннык
 		///\return TRUE в случае успеха
-		BOOL SetProp(LPTSTR lpString,HANDLE hData)
-			{return ::SetProp(*this,lpString,hData);}
+		BOOL SetProp(LPTSTR lpString,HANDLE hData);
 		///\brief Функция получает свойство из списка свойств окна
 		///\param lpString - имя свойства
 		///\return данные
-		HANDLE GetProp(LPTSTR lpString)
-			{return ::GetProp(*this,lpString);}
+		HANDLE GetProp(LPTSTR lpString);
 		///\brief сворачивает окно
 		///\return TRUE в слуыае успеха
-		BOOL CloseWindow()
-			{return ::CloseWindow(*this);};
+		BOOL CloseWindow();
 		///\brief возвращает меню окна
 		///\return меню окна
-		HMENU GetMenu()
-			{return ::GetMenu(*this);}
+		HMENU GetMenu();
 		///\brief возвращает запрашиваемое окно
 		///\param uCmd - параметр запроса
 		///\return хендл запрашиваемого окна
-		HWND GetWindow(UINT uCmd)
-			{return ::GetWindow(*this,uCmd);}
+		HWND GetWindow(UINT uCmd);
 		///\brief функция для изменения полей класса окна
 		///\param nIndex - индекс поля
 		///\param dwNewLong - значение поля
 		///\return предыдущее значение
-		DWORD SetClassLong(int nIndex,LONG dwNewLong)
-			{return ::SetClassLong(*this,nIndex,dwNewLong);}
+		ULONG_PTR SetClassLongPtr(int nIndex,LONG dwNewLong);
+		///\brief функция для получения полей класса окна
+		///\param nIndex - индекс поля
+		///\param dwNewLong - значение поля
+		///\return предыдущее значение
+		ULONG_PTR GetClassLongPtr(LONG nIndex);
+		///\brief функция выполняет захват фокуса мыши
+		///\return предыдущее окно, имеющее фокус
+		HWND SetCapture();
 	};
+	///\brief функция для получения иконки указанного окна
+	///\param hWnd - хендл окна
+	///\return хендл иконки
+	HICON GetWindowIcon(HWND hWnd);
 }
 #endif //__ULWND_H__

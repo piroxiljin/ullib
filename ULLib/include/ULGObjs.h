@@ -154,6 +154,8 @@ namespace ULGDI
 			CULPen():m_hPen(NULL){};
 			///\brief Конструктор копирования
 			CULPen(HPEN& hPen):m_hPen(hPen){};
+			///\brief Конструктор с созданием карандаша
+			CULPen(int fnPenStyle,int nWidth,COLORREF crColor);
 			///\brief Деструктор
 			virtual ~CULPen(){DeletePen();}
 			///\brief Для подстановки объекта класса там где требуется 

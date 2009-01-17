@@ -183,7 +183,7 @@ namespace ULWnds
 
 			m_fDragMode=TRUE;
 
-			SetCapture(*this);
+			SetCapture();
 			HDC hDC = GetWindowDC(*this);
 			if(m_SplitterOrientation==soHorz)
 				DrawXorBar(hDC,1,pt.y-2,rect.right-2,4);

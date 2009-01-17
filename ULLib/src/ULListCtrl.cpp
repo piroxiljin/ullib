@@ -131,6 +131,38 @@ namespace ULWnds
 		{
 			return(int)SendMessage(LVM_SUBITEMHITTEST,0,(LPARAM)pInfo);
 		}
+		BOOL CULListCtrl::SetItemData(int nItem,DWORD_PTR dwData)
+		{
+			LVITEM it={0};
+			it.mask=LVIF_PARAM;
+			it.iItem=nItem;
+			it.lParam=dwData;
+			return (BOOL)SendMessage(LVM_SETITEM,0,(LPARAM)&it);
+		}
+		DWORD_PTR CULListCtrl::GetItemData(int nItem)
+		{
+			LVITEM it={0};
+			it.mask=LVIF_PARAM;
+			it.iItem=nItem;
+			SendMessage(LVM_GETITEM,0,(LPARAM)&it);
+			return it.lParam;
+		}
+		int CULListCtrl::GetFirstSelectedItemPosition()
+		{
+			return (int)SendMessage(LVM_GETNEXTITEM,(WPARAM)-1,(LPARAM)LVNI_SELECTED);
+		}
+
+		int CULListCtrl::GetNextSelectedItemPosition(int pos)
+		{
+			return (int)SendMessage(LVM_GETNEXTITEM,(WPARAM)pos,(LPARAM)LVNI_SELECTED);
+		}
+
+		BOOL CULListCtrl::DeleteItem(int nItem)
+		{
+			return (BOOL)SendMessage(LVM_DELETEITEM,(WPARAM)nItem);
+		}
+
+
 
 	}
 }

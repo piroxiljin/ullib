@@ -102,7 +102,7 @@ namespace ULGDI
 			///\brief удаляет контекст
 			///\return TRUE в случае успеха
 			inline BOOL DeleteDC()
-				{if(m_hDC!=m_hDC)return ::DeleteDC(*this);else return FALSE;}
+				{if(m_hDC!=NULL)return ::DeleteDC(*this);else return FALSE;}
 			///\brief отсоединяет контекст от класса
 			///\return контекст
 			inline HDC Detach()
@@ -182,6 +182,42 @@ namespace ULGDI
 			///\return TRUE в случае успеха
 			inline int FillRgn(HRGN hrgn,HBRUSH hbr)
 				{return (0!=::FillRgn(*this,hrgn,hbr));};
+			///\brief функция сохраняет текущее состояние контекста
+			///\return TRUE в случае успеха
+			BOOL SaveDC();
+			///\brief функция востанавливает сохранённое состояние контекста
+			///\param nSavedDC - состояние для востановления
+			///\return TRUE в случае успеха
+			BOOL RestoreDC(int nSavedDC);
+			///\brief функция рисует полигон
+			///\param lpPoints - указатель на массив точек полигона
+			///\param nCount - число точек в массиве
+			///\return TRUE в случае успеха
+			BOOL Polygon(CONST POINT *lpPoints,int nCount);
+			///\brief функция для получения цвета по указанной координате
+			///\param nXPos,nYPos - координата
+			///\return цвет в случае успеха, иначе CLR_INVALID
+			COLORREF GetPixel(int nXPos,int nYPos);
+			///\brief функция для установке цвета по указанной координате
+			///\param nXPos,nYPos - координата
+			///\param crColor - устанавливаемый цвет 
+			///\return TRUE в случае успеха
+			BOOL SetPixel(int nXPos,int nYPos,COLORREF crColor);
+			///\brief функция рисует иконку
+			///\param X,Y - координаты верхнего левого угла иконки
+			///\param hIcon - хендл иконки
+			///\return TRUE в случае успеха
+			BOOL DrawIcon(int X,int Y,HICON hIcon);
+			///\brief функция рисует иконку
+			///\param xLeft,yTop - координаты верхнего левого угла иконки
+			///\param hIcon - хендл иконки
+			///\param cxWidth,cyWidth - размеры иконки
+			///\param istepIfAniCur - индекс фрейма, если иконка - анимированный курсор
+			///\param hbrFlickerFreeDraw - хендл на кисть, может быть NULL
+			///\param diFlags - флаг отрисовки
+			///\return TRUE в случае успеха
+			BOOL DrawIconEx(int xLeft,int yTop,HICON hIcon,int cxWidth,int cyWidth,
+				UINT istepIfAniCur,HBRUSH hbrFlickerFreeDraw,UINT diFlags);
 	};
 		///\class CULWindowDC
 		///\brief Класс контекста окна(10.09.2007)

@@ -17,7 +17,7 @@ namespace ULWnds
 		public:
 			///\brief Конструктор
 			CULComboBox();
-			///\brief Функция для создания листконтрола
+			///\brief Функция для создания комбобокса
 			///\param hParentWnd - хендл родительского окна
 			///\param uID - ID листконтрола
 			///\param x,y - координата листконтрола
@@ -75,6 +75,11 @@ namespace ULWnds
 			///\param nItem - номер итема 
 			///\return длина строки, в случае ошибки CB_ERR
 			int GetLBTextLen(int nItem);			
+			///\brief функция ищет строку в листбоксе комбобокса
+			///\param nItem - итем, с которого нчинается поиск
+			///\param pszStr - строка поиска
+			///\return индекс найденого итема в случае успеха, иначе CB_ERR
+			int FindString(int nItem,LPCTSTR pszStr);
 		};
 	}
 }

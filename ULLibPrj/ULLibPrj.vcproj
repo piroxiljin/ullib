@@ -455,6 +455,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\ULLib\src\ULStatic.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\ULLib\src\ULStatusBar.cpp"
 				>
 			</File>
@@ -698,6 +702,10 @@
 			</File>
 			<File
 				RelativePath="..\ULLib\include\ULStates.h"
+				>
+			</File>
+			<File
+				RelativePath="..\ULLib\include\ULStatic.h"
 				>
 			</File>
 			<File

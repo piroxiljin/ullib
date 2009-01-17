@@ -11,13 +11,9 @@ namespace ULWnds
 
 		LRESULT CALLBACK PropSheetCBTProc(int nCode,WPARAM wParam,LPARAM lParam)
 		{
-//			if(nCode==HCBT_ACTIVATE)
 			if(nCode==HCBT_CREATEWND)
 			{
-//				g_thisPreCreate->m_hWnd=(HWND)wParam;
-//				g_thisPreCreate->SetWindowLong(GWL_USERDATA,(LONG)(LONG_PTR)g_thisPreCreate);
 				g_thisPreCreate->Attach((HWND)wParam);
-//				g_thisPreCreate->m_=g_thisPreCreate->SetWindowLong(GWL_WNDPROC,(LONG)(LONG_PTR)CULPropSheet::WndProc);
 				g_thisPreCreate=NULL;
 				UnhookWindowsHookEx(m_CBTHook);
 			}
@@ -27,6 +23,7 @@ namespace ULWnds
 		CULPropSheet::CULPropSheet():
 			CULSubClass(),m_fWizard(FALSE)
 		{
+			MessageMap.AddMessage<CULPropSheet>(WM_DESTROY,&CULPropSheet::OnDestroy);
 			memset(&m_psh,0,sizeof(m_psh));
 		};
 
@@ -108,6 +105,13 @@ namespace ULWnds
 		BOOL CULPropSheet::IsWizard()
 		{
 			return m_fWizard;
+		}
+		
+		LRESULT CULPropSheet::OnDestroy(WPARAM,LPARAM)
+		{
+			memset(&m_psh,0,sizeof(m_psh));
+			m_phPropSheetPage.Free();
+			return 0;
 		}
 	}
 }

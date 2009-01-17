@@ -53,6 +53,9 @@ namespace ULWnds
 				if(!CULListCtrl::Attach(hWnd))
 					return FALSE;
 				ModifyStyle(0,LVS_OWNERDRAWFIXED);
+				RECT rc;
+				GetClientRect(&rc);
+				SetWindowPos(0,0,0,rc.right,rc.bottom,SWP_NOZORDER|SWP_NOMOVE|SWP_FRAMECHANGED);
 				return TRUE;
 			}
 
@@ -114,6 +117,42 @@ namespace ULWnds
 					return (*pArr)[nSubItem];
 				else 
 					return NULL;
+			}
+
+			BOOL CULListCtrlEx::DeleteAllItems()
+			{
+				for(int i=0;i<m_nItemCount;++i)
+				{
+					ULOther::CULArr<IItemObject*>* pArr=(ULOther::CULArr<IItemObject*>*)GetItemData(i);
+					for(size_t ii=0;ii<pArr->GetSize();++ii)
+					{
+						IItemObject* pItemObject=(*pArr)[ii];
+						if(pItemObject)
+							delete pItemObject;
+					}
+				}
+				m_nItemCount=0;
+				m_nItemSel=0;
+				m_nSubItemSel=0;
+				return CULListCtrl::DeleteAllItems();
+			}
+			BOOL CULListCtrlEx::DeleteItem(int nItem)
+			{
+				ULOther::CULArr<IItemObject*>* pArr=(ULOther::CULArr<IItemObject*>*)GetItemData(nItem);
+				BOOL fRet=CULListCtrl::DeleteItem(nItem);
+				for(size_t ii=0;ii<pArr->GetSize();++ii)
+				{
+					IItemObject* pItemObject=(*pArr)[ii];
+					if(pItemObject)
+						delete pItemObject;
+				}
+				m_nItemCount--;
+				return fRet;
+			}
+
+			BOOL CULListCtrlEx::SetItemData(int nItem,DWORD_PTR dwData)
+			{
+				return CULListCtrl::SetItemData(nItem,dwData);
 			}
 
 			LRESULT CULListCtrlEx::OnEraseBkGnd(WPARAM,LPARAM)
@@ -303,17 +342,7 @@ namespace ULWnds
 			}
 			LRESULT CULListCtrlEx::OnDestroy(WPARAM,LPARAM)
 			{
-				for(int i=0;i<m_nItemCount;++i)
-				{
-					ULOther::CULArr<IItemObject*>* pArr=(ULOther::CULArr<IItemObject*>*)GetItemData(i);
-					for(size_t ii=0;ii<pArr->GetSize();++ii)
-					{
-						IItemObject* pItemObject=(*pArr)[ii];
-						if(pItemObject)
-							delete pItemObject;
-					}
-				}
-				m_nItemCount=0;
+				DeleteAllItems();
 				return FALSE;
 			}
 
@@ -330,6 +359,8 @@ namespace ULWnds
 				return 0;
 			}
 			//================================================================
+			CItemText::CItemText():
+				m_hIcon(NULL){}
 			void CItemText::SetText(LPCTSTR pszText)
 			{
 				m_strText=pszText;
@@ -338,12 +369,28 @@ namespace ULWnds
 			{
 				return m_strText;
 			}
-
+			void CItemText::SetIcon(HICON hIcon)
+			{
+				m_hIcon=hIcon;
+			}
 			void CItemText::Draw(ULGDI::ULDC::CULDC* pDC,RECT& rc)
 			{
+				if(m_hIcon)
+				{
+					RECT rcIcon=rc;
+//					rcIcon.left+=(rcIcon.right-rcIcon.left+::GetSystemMetrics(SM_CXSMICON))/2;
+//					rcIcon.top+=(rcIcon.bottom-rcIcon.top+::GetSystemMetrics(SM_CYSMICON))/2;
+					rcIcon.top+=2;
+					pDC->DrawIconEx(rcIcon.left,rcIcon.top,m_hIcon,
+						::GetSystemMetrics(SM_CXSMICON),::GetSystemMetrics(SM_CYSMICON),
+						NULL,NULL,DI_NORMAL);
+				}
+				
 				rc.top+=3;
 				rc.left+=3;
-				pDC->DrawText(m_strText,m_strText.GetLen(),&rc, DT_WORDBREAK|DT_WORD_ELLIPSIS|DT_LEFT);
+				if(m_hIcon)
+					rc.left+=::GetSystemMetrics(SM_CXSMICON);
+				pDC->DrawText(m_strText,m_strText.GetLen(),&rc,DT_END_ELLIPSIS|DT_LEFT);
 			}
 			void CItemText::Clean()
 			{
@@ -365,6 +412,10 @@ namespace ULWnds
 				if(wParam==WA_INACTIVE)
 					ShowWindow(SW_HIDE);
 				return FALSE;
+			}
+			CItemEdit::~CItemEdit()
+			{
+				m_Edit.DestroyWindow();
 			}
 			BOOL CItemEdit::Create(HWND hParentWnd,UINT uID,LPCTSTR pszStr)
 			{
@@ -427,6 +478,8 @@ namespace ULWnds
 				}
 			CItemComboBox::~CItemComboBox()
 			{
+				m_Edit.Detach();
+				m_ComboBox.DestroyWindow();
 				if(m_hTheme)
 					CloseThemeData(m_hTheme);
 			}
@@ -456,7 +509,7 @@ namespace ULWnds
 				{
 					if(rc.top>10)
 						m_ComboBox.ShowWindow(SW_SHOW);
-					m_ComboBox.MoveWindow(rc.left,rc.top-1,rc.right-rc.left,rc.bottom-rc.top+1,FALSE);
+//					m_ComboBox.MoveWindow(rc.left,rc.top-1,rc.right-rc.left,rc.bottom-rc.top+1,FALSE);
 				}
 				else
 				{
@@ -480,6 +533,8 @@ namespace ULWnds
 
 			void CItemComboBox::OnClick(RECT& rc)
 			{
+				if(!m_ComboBox.IsWindowEnabled())
+					return;
 				if(rc.top>10)
 					m_ComboBox.ShowWindow(SW_SHOW);
 				m_ComboBox.MoveWindow(rc.left,rc.top-1,rc.right-rc.left,rc.bottom-rc.top-2,TRUE);
@@ -498,9 +553,12 @@ namespace ULWnds
 						if(PtInRect(&rectBtn,pt))
 							m_ComboBox.ShowDropDown(TRUE);
 					}
+					
 			}
 			void CItemComboBox::OnLButtonDown(RECT& rc)
 			{
+				if(!m_ComboBox.IsWindowEnabled())
+					return;
 				if(rc.top>10)
 					m_ComboBox.ShowWindow(SW_SHOW);
 				m_ComboBox.MoveWindow(rc.left,rc.top-1,rc.right-rc.left,rc.bottom-rc.top-2,TRUE);
@@ -533,6 +591,7 @@ namespace ULWnds
 				}
 			CItemDateTimePicker::~CItemDateTimePicker()
 			{
+				m_DateTimePicker.DestroyWindow();
 				if(m_hTheme)
 					CloseThemeData(m_hTheme);
 			}
@@ -618,6 +677,7 @@ namespace ULWnds
 					}
 			CItemButton::~CItemButton()
 			{
+				m_Button.DestroyWindow();
 				if(m_hTheme)
 					CloseThemeData(m_hTheme);
 			}

@@ -2,6 +2,7 @@
 ///\brief cpp файл классов стандартных диалоговых окон(02.01.2007)
 #include "..\\include\\ULCommDlgs.h"
 #include "..\\include\\ULRes.h"
+#include "..\\include\\ULGObjs.h"
 
 
 namespace ULWnds
@@ -21,14 +22,20 @@ namespace ULWnds
 						LPCHOOSECOLOR lpсс=(CHOOSECOLOR*)lParam;
 						if(lpсс->lStructSize==sizeof(CHOOSECOLOR))
 						{
-							::SetWindowLong (hWnd, GWL_USERDATA, (LONG)lpсс->lCustData);
-							pULWnd = (CULWnd *) lpсс->lCustData; // получим указатель на класс
+							::SetWindowLong(hWnd,GWL_USERDATA,(LONG)lpсс->lCustData);
+							pULWnd=(CULWnd*)lpсс->lCustData;//получим указатель на класс
 						}
 						LPOPENFILENAME lpofn=(LPOPENFILENAME)lParam;
 						if(lpofn->lStructSize==sizeof(OPENFILENAME))
 						{
-							::SetWindowLong (hWnd, GWL_USERDATA, (LONG)lpofn->lCustData);
+							::SetWindowLong(hWnd,GWL_USERDATA,(LONG)lpofn->lCustData);
 							pULWnd = (CULWnd *) lpofn->lCustData; // получим указатель на класс
+						}
+						LPCHOOSEFONT lpcf=(LPCHOOSEFONT)lParam;
+						if(lpcf->lStructSize==sizeof(CHOOSEFONT))
+						{
+							::SetWindowLong(hWnd,GWL_USERDATA,(LONG)lpcf->lCustData);
+							pULWnd=(CULWnd*)lpcf->lCustData; // получим указатель на класс
 						}
 						pULWnd->m_hWnd=hWnd;
 						break;
@@ -77,8 +84,15 @@ namespace ULWnds
 				m_cc.hInstance=(HWND)ULOther::ULGetResourceHandle();
 				m_cc.Flags=dwFlags;
 
-				for(int i=0;i<sizeof(m_acrCustClr)/sizeof(m_acrCustClr[0]);++i)
-					m_acrCustClr[i]=0x00ffffff;
+				ULGDI::ULGObjs::CULPalette pal;
+				pal.m_hPalette=(HPALETTE)GetStockObject(DEFAULT_PALETTE);
+				PALETTEENTRY pe;
+				for(int i=0;i<16;++i)
+				{
+					pal.GetPaletteEntries(i,1,&pe);
+					m_acrCustClr[i]=RGB(pe.peRed,pe.peGreen,pe.peBlue);
+				}
+				pal.Detach();
 
 				m_cc.lpCustColors=m_acrCustClr;
 				m_cc.rgbResult=clrInit;
@@ -144,6 +158,43 @@ namespace ULWnds
 				m_ofn.lpstrDefExt=lpszDefExt;
 				return lpszOld;
 			}
+			//==================CULFontDialog=======================================
+			CULFontDlg::CULFontDlg(DWORD dwFlags):
+				CULCommDlg()
+			{
+				::ZeroMemory(&m_cf,sizeof(m_cf));
+				::ZeroMemory(&m_lf,sizeof(m_lf));
+				m_cf.lStructSize=sizeof(m_cf);
+				m_cf.lpLogFont=&m_lf;
+				m_cf.rgbColors=0;
+				m_cf.Flags=dwFlags;
+				m_cf.lpfnHook=(LPCFHOOKPROC)CULCommDlg::WndProc;
+				m_cf.lCustData=(LPARAM)this;
+			}
+
+			int CULFontDlg::CreateModal(short idTempl,HWND hParentWnd)
+			{
+				m_cf.lpTemplateName=MAKEINTRESOURCE(idTempl);
+				m_cf.hwndOwner=hParentWnd;
+				return ::ChooseFont(&m_cf);
+			}
+
+			LOGFONT& CULFontDlg::GetLogFont()
+			{
+				return m_lf;
+			}
+
+			void CULFontDlg::SetFontColor(COLORREF clrFont)
+			{
+				m_cf.Flags|=CF_EFFECTS;
+				m_cf.rgbColors=clrFont;
+			}
+
+			COLORREF CULFontDlg::GetFontColor()
+			{
+				return m_cf.rgbColors;
+			}
+
 		}
 	}
 }
