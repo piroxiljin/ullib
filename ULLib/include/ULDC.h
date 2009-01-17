@@ -203,6 +203,21 @@ namespace ULGDI
 			///\param crColor - устанавливаемый цвет 
 			///\return TRUE в случае успеха
 			BOOL SetPixel(int nXPos,int nYPos,COLORREF crColor);
+			///\brief функция рисует иконку
+			///\param X,Y - координаты верхнего левого угла иконки
+			///\param hIcon - хендл иконки
+			///\return TRUE в случае успеха
+			BOOL DrawIcon(int X,int Y,HICON hIcon);
+			///\brief функция рисует иконку
+			///\param xLeft,yTop - координаты верхнего левого угла иконки
+			///\param hIcon - хендл иконки
+			///\param cxWidth,cyWidth - размеры иконки
+			///\param istepIfAniCur - индекс фрейма, если иконка - анимированный курсор
+			///\param hbrFlickerFreeDraw - хендл на кисть, может быть NULL
+			///\param diFlags - флаг отрисовки
+			///\return TRUE в случае успеха
+			BOOL DrawIconEx(int xLeft,int yTop,HICON hIcon,int cxWidth,int cyWidth,
+				UINT istepIfAniCur,HBRUSH hbrFlickerFreeDraw,UINT diFlags);
 	};
 		///\class CULWindowDC
 		///\brief Класс контекста окна(10.09.2007)

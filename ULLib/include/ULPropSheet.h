@@ -80,6 +80,8 @@ namespace ULWnds
 			///\brief аозвращает режим отображения
 			///\return TRUE, если визард
 			BOOL IsWizard();
+		protected:
+			virtual LRESULT OnDestroy(WPARAM,LPARAM);
 		};
 	}
 }

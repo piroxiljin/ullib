@@ -336,5 +336,9 @@ namespace ULWnds
 		///\return предыдущее окно, имеющее фокус
 		HWND SetCapture();
 	};
+	///\brief функция для получения иконки указанного окна
+	///\param hWnd - хендл окна
+	///\return хендл иконки
+	HICON GetWindowIcon(HWND hWnd);
 }
 #endif //__ULWND_H__

@@ -133,5 +133,16 @@ namespace ULGDI
 		{
 			return (::SetPixel(m_hDC,nXPos,nYPos,crColor)!=CLR_INVALID);
 		}
+		BOOL CULDC::DrawIcon(int X,int Y,HICON hIcon)
+		{
+			return ::DrawIcon(*this,X,Y,hIcon);
+		}
+		BOOL CULDC::DrawIconEx(int xLeft,int yTop,HICON hIcon,int cxWidth,int cyWidth,
+			UINT istepIfAniCur,HBRUSH hbrFlickerFreeDraw,UINT diFlags)
+		{
+			return ::DrawIconEx(*this,xLeft,yTop,hIcon,cxWidth,cyWidth,
+			istepIfAniCur,hbrFlickerFreeDraw,diFlags);
+		}
+
 	}
 }

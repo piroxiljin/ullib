@@ -387,5 +387,25 @@ namespace ULWnds
 	{
 		return ::SetCapture(m_hWnd);
 	}
+//===================================
+
+
+	HICON GetWindowIcon(HWND hWnd)
+	{
+		HICON hIcon=NULL;
+		if(SendMessageTimeout(hWnd,WM_GETICON,ICON_BIG,0,SMTO_ABORTIFHUNG|SMTO_BLOCK, 1000, (DWORD_PTR *)&hIcon))
+		{
+			if (hIcon==NULL)
+				if(!SendMessageTimeout(hWnd,WM_GETICON,ICON_SMALL,0,SMTO_ABORTIFHUNG|SMTO_BLOCK, 1000,(DWORD_PTR *)&hIcon))
+					hIcon=NULL;
+		}
+		else
+			hIcon=NULL;
+		if (hIcon==NULL)
+			hIcon=(HICON)(LONG_PTR)GetClassLong(hWnd,GCL_HICONSM);
+		if (hIcon==NULL)
+			hIcon=(HICON)(LONG_PTR)GetClassLong(hWnd,GCL_HICON);
+		return hIcon;
+	}
 }
 

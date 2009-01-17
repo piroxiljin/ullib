@@ -90,39 +90,22 @@ namespace ULWnds
 			///\param nItem - номер итема
 			///\param dwData - данные
 			///\return TRUE в случае успеха
-			BOOL SetItemData(int nItem,DWORD_PTR dwData)
-			{
-				LVITEM it={0};
-				it.mask=LVIF_PARAM;
-				it.iItem=nItem;
-				it.lParam=dwData;
-				return (BOOL)SendMessage(LVM_SETITEM,0,(LPARAM)&it);
-			}
+			BOOL SetItemData(int nItem,DWORD_PTR dwData);
 			///\brief возвращает привязанные данныеданные 
 			///\param nItem - номер итема
 			///\return данные
-			DWORD_PTR GetItemData(int nItem)
-			{
-				LVITEM it={0};
-				it.mask=LVIF_PARAM;
-				it.iItem=nItem;
-				SendMessage(LVM_GETITEM,0,(LPARAM)&it);
-				return it.lParam;
-			}
+			DWORD_PTR GetItemData(int nItem);
 			///\brief получение номера первого выбранного элемента
 			///\return номер выбранного элемента
-			int GetFirstSelectedItemPosition()
-				{return (int)SendMessage(LVM_GETNEXTITEM,(WPARAM)-1,(LPARAM)LVNI_SELECTED);}
+			int GetFirstSelectedItemPosition();
 			///\brief получение номера следующего выбранного элемента
 			///\param pos - номер позиции
 			///\return номер выбранного элемента
-			int GetNextSelectedItemPosition(int pos)
-				{return (int)SendMessage(LVM_GETNEXTITEM,(WPARAM)pos,(LPARAM)LVNI_SELECTED);}
+			int GetNextSelectedItemPosition(int pos);
 			///\brief удаляет выбранную позицию
 			///\param nItem - позиция для удаления
 			///\return TRUE в случае успеха
-			BOOL DeleteItem(int nItem)
-				{return (BOOL)SendMessage(LVM_DELETEITEM,(WPARAM)nItem);}
+			BOOL DeleteItem(int nItem);
 			///\brief возвращает координаты и размер области итема
 			///\param nItem - номер итема
 			///\param lpRect - указатель на объект RECT для координат

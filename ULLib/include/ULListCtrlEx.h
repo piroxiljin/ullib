@@ -103,6 +103,16 @@ namespace ULWnds
 				///\return pItemObject - запрошеный указатель на объкт размещаемый в €чейке \n
 				///\в случае успеха, иначе NULL
 				IItemObject* GetItemObject(int nItem,int nSubItem);
+				///\brief удал€ет все итемы в листконтроле
+				///\return TRUE в случае успеха
+				BOOL DeleteAllItems();
+				///\brief удал€ет выбранную позицию
+				///\param nItem - позици€ дл€ удалени€
+				///\return TRUE в случае успеха
+				BOOL DeleteItem(int nItem);
+			protected:
+				///\brief перегрузка CULListCtrl::SetItemData
+				BOOL SetItemData(int nItem,DWORD_PTR dwData);
 			protected:
 				///\brief обработчик сообщени€ самотрисовки
 				virtual LRESULT OnCustomDraw(LPARAM);
@@ -139,12 +149,19 @@ namespace ULWnds
 			{
 				///\brief объект дл€ хранени€ текстовой строки
 				ULOther::CULStr m_strText;
+				///\brief хендл иконки
+				 HICON m_hIcon;
 			public:
+				///\brief конструктор
+				CItemText();
 				///\brief функци€ дл€ установки текста в объект
 				///\param pszText - буфер с текстом
 				void SetText(LPCTSTR pszText);
 				///\brief функци€ дл€ получени€ текстовой строки
 				LPCTSTR GetText();
+				///\brief устанавливает иконку слева от текста
+				///\param hIcon - хендл иконки
+				void SetIcon(HICON hIcon);
 
 				virtual void Draw(ULGDI::ULDC::CULDC* pDC,RECT& rc);
 				virtual void OnLButtonDown(RECT& /*rc*/){}
