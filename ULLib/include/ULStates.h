@@ -9,6 +9,7 @@
 #include <stdio.h>
 #include <crtdbg.h>
 #include <TCHAR.H>
+#include <assert.h>
 #include "ULOther.h"
 #include "ULRes.h"
 ///\namespace ULStates

@@ -121,11 +121,12 @@ namespace ULWnds
 			class CULFontDlg:
 				public CULCommDlg
 			{
+			protected:
+				///\brief структура шрифта
+				LOGFONT m_lf;
 			public:
 				///\brief объект структуры для организации диалога выбора шрифта
 				CHOOSEFONT m_cf;
-				///\brief структура шрифта
-				LOGFONT m_lf;
 			public:
 				///\brief Конструктор
 				///\param clrInit - цвет поумолчанию
@@ -137,8 +138,12 @@ namespace ULWnds
 				///\return Код возврата
 				int CreateModal(short idTempl,HWND hParentWnd);	
 				///\brief возвращает ссылку на структуру шрифта
+				///\param plf - указатель на структуру шрифта
+				///\return TRUE в случае успеха
+				BOOL GetLogFont(LOGFONT* plf);
+				///\brief устанавливает структуру шрифта
 				///\return ссылкане видно на структуру шрифта
-				LOGFONT& GetLogFont();
+				void SetLogFont(LOGFONT& lf);
 				///\brief устанавливает цвет шрифта в диалоге выбора
 				///\note требует флага CF_EFFECTS. \n
 				/// Вызов функции добавляет флаг SetFontColor m_cf.Flags

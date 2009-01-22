@@ -48,7 +48,7 @@ namespace ULOther
 		if (hCompanyKey != NULL)
 			RegCloseKey(hCompanyKey);
 		return TRUE;
-	};
+	}
 
 	HKEY CULProfileReg::GetSectionKey(LPCTSTR pcszSection)
 	{
@@ -60,7 +60,7 @@ namespace ULOther
 			REG_OPTION_NON_VOLATILE, KEY_WRITE|KEY_READ, NULL,
 			&hSectionKey, &dw);
 		return hSectionKey; 
-	};
+	}
 
 	BOOL CULProfileReg::WriteProfileString(LPCTSTR pcszSection,
 		LPCTSTR pcszEntry,LPCTSTR pcszValue)
@@ -89,7 +89,7 @@ namespace ULOther
 				RegCloseKey(hSecKey);
 			}
 		return (lResult == ERROR_SUCCESS);
-	};
+	}
 
 	BOOL CULProfileReg::WriteProfileInt(LPCTSTR pcszSection, LPCTSTR pcszEntry,int nValue)
 	{
@@ -102,7 +102,36 @@ namespace ULOther
 			(LPBYTE)&nValue, sizeof(nValue));
 		RegCloseKey(hSecKey);
 		return (lResult == ERROR_SUCCESS);
-	};
+	}
+
+	BOOL CULProfileReg::WriteProfileBinary(LPCTSTR pcszSection,
+		LPCTSTR pcszEntry,void* pValue,DWORD dwSizeVal)
+	{
+		if(m_hAppKey==NULL)
+			return FALSE;
+		LONG lResult; 
+		if(pcszEntry==NULL)
+			lResult = ::RegDeleteKey(m_hAppKey, pcszSection);
+		else
+			if(pValue==NULL)
+			{
+				HKEY hSecKey=GetSectionKey(pcszSection);
+				if (hSecKey==NULL)
+					return FALSE;
+				lResult = ::RegDeleteValue(hSecKey,(LPTSTR)pcszEntry);
+				RegCloseKey(hSecKey);
+			}
+			else
+			{
+				HKEY hSecKey=GetSectionKey(pcszSection);
+				if (hSecKey==NULL)
+					return FALSE;
+				lResult=RegSetValueEx(hSecKey, pcszEntry, NULL, REG_BINARY,
+					(LPBYTE)pValue, dwSizeVal);
+				RegCloseKey(hSecKey);
+			}
+		return (lResult==ERROR_SUCCESS);
+	}
 
 	BOOL CULProfileReg::GetProfileString(LPCTSTR pcszSection, LPCTSTR pcszEntry,
 		LPTSTR pszValue,LPDWORD lpdwValLen)
@@ -123,13 +152,18 @@ namespace ULOther
 		if ((lResult==ERROR_SUCCESS)&&(dwType==REG_SZ)&&(dwCount<=*lpdwValLen))
 		{ 
 			lResult = RegQueryValueEx(hSecKey, (LPTSTR)pcszEntry, NULL, &dwType,
-				(LPBYTE)pszValue, &dwCount);
+				(LPBYTE)pszValue,lpdwValLen);
 			RegCloseKey(hSecKey);	
 		}
 		else
+		{
+			RegCloseKey(hSecKey);	
 			return FALSE;
+		}
 		return (lResult == ERROR_SUCCESS);
-	};
+	}
+
+
 
 	BOOL CULProfileReg::GetProfileInt(LPCTSTR pcszSection, LPCTSTR pcszEntry,DWORD* pdwValue)
 	{
@@ -146,7 +180,37 @@ namespace ULOther
 			(LPBYTE)pdwValue, &dwCount);
 		RegCloseKey(hSecKey);
 		return (lResult == ERROR_SUCCESS);
-	};
+	}
+
+	BOOL CULProfileReg::GetProfileBinary(LPCTSTR pcszSection, LPCTSTR pcszEntry,
+			void* pValue,DWORD* lpdwValLen)
+	{
+		if(pcszEntry==NULL)
+			return FALSE;
+		HKEY hSecKey = GetSectionKey(pcszSection);
+		if (hSecKey == NULL)
+			return FALSE;
+		DWORD dwType, dwCount;
+		LONG lResult=RegQueryValueEx(hSecKey, (LPTSTR)pcszEntry, NULL, &dwType,
+			NULL, &dwCount);
+		if(pValue==NULL)
+		{
+			*lpdwValLen=dwCount;
+			return FALSE;
+		}
+		if ((lResult==ERROR_SUCCESS)&&(dwType==REG_BINARY)&&(dwCount<=*lpdwValLen))
+		{ 
+			lResult = RegQueryValueEx(hSecKey, (LPTSTR)pcszEntry, NULL, &dwType,
+				(LPBYTE)pValue,lpdwValLen);
+			RegCloseKey(hSecKey);	
+		}
+		else
+		{
+			RegCloseKey(hSecKey);	
+			return FALSE;
+		}
+		return (lResult == ERROR_SUCCESS);
+	}
 
 	BOOL CULProfileReg::AddToAutoRun(LPCTSTR pcszName,LPCTSTR pcszFilePath)
 	{
