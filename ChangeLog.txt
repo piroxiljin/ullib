@@ -196,7 +196,7 @@
 	11 перегружена в protected CULListCtrlEx::SetItemData
 	12 добавлена LRESULT CULPropSheet::OnDestroy(WPARAM,LPARAM) для очистки полей класса CULPropSheet при уничтожении окна
 
-2.3.4 <18.01.2008> 
+2.3.4 <23.01.2008> 
 	1 исправлена CULProfileReg::GetProfileString. неверно указывался размер буфера для чтения
 	2 добавлены
 		BOOL CULProfileReg::WriteProfileBinary(LPCTSTR pcszSection,
@@ -204,3 +204,4 @@
 		BOOL CULProfileReg::GetProfileBinary(LPCTSTR pcszSection, LPCTSTR 			pcszEntry, void* pValue,DWORD* lpdwValLen);
 		void CULFontDlg::SetLogFont(LOGFONT& lf);
 	3 изменена CULFontDlg::GetLogFont
+	4 добавлен класс иконки в трее
