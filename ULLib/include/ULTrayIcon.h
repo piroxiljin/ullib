@@ -14,7 +14,7 @@ namespace ULOther
 	class CULTrayIcon
 	{
 	protected:
-		NOTIFYICONDATA m_NotifyIconData;
+		PNOTIFYICONDATA m_pNotifyIconData;
 		UINT m_nIconCount;
 	public:
 		///\brief конструктор
@@ -38,14 +38,14 @@ namespace ULOther
 		///\param uID - идентификатор иконки 
 		///\param pszTip - строка 
 		///\return TRUE в случае успеха
-		BOOL SetIconTip(UINT uID,TCHAR* pszTip);
+		BOOL SetIconTip(UINT uID,LPCTSTR pszTip);
 		///\brief Функия показывает балон с ссобщением
 		///\param uID - идентификатор иконки 
 		///\param pszInfoTitle - заголовок сообщения
 		///\param pszInfo - сообщение
-		///\param infoFlags - тип иконки
+		///\param infoFlags - тип иконки  NIIF_...
 		///\return TRUE в случае успеха
-		BOOL ShowBalloon(UINT uID,TCHAR* pszInfoTitle,TCHAR* pszInfo,DWORD dwInfoFlags);
+		BOOL ShowBalloon(UINT uID,LPCTSTR pszInfoTitle,LPCTSTR pszInfo,DWORD dwInfoFlags);
 		///\brief Функция удаляет иконку из трея
 		///\param uID - идентификатор иконки 
 		///\return TRUE в случае успеха

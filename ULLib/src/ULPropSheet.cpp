@@ -43,7 +43,7 @@ namespace ULWnds
 		}
 
 		INT_PTR CULPropSheet::Create(HWND hParenWnd,
-									TCHAR* szCaption,
+									LPCTSTR szCaption,
 									HBITMAP hbmHeader,
 									HBITMAP hbmWatermark,
 									UINT nWizardFlags,
@@ -90,7 +90,7 @@ namespace ULWnds
 		}
 
 		INT_PTR CULPropSheet::Create(HWND hParenWnd,
-				TCHAR* szCaption,
+				LPCTSTR szCaption,
 				int rscHeader,
 				int rscWatermark,
 				UINT nWizardFlags,

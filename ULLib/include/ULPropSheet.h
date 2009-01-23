@@ -57,7 +57,7 @@ namespace ULWnds
 			///	ЗЫ:с модальностью не разобрался,т.к.окно не очень 
 			///	хочет закрыватсья 8-)
 			INT_PTR Create(HWND hParenWnd,
-				TCHAR* szCaption,
+				LPCTSTR szCaption,
 				HBITMAP hbmHeader=NULL,
 				HBITMAP hbmWatermark=NULL,
 				UINT nWizardFlags=wfNonWizard,
@@ -72,7 +72,7 @@ namespace ULWnds
 			///\param fModal - модальный/немодальный если немодальный,
 			///	то функция вернет хендл окна
 			INT_PTR Create(HWND hParenWnd,
-				TCHAR* szCaption,
+				LPCTSTR szCaption,
 				int rscHeader=0,
 				int rscWatermark=0,
 				UINT nWizardFlags=wfNonWizard,

@@ -16,73 +16,82 @@ namespace ULOther
 	CULTrayIcon::CULTrayIcon(void):
 		m_nIconCount(0)
 	{
-		::ZeroMemory(&m_NotifyIconData,sizeof(m_NotifyIconData));
-		m_NotifyIconData.cbSize=sizeof(m_NotifyIconData);
+		m_pNotifyIconData=new NOTIFYICONDATA;
+//		::ZeroMemory(m_pNotifyIconData-,sizeof(NOTIFYICONDATA));
+/*		m_pNotifyIconData->cbSize=sizeof(m_NotifyIconData);
+		m_pNotifyIconData->uFlags=0;
+		m_pNotifyIconData->uID=0;
+		*/
 	}
 
 	CULTrayIcon::~CULTrayIcon(void)
 	{
 		for(UINT i=1;i<=m_nIconCount;++i)
 			DeleteIcon(i);
+		delete m_pNotifyIconData;
 	}
 
 	BOOL CULTrayIcon::Create(HWND hWnd,UINT uCallbackMessage)
 	{
 		if(!::IsWindow(hWnd))
 			return FALSE;
-		m_NotifyIconData.hWnd=hWnd;
+		m_pNotifyIconData->hWnd=hWnd;
 		if(uCallbackMessage<WM_USER)
 			return FALSE;
-		m_NotifyIconData.uCallbackMessage=uCallbackMessage;
-		m_NotifyIconData.uFlags=NIF_MESSAGE;
+
+		m_pNotifyIconData->cbSize=sizeof(NOTIFYICONDATA);
+		m_pNotifyIconData->uID=0;
+
+		m_pNotifyIconData->uCallbackMessage=uCallbackMessage;
+		m_pNotifyIconData->uFlags=NIF_MESSAGE;
 		return TRUE;
 	}
 
 	UINT CULTrayIcon::AddIcon(HICON hIcon)
 	{
 		m_nIconCount++;
-		m_NotifyIconData.hIcon=hIcon;
-		m_NotifyIconData.uFlags|=NIF_ICON;
-		m_NotifyIconData.uID=m_nIconCount;
-		return (::Shell_NotifyIcon(NIM_ADD,&m_NotifyIconData))?
-			m_NotifyIconData.uID:0;
+		m_pNotifyIconData->hIcon=hIcon;
+		m_pNotifyIconData->uFlags|=NIF_ICON;
+		m_pNotifyIconData->uID=m_nIconCount;
+		return (::Shell_NotifyIcon(NIM_ADD,m_pNotifyIconData))?
+			m_pNotifyIconData->uID:0;
 	}
 	BOOL CULTrayIcon::ChangeIcon(UINT uID,HICON hIcon)
 	{
-		m_NotifyIconData.hIcon=hIcon;
-		m_NotifyIconData.uFlags=NIF_ICON;
-		m_NotifyIconData.uID=uID;
-		return ::Shell_NotifyIcon(NIM_MODIFY,&m_NotifyIconData);
+		m_pNotifyIconData->hIcon=hIcon;
+		m_pNotifyIconData->uFlags=NIF_ICON;
+		m_pNotifyIconData->uID=uID;
+		return ::Shell_NotifyIcon(NIM_MODIFY,m_pNotifyIconData);
 	}
-	BOOL CULTrayIcon::SetIconTip(UINT uID,TCHAR* pszTip)
+	BOOL CULTrayIcon::SetIconTip(UINT uID,LPCTSTR pszTip)
 	{
 		if(!pszTip)
 			return FALSE;
-		_tcscpy_s(m_NotifyIconData.szTip,sizeof(m_NotifyIconData.szTip)/sizeof(m_NotifyIconData.szTip[0]),
+		_tcscpy_s(m_pNotifyIconData->szTip,sizeof(m_pNotifyIconData->szTip)/sizeof(m_pNotifyIconData->szTip[0]),
 			pszTip);
-		m_NotifyIconData.uFlags=NIF_TIP;
-		m_NotifyIconData.uID=uID;
-		return ::Shell_NotifyIcon(NIM_MODIFY,&m_NotifyIconData);
+		m_pNotifyIconData->uFlags=NIF_TIP;
+		m_pNotifyIconData->uID=uID;
+		return ::Shell_NotifyIcon(NIM_MODIFY,m_pNotifyIconData);
 	}
-	BOOL CULTrayIcon::ShowBalloon(UINT uID,TCHAR* pszInfoTitle,TCHAR* pszInfo,DWORD dwInfoFlags)
+	BOOL CULTrayIcon::ShowBalloon(UINT uID,LPCTSTR pszInfoTitle,LPCTSTR pszInfo,DWORD dwInfoFlags)
 	{
-		m_NotifyIconData.uFlags=NIF_INFO;
+		m_pNotifyIconData->uFlags=NIF_INFO;
 		if(pszInfoTitle)
-			_tcscpy_s(m_NotifyIconData.szInfoTitle,
-				sizeof(m_NotifyIconData.szInfoTitle)/sizeof(m_NotifyIconData.szInfoTitle[0]),
+			_tcscpy_s(m_pNotifyIconData->szInfoTitle,
+				sizeof(m_pNotifyIconData->szInfoTitle)/sizeof(m_pNotifyIconData->szInfoTitle[0]),
 				pszInfoTitle);
 		if(pszInfo)
-			_tcscpy_s(m_NotifyIconData.szInfo,
-				sizeof(m_NotifyIconData.szInfo)/sizeof(m_NotifyIconData.szInfo[0]),
+			_tcscpy_s(m_pNotifyIconData->szInfo,
+				sizeof(m_pNotifyIconData->szInfo)/sizeof(m_pNotifyIconData->szInfo[0]),
 				pszInfo);
-		m_NotifyIconData.dwInfoFlags=infoFlags;
-		m_NotifyIconData.uID=uID;
-		return ::Shell_NotifyIcon(NIM_MODIFY,&m_NotifyIconData);
+		m_pNotifyIconData->dwInfoFlags=dwInfoFlags;
+		m_pNotifyIconData->uID=uID;
+		return ::Shell_NotifyIcon(NIM_MODIFY,m_pNotifyIconData);
 	}
 
 	BOOL CULTrayIcon::DeleteIcon(UINT uID)
 	{
-		m_NotifyIconData.uID=uID;
-		return ::Shell_NotifyIcon(NIM_DELETE,&m_NotifyIconData);
+		m_pNotifyIconData->uID=uID;
+		return ::Shell_NotifyIcon(NIM_DELETE,m_pNotifyIconData);
 	}
 }

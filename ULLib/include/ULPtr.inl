@@ -196,7 +196,7 @@ namespace ULOther
 		CULStrTable(UINT uID):m_uID(uID)
 		{}
 		///\оператор LPTSTR
-		operator LPTSTR()
+		operator LPCTSTR()
 		{
 			LoadString(ULGetResourceHandle(),m_uID,m_szStr,MAX_PATH);
 			return m_szStr;
