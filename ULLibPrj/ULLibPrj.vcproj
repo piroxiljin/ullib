@@ -776,10 +776,6 @@
 				RelativePath="..\ULLib\include\ULWnds.h"
 				>
 			</File>
-			<File
-				RelativePath=".\UsingNS.h"
-				>
-			</File>
 		</Filter>
 		<Filter
 			Name="Resource Files"
