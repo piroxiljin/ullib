@@ -79,8 +79,8 @@ namespace ULWnds
 		int CULToolBar::AddButton(int idCommand,
 						BYTE btnState,
 						BYTE btnStyle,
-						TCHAR* szTTip,
-						TCHAR* pszStr,
+						LPCTSTR szTTip,
+						LPCTSTR pszStr,
 						int nBitmap,
 						UINT_PTR nID,
 						HINSTANCE hInst,
@@ -137,8 +137,8 @@ namespace ULWnds
 		int CULToolBar::AddButton(int idCommand,//ID контрола(кнопки)
 						BYTE btnState,//состояние кнопки
 						BYTE btnStyle,//стиль кнопки
-						TCHAR* szTTip,//тултип для кнопки
-						TCHAR* pszStr,//подпись для кнопки
+						LPCTSTR szTTip,//тултип для кнопки
+						LPCTSTR pszStr,//подпись для кнопки
 						int nBitmap,//номер картинки для кнопки тулбара 
 						HBITMAP hBitmap,//ID ресурса для картинки
 						HMENU hMenu)//ID контекстного меню для кнопки(если btnStyle==BTNS_DROPDOWN)
@@ -151,8 +151,8 @@ namespace ULWnds
 						int idCommand,
 						BYTE btnState,
 						BYTE btnStyle,
-						TCHAR* szTTip,
-						TCHAR* pszStr,
+						LPCTSTR szTTip,
+						LPCTSTR pszStr,
 						int nBitmap,
 						UINT_PTR nID,
 						HINSTANCE hInst,
@@ -214,8 +214,8 @@ namespace ULWnds
 						int idCommand,
 						BYTE btnState,
 						BYTE btnStyle,
-						TCHAR* szTTip,
-						TCHAR* pszStr,
+						LPCTSTR szTTip,
+						LPCTSTR pszStr,
 						int nBitmap,//номер картинки для кнопки тулбара 
 						HBITMAP hBitmap,//ID ресурса для картинки
 						HMENU hMenu)

@@ -43,6 +43,14 @@ namespace ULOther
 		///\param nValue - Значение(числа)
 		///\return возвращает: TRUE в случае успеха, иначе FALSE
 		BOOL WriteProfileInt(LPCTSTR pcszSection, LPCTSTR pcszEntry,int nValue);
+		///\brief Функция для записи бинарного параметра в указанную секцию
+		///\param pcszSection - Имя секции
+		///\param pcszEntry - Имя параметра(строки)
+		///\param pValue - Значение
+		///\param dwSizeVal - размер размер данных в байтах
+		///\return возвращает: TRUE в случае успеха, иначе FALSE
+		BOOL WriteProfileBinary(LPCTSTR pcszSection,LPCTSTR pcszEntry,
+			void* pValue,DWORD dwSizeVal);
 		///\brief Функция для записи строкового параметра в указанную секцию
 		///\param pcszSection - Имя секции
 		///\param pcszEntry - Имя параметра(строки)
@@ -57,6 +65,14 @@ namespace ULOther
 		///\param pdwValue - Указатель на возвращаемое значение(числа)
 		///\return возвращает: TRUE в случае успеха, иначе FALSE
 		BOOL GetProfileInt(LPCTSTR pcszSection, LPCTSTR pcszEntry,DWORD* pdwValue);
+		///\brief Функция для записи бинарного параметра в указанную секцию
+		///\param pcszSection - Имя секции
+		///\param pcszEntry - Имя параметра(строки)
+		///\param pValue - Указатель на возвращаемое значение
+		///\param lpdwValLen - размер pValue
+		///\return возвращает: TRUE в случае успеха, иначе FALSE
+		BOOL GetProfileBinary(LPCTSTR pcszSection, LPCTSTR pcszEntry,
+			void* pValue,DWORD* lpdwValLen);
 		///\brief Функция для добавления указанного пути в авторан
 		///\param pcszName - имя параметра
 		///\param pcszFilePath - путь к файлу(если NULL,то поле pcszName удалится)

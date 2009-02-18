@@ -542,10 +542,10 @@ namespace ULWnds
 			//будет посылаться родитель WM_COMMAND с указанием
 			//BM_CLICKED,ID и HWND контрола
 			//================================================
-			BOOL CULHyperLink::CreateHyperLink(HWND hParentWnd,int x,int y,TCHAR* szName,TCHAR* szURL,UINT uID)
+			BOOL CULHyperLink::CreateHyperLink(HWND hParentWnd,int x,int y,LPCTSTR szName,LPCTSTR szURL,UINT uID)
 			{
 				m_hParentWnd=hParentWnd;
-				m_szURL=szURL;
+				m_strURL=szURL;
 				//создание статика
 				m_hWnd=::CreateWindowEx(WS_EX_TRANSPARENT,_T("STATIC"),szName,WS_CHILD|WS_CLIPCHILDREN|WS_TABSTOP|
 					WS_VISIBLE|SS_NOTIFY|SS_OWNERDRAW,x,y,1,1,
@@ -561,10 +561,10 @@ namespace ULWnds
 			//будет посылаться родитель WM_COMMAND с указанием
 			//BM_CLICKED,ID и HWND контрола
 			//================================================
-			BOOL CULHyperLink::Attach(HWND hWnd,TCHAR* szURL)
+			BOOL CULHyperLink::Attach(HWND hWnd,LPCTSTR szURL)
 			{
 				m_hParentWnd=::GetParent(hWnd);
-				m_szURL=szURL;
+				m_strURL=szURL;
 				m_hWnd=hWnd;
 				//инициализация гиперссылки
 				return Init();
@@ -660,8 +660,8 @@ namespace ULWnds
 					InvalidateRect();
 					UpdateWindow();
 					//выполняем переход по ссылке
-					if(m_szURL!=NULL)
-						::ShellExecute(NULL, _T("open"), m_szURL, NULL, NULL, SW_SHOWNORMAL);
+					if(m_strURL.GetLen())
+						::ShellExecute(NULL,_T("open"),m_strURL,NULL,NULL,SW_SHOWNORMAL);
 					else
 						::SendMessage(m_hParentWnd,WM_COMMAND,
 						WPARAM(GetWindowLong(GWL_ID)),LPARAM(m_hWnd));

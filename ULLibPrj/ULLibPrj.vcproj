@@ -243,6 +243,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				Optimization="1"
 				AdditionalIncludeDirectories=""
 				PreprocessorDefinitions="WIN32;NDEBUG"
 				RuntimeLibrary="0"
@@ -488,6 +489,10 @@
 			</File>
 			<File
 				RelativePath="..\ULLib\src\ULToolTip.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\ULLib\src\ULTrayIcon.cpp"
 				>
 			</File>
 			<File
@@ -745,6 +750,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\ULLib\include\ULTrayIcon.h"
+				>
+			</File>
+			<File
 				RelativePath="..\ULLib\include\ULWaitCursor.h"
 				>
 			</File>
@@ -766,10 +775,6 @@
 			</File>
 			<File
 				RelativePath="..\ULLib\include\ULWnds.h"
-				>
-			</File>
-			<File
-				RelativePath=".\UsingNS.h"
 				>
 			</File>
 		</Filter>
