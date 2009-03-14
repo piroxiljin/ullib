@@ -123,6 +123,8 @@ namespace ULOther
 		///\brief оператор присвоения
 		void operator=(const object_t* pszRight)
 		{
+			if(!pszRight)
+				return;
 			size_t nSize=_tcslen(pszRight);
 			if(nSize>GetSize())
 				Resize(nSize+1);

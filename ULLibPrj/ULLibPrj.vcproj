@@ -662,6 +662,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\ULLib\include\ULProperty.h"
+				>
+			</File>
+			<File
 				RelativePath="..\ULLib\include\ULPropPage.h"
 				>
 			</File>

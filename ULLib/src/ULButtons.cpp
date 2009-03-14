@@ -545,7 +545,8 @@ namespace ULWnds
 			BOOL CULHyperLink::CreateHyperLink(HWND hParentWnd,int x,int y,LPCTSTR szName,LPCTSTR szURL,UINT uID)
 			{
 				m_hParentWnd=hParentWnd;
-				m_strURL=szURL;
+				if(szURL)
+					m_strURL=szURL;
 				//создание статика
 				m_hWnd=::CreateWindowEx(WS_EX_TRANSPARENT,_T("STATIC"),szName,WS_CHILD|WS_CLIPCHILDREN|WS_TABSTOP|
 					WS_VISIBLE|SS_NOTIFY|SS_OWNERDRAW,x,y,1,1,
