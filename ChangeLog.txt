@@ -207,10 +207,15 @@
 	3 изменена CULFontDlg::GetLogFont
 	4 добавлен класс иконки в трее ULOther::СULTrayIcon
 	5 TCHAR* -> LPCTSTR
-2.3.5 <15.03.2008> 
+2.3.5 <17.04.2008> 
 	1 в CULHyperLink::CreateHyperLink иправлена ошибка копирования url
 	2  добавлены пространство имён ULProperty классов свойств 
 	3 добавлены свойства
 		ULWnds::CULWnd::m_propStyle
 		ULWnds::CULWnd::m_propStyleEx
 	4 исправлен CULStrT::operator=
+	5 добавлена функция 
+		ULGDI::ULDC::CULDC::SetROP2
+	6 добавлен класс слайдера(trackbar)
+		ULWnds::ULControls::CULSlider
+	7 исправлена CULQueueThread::Create, там исключено использование  CreateThread

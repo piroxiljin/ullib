@@ -156,7 +156,7 @@ namespace ULGDI
 				{return ::LineTo(*this,nXEnd,nYEnd);}
 			///\brief устанавливает значение текущей точки
 			///\param X, Y - Координата новой устанавливаемой точки
-			///\param lpPoint - Координата старой точки
+			///\param lpPoint - Координата предыдущей точки
 			///\return TRUE в случае успеха, иначе FALSE
 			inline BOOL MoveTo(int X,int Y,LPPOINT lpPoint=NULL)
 				{return ::MoveToEx(*this,X,Y,lpPoint);}
@@ -218,6 +218,13 @@ namespace ULGDI
 			///\return TRUE в случае успеха
 			BOOL DrawIconEx(int xLeft,int yTop,HICON hIcon,int cxWidth,int cyWidth,
 				UINT istepIfAniCur,HBRUSH hbrFlickerFreeDraw,UINT diFlags);
+			///\brief функция устанавливает режим комбинирования \n
+			/// рисоввания кистью или карандашом с текущим уже \n
+			/// нарисованным изображением
+			///\param режим комбинирования
+			///\return в случае успеха вернет предыдущий режим комбинирования, \n
+			/// в случае неудачи вернёт 0
+			int SetROP2(int fnDrawMode);
 	};
 		///\class CULWindowDC
 		///\brief Класс контекста окна(10.09.2007)
