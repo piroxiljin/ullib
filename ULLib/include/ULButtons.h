@@ -6,6 +6,11 @@
 #include "ULSubClass.h"
 #include "ULGDI.h"
 #pragma comment(lib,"Msimg32.lib")
+
+#ifndef ODS_HOTLIGHT
+	#define ODS_HOTLIGHT        0x0040
+#endif
+
 namespace ULWnds
 {
 	namespace ULControls
