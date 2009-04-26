@@ -179,9 +179,18 @@ namespace ULWnds
 				return ::ChooseFont(&m_cf);
 			}
 
-			LOGFONT& CULFontDlg::GetLogFont()
+			BOOL CULFontDlg::GetLogFont(LOGFONT* plf)
 			{
-				return m_lf;
+				if(!plf)
+					return FALSE;
+				memcpy(plf,&m_lf,sizeof(LOGFONT));
+				return TRUE;
+			}
+
+			void CULFontDlg::SetLogFont(LOGFONT& lf)
+			{
+				m_cf.Flags|=CF_INITTOLOGFONTSTRUCT;
+				memcpy(&m_lf,&lf,sizeof(LOGFONT));
 			}
 
 			void CULFontDlg::SetFontColor(COLORREF clrFont)

@@ -339,7 +339,7 @@ namespace ULWnds
 				///\brief Массив типов
 				DWORD m_pdwTypes[constTypeNum];
 				///\brief Адресс ссылки
-				TCHAR* m_szURL;
+				ULOther::CULStr m_strURL;
 			protected:
 				///\brief Функция выполняет инциализацию ссылки
 				///\return TRUE в случае успеха
@@ -362,7 +362,7 @@ namespace ULWnds
 				///\param szURL - URL адресс
 				///\param uID - ID кнопки
 				///\return TRUE в случае успеха
-				BOOL CreateHyperLink(HWND hParentWnd,int x,int y,TCHAR* szName,TCHAR* szURL,UINT uID);
+				BOOL CreateHyperLink(HWND hParentWnd,int x,int y,LPCTSTR szName,LPCTSTR szURL,UINT uID);
 				///\brief Функция для создания гиперссылки на основе уже созданного статика
 				///	Если szURL равен NULL, то при нажатии на ссылку 
 				///	будет посылаться родителю WM_COMMAND с указанием
@@ -370,7 +370,7 @@ namespace ULWnds
 				///\param hWnd - хендл статика
 				///\param szURL - URL адресс
 				///\return TRUE в случае успеха
-				BOOL Attach(HWND hWnd,TCHAR* szURL);
+				BOOL Attach(HWND hWnd,LPCTSTR szURL);
 				///\brief Функция для определения новых стилей и цветов
 				BOOL SetStyles(enType Type,enStyles Styles,COLORREF Color);
 				///\brief Функция для установки шрифта ссылки

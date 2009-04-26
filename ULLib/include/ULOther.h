@@ -9,6 +9,8 @@
 #include "ULFileVersionInfo.h"
 #include "ULWaitCursor.h"
 #include "ULRes.h"
+
+#include "ULTrayIcon.h"
 ///\namespace ULOther
 ///\brief Пространство имён просто для полезных функций(25.08.2007)
 namespace ULOther
