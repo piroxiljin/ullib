@@ -163,7 +163,7 @@
 	6 в CULMessageMap добавлены функции для очистки хранилищ сообщений (см.ClearXXX)
 	7 в CULCommDlg в конструкторе сделана очистка зранилищь сообщений для исключения конфликтов с обработчиками CULDlg
 
-2.3.3. <10.01.2008> 
+2.3.3 <10.01.2008> 
 	1 добавлен класс диалога выбора шрифта CULFontDlg
 		CULStatic - обёртка для STATIC контрола
 	2 добавлено 
@@ -195,3 +195,27 @@
 	10 если ULListCtrlEx::CItemComboBox disable, то он не появляется
 	11 перегружена в protected CULListCtrlEx::SetItemData
 	12 добавлена LRESULT CULPropSheet::OnDestroy(WPARAM,LPARAM) для очистки полей класса CULPropSheet при уничтожении окна
+
+2.3.4 <03.02.2008> 
+	1 исправлена CULProfileReg::GetProfileString. неверно указывался размер буфера для чтения
+	2 добавлены
+		BOOL CULProfileReg::WriteProfileBinary(LPCTSTR pcszSection,
+			LPCTSTR pcszEntry,void* pValue,DWORD dwSizeVal)
+		BOOL CULProfileReg::GetProfileBinary(LPCTSTR pcszSection,
+			 LPCTSTR pcszEntry, void* pValue,DWORD* lpdwValLen);
+		void CULFontDlg::SetLogFont(LOGFONT& lf);
+	3 изменена CULFontDlg::GetLogFont
+	4 добавлен класс иконки в трее ULOther::СULTrayIcon
+	5 TCHAR* -> LPCTSTR
+2.3.5 <17.04.2008> 
+	1 в CULHyperLink::CreateHyperLink иправлена ошибка копирования url
+	2  добавлены пространство имён ULProperty классов свойств 
+	3 добавлены свойства
+		ULWnds::CULWnd::m_propStyle
+		ULWnds::CULWnd::m_propStyleEx
+	4 исправлен CULStrT::operator=
+	5 добавлена функция 
+		ULGDI::ULDC::CULDC::SetROP2
+	6 добавлен класс слайдера(trackbar)
+		ULWnds::ULControls::CULSlider
+	7 исправлена CULQueueThread::Create, там исключено использование  CreateThread

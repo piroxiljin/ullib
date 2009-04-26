@@ -6,6 +6,7 @@
 
 #include <windows.h>
 #include "ULMessageMap.inl"
+#include "ULProperty.h"
 
 namespace ULWnds
 {
@@ -18,6 +19,26 @@ namespace ULWnds
 	protected:
 		///\brief Функция окна
 		static LRESULT WndProc(HWND hWnd , UINT uMsg , WPARAM wParam , LPARAM lParam);
+/*
+		///\brief хендлер Set для свойства m_propText
+		///\param pstrText - указатель на буфер текста
+		void SetText(ULOther::CULStr* pstrText);
+		///\brief хендлер Get для свойства m_propText
+		///\param pstrText - указатель на буфер текста
+		void GetText(ULOther::CULStr* pstrText);
+*/
+		///\brief хендлер Set для свойства m_propStyle
+		///\param pdwStyle - указатель стиль
+		void SetStyle(DWORD* pdwStyle);
+		///\brief хендлер Get для свойства m_propStyle
+		///\param pdwStyle - указатель стиль
+		void GetStyle(DWORD* pdwStyle);
+		///\brief хендлер Set для свойства m_propStyleEx
+		///\param pdwStyleEx - указатель стиль
+		void SetStyleEx(DWORD* pdwStyleEx);
+		///\brief хендлер Get для свойства m_propStyleEx
+		///\param pdwStyleEx - указатель стиль
+		void GetStyleEx(DWORD* pdwStyleEx);
 	public:
 		///\brief Конструктор
 		CULWnd(void);
@@ -335,6 +356,20 @@ namespace ULWnds
 		///\brief функция выполняет захват фокуса мыши
 		///\return предыдущее окно, имеющее фокус
 		HWND SetCapture();
+/*
+		///\brief свойство установки/получения текста
+		ULProperty::CULProperty<ULOther::CULStr,CULWnd,
+			&CULWnd::SetText,
+			&CULWnd::GetText>	m_propText;
+*/
+		///\brief свойство установки/получения стилья
+		ULProperty::CULProperty<DWORD,CULWnd,
+			&CULWnd::SetStyle,
+			&CULWnd::GetStyle>	m_propStyle;
+		///\brief свойство установки/получения расширенного стиля
+		ULProperty::CULProperty<DWORD,CULWnd,
+			&CULWnd::SetStyleEx,
+			&CULWnd::GetStyleEx>	m_propStyleEx;
 	};
 	///\brief функция для получения иконки указанного окна
 	///\param hWnd - хендл окна

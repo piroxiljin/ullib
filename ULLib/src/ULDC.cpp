@@ -143,6 +143,9 @@ namespace ULGDI
 			return ::DrawIconEx(*this,xLeft,yTop,hIcon,cxWidth,cyWidth,
 			istepIfAniCur,hbrFlickerFreeDraw,diFlags);
 		}
-
+		int CULDC::SetROP2(int fnDrawMode)
+		{
+			return ::SetROP2(m_hDC,fnDrawMode);
+		}
 	}
 }

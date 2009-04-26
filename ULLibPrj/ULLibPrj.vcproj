@@ -451,6 +451,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\ULLib\src\ULSlider.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\ULLib\src\ULSplitter.cpp"
 				>
 			</File>
@@ -657,6 +661,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\ULLib\include\ULProperty.h"
+				>
+			</File>
+			<File
 				RelativePath="..\ULLib\include\ULPropPage.h"
 				>
 			</File>
@@ -694,6 +702,10 @@
 			</File>
 			<File
 				RelativePath="..\ULLib\include\ULSkinDlg.h"
+				>
+			</File>
+			<File
+				RelativePath="..\ULLib\include\ULSlider.h"
 				>
 			</File>
 			<File

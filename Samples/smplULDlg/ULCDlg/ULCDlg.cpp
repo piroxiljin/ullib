@@ -67,6 +67,7 @@ LRESULT CULCDlg::OnInitDialog(WPARAM,LPARAM)
 	m_ULToolTip.SetTipTextColor(0xff0000);
 	m_ULToolTip.SetTitle(ULControls::CULToolTip::itInfo,_T("Типа информация"));
 	m_ULToolTip.SetDelayTime(100);
+
 //==============================================================
 	LOGFILE_SAVE(_T("OnInitDialog"));
 	return FALSE;

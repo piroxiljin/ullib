@@ -8,7 +8,10 @@ namespace ULWnds
 		m_hParentWnd(NULL),
 		m_hWnd(NULL),
 		m_lpSubClassWndProc(NULL),
-		m_szDefClassName(_T("ULWNDCLASS"))
+		m_szDefClassName(_T("ULWNDCLASS")),
+		/*m_propText(this),*/
+		m_propStyle(this),
+		m_propStyleEx(this)
 	{
 	}
 	CULWnd::CULWnd(CULWnd& Wnd):
@@ -16,11 +19,18 @@ namespace ULWnds
 		m_hWnd(Wnd.m_hWnd),
 		m_lpSubClassWndProc(Wnd.m_lpSubClassWndProc),
 		MessageMap(Wnd.MessageMap),
-		m_szDefClassName(_T("ULWNDCLASS"))
+		m_szDefClassName(_T("ULWNDCLASS")),
+		/*m_propText(this),*/
+		m_propStyle(this),
+		m_propStyleEx(this)
 	{
 	}
 
-	CULWnd::CULWnd(HWND hwnd):m_hWnd(hwnd)
+	CULWnd::CULWnd(HWND hwnd):
+		m_hWnd(hwnd),
+		/*m_propText(this),*/
+		m_propStyle(this),
+		m_propStyleEx(this)
 	{
 		m_hParentWnd=GetParent();
 		CULWnd* pWnd=FromHandle(hwnd);
@@ -31,6 +41,35 @@ namespace ULWnds
 	CULWnd::~CULWnd(void)
 	{
 		DestroyWindow();//уничтожаем окно при уничтожении класса
+	}
+/*
+	void CULWnd::SetText(ULOther::CULStr* pstrText)
+	{
+		SetWindowText(*pszText);
+	}
+	void CULWnd::GetText(ULOther::CULStr* pstrText)
+	{
+		GetWindowText(*pszText,pszText->GetSize());
+	}
+*/
+	void CULWnd::SetStyle(DWORD* pdwStyle)
+	{
+		ModifyStyle(0xffffffff,*pdwStyle);
+	}
+
+	void CULWnd::GetStyle(DWORD* pdwStyle)
+	{
+		*pdwStyle=(DWORD)GetWindowLong(GWL_STYLE);
+	}
+
+	void CULWnd::SetStyleEx(DWORD* pdwStyleEx)
+	{
+		ModifyStyleEx(0xffffffff,*pdwStyleEx);
+	}
+
+	void CULWnd::GetStyleEx(DWORD* pdwStyleEx)
+	{
+		*pdwStyleEx=(DWORD)GetWindowLong(GWL_EXSTYLE);
 	}
 
 	void CULWnd::operator = (CULWnd& Wnd)

@@ -33,14 +33,8 @@ namespace ULThreads
 			SIZE_T dwStackSize,
 			DWORD dwCreationFlags)
 	{
-		m_hThread=CreateThread( 
-			lpThreadAttributes,
-			dwStackSize,
-			(LPTHREAD_START_ROUTINE)ThreadProc,
-			(LPVOID)this,
-			dwCreationFlags,
-			&m_dwThreadId); 
-		ResumeThread();
+		if(!CULThread::Create(lpThreadAttributes,dwStackSize,dwCreationFlags))
+			return FALSE;
 		m_hStartedEvent=::CreateEvent(NULL,TRUE,FALSE,NULL);
 		//ждём входа в цикл сообщений
 		while(::WaitForSingleObject(m_hStartedEvent,1)!=WAIT_OBJECT_0)
