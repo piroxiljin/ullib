@@ -4,7 +4,9 @@
 #define _ULCOMBOBOX_H__
 #include "ULSubClass.h"
 #include "commctrl.h"
-
+#ifndef _WIN32_WINNT
+	#define _WIN32_WINNT 0x0401
+#endif
 namespace ULWnds
 {
 	namespace ULControls
