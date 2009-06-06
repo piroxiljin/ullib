@@ -1,6 +1,7 @@
 ///\file ULGObjs.h
 ///\brief Заголовочный файл классов графических объектов(15.10.2007)
 #include <windows.h>
+#include <commctrl.h>
 #pragma once
 #ifndef __ULGOBJS__H_
 #define __ULGOBJS__H_
@@ -33,49 +34,49 @@ namespace ULGDI
 			///\param cBitsPerPel - число бит на точку
 			///\param lpvBits - битовый массив
 			///\return TRUE в случае успеха, иначе FALSE
-			inline BOOL CreateBitmap(int nWidth,int nHeight,UINT cPlanes,UINT cBitsPerPel,CONST VOID *lpvBits)
-				{return ((m_hBitmap=::CreateBitmap(nWidth,nHeight,cPlanes,cBitsPerPel,lpvBits))!=NULL);}
+			BOOL CreateBitmap(int nWidth,int nHeight,UINT cPlanes,UINT cBitsPerPel,CONST VOID *lpvBits);
 			///\brief Создаёт совместимый с контекстом битовый рисунок
 			///\param hDC - контекст
 			///\param nWidth,nHeight - размер создаваемого рисунка
 			///\return TRUE в случае успеха, иначе FALSE
-			inline BOOL CreateCompatibleBitmap(HDC hDC,int nWidth,int nHeight)
-				{return ((m_hBitmap=::CreateCompatibleBitmap(hDC,nWidth,nHeight))!=NULL);}
+			BOOL CreateCompatibleBitmap(HDC hDC,int nWidth,int nHeight);
+			///\brief создаёт битовый рисункой с индивидуальной цветовой картой
+			///\param hInstance - инстанс модуля, в котором лежит ресурс
+			///\param idBitmap - идентификатор ресурса
+			///\param wFlags - либо 0 либо CMB_MASKED, чтоб была взята маска битмапа(вроде)
+			///\param lpColorMap - массив цветов, которые/на которые надо заменить
+			///\param iNumMaps - число элементов в массиве
+			///\return TRUE в случае успеха, иначе FALSE
+			BOOL CreateMappedBitmap(HINSTANCE hInstance,INT_PTR idBitmap,UINT wFlags,
+				LPCOLORMAP lpColorMap,int iNumMaps);
 			///brief Загружает битовый рисунок из ресурса или из фаила
 			///\param hInstance - Хендл модуля, из которого загружается битовый рисунок 
 			///\param lpBitmapName - Имя фаила или ресурса
 			///\return TRUE в случае успеха, иначе FALSE
-			inline BOOL LoadBitmap(HINSTANCE hInstance,LPCTSTR lpBitmapName)
-				{return ((m_hBitmap=::LoadBitmap(hInstance,lpBitmapName))!=NULL);};
+			BOOL LoadBitmap(HINSTANCE hInstance,LPCTSTR lpBitmapName);
 			///brief Загружает битовый рисунок из ресурса
 			///\param hInstance - Хендл модуля, из которого загружается битовый рисунок 
 			///\param nIDRes - ID ресурса
 			///\return TRUE в случае успеха, иначе FALSE
-			inline BOOL LoadBitmap(HINSTANCE hInstance,int nIDRes)
-				{return ((m_hBitmap=::LoadBitmap(hInstance,MAKEINTRESOURCE(nIDRes)))!=NULL);};
+			BOOL LoadBitmap(HINSTANCE hInstance,int nIDRes);
 			///\brief Возвращает структуру битового избражения
 			///\param pBmp - указатель на структуру битового избражения
 			///\return колличество байт скопированных в буфер
 			///	если pBmp NULL то вернет требуемое коллчиство байт
-			inline int GetBitmap(BITMAP* pBmp)
-				{return ::GetObject((HBITMAP)*this,sizeof(BITMAP),(LPSTR)pBmp);}
+			int GetBitmap(BITMAP* pBmp);
 			///\brief см. GetBitmap
-			inline int GetBitmap(DIBSECTION* pDib)
-				{return ::GetObject((HBITMAP)*this,sizeof(DIBSECTION),(LPSTR)pDib);}
+			int GetBitmap(DIBSECTION* pDib);
 			///\brief Возвращает битовый массив изображения
 			///\param cbBuffer - длина буфера
 			///\param lpvBits - Битовый массив
 			///\return в случае успеха число скопированных байт, иначе 0
-			inline LONG GetBitmapBits(LONG cbBuffer,LPVOID lpvBits)
-				{return ::GetBitmapBits(*this,cbBuffer,lpvBits);}
+			LONG GetBitmapBits(LONG cbBuffer,LPVOID lpvBits);
 			///\brief Удаляет битовое изображение
 			///\return TRUE в случае успеха, иначе FALSE
-			inline BOOL DeleteBitmap()
-				{if(m_hBitmap!=NULL)return ::DeleteObject(m_hBitmap);else return FALSE;}
+			BOOL DeleteBitmap();
 			///\brief отсоединяет битовое изображение от класса
 			///\return хендл на битовое изображение 
-			inline HBITMAP Detach()
-				{HBITMAP hRetBmp=m_hBitmap;m_hBitmap=NULL;return hRetBmp;}
+			HBITMAP Detach();
 		};
 		///\class CULRgn
 		///\brief Класс региона(15.10.2007)
@@ -102,16 +103,13 @@ namespace ULGDI
 			///\brief создаёт регион в виде прямоугольника
 			///\param nLeftRect,nTopRect,nRightRect,nBottomRect - координаты углов прямоугольника
 			///\return TRUE в случае успеха, иначе FALSE
-			inline BOOL CreateRectRgn(int nLeftRect,int nTopRect,int nRightRect,int nBottomRect)
-				{return ((m_hRgn=::CreateRectRgn(nLeftRect,nTopRect,nRightRect,nBottomRect))!=NULL);};
+			BOOL CreateRectRgn(int nLeftRect,int nTopRect,int nRightRect,int nBottomRect);
 			///\brief создаёт регион в виде прямоугольника со скруглёнными краями
 			///\param nLeftRect,nTopRect,nRightRect,nBottomRect - координаты углов прямоугольника
 			///\param nWidthEllipse,nHeightEllipse - размеры элипса
 			///\return TRUE в случае успеха, иначе FALSE
-			inline BOOL CreateRoundRectRgn(int nLeftRect,int nTopRect,int nRightRect,int nBottomRect,
-				int nWidthEllipse,int nHeightEllipse)
-				{return ((m_hRgn=::CreateRoundRectRgn(nLeftRect,nTopRect,nRightRect,nBottomRect,
-					nWidthEllipse,nHeightEllipse))!=NULL);}
+			BOOL CreateRoundRectRgn(int nLeftRect,int nTopRect,int nRightRect,int nBottomRect,
+				int nWidthEllipse,int nHeightEllipse);
 			///\brief Комбинирует два исходных региона и помещает в текущий
 			///\param hrgnSrc1,hrgnSrc2 - хендлы исходных регионов
 			///\param fnCombineMode - режим комбинирования
@@ -125,22 +123,18 @@ namespace ULGDI
 			///	SIMPLEREGION The region is a single rectangle. 
 			///	COMPLEXREGION The region is more than a single rectangle. 
 			///	ERROR No region is created. 
-			inline int CombineRgn(HRGN hrgnSrc1,HRGN hrgnSrc2,int fnCombineMode)
-				{return ::CombineRgn(*this,hrgnSrc1,hrgnSrc2,fnCombineMode);}
+			int CombineRgn(HRGN hrgnSrc1,HRGN hrgnSrc2,int fnCombineMode);
 			///\brief Комбинирует текущий регион с hrgnSrc2 (см. CombineRgn)
 			///\param hrgnSrc2 - второй регион
 			///\param fnCombineMode - режим комбинирования см. CombineRgn
 			///\return см. CombineRgn			
-			inline int CombineRgn(HRGN hrgnSrc2,int fnCombineMode)
-				{return ::CombineRgn(*this,*this,hrgnSrc2,fnCombineMode);}
+			int CombineRgn(HRGN hrgnSrc2,int fnCombineMode);
 			///\brief Удаляет регион
 			///\return TRUE в случае успеха, иначе FALSE
-			inline BOOL DeleteRgn()
-				{if(m_hRgn!=NULL)return ::DeleteObject(m_hRgn);else return FALSE;}
+			BOOL DeleteRgn();
 			///\brief отсоединяет регион от класса
 			///\return хендл на регион
-			inline HRGN Detach()
-				{HRGN hRetRgn=m_hRgn;m_hRgn=NULL;return hRetRgn;}
+			HRGN Detach();
 		};
 		///\class CULPen
 		///\brief Класс пера(15.10.2007) 

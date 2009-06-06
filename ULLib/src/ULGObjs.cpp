@@ -11,6 +11,54 @@ namespace ULGDI
 {
 	namespace ULGObjs
 	{
+	///////////////////CULBitmap//////////////////////////////////////////
+		BOOL CULBitmap::CreateBitmap(int nWidth,int nHeight,UINT cPlanes,UINT cBitsPerPel,CONST VOID *lpvBits)
+		{
+			return ((m_hBitmap=::CreateBitmap(nWidth,nHeight,cPlanes,cBitsPerPel,lpvBits))!=NULL);
+		}
+		BOOL CULBitmap::CreateCompatibleBitmap(HDC hDC,int nWidth,int nHeight)
+		{
+			return ((m_hBitmap=::CreateCompatibleBitmap(hDC,nWidth,nHeight))!=NULL);
+		}
+		BOOL CULBitmap::CreateMappedBitmap(HINSTANCE hInstance,INT_PTR idBitmap,UINT wFlags,
+			LPCOLORMAP lpColorMap,int iNumMaps)
+		{
+			return ((m_hBitmap=::CreateMappedBitmap(hInstance,idBitmap,wFlags,
+			lpColorMap,iNumMaps))!=NULL);	
+		}
+		BOOL CULBitmap::LoadBitmap(HINSTANCE hInstance,LPCTSTR lpBitmapName)
+		{
+			return ((m_hBitmap=::LoadBitmap(hInstance,lpBitmapName))!=NULL);
+		}
+		BOOL CULBitmap::LoadBitmap(HINSTANCE hInstance,int nIDRes)
+		{
+			return ((m_hBitmap=::LoadBitmap(hInstance,MAKEINTRESOURCE(nIDRes)))!=NULL);
+		}
+		int CULBitmap::GetBitmap(BITMAP* pBmp)
+		{
+			return ::GetObject((HBITMAP)*this,sizeof(BITMAP),(LPSTR)pBmp);
+		}
+		int CULBitmap::GetBitmap(DIBSECTION* pDib)
+		{
+			return ::GetObject((HBITMAP)*this,sizeof(DIBSECTION),(LPSTR)pDib);
+		}
+		LONG CULBitmap::GetBitmapBits(LONG cbBuffer,LPVOID lpvBits)
+		{
+			return ::GetBitmapBits(*this,cbBuffer,lpvBits);
+		}
+		BOOL CULBitmap::DeleteBitmap()
+		{
+			if(m_hBitmap!=NULL)
+				return ::DeleteObject(m_hBitmap);
+			else 
+				return FALSE;
+		}
+		HBITMAP CULBitmap::Detach()
+		{
+			HBITMAP hRetBmp=m_hBitmap;m_hBitmap=NULL;return hRetBmp;
+		}
+
+	///////////////////CULRgn//////////////////////////////////////////////
 		BOOL CULRgn::CreateBitmapRgn(CULBitmap RgnBitmap)
 		{
 			//создание региона по маске
@@ -59,8 +107,33 @@ namespace ULGDI
 			}
 			return TRUE;
 		}
-
-
+		BOOL CULRgn::CreateRectRgn(int nLeftRect,int nTopRect,int nRightRect,int nBottomRect)
+		{
+			return ((m_hRgn=::CreateRectRgn(nLeftRect,nTopRect,nRightRect,nBottomRect))!=NULL);
+		}
+		BOOL CULRgn::CreateRoundRectRgn(int nLeftRect,int nTopRect,int nRightRect,int nBottomRect,
+				int nWidthEllipse,int nHeightEllipse)
+		{
+			return ((m_hRgn=::CreateRoundRectRgn(nLeftRect,nTopRect,nRightRect,nBottomRect,
+					nWidthEllipse,nHeightEllipse))!=NULL);
+		}
+		int CULRgn::CombineRgn(HRGN hrgnSrc1,HRGN hrgnSrc2,int fnCombineMode)
+		{
+			return ::CombineRgn(*this,hrgnSrc1,hrgnSrc2,fnCombineMode);
+		}
+		int CULRgn::CombineRgn(HRGN hrgnSrc2,int fnCombineMode)
+		{
+			return ::CombineRgn(*this,*this,hrgnSrc2,fnCombineMode);
+		}
+		BOOL CULRgn::DeleteRgn()
+		{
+			if(m_hRgn!=NULL)return ::DeleteObject(m_hRgn);else return FALSE;
+		}
+		HRGN CULRgn::Detach()
+		{
+			HRGN hRetRgn=m_hRgn;m_hRgn=NULL;return hRetRgn;
+		}
+		///////////////////CULPen//////////////////////////////////////////////
 		CULPen::CULPen(int fnPenStyle,int nWidth,COLORREF crColor)
 		{
 			m_hPen=::CreatePen(fnPenStyle,nWidth,crColor);

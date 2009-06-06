@@ -1,7 +1,7 @@
 ///\file ULTrayIcon.cpp
 ///\brief фаил реализации класса иконки в трее
 #define _WIN32_IE 0x0500
-#include "ULTrayIcon.h"
+#include "..\Include\ULTrayIcon.h"
 
 /*
 #if (_WIN32_IE >= 0x0501)
