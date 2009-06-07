@@ -220,4 +220,5 @@
 		ULWnds::ULControls::CULSlider
 	7 исправлена CULQueueThread::Create, там исключено использование  CreateThread
 2.3.6 <07.06.2009> 
-	добавлена CULBitmap::CreateMappedBitmap
+	1 обновлены подключения хедеров
+	2 добавлена CULBitmap::CreateMappedBitmap

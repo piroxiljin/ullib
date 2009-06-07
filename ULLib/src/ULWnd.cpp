@@ -205,7 +205,7 @@ namespace ULWnds
 		return ::GetWindowTextLength(*this);
 	}
 
-	BOOL CULWnd::SetWindowText(LPTSTR lpString)
+	BOOL CULWnd::SetWindowText(LPCTSTR lpString)
 	{
 		return ::SetWindowText(*this,lpString);
 	}

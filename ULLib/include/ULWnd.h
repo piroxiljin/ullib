@@ -121,7 +121,7 @@ namespace ULWnds
 		///\brief Установка текста в окно
 		///\param lpString - Текст
 		///\return TRUE в случае успеха
-		BOOL SetWindowText(LPTSTR lpString);
+		BOOL SetWindowText(LPCTSTR lpString);
 		///\brief отправка сообщения в окно
 		///\param Msg - Сообщение
 		///\param wParam - Параметр 1
