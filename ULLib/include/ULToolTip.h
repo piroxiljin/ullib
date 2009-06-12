@@ -63,12 +63,12 @@ namespace ULWnds
 			///\param szMessage - текст подсказки
 			///\param uID - идентификатор подсказки
 			///\return TRUE в случае успеха
-			BOOL AddTool(HWND hTargetWnd, TCHAR* szMessage,UINT uID=0);	
+			BOOL AddTool(HWND hTargetWnd, LPCTSTR szMessage,UINT uID=0);	
 			///\brief Функция обновления подсказки
 			///\param hTargetWnd - окно, для которого подсказка
 			///\param szMessage - текст подсказки
 			///\return TRUE в случае успеха
-			BOOL UpdateTipText(HWND hTargetWnd,	TCHAR* szMessage);				
+			BOOL UpdateTipText(HWND hTargetWnd,	LPCTSTR szMessage);				
 		//==================inline functions============================
 			///\brief Функция задаёт цвет фона
 			///\param clrBK - цвет фона

@@ -38,7 +38,7 @@ namespace ULWnds
 			return (Attach(m_hWnd))?m_hWnd:NULL;
 		}
 
-		BOOL CULStatusBar::AddPart(int Width,TCHAR* szToolTip)
+		BOOL CULStatusBar::AddPart(int Width,LPCTSTR szToolTip)
 		{
 			int* lpParts;
 			BOOL fRet=FALSE;	
@@ -93,12 +93,12 @@ namespace ULWnds
 				?TRUE:FALSE;
 		}
 
-		BOOL CULStatusBar::SetText(int nPart, TCHAR* szText)
+		BOOL CULStatusBar::SetText(int nPart, LPCTSTR szText)
 		{
 			return (BOOL)SendMessage(SB_SETTEXT,WPARAM(nPart),LPARAM(szText));
 		}
 
-		BOOL CULStatusBar::SetToolTipText(int nPart, TCHAR* szText)
+		BOOL CULStatusBar::SetToolTipText(int nPart, LPCTSTR szText)
 		{
 			return (BOOL)SendMessage(SB_SETTIPTEXT,WPARAM(nPart),LPARAM(szText));
 		}
