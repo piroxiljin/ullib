@@ -42,9 +42,17 @@ namespace ULWnds
 			///\return предыдущая позиция
 			int SetPos(int nPos);
 			///\brief установка диапазона
+			///\param nLower,nUpper - нижний и верхний предел диапазона
 			void SetRange(short nLower,short nUpper);
+			///\brief установка диапазона 32х битными значениями
+			///\param nLower,nUpper - нижний и верхний предел диапазона
 			void SetRange32(int nLower,int nUpper);
+			///\brief установка новой позиции
+			///\param nStep - значение новой позиции
+			///\return предыдущая позиция
 			int SetStep(int nStep);
+			///\brief смещение позиции на одну единицу
+			///\return предыдущая позиция
 			int StepIt();
 		};
 	}
