@@ -387,8 +387,7 @@ namespace ULWnds
 		ULONG_PTR SetClassLongPtr(int nIndex,LONG dwNewLong);
 		///\brief функция для получения полей класса окна
 		///\param nIndex - индекс поля
-		///\param dwNewLong - значение поля
-		///\return предыдущее значение
+		///\return значение поля
 		ULONG_PTR GetClassLongPtr(LONG nIndex);
 		///\brief функция выполняет захват фокуса мыши
 		///\return предыдущее окно, имеющее фокус

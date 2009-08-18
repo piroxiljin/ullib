@@ -52,10 +52,10 @@ namespace ULWnds
 			///\param clrNew - новый цвет
 			///\return старый цвет
 			COLORREF SetBkColor(COLORREF clrNew);
+#if _WIN32_WINNT >= 0x0501
 			///\brief переключает режим отображения
 			///\param fEnable - флаг переключения
 			///return предыдущее значение
-#if _WIN32_WINNT >= 0x0501
 			BOOL SetMarquee(BOOL fEnable);
 #endif
 			///\brief установка новой позиции

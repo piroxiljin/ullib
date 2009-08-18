@@ -1,7 +1,7 @@
 ///\file ULProperty.h
 ///\brief фаил содержащий классы свойств
 #pragma warning(disable:4355)
-///\namespace 
+///\namespace ULProperty
 ///\brief простронство имён содержащее классы свойств
 namespace ULProperty
 {

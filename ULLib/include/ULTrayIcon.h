@@ -32,6 +32,7 @@ namespace ULOther
 		UINT AddIcon(HICON hIcon);
 		///\brief Функция изменяет иконку в трее
 		///\param uID - идентификатор иконки 
+		///\param hIcon - хендл новой иконки
 		///\return TRUE в случае успеха
 		BOOL ChangeIcon(UINT uID,HICON hIcon);
 		///\brief фунция задаёт строку подсветки иконки
@@ -43,7 +44,7 @@ namespace ULOther
 		///\param uID - идентификатор иконки 
 		///\param pszInfoTitle - заголовок сообщения
 		///\param pszInfo - сообщение
-		///\param infoFlags - тип иконки  NIIF_...
+		///\param dwInfoFlags - тип иконки  NIIF_...
 		///\return TRUE в случае успеха
 		BOOL ShowBalloon(UINT uID,LPCTSTR pszInfoTitle,LPCTSTR pszInfo,DWORD dwInfoFlags);
 		///\brief Функция удаляет иконку из трея

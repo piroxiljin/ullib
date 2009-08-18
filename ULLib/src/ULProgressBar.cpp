@@ -70,12 +70,12 @@ namespace ULWnds
 		{
 			return (COLORREF)SendMessage(PBM_SETBKCOLOR,0,(LPARAM)clrNew);
 		}
-
+#if _WIN32_WINNT >= 0x0501
 		BOOL CULProgressBar::SetMarquee(BOOL fEnable)
 		{
 			return (BOOL)SendMessage(PBM_SETMARQUEE,(WPARAM)fEnable);
 		}
-
+#endif
 		int CULProgressBar::SetStep(int nStep)
 		{
 			return (int)SendMessage(PBM_SETSTEP,(WPARAM)nStep);

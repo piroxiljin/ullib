@@ -129,7 +129,6 @@ namespace ULWnds
 				CHOOSEFONT m_cf;
 			public:
 				///\brief Конструктор
-				///\param clrInit - цвет поумолчанию
 				///\param dwFlags - флаги для огранизации диалога
 				explicit CULFontDlg(DWORD dwFlags=CF_ENABLEHOOK|CF_SCREENFONTS);
 				///\brief Создание модального диалога

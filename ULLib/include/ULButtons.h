@@ -96,7 +96,7 @@ namespace ULWnds
 				///\brief структура, содержащая контексты для двойной буферизации
 				///\param Up - для обычного состояния кнопки
 				///\param Down - для нажатой кнопки
-				///\param param Focused - для фокусированной кнопки
+				///\param Focused - для фокусированной кнопки
 				///\param Disable - для отключенной кнопки
 				struct tagMemDC
 				{

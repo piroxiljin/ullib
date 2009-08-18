@@ -1,4 +1,4 @@
-///\file ULStatic.h
+///\file ULStatic.cpp
 ///\brief cpp файл класса обёртки для STATIC контрола(23.12.2008)
 #include "..\..\ULLib\Include\ULStatic.h"
 #include "..\..\ULLib\Include\ULRes.h"

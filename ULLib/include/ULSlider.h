@@ -60,7 +60,7 @@ namespace ULWnds
 			UINT SetLineSize(UINT nLineSize);
 			///\brief устанавливает шаг изменения позиции кнопками PageUp/PageDown \n
 			/// и кликом мыши по свободной области
-			///\param nLineSize - шаг изменения позиции
+			///\param nPageSize - шаг изменения позиции
 			///\return предыдущий шаг изменения позиции
 			UINT SetPageSize(UINT nPageSize);
 		};
