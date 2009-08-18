@@ -30,7 +30,7 @@ namespace ULWnds
 		///\brief Оператор копирования
 		virtual void operator = (CULSubClass&);
 		///\brief Фунцкия осуществляющая подмену оконных функций
-		///\param hWnd
+		///\param hWnd - хендл окна, которое будет привязано к классу
 		virtual BOOL Attach(HWND hWnd);
 		///\brief Получает ID дочернего контрола
 		///\return ID контрола

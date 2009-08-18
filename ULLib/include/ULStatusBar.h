@@ -37,7 +37,7 @@ namespace ULWnds
 			///\param Width - ширина секции
 			///\param szToolTip - при наведении мышью подсказка, если 
 			///	текст весь не уместился в секцию
-			BOOL AddPart(int Width,TCHAR* szToolTip);
+			BOOL AddPart(int Width,LPCTSTR szToolTip);
 			//Убирает все информационные секции со статусбара
 			BOOL DeleteAll();
 			///\brief Устанавливает иконку в информационную секцию
@@ -51,11 +51,11 @@ namespace ULWnds
 			///\brief Устанавливает текст в информационную секцию
 			///\param nPart - номер секции
 			///\param szText - сам текст :)
-			BOOL SetText(int nPart, TCHAR* szText);
+			BOOL SetText(int nPart, LPCTSTR szText);
 			///\brief Устанавливает текст подсказки в информационную секцию
 			///\param nPart - номер секции
 			///\param szText - сам текст :)
-			BOOL SetToolTipText(int nPart, TCHAR* szText);
+			BOOL SetToolTipText(int nPart, LPCTSTR szText);
 			///\brief Изменяет размер сатусбара по ширине родителя
 			///	с подгонкой ширины нулевой секции.
 			///	Вставить в обработчик WM_SIZE окна родителя 

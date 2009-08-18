@@ -9,9 +9,15 @@ namespace ULWnds
 		m_hWnd(NULL),
 		m_lpSubClassWndProc(NULL),
 		m_szDefClassName(_T("ULWNDCLASS")),
-		/*m_propText(this),*/
-		m_propStyle(this),
-		m_propStyleEx(this)
+//		propText(this),
+		propStyle(this),
+		propStyleEx(this),
+		propLeft(this),
+		propTop(this),
+		propWidth(this),
+		propHeight(this),
+		propVisible(this),
+		propEnable(this)
 	{
 	}
 	CULWnd::CULWnd(CULWnd& Wnd):
@@ -20,17 +26,29 @@ namespace ULWnds
 		m_lpSubClassWndProc(Wnd.m_lpSubClassWndProc),
 		MessageMap(Wnd.MessageMap),
 		m_szDefClassName(_T("ULWNDCLASS")),
-		/*m_propText(this),*/
-		m_propStyle(this),
-		m_propStyleEx(this)
+//		propText(this),
+		propStyle(this),
+		propStyleEx(this),
+		propLeft(this),
+		propTop(this),
+		propWidth(this),
+		propHeight(this),
+		propVisible(this),
+		propEnable(this)
 	{
 	}
 
 	CULWnd::CULWnd(HWND hwnd):
 		m_hWnd(hwnd),
-		/*m_propText(this),*/
-		m_propStyle(this),
-		m_propStyleEx(this)
+//		propText(this),
+		propStyle(this),
+		propStyleEx(this),
+		propLeft(this),
+		propTop(this),
+		propWidth(this),
+		propHeight(this),
+		propVisible(this),
+		propEnable(this)
 	{
 		m_hParentWnd=GetParent();
 		CULWnd* pWnd=FromHandle(hwnd);
@@ -45,11 +63,11 @@ namespace ULWnds
 /*
 	void CULWnd::SetText(ULOther::CULStr* pstrText)
 	{
-		SetWindowText(*pszText);
+		SetWindowText(*pstrText);
 	}
 	void CULWnd::GetText(ULOther::CULStr* pstrText)
 	{
-		GetWindowText(*pszText,pszText->GetSize());
+		GetWindowText(*pstrText,pstrText->GetSize());
 	}
 */
 	void CULWnd::SetStyle(DWORD* pdwStyle)
@@ -70,6 +88,86 @@ namespace ULWnds
 	void CULWnd::GetStyleEx(DWORD* pdwStyleEx)
 	{
 		*pdwStyleEx=(DWORD)GetWindowLong(GWL_EXSTYLE);
+	}
+
+	void CULWnd::SetLeft(int* pnLeft)
+	{
+		RECT rc;
+		GetWindowRect(&rc);
+		SetWindowPos(NULL,*pnLeft,rc.top,rc.right-rc.left,rc.bottom-rc.top,
+			SWP_NOZORDER|SWP_NOSIZE|SWP_NOACTIVATE);
+	}
+
+	void CULWnd::GetLeft(int* pnLeft)
+	{
+		RECT rc;
+		GetWindowRect(&rc);
+		*pnLeft=rc.left;
+	}
+
+	void CULWnd::SetTop(int* pnTop)
+	{
+		RECT rc;
+		GetWindowRect(&rc);
+		SetWindowPos(NULL,rc.left,*pnTop,rc.right-rc.left,rc.bottom-rc.top,
+			SWP_NOZORDER|SWP_NOSIZE|SWP_NOACTIVATE);
+	}
+
+	void CULWnd::GetTop(int* pnTop)
+	{
+		RECT rc;
+		GetWindowRect(&rc);
+		*pnTop=rc.top;
+	}
+
+	void CULWnd::SetWidth(DWORD* pdwWidth)
+	{
+		RECT rc;
+		GetWindowRect(&rc);
+		SetWindowPos(NULL,rc.left,rc.top,*pdwWidth,rc.bottom-rc.top,
+			SWP_NOZORDER|SWP_NOMOVE|SWP_NOACTIVATE);
+	}
+
+	void CULWnd::GetWidth(DWORD* pdwWidth)
+	{
+		RECT rc;
+		GetWindowRect(&rc);
+		*pdwWidth=rc.right-rc.left;
+	}
+
+	void CULWnd::SetHeight(DWORD* pdwHeght)
+	{
+		RECT rc;
+		GetWindowRect(&rc);
+		SetWindowPos(NULL,rc.left,rc.top,rc.right-rc.left,*pdwHeght,
+			SWP_NOZORDER|SWP_NOMOVE|SWP_NOACTIVATE);
+	}
+
+	void CULWnd::GetHeight(DWORD* pdwHeght)
+	{
+		RECT rc;
+		GetWindowRect(&rc);
+		*pdwHeght=rc.bottom-rc.top;
+	}
+
+	void CULWnd::SetVisible(BOOL* pfVisible)
+	{
+		ShowWindow((*pfVisible)?SW_SHOWNORMAL:SW_HIDE);
+	}
+
+	void CULWnd::GetVisible(BOOL* pfVisible)
+	{
+		*pfVisible=IsWindowVisible();
+	}
+
+	void CULWnd::SetEnable(BOOL* pfEnable)
+	{
+		EnableWindow(*pfEnable);
+	}
+
+	void CULWnd::GetEnable(BOOL* pfEnable)
+	{
+		*pfEnable=IsWindowEnabled();
 	}
 
 	void CULWnd::operator = (CULWnd& Wnd)
@@ -205,7 +303,7 @@ namespace ULWnds
 		return ::GetWindowTextLength(*this);
 	}
 
-	BOOL CULWnd::SetWindowText(LPTSTR lpString)
+	BOOL CULWnd::SetWindowText(LPCTSTR lpString)
 	{
 		return ::SetWindowText(*this,lpString);
 	}

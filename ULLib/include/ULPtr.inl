@@ -120,22 +120,37 @@ namespace ULOther
 		{
 			return (int)_tcslen(*this);
 		}
+		/*
 		///\brief оператор присвоения
-		void operator=(const object_t* pszRight)
+		object_t* operator=(const object_t pszRight[])
 		{
 			if(!pszRight)
-				return;
+				return *this;
 			size_t nSize=_tcslen(pszRight);
 			if(nSize>GetSize())
 				Resize(nSize+1);
 			_tcscpy_s(*this,(int)GetSize(),pszRight);
+			return *this;
+		};
+		*/
+		///\brief оператор присвоения
+		object_t* operator=(const object_t* pszRight)
+		{
+			if(!pszRight)
+				return *this;
+			size_t nSize=_tcslen(pszRight);
+			if(nSize>GetSize())
+				Resize(nSize+1);
+			_tcscpy_s(*this,(int)GetSize(),pszRight);
+			return *this;
 		};
 		///\brief оператор присвоения
-		void operator=(CULStrT<object_t> &pszRight)
+		object_t* operator=(CULStrT<object_t> &pszRight)
 		{
 			if(pszRight.GetSize()>GetSize())
 				Resize(pszRight.GetSize()+1);
 			_tcscpy_s(*this,(int)GetSize(),pszRight);
+			return *this;
 		};
 		///\brief оператор сложения строк
 		///\return получившаяся строка

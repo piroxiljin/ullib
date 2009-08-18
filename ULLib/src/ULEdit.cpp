@@ -26,7 +26,7 @@ namespace ULWnds
 				hParentWnd,(HMENU)(LONG_PTR)uID,   
 				ULOther::ULGetResourceHandle(), 
 				NULL);
- 			SendMessage(WM_SETTEXT, 0, (LPARAM) pszText); 
+			SetWindowText(pszText);
 			return CULSubClass::Attach(m_hWnd);
 		};
 
@@ -35,7 +35,8 @@ namespace ULWnds
 			HDROP hDrop=(HDROP)wParam;
 			TCHAR szFilePath[MAX_PATH];
 			DragQueryFile(hDrop,0,szFilePath,MAX_PATH);
- 			SendMessage(WM_SETTEXT, 0, (LPARAM) szFilePath); 
+			DragFinish(hDrop);
+			SetWindowText(szFilePath);
 			return FALSE;
 		};
 	}

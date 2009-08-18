@@ -66,7 +66,7 @@ namespace ULWnds
 			///\param nIDDlgItem - ID диалога
 			///\param lpString - страка
 			///\return TRUE в случае успеха, иначе FALSE
-			inline BOOL SetDlgItemText(int nIDDlgItem,LPTSTR lpString)
+			inline BOOL SetDlgItemText(int nIDDlgItem,LPCTSTR lpString)
 				{return ::SetDlgItemText(*this,nIDDlgItem,lpString);}
 			///\brief Устанавливает текст на контрол диалога интерпритируя его из числа
 			///\param nIDDlgItem - ID диалога

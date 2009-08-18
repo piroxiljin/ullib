@@ -27,18 +27,55 @@ namespace ULWnds
 		///\param pstrText - указатель на буфер текста
 		void GetText(ULOther::CULStr* pstrText);
 */
-		///\brief хендлер Set для свойства m_propStyle
-		///\param pdwStyle - указатель стиль
+		///\brief хендлер Set для свойства propStyle
+		///\param pdwStyle - указатель на стиль
 		void SetStyle(DWORD* pdwStyle);
-		///\brief хендлер Get для свойства m_propStyle
-		///\param pdwStyle - указатель стиль
+		///\brief хендлер Get для свойства propStyle
+		///\param pdwStyle - указатель на стиль
 		void GetStyle(DWORD* pdwStyle);
-		///\brief хендлер Set для свойства m_propStyleEx
-		///\param pdwStyleEx - указатель стиль
+		///\brief хендлер Set для свойства propStyleEx
+		///\param pdwStyleEx - указатель на стиль
 		void SetStyleEx(DWORD* pdwStyleEx);
-		///\brief хендлер Get для свойства m_propStyleEx
-		///\param pdwStyleEx - указатель стиль
+		///\brief хендлер Get для свойства propStyleEx
+		///\param pdwStyleEx - указатель на стиль
 		void GetStyleEx(DWORD* pdwStyleEx);
+
+		///\brief хендлер Set для свойства propLeft
+		///\param pnLeft - указатель на позицию
+		void SetLeft(int* pnLeft);
+		///\brief хендлер Get для свойства propLeft
+		///\param pnLeft - указатель на позицию
+		void GetLeft(int* pnLeft);
+		///\brief хендлер Set для свойства propTop
+		///\param pnTop - указатель на позицию
+		void SetTop(int* pnTop);
+		///\brief хендлер Get для свойства propTop
+		///\param pnTop - указатель на позицию
+		void GetTop(int* pnTop);
+		///\brief хендлер Set для свойства propWidth
+		///\param pdwWidth - указатель на ширину
+		void SetWidth(DWORD* pdwWidth);
+		///\brief хендлер Get для свойства propWidth
+		///\param pdwWidth - указатель на ширину
+		void GetWidth(DWORD* pdwWidth);
+		///\brief хендлер Set для свойства propHeight
+		///\param pdwHeght - указатель на высоту
+		void SetHeight(DWORD* pdwHeght);
+		///\brief хендлер Get для свойства propHeight
+		///\param pdwHeght - указатель на высоту
+		void GetHeight(DWORD* pdwHeght);
+		///\brief хендлер Set для свойства propVisible
+		///\param pfVisible - указатель на флаг
+		void SetVisible(BOOL* pfVisible);
+		///\brief хендлер Get для свойства propVisible
+		///\param pfVisible - указатель на флаг
+		void GetVisible(BOOL* pfVisible);
+		///\brief хендлер Set для свойства propEnable
+		///\param pfEnable - указатель на флаг
+		void SetEnable(BOOL* pfEnable);
+		///\brief хендлер Get для свойства propEnable
+		///\param pfEnable - указатель на флаг
+		void GetEnable(BOOL* pfEnable);
 	public:
 		///\brief Конструктор
 		CULWnd(void);
@@ -121,7 +158,7 @@ namespace ULWnds
 		///\brief Установка текста в окно
 		///\param lpString - Текст
 		///\return TRUE в случае успеха
-		BOOL SetWindowText(LPTSTR lpString);
+		BOOL SetWindowText(LPCTSTR lpString);
 		///\brief отправка сообщения в окно
 		///\param Msg - Сообщение
 		///\param wParam - Параметр 1
@@ -360,16 +397,40 @@ namespace ULWnds
 		///\brief свойство установки/получения текста
 		ULProperty::CULProperty<ULOther::CULStr,CULWnd,
 			&CULWnd::SetText,
-			&CULWnd::GetText>	m_propText;
+			&CULWnd::GetText>	propText;
 */
 		///\brief свойство установки/получения стилья
 		ULProperty::CULProperty<DWORD,CULWnd,
 			&CULWnd::SetStyle,
-			&CULWnd::GetStyle>	m_propStyle;
+			&CULWnd::GetStyle> propStyle;
 		///\brief свойство установки/получения расширенного стиля
 		ULProperty::CULProperty<DWORD,CULWnd,
 			&CULWnd::SetStyleEx,
-			&CULWnd::GetStyleEx>	m_propStyleEx;
+			&CULWnd::GetStyleEx> propStyleEx;
+		///\brief свойство установки/получения левой  координаты окна
+		ULProperty::CULProperty<int,CULWnd,
+			&CULWnd::SetLeft,
+			&CULWnd::GetLeft> propLeft;
+		///\brief свойство установки/получения верхней координаты окна
+		ULProperty::CULProperty<int,CULWnd,
+			&CULWnd::SetTop,
+			&CULWnd::GetTop> propTop;
+		///\brief свойство установки/получения ширины окна
+		ULProperty::CULProperty<DWORD,CULWnd,
+			&CULWnd::SetWidth,
+			&CULWnd::GetWidth> propWidth;
+		///\brief свойство установки/получения высоты окна
+		ULProperty::CULProperty<DWORD,CULWnd,
+			&CULWnd::SetHeight,
+			&CULWnd::GetHeight> propHeight;
+		///\brief свойство установки/получения видимости окна
+		ULProperty::CULProperty<BOOL,CULWnd,
+			&CULWnd::SetVisible,
+			&CULWnd::GetVisible> propVisible;
+		///\brief свойство установки/получения включенности окна
+		ULProperty::CULProperty<BOOL,CULWnd,
+			&CULWnd::SetEnable,
+			&CULWnd::GetEnable> propEnable;
 	};
 	///\brief функция для получения иконки указанного окна
 	///\param hWnd - хендл окна

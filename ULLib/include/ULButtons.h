@@ -7,10 +7,6 @@
 #include "ULGDI.h"
 #pragma comment(lib,"Msimg32.lib")
 
-#ifndef ODS_HOTLIGHT
-	#define ODS_HOTLIGHT        0x0040
-#endif
-
 namespace ULWnds
 {
 	namespace ULControls
@@ -84,8 +80,7 @@ namespace ULWnds
 				///\param it - тип картинки enImageType
 				///\param hImage - Хендл картинки
 				///\return Хендл на предыдущую картинку, если нет, то NULL
-				inline HANDLE SetImage(enImageType it,HANDLE hImage)
-					{return (HANDLE)SendMessage(BM_GETIMAGE,(WPARAM)it,(LPARAM)hImage);}
+				HANDLE SetImage(enImageType it,HANDLE hImage);
 				///\brief Устанавливает стиль кнопки
 				///\param dwStyle - стиль
 				///\param fRedraw - Флаг перерисовки
@@ -123,7 +118,9 @@ namespace ULWnds
 					ctDown			=ODS_SELECTED,
 					ctFocused		=ODS_FOCUS,
 					ctDisable		=ODS_DISABLED,
+#if(WINVER >= 0x0500)
 					ctHiLite		=ODS_HOTLIGHT
+#endif
 				};
 				///\brief Переменная хранящая в себе текущее состояние кнопки
 				WORD m_wCurState;
