@@ -219,7 +219,12 @@
 	6 добавлен класс слайдера(trackbar)
 		ULWnds::ULControls::CULSlider
 	7 исправлена CULQueueThread::Create, там исключено использование  CreateThread
-2.3.6 <07.06.2009> 
+2.3.6 <18.08.2009> 
 	1 обновлены подключения хедеров
 	2 добавлена CULBitmap::CreateMappedBitmap
 	3 добавлена ULLibPrj2008 для сборки в 2008й студии
+	4 исправлена CULButton::SetImage, ошибка в посылке не того сообщения
+	5 добавлено CULProgressBar
+	6 ULLibPrj -> ULLibPrj2005 для сборки в 2005й
+	7 добавлены свойства 	CULWnd::propStyle,propStyleEx,propLeft,propTop,propWidth,propHeight,propVisible,propEnable
+	8 исправлено в CULEdit::OnDropFiles отсутсвовала DragFinish, что приводило к утечке

@@ -1,6 +1,5 @@
 ///\file ULThread.h
 ///\brief «аголовочный файл класса потока (03.10.2007)
-//незакончена, необходимо пересмотреть вариант наследовани€
 #pragma once
 #ifndef __ULTHREAD__H_
 #define __ULTHREAD__H_
@@ -13,7 +12,7 @@ namespace ULThreads
 	{
 	private:
 		///\brief ‘лаг, состо€ни€ потока
-		///	если FALSE, то обработчики сообщений потоко должны
+		///	если FALSE, то обработчики сообщений потока должны
 		///	немедленно завершать свою работу
 		volatile BOOL m_fRunThread;
 	protected:

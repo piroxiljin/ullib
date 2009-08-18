@@ -26,27 +26,38 @@ namespace ULWnds
 			BOOL Create(HWND hParentWnd,UINT uID,int x,int y,int cx,int cy,
 				DWORD dwStyle=WS_CHILD|WS_VISIBLE,DWORD dwStyleEx=NULL);
 			///\return ¬озвращает текущую позицию прогрессбара
-			int GetPos();
-			///\brief ¬озвращает диапазон прогрессбара
-			///\param pnLower,pnUpper - указатели на нижнее и верхнее значение
-			///\return TRUE в случае успеха
-			BOOL GetRange(int* pnLower,int* pnUpper);
-			///\brief устанавливает смещение от текущей позиции
-			///\param nIncrement - смещение
-			///\return предыдущее значение прогресса
-			int DeltaPos(int nIncrement);
-			///\brief 
-			COLORREF SetBkColor(COLORREF clrNew);
+			UINT GetPos();
 			///\brief устанавливает новую абсолютную позицию
 			///\param nPos - значение позиции
 			///\return предыдуща€ позици€
-			int SetPos(int nPos);
+			UINT SetPos(UINT nPos);
+			///\brief ¬озвращает диапазон прогрессбара
+			///\param pnLower,pnUpper - указатели на нижнее и верхнее значение
+			void GetRange(int* pnLower,int* pnUpper);
+			///\brief ¬озвращает диапазон прогрессбара
+			///\param fWhichLimit - если TRUE, то вернЄтс€ нижн€€ граница, иначе FALSE
+			///\return выбранна€ граница
+			int GetRange(BOOL fWhichLimit);
 			///\brief установка диапазона
 			///\param nLower,nUpper - нижний и верхний предел диапазона
 			void SetRange(short nLower,short nUpper);
 			///\brief установка диапазона 32х битными значени€ми
 			///\param nLower,nUpper - нижний и верхний предел диапазона
 			void SetRange32(int nLower,int nUpper);
+			///\brief устанавливает смещение от текущей позиции
+			///\param nIncrement - смещение
+			///\return предыдущее значение прогресса
+			int DeltaPos(int nIncrement);
+			///\brief устанавливает цвет фона прогрессбара
+			///\param clrNew - новый цвет
+			///\return старый цвет
+			COLORREF SetBkColor(COLORREF clrNew);
+			///\brief переключает режим отображени€
+			///\param fEnable - флаг переключени€
+			///return предыдущее значение
+#if _WIN32_WINNT >= 0x0501
+			BOOL SetMarquee(BOOL fEnable);
+#endif
 			///\brief установка новой позиции
 			///\param nStep - значение новой позиции
 			///\return предыдуща€ позици€

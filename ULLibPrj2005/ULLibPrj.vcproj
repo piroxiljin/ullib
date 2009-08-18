@@ -420,6 +420,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\ULLib\src\ULProgressBar.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\ULLib\src\ULPropPage.cpp"
 				>
 			</File>
@@ -663,6 +667,10 @@
 			</File>
 			<File
 				RelativePath="..\ULLib\include\ULProfileReg.h"
+				>
+			</File>
+			<File
+				RelativePath="..\ULLib\include\ULProgressBar.h"
 				>
 			</File>
 			<File

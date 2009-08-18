@@ -1,10 +1,8 @@
 ///\file ULProgressBar.cpp
 ///\brief фаил реализации класса обёртки для ProgressBar
-#pragma message("ULProgressBar.cpp поменять пути при переносе в библиотеку")
-#include "ULProgressBar.h"
-//#include "..\Include\ULProgressBar.h"
-#include "ULStates.h"
-//#include "..\Include\ULStates.h"
+#define _WIN32_WINNT 0x0501
+#include "..\Include\ULProgressBar.h"
+#include "..\Include\ULStates.h"
 #include <commctrl.h>
 namespace ULWnds
 {
@@ -28,9 +26,29 @@ namespace ULWnds
 			return CULSubClass::Attach(m_hWnd);
 		}
 
-		int CULProgressBar::SetPos(int nPos)
+		UINT CULProgressBar::GetPos()
 		{
-			return (int)SendMessage(PBM_SETPOS,(LPARAM)nPos,0);
+			return (UINT)SendMessage(PBM_GETPOS);
+		}
+
+		UINT CULProgressBar::SetPos(UINT nPos)
+		{
+			return (UINT)SendMessage(PBM_SETPOS,(LPARAM)nPos,0);
+		}
+
+		void CULProgressBar::GetRange(int* pnLower,int* pnUpper)
+		{
+			ASSERT(pnLower);
+			ASSERT(pnUpper);
+			PBRANGE pbr;
+			SendMessage(PBM_GETRANGE,0,(LPARAM)&pbr);
+			*pnLower=pbr.iLow;
+			*pnUpper=pbr.iHigh;
+		}
+
+		int CULProgressBar::GetRange(BOOL fWhichLimit)
+		{
+			return (int)SendMessage(PBM_GETRANGE,fWhichLimit);
 		}
 
 		void CULProgressBar::SetRange(short nLower,short nUpper)
@@ -38,5 +56,34 @@ namespace ULWnds
 			SendMessage(PBM_SETRANGE,0,MAKELPARAM(nLower,nUpper));
 		}
 
+		void CULProgressBar::SetRange32(int nLower,int nUpper)
+		{
+			SendMessage(PBM_SETRANGE32,(WPARAM)nLower,(LPARAM)nUpper);
+		}
+
+		int CULProgressBar::DeltaPos(int nIncrement)
+		{
+			return (int)SendMessage(PBM_DELTAPOS,(WPARAM)nIncrement);
+		}
+
+		COLORREF CULProgressBar::SetBkColor(COLORREF clrNew)
+		{
+			return (COLORREF)SendMessage(PBM_SETBKCOLOR,0,(LPARAM)clrNew);
+		}
+
+		BOOL CULProgressBar::SetMarquee(BOOL fEnable)
+		{
+			return (BOOL)SendMessage(PBM_SETMARQUEE,(WPARAM)fEnable);
+		}
+
+		int CULProgressBar::SetStep(int nStep)
+		{
+			return (int)SendMessage(PBM_SETSTEP,(WPARAM)nStep);
+		}
+
+		int CULProgressBar::StepIt()
+		{
+			return (int)SendMessage(PBM_STEPIT);
+		}
 	}
 }
