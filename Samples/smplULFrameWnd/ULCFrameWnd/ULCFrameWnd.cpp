@@ -1,4 +1,5 @@
 #include ".\ulcframewnd.h"
+#include "..\..\..\ULLib\Include\ULStates.h"
 #include "..\..\..\ULLib\Include\ULDlgs.h"
 #include "..\..\..\ULLib\Include\ULMenu.h"
 #include "..\resource.h"
@@ -36,7 +37,7 @@ LRESULT CULCFrameWnd::OnCreate(WPARAM /*wParam*/,LPARAM /*lParam*/)
 //	m_StatusBar.DeleteAll();
 
 
-	assert(m_ReBarTop.Create(*this,0,ULWnds::ULBars::CULRebar::afTop));
+	ASSERT(m_ReBarTop.Create(*this,0,ULWnds::ULBars::CULRebar::afTop));
 
 	DWORD dwBaseUnits = GetDialogBaseUnits(); 
 	m_hwndCombo = CreateWindow(_T("COMBOBOX"), NULL, 
@@ -100,9 +101,9 @@ LRESULT CULCFrameWnd::OnCreate(WPARAM /*wParam*/,LPARAM /*lParam*/)
 
 //	SIZE szCombo={rect.right-rect.left,rcTBWidth.bottom};
 
-	assert(m_ReBarTop.InsertBand(0,m_hwndCombo,NULL,NULL));
+	ASSERT(m_ReBarTop.InsertBand(0,m_hwndCombo,NULL,NULL));
 
-	assert(m_ReBarTop.InsertBand(0,m_ToolBar,NULL,NULL));
+	ASSERT(m_ReBarTop.InsertBand(0,m_ToolBar,NULL,NULL));
 /*
   m_ToolBar2.Create(*this,
 		ID_TOOLBAR,24, 24+15, 24, 24,ULWnds::ULBars::CULToolBar::afNon|ULWnds::ULBars::CULToolBar::afTop,
