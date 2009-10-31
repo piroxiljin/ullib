@@ -63,8 +63,8 @@ namespace ULWnds
 		};
 
 		HPROPSHEETPAGE CULPropPage::Create(short TemplID, 
-										TCHAR* szTitle,
-										TCHAR* szSubTitle, 
+										LPCTSTR szTitle,
+										LPCTSTR szSubTitle, 
 										HICON hIcon,
 										BOOL fHelp)
 		{

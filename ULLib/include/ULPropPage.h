@@ -28,8 +28,8 @@ namespace ULWnds
 			///\param fHelp - флаг наличия кнопки "Помощь"
 			///\return хендл на созданную страницу свойств
 			HPROPSHEETPAGE Create(short TemplID, 
-				TCHAR* szTitle=NULL,
-				TCHAR* szSubTitle=NULL, 
+				LPCTSTR szTitle=NULL,
+				LPCTSTR szSubTitle=NULL, 
 				HICON hIcon=NULL,
 				BOOL fHelp=FALSE);
 			///\brief Делает активной Apply

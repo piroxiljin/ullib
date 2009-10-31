@@ -13,6 +13,7 @@
 #include "ULSlider.h"
 #include "ULSplitter.h"
 #include "ULStatic.h"
+#include "ULProgressBar.h"
 namespace ULWnds
 {
 	///\namespace ULControls

@@ -5,7 +5,7 @@
 #include "ULPropPage.h"
 #include "ULPropSheet.h"
 #include "ULCommDlgs.h"
-
+#include "ULFolderDlg.h"
 namespace ULWnds
 {
 	///\namespace ULDlgs

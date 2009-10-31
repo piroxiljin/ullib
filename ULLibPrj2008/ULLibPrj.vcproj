@@ -377,6 +377,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\ULLib\src\ULFolderDlg.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\ULLib\src\ULFrameWnd.cpp"
 				>
 			</File>
@@ -600,6 +604,10 @@
 			</File>
 			<File
 				RelativePath="..\ULLib\include\ULFileVersionInfo.h"
+				>
+			</File>
+			<File
+				RelativePath="..\ULLib\include\ULFolderDlg.h"
 				>
 			</File>
 			<File
