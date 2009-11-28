@@ -25,7 +25,7 @@ namespace ULWnds
 			ULWnds::CULWnd::operator=(FrameWnd);
 		}
 
-		BOOL CULFrameWnd::Create(TCHAR* szWindowName,
+		BOOL CULFrameWnd::Create(LPCTSTR szWindowName,
 								short MenuID,
 								short IconID,
 								short IconSmID,

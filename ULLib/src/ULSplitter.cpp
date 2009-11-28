@@ -13,7 +13,8 @@ namespace ULWnds
 			m_fMoved(FALSE),
 			m_fDragMode(FALSE),
 			m_SplitterOrientation(soHorz),
-			m_fResize(TRUE)
+			m_fResize(TRUE),
+			propResize(this)
 		{		
 			m_arPane[0]=NULL;
 			m_arPane[1]=NULL;
@@ -23,6 +24,7 @@ namespace ULWnds
 			MessageMap.AddMessage<CULSplitter>(WM_MOUSEMOVE,&CULSplitter::OnMouseMove);
 			MessageMap.AddMessage<CULSplitter>(WM_SIZE,&CULSplitter::OnSize);
 			MessageMap.AddMessage<CULSplitter>(WM_WINDOWPOSCHANGED,&CULSplitter::OnWindowPosChanged);
+			MessageMap.AddMessage<CULSplitter>(WM_SETCURSOR,&CULSplitter::OnSetCursor);
 		}
 		BOOL CULSplitter::Create(HWND hParentWnd,WORD wID,int x,int y,int cx,int cy,
 			enSplitterOrientation SplitterOrientation,int nSplitterPos,BOOL fResize)
@@ -124,6 +126,16 @@ namespace ULWnds
 			RECT rc;
 			GetClientRect(&rc);
 			SizeWindowContents(rc.right,rc.bottom);
+		}
+
+		void CULSplitter::SetResize(BOOL* pfEnable)
+		{
+			m_fResize=*pfEnable;
+		}
+
+		void CULSplitter::GetResize(BOOL* pfEnable)
+		{
+			*pfEnable=m_fResize;
 		}
 
 		LRESULT CULSplitter::OnMessage(UINT uMsg,WPARAM wParam,LPARAM lParam)
@@ -323,6 +335,10 @@ namespace ULWnds
 			SizeWindowContents(LOWORD(lParam), HIWORD(lParam));
 			InvalidateRect();
 			return FALSE;
+		}
+		LRESULT CULSplitter::OnSetCursor(WPARAM /*wParam*/,LPARAM /*lParam*/)
+		{
+			return !m_fResize;
 		}
 	}
 }

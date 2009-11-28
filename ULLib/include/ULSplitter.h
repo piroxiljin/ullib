@@ -45,6 +45,11 @@ namespace ULWnds
 			};
 			///\brief отражает текущий режим сплитера
 			enSplitterOrientation m_SplitterOrientation;
+		protected:
+			///\brief активирует возможность изменения пропорции
+			void SetResize(BOOL* pfEnable);
+			///\brief возвращает состояние возможности изменения пропорции
+			void GetResize(BOOL* pfEnable);
 		public:
 			///\brief Конструктор
 			CULSplitter();
@@ -66,6 +71,10 @@ namespace ULWnds
 			///\brief установка позиции сплитера
 			///\param nSplitterPos - позиция сплитера
 			void SetSplitterPos(int nSplitterPos);
+			///\brief свойство установки/получения включенности окна
+			ULProperty::CULProperty<BOOL,CULSplitter,
+				&CULSplitter::SetResize,
+				&CULSplitter::GetResize> propResize;
 		protected:
 			///\brief ресайзит ячейки 
 			///\param nWidth, nHeight - размер сплитера
@@ -81,6 +90,7 @@ namespace ULWnds
 			virtual LRESULT OnMouseMove(WPARAM wParam,LPARAM lParam);
 			virtual LRESULT OnSize(WPARAM wParam,LPARAM lParam);
 			virtual LRESULT OnWindowPosChanged(WPARAM wParam,LPARAM lParam);
+			virtual LRESULT OnSetCursor(WPARAM wParam,LPARAM lParam);			
 		};
 	}
 }

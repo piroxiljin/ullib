@@ -32,7 +32,7 @@ namespace ULWnds
 			///\param dwStyle - стиль окна
 			///\param dwStyleEx - расширенный стиль окна		
 			///\return TRUE в случае успеха
-			BOOL Create(TCHAR* szWindowName,				
+			BOOL Create(LPCTSTR szWindowName,				
 						short MenuID, 						
 						short IconID, 						
 						short IconSmID,						

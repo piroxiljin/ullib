@@ -715,10 +715,14 @@ namespace ULWnds
 					rc.top+=2;
 					rc.left+=2;
 					rc.bottom-=1;
+#ifdef UNICODE
 					if(m_hTheme&&IsThemeActive())
 						DrawThemeText(m_hTheme, *pDC, BP_PUSHBUTTON, PBS_DEFAULTED, m_strText, -1, DT_SINGLELINE | DT_CENTER | DT_VCENTER, 0, &rectBtn);
 					else
 						pDC->DrawText(m_strText,m_strText.GetLen(),&rc, DT_WORDBREAK|DT_WORD_ELLIPSIS|DT_CENTER);
+#else
+#pragma message(__FUNCTION__"переписать для ANSII")
+#endif
 				}
 			}
 			void CItemButton::Clean()

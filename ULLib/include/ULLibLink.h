@@ -4,12 +4,12 @@
 	#ifdef UNICODE 
 		#pragma comment(lib,"uULLibd.lib")
 	#else
-		#pragma comment(lib,"ULLib.lib")
+		#pragma comment(lib,"ULLibd.lib")
 	#endif
 #else
 	#ifdef UNICODE 
 		#pragma comment(lib,"uULLib.lib")
 	#else
-		#pragma comment(lib,"dULLib.lib")
+		#pragma comment(lib,"ULLib.lib")
 	#endif	
 #endif	
