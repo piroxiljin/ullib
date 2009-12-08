@@ -45,7 +45,7 @@ namespace ULWnds
 			};
 			///\brief отражает текущий режим сплитера
 			enSplitterOrientation m_SplitterOrientation;
-		protected:
+		public:
 			///\brief активирует возможность изменения пропорции
 			void SetResize(BOOL* pfEnable);
 			///\brief возвращает состояние возможности изменения пропорции
