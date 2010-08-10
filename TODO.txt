@@ -29,3 +29,5 @@ Z
 добавить void IItemObject::SetItemData(DWORD dwData);
 
 ---Проверить работу гиперссылки при атаче от диалога(mouseleave похоже косячит)
+
+--- добавить Detach для CULSubclass

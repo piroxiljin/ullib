@@ -236,3 +236,7 @@
 	<29.11.2009> 
 	[FIXED] у CULSplitter при отключенной возможности изменять размер курсор принимает нормальное состояние
 	[ADDED] CULSplitter::propResize
+2.3.8 
+	<08.08.2010> 
+	[FIXED] CULWnd.propLeft/propTop/propWidth/propHeight сделано для дочерних окон относительно родителя
+	[ADDED] CULWnd.propClientWidth/propClientHeight для получения размеров клиентской области окна

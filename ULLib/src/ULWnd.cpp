@@ -16,6 +16,8 @@ namespace ULWnds
 		propTop(this),
 		propWidth(this),
 		propHeight(this),
+		propClientWidth(this),
+		propClientHeight(this),
 		propVisible(this),
 		propEnable(this)
 	{
@@ -33,6 +35,8 @@ namespace ULWnds
 		propTop(this),
 		propWidth(this),
 		propHeight(this),
+		propClientWidth(this),
+		propClientHeight(this),
 		propVisible(this),
 		propEnable(this)
 	{
@@ -47,6 +51,8 @@ namespace ULWnds
 		propTop(this),
 		propWidth(this),
 		propHeight(this),
+		propClientWidth(this),
+		propClientHeight(this),
 		propVisible(this),
 		propEnable(this)
 	{
@@ -93,7 +99,17 @@ namespace ULWnds
 	void CULWnd::SetLeft(int* pnLeft)
 	{
 		RECT rc;
-		GetWindowRect(&rc);
+		if(GetWindowLong(GWL_STYLE)&WS_CHILD)
+		{
+			GetClientRect(&rc);
+			POINT pt={rc.left,rc.top};
+			ClientToScreen(&pt);
+			::ScreenToClient(GetParent(),&pt);
+			rc.left=pt.x;
+			rc.top=pt.y;
+		}
+		else
+			GetWindowRect(&rc);
 		SetWindowPos(NULL,*pnLeft,rc.top,rc.right-rc.left,rc.bottom-rc.top,
 			SWP_NOZORDER|SWP_NOSIZE|SWP_NOACTIVATE);
 	}
@@ -101,14 +117,34 @@ namespace ULWnds
 	void CULWnd::GetLeft(int* pnLeft)
 	{
 		RECT rc;
-		GetWindowRect(&rc);
+		if(GetWindowLong(GWL_STYLE)&WS_CHILD)
+		{
+			GetClientRect(&rc);
+			POINT pt={rc.left,rc.top};
+			ClientToScreen(&pt);
+			::ScreenToClient(GetParent(),&pt);
+			rc.left=pt.x;
+			rc.top=pt.y;
+		}
+		else
+			GetWindowRect(&rc);
 		*pnLeft=rc.left;
 	}
 
 	void CULWnd::SetTop(int* pnTop)
 	{
 		RECT rc;
-		GetWindowRect(&rc);
+		if(GetWindowLong(GWL_STYLE)&WS_CHILD)
+		{
+			GetClientRect(&rc);
+			POINT pt={rc.left,rc.top};
+			ClientToScreen(&pt);
+			::ScreenToClient(GetParent(),&pt);
+			rc.left=pt.x;
+			rc.top=pt.y;
+		}
+		else
+			GetWindowRect(&rc);
 		SetWindowPos(NULL,rc.left,*pnTop,rc.right-rc.left,rc.bottom-rc.top,
 			SWP_NOZORDER|SWP_NOSIZE|SWP_NOACTIVATE);
 	}
@@ -116,14 +152,27 @@ namespace ULWnds
 	void CULWnd::GetTop(int* pnTop)
 	{
 		RECT rc;
-		GetWindowRect(&rc);
+		if(GetWindowLong(GWL_STYLE)&WS_CHILD)
+		{
+			GetClientRect(&rc);
+			POINT pt={rc.left,rc.top};
+			ClientToScreen(&pt);
+			::ScreenToClient(GetParent(),&pt);
+			rc.left=pt.x;
+			rc.top=pt.y;
+		}
+		else
+			GetWindowRect(&rc);
 		*pnTop=rc.top;
 	}
 
 	void CULWnd::SetWidth(DWORD* pdwWidth)
 	{
 		RECT rc;
-		GetWindowRect(&rc);
+		if(GetWindowLong(GWL_STYLE)&WS_CHILD)
+			GetClientRect(&rc);
+		else
+			GetWindowRect(&rc);
 		SetWindowPos(NULL,rc.left,rc.top,*pdwWidth,rc.bottom-rc.top,
 			SWP_NOZORDER|SWP_NOMOVE|SWP_NOACTIVATE);
 	}
@@ -138,7 +187,10 @@ namespace ULWnds
 	void CULWnd::SetHeight(DWORD* pdwHeght)
 	{
 		RECT rc;
-		GetWindowRect(&rc);
+		if(GetWindowLong(GWL_STYLE)&WS_CHILD)
+			GetClientRect(&rc);
+		else
+			GetWindowRect(&rc);
 		SetWindowPos(NULL,rc.left,rc.top,rc.right-rc.left,*pdwHeght,
 			SWP_NOZORDER|SWP_NOMOVE|SWP_NOACTIVATE);
 	}
@@ -148,6 +200,20 @@ namespace ULWnds
 		RECT rc;
 		GetWindowRect(&rc);
 		*pdwHeght=rc.bottom-rc.top;
+	}
+
+	void CULWnd::GetClientWidth(DWORD* pdwWidth)
+	{
+		RECT rc;
+		GetClientRect(&rc);
+		*pdwWidth=rc.right;
+	}
+
+	void CULWnd::GetClientHeight(DWORD* pdwHeght)
+	{
+		RECT rc;
+		GetClientRect(&rc);
+		*pdwHeght=rc.bottom;
 	}
 
 	void CULWnd::SetVisible(BOOL* pfVisible)

@@ -64,6 +64,12 @@ namespace ULWnds
 		///\brief хендлер Get для свойства propHeight
 		///\param pdwHeght - указатель на высоту
 		void GetHeight(DWORD* pdwHeght);
+		///\brief хендлер Get для свойства propClientWidth
+		///\param pdwWidth - указатель на ширину
+		void GetClientWidth(DWORD* pdwWidth);
+		///\brief хендлер Get для свойства propClientHeight
+		///\param pdwHeght - указатель на высоту
+		void GetClientHeight(DWORD* pdwHeght);
 		///\brief хендлер Set для свойства propVisible
 		///\param pfVisible - указатель на флаг
 		void SetVisible(BOOL* pfVisible);
@@ -422,6 +428,12 @@ namespace ULWnds
 		ULProperty::CULProperty<DWORD,CULWnd,
 			&CULWnd::SetHeight,
 			&CULWnd::GetHeight> propHeight;
+		///\brief свойство получения ширины клиентской области окна
+		ULProperty::CULGetProperty<DWORD,CULWnd,
+			&CULWnd::GetClientWidth> propClientWidth;
+		///\brief свойство получения высоты клиентской области окна
+		ULProperty::CULGetProperty<DWORD,CULWnd,
+			&CULWnd::GetClientHeight> propClientHeight;
 		///\brief свойство установки/получения видимости окна
 		ULProperty::CULProperty<BOOL,CULWnd,
 			&CULWnd::SetVisible,
