@@ -590,6 +590,11 @@ namespace ULWnds
 	{
 		return ::SetCapture(m_hWnd);
 	}
+
+	BOOL CULWnd::CheckDlgButton(int nIDButton,UINT uCheck)
+	{
+		return ::CheckDlgButton(m_hWnd,nIDButton,uCheck);
+	}
 //===================================
 
 

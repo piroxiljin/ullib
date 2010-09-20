@@ -240,3 +240,4 @@
 	<08.08.2010> 
 	[FIXED] CULWnd.propLeft/propTop/propWidth/propHeight сделано для дочерних окон относительно родителя
 	[ADDED] CULWnd.propClientWidth/propClientHeight для получения размеров клиентской области окна
+	[ADDED] CULWnd::CheckDlgButton

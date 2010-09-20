@@ -398,6 +398,11 @@ namespace ULWnds
 		///\brief функция выполняет захват фокуса мыши
 		///\return предыдущее окно, имеющее фокус
 		HWND SetCapture();
+		///\brief изменяет состояние флажка/переключателя
+		///\param nIDButton - идентификатор флажка
+		///\param uCheck - новое состояние
+		///\return TRUE  в случае успеха
+		BOOL CheckDlgButton(int nIDButton,UINT uCheck);
 /*
 		///\brief свойство установки/получения текста
 		ULProperty::CULProperty<ULOther::CULStr,CULWnd,
