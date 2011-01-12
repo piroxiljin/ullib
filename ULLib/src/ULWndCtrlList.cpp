@@ -122,26 +122,16 @@ namespace ULWnds
 			m_fActive=FALSE;
 		}
 
-		CULWndCtrlList::CULWndCtrlList(const CULWndCtrlList& WndCtrlList)
+		CULWndCtrlList::CULWndCtrlList(const CULWndCtrlList& /*wndCtrlList*/)
 		{
-#pragma message(__FILE__" не понял, почему варнинг")
-			lpOldParentProc=WndCtrlList.lpOldParentProc;
-			m_fActive=WndCtrlList.m_fActive;
-			m_arWndCtrl=WndCtrlList.m_arWndCtrl;
-			m_rcParentClientFreeRect=WndCtrlList.m_rcParentClientFreeRect;
 		}
 
 		CULWndCtrlList::~CULWndCtrlList()
 		{
 		}
 
-		void CULWndCtrlList::operator=(const CULWndCtrlList& WndCtrlList)
+		void CULWndCtrlList::operator=(const CULWndCtrlList& /*wndCtrlList*/)
 		{
-#pragma message(__FILE__" не понял, почему варнинг")
-			lpOldParentProc=WndCtrlList.lpOldParentProc;
-			m_fActive=WndCtrlList.m_fActive;
-			m_arWndCtrl=WndCtrlList.m_arWndCtrl;
-			m_rcParentClientFreeRect=WndCtrlList.m_rcParentClientFreeRect;
 		}
 
 		BOOL CULWndCtrlList::Create(HWND hOwnerWnd)

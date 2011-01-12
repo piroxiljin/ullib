@@ -31,11 +31,11 @@ namespace ULWnds
 			///\brief Конструктор 
 			CULWndCtrlList();
 			///\brief Конструктор копирования
-			CULWndCtrlList(const CULWndCtrlList& WndCtrlList);
+			CULWndCtrlList(const CULWndCtrlList& wndCtrlList);
 			///\brief Деструктор 
 			~CULWndCtrlList();
 			///\brief оператор копирования
-			void operator=(const CULWndCtrlList& WndCtrlList);
+			void operator=(const CULWndCtrlList& wndCtrlList);
 			///\brief Функция созданий коньейнера панелек
 			///\param hOwnerWnd - хендл окна родителя(носиеля)
 			///\return TRUE в случае успеха
