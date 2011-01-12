@@ -241,3 +241,4 @@
 	[FIXED] CULWnd.propLeft/propTop/propWidth/propHeight сделано для дочерних окон относительно родителя
 	[ADDED] CULWnd.propClientWidth/propClientHeight для получения размеров клиентской области окна
 	[ADDED] CULWnd::CheckDlgButton
+	[FIXED] 1>...\ullib.2.3.7\ullib\src\ulwndctrllist.cpp(125) : warning C4100: 'WndCtrlList' : unreferenced formal parameter. Спасибо PAlk.
