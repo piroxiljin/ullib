@@ -242,3 +242,11 @@
 	[ADDED] CULWnd.propClientWidth/propClientHeight для получения размеров клиентской области окна
 	[ADDED] CULWnd::CheckDlgButton
 	[FIXED] 1>...\ullib.2.3.7\ullib\src\ulwndctrllist.cpp(125) : warning C4100: 'WndCtrlList' : unreferenced formal parameter. Спасибо PAlk.
+	[FIXED] убрал конфликт подключений хедеров
+		+++ ULLib/include/ULCommDlgs.h  (working copy)
+		#include "ULDlg.h"
+ 		#include "ULOther.h"
+		+#include <Commdlg.h>
+		+++ ULLib/include/ULTrayIcon.h  (working copy)
+		 #include <windows.h>
+		+#include <Shellapi.h>

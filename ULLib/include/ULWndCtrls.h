@@ -1,5 +1,6 @@
 ///\file ULWndCtrls.h
 ///\brief Заголовочный файл классов окон типа тулвиндоу
+///\note по большей части все идеи этого набора классов заимствованны из http://www.catch22.net/
 #include "ULStatusBarCtrl.h"
 #include "ULToolBarCtrl.h"
 #include "ULRebarCtrl.h"

@@ -6,6 +6,7 @@
 #define _ULTRAYICON_H__
 
 #include <windows.h>
+#include <Shellapi.h>
 #include <tchar.h>
 namespace ULOther
 {
