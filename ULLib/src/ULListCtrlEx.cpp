@@ -758,7 +758,128 @@ namespace ULWnds
 					m_hTheme=NULL;
 			}
 			//=====================================================
+			CItemCheckBox::CButton::CButton():
+				ULButtons::CULButton(),
+				m_dwData(NULL)
+			{
+				MessageMap.AddMessage<CButton>(WM_KILLFOCUS,&CButton::OnKillFocus);
+				MessageMap.AddMessage<CButton>(ULListCtrlEx::IOM_GETITEMDATA,&CButton::OnGetItemData);
+			}
 
+			void CItemCheckBox::CButton::SetItemData(DWORD dwData)
+			{
+				m_dwData=dwData;
+			}
+
+			LRESULT CItemCheckBox::CButton::OnKillFocus(WPARAM,LPARAM)
+			{
+				ShowWindow(SW_HIDE);
+				return FALSE;
+			}
+			LRESULT CItemCheckBox::CButton::OnGetItemData(WPARAM,LPARAM)
+			{
+				return (LRESULT)m_dwData;
+			}
+
+			CItemCheckBox::~CItemCheckBox()
+			{
+				m_Button.DestroyWindow();
+
+				if(m_hTheme)
+					CloseThemeData(m_hTheme);
+			}
+			BOOL CItemCheckBox::Create(HWND hParentWnd,UINT uID,LPCTSTR pszStr)
+			{
+				if(!m_Button.Create(hParentWnd,pszStr,0,0,0,0,uID,
+					WS_CHILD|WS_CLIPCHILDREN|WS_VISIBLE|WS_TABSTOP|
+					BS_CHECKBOX|BS_CENTER|BS_AUTOCHECKBOX))
+					return FALSE;
+				m_Button.ModifyStyleEx(0,WS_EX_TRANSPARENT);
+				m_Button.ShowWindow(SW_HIDE);
+				m_Button.SetFont((HFONT)::SendMessage(hParentWnd,WM_GETFONT,0,0),FALSE);
+				if(IsThemeActive())
+					m_hTheme = OpenThemeData(m_Button,L"BUTTON");
+				else
+					m_hTheme=NULL;
+				return TRUE;
+			}
+			void CItemCheckBox::SetCheck(BOOL fCheck)
+			{
+				m_Button.SetCheck((fCheck)?
+					ULWnds::ULControls::ULButtons::CULButton::csChecked:
+					ULWnds::ULControls::ULButtons::CULButton::csUnchecked);
+			}
+			BOOL CItemCheckBox::GetCheck()
+			{
+				return (m_Button.GetCheck()==ULWnds::ULControls::ULButtons::CULButton::csChecked);
+			}
+
+			void CItemCheckBox::Draw(ULGDI::ULDC::CULDC* pDC,RECT& rc)
+			{
+				RECT rectBtn={
+					rc.left+(rc.right-rc.left-::GetSystemMetrics(SM_CXMENUCHECK))/2,
+					rc.top+(rc.bottom-rc.top-::GetSystemMetrics(SM_CYMENUCHECK))/2,
+					rc.left+(rc.right-rc.left+::GetSystemMetrics(SM_CXMENUCHECK))/2,
+					rc.top+(rc.bottom-rc.top+::GetSystemMetrics(SM_CYMENUCHECK))/2,
+				};
+
+				if(m_Button.IsWindowVisible()||!m_Button.IsWindowEnabled())
+				{
+					if(rc.top>10)
+						m_Button.ShowWindow(SW_SHOW);
+					m_Button.MoveWindow(rectBtn.left,rectBtn.top,
+						rectBtn.right-rectBtn.left,
+						rectBtn.bottom-rectBtn.top,TRUE);
+				}
+				else
+				{
+
+					if(m_hTheme&&IsThemeActive())
+						DrawThemeBackground(m_hTheme,*pDC,BP_CHECKBOX,
+						((m_Button.GetCheck())?CBS_CHECKEDNORMAL:CBS_UNCHECKEDNORMAL),
+						&rectBtn,NULL);
+					else
+						DrawFrameControl(*pDC,&rectBtn,DFC_BUTTON|DFCS_BUTTONCHECK,
+							((m_Button.GetCheck())?DFCS_CHECKED:0)|DFCS_BUTTONCHECK);
+				}
+			}
+			void CItemCheckBox::Clean()
+			{
+				m_Button.SetWindowText(_T(""));
+			}
+			void CItemCheckBox::OnClick(RECT& rc)
+			{
+				if(rc.top>10)
+					m_Button.ShowWindow(SW_SHOW);
+				m_Button.MoveWindow(rc.left,rc.top,rc.right-rc.left,rc.bottom-rc.top-1,TRUE);
+				m_Button.SetFocus();
+				m_Button.SetActiveWindow();
+			}
+			void CItemCheckBox::OnLButtonDown(RECT& rc)
+			{
+				if(!m_Button.IsWindowEnabled())
+					return;
+				if(rc.top>10)
+					m_Button.ShowWindow(SW_SHOW);
+				m_Button.MoveWindow(rc.left,rc.top,rc.right-rc.left,rc.bottom-rc.top-1,TRUE);
+				m_Button.SetFocus();
+				m_Button.SetActiveWindow();
+				m_Button.SetState(TRUE);
+			}
+			void CItemCheckBox::OnThemeChanged()
+			{				
+				if(m_hTheme)
+					CloseThemeData(m_hTheme);
+				if(IsThemeActive())
+					m_hTheme = OpenThemeData(m_Button,L"BUTTON");
+				else
+					m_hTheme=NULL;
+			}
+			void CItemCheckBox::SetItemData(DWORD dwData)
+			{
+				m_Button.SetItemData(dwData);
+			}
+			//=====================================================================
 		}
 	}
 }

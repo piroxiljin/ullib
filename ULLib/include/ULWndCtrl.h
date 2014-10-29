@@ -1,8 +1,8 @@
 ///\file ULWndCtrl.h
 ///\brief Заголовочный файл класса окна типа тулвиндоу(21.07.2007)
 #pragma once
-#ifndef __UL_ULCTRLWND_H__
-#define __UL_ULCTRLWND_H__
+#ifndef __UL_ULWNDCTRL_H__
+#define __UL_ULWNDCTRL_H__
 #include "ULWnd.h"
 namespace ULWnds
 {
@@ -189,4 +189,4 @@ namespace ULWnds
 		};
 	}
 }
-#endif //__UL_ULCTRLWND_H__
+#endif //__UL_ULWNDCTRL_H__

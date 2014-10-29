@@ -468,7 +468,7 @@ namespace ULWnds
 			wndclass.hCursor		= LoadCursor(NULL, IDC_ARROW);
 			wndclass.hbrBackground	= (HBRUSH)(COLOR_WINDOW);
 			wndclass.lpszMenuName	= 0;
-			wndclass.lpszClassName	= _T("ULCTRLWND");
+			wndclass.lpszClassName	= _T("ULWNDCTRL");
 			wndclass.hIconSm		= 0;
 
 			::RegisterClassEx(&wndclass);

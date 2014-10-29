@@ -324,6 +324,59 @@ namespace ULWnds
 				virtual void Clean();
 				virtual void OnThemeChanged();
 			};
+#pragma message(__FILE__":избавиться от IOM_GETITEMDATA")
+			const int IOM_GETITEMDATA=WM_APP+1;
+			//=====================================================================
+			///\class CItemCheckBox
+			///\brief класс чекбокса объекта для итема
+			class CItemCheckBox:
+				public IItemObject		
+			{	
+			protected:
+				///\brief хендл темы ХР
+				HTHEME m_hTheme;
+			protected:
+				class CButton:
+					public ULButtons::CULButton
+				{
+				protected:
+					DWORD m_dwData;
+				public:
+					CButton();
+					void SetItemData(DWORD dwData);
+				protected:
+					virtual LRESULT OnKillFocus(WPARAM,LPARAM);
+					virtual LRESULT OnGetItemData(WPARAM,LPARAM);
+
+				};
+			public:
+				///\brief служит для отлова потери фокуса у объекта
+				CButton m_Button;
+			public:
+				///\brief Деструктор
+				~CItemCheckBox();
+				///\brief фунция создания объекта
+				///\param hParentWnd - хэндл родительского окна, обычно это хендл контейнера CULListCtrlEx
+				///\param uID - Идентификатор контрола
+				///\param pszStr - начальный текст в кнопке
+				///\return TRUE в случае успеха
+				BOOL Create(HWND hParentWnd,UINT uID,LPCTSTR pszStr);
+				///\brief устанавливает/снимает флажок
+				///\param fCheck - флаг установки
+				void SetCheck(BOOL fCheck);
+				///\brief возвращает состояние чекбокса
+				///\return состояние чекбокса
+				BOOL GetCheck();
+
+				void SetItemData(DWORD dwData);
+
+				virtual void Draw(ULGDI::ULDC::CULDC* pDC,RECT& rc);
+				virtual void OnLButtonDown(RECT& /*rc*/);
+				virtual void OnClick(RECT& rc);
+				virtual bool GetRect(RECT* /*prc*/){return false;}
+				virtual void Clean();
+				virtual void OnThemeChanged();
+			};
 		}
 	}
 }

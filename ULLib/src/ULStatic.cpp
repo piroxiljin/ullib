@@ -25,5 +25,9 @@ namespace ULWnds
  			SetWindowText(const_cast<LPTSTR>(pszText)); 
 			return CULSubClass::Attach(m_hWnd);
 		};
+		HICON CULStatic::SetIcon(HICON hIcon)
+		{
+			return (HICON)SendMessage(STM_SETICON,(WPARAM)hIcon);
+		}
 	}
 }

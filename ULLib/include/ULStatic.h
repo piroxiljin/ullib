@@ -28,6 +28,11 @@ namespace ULWnds
 			BOOL Create(HWND hParentWnd,LPCTSTR pszText,UINT uID,int x,int y,
 				int cx,int cy,DWORD dwStyle=WS_CHILD|WS_VISIBLE,
 				DWORD dwStyleEx=WS_EX_CLIENTEDGE|WS_EX_ACCEPTFILES);
+			///\brief Выводит на статик со стилем SS_ICON иконку
+			///\param hIcon - хендл иконки
+			///\return предыдущая иконка
+			HICON SetIcon(HICON hIcon);
+
 		};
 	}
 }

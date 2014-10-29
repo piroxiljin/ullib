@@ -25,7 +25,7 @@ namespace ULWnds
 				m_rcParentClientFreeRect.top=0;
 				m_rcParentClientFreeRect.right=LOWORD(lParam);
 				m_rcParentClientFreeRect.bottom=HIWORD(lParam);
-				//воткнуть ресайз клинта
+				//воткнуть ресайз клиента
 				for(unsigned int i=0;i<m_arWndCtrl.GetSize();i++)
 					if(m_arWndCtrl[i]->IsWindow()&&m_arWndCtrl[i]->IsDocked())
 					{
