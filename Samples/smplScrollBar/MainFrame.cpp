@@ -1,7 +1,7 @@
 #include "MainFrame.h"
 #include "ULScrollBar.h"
 
-CMainFrame::CMainFrame(void):ULFrames::CULFrameWnd()
+CMainFrame::CMainFrame(void):ULWnds::ULFrames::CULFrameWnd()
 {
 
 }

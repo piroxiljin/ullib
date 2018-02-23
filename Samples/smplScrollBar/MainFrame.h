@@ -3,7 +3,7 @@
 #include "..\..\ULLib\Include\ULLib.h"
 
 class CMainFrame:
-	public ULFrames::CULFrameWnd
+	public ULWnds::ULFrames::CULFrameWnd
 {
 public:
 	CMainFrame(void);

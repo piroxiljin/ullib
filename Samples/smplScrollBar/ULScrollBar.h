@@ -1,6 +1,6 @@
 #include "..\..\ULLib\Include\ULSubClass.h"
 
-class CULScrollBar:CULSubClass
+class CULScrollBar:ULWnds::CULSubClass
 {
 public:
 	CULScrollBar():CULSubClass()

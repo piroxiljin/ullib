@@ -10,7 +10,7 @@
 
 #include "MainFrame.h"
 //#include "resource.h"
-class CApp:public CULApp
+class CApp:public ULApps::CULApp
 {
 public:
 	HACCEL m_hAccelTable;
