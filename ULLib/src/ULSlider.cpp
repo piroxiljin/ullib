@@ -1,7 +1,7 @@
 ///\file ULSlider.cpp
 ///\brief фаил реализации класса обёртки для slider control
-#include "..\Include\ULSlider.h"
-#include "..\Include\ULStates.h"
+#include "ULSlider.h"
+#include "ULStates.h"
 namespace ULWnds
 {
 	namespace ULControls

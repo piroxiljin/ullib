@@ -1,7 +1,7 @@
 ///\file ULMDIFrameWnd.cpp
 ///\brief cpp файл класса главного окна архетектуры MDI(2006)
-#include "..\..\ULLib\Include\ULMDIFrameWnd.h"
-#include "..\..\ULLib\Include\ULResDef.h"
+#include "ULMDIFrameWnd.h"
+#include "ULResDef.h"
 
 namespace ULWnds
 {

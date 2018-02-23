@@ -1,13 +1,9 @@
 // smplULDlg.cpp : Defines the entry point for the application.
 //
-#ifdef _DEBUG
-	#pragma comment(lib,"..\\..\\ULLib\\Lib\\uULLibd.lib")
-#else
-	#pragma comment(lib,"..\\..\\ULLib\\Lib\\uULLib.lib")
-#endif
+
+#include <ULLib.h>
 
 #include "smplULDlg.h"
-#include "..\\..\\ULLib\\Include\\ULLib.h"
 #include ".\ULCDlg\ulCdlg.h"
 
 

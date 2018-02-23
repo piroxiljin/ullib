@@ -1,6 +1,6 @@
 #pragma once
 
-#include "..\..\ULLib\Include\ULLib.h"
+#include <ULLib.h>
 
 class CMainFrame:
 	public ULWnds::ULFrames::CULFrameWnd

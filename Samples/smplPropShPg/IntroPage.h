@@ -1,5 +1,5 @@
 #pragma once
-#include "..\..\ULLib\Include\ULDlgs.h"
+#include <ULDlgs.h>
 #include "resource.h"
 class CIntroPage :
 	public ULWnds::ULDlgs::CULPropPage

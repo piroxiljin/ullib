@@ -1,6 +1,6 @@
 ///\file ULDB.cpp
 ///\brief cpp файл классов баз данных
-#include "..\..\ULLib\Include\uldb.h"
+#include "uldb.h"
 
 namespace ULDB
 {

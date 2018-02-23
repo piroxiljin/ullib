@@ -1,7 +1,7 @@
 ///\file ULSplitter.cpp
 ///\brief фаил реализации класса оконного разделителя
-#include "..\..\ULLib\Include\ULSplitter.h"
-#include "..\..\ULLib\Include\ULRes.h"
+#include "ULSplitter.h"
+#include "ULRes.h"
 namespace ULWnds
 {
 	namespace ULControls

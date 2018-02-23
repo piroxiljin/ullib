@@ -1,7 +1,7 @@
 ///\file ULApp.cpp
 ///\brief cpp файл класса приложения(01.05.2007)
-#include "..\..\ULLib\Include\ULApp.h"
-#include "..\..\ULLib\Include\ULRes.h"
+#include "ULApp.h"
+#include "ULRes.h"
 namespace ULApps
 {	
 	CULApp::CULApp(void):

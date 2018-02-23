@@ -1,7 +1,7 @@
 ///\file ULDateTimePicker.cpp
 ///\brief фаил объ€влени€ класса елемента управлени€ даты и времени
-#include "..\..\ULLib\Include\ULDateTimePicker.h"
-#include "..\..\ULLib\Include\ULRes.h"
+#include "ULDateTimePicker.h"
+#include "ULRes.h"
 
 namespace ULWnds
 {

@@ -1,10 +1,8 @@
 ///\file ULListCtrlEx.cpp
 ///\brief фаил реализации класса расширенного лист контрола
 #define _WIN32_WINNT 0x0501
-#include "..\Include\ULListCtrlEx.h"
-#include "..\Include\ULStates.h"
-
-#pragma comment(lib,"UxTheme.lib")
+#include "ULListCtrlEx.h"
+#include "ULStates.h"
 
 namespace ULWnds
 {

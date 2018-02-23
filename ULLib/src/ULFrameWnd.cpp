@@ -1,7 +1,7 @@
 ///\file ULFrameWnd.cpp
 ///\brief cpp файл класса главного окна(2006)
-#include "..\..\ULLib\Include\ULFrameWnd.h"
-#include "..\..\ULLib\Include\ULRes.h"
+#include "ULFrameWnd.h"
+#include "ULRes.h"
 namespace ULWnds
 {
 	namespace ULFrames

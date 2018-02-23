@@ -1,7 +1,7 @@
 ///\file ULWndCtrl.cpp
 ///\brief cpp файл класса окна типа тулвиндоу(21.07.2007)
-#include "..\..\ULLib\Include\ULWndCtrl.h"
-#include "..\..\ULLib\Include\ULRes.h"
+#include "ULWndCtrl.h"
+#include "ULRes.h"
 namespace ULWnds
 {
 	namespace ULWndCtrls

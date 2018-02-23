@@ -1,7 +1,7 @@
 ///\file ULDlg.cpp
 ///\brief cpp файл класса диалогого окна(2006)
-#include "..\..\ULLib\Include\ULDlg.h"
-#include "..\..\ULLib\Include\ULRes.h"
+#include "ULDlg.h"
+#include "ULRes.h"
 
 namespace ULWnds
 {

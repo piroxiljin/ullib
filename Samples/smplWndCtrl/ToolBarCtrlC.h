@@ -1,6 +1,6 @@
 #pragma once
-#include "..\..\ULLib\Include\ULLib.h"
-#include "..\..\ULLib\Include\ULGDI.h"
+#include <ULLib.h>
+#include <ULGDI.h>
 
 class CToolBarCtrlC :
   public ULWnds::ULWndCtrls::CULToolBarCtrl

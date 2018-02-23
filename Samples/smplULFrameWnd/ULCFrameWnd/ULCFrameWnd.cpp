@@ -1,7 +1,7 @@
 #include ".\ulcframewnd.h"
-#include "..\..\..\ULLib\Include\ULStates.h"
-#include "..\..\..\ULLib\Include\ULDlgs.h"
-#include "..\..\..\ULLib\Include\ULMenu.h"
+#include <ULStates.h>
+#include <ULDlgs.h>
+#include <ULMenu.h>
 #include "..\resource.h"
 
 #include "stdio.h"

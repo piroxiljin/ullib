@@ -1,18 +1,12 @@
 // smplULFrameWnd.cpp : Defines the entry point for the application.
 //
-#ifdef _DEBUG
-	#pragma comment(lib,"..\\..\\ULLib\\Lib\\uULLibd.lib")
-#else
-	#pragma comment(lib,"..\\..\\ULLib\\Lib\\uULLib.lib")
-#endif
 
-#include "..\..\ULLib\Include\ULStates.h"
+#include <ULStates.h>
+#include <ULApp.h>
+#include <ULOther.h>
+
 #include "smplULFrameWnd.h"
 #include ".\ulcframewnd\ulcframewnd.h"
-
-#include "..\..\ULLib\Include\ULApp.h"
-
-#include "..\..\ULLib\Include\ULOther.h"
 
 class CULCApp:public ULApps::CULApp
 {

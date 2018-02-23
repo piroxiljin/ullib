@@ -1,5 +1,5 @@
 #include ".\ulcdlg.h"
-#include "..\\..\\..\\ULLib\\Include\\ULStates.h"
+#include <ULStates.h>
 #include <tchar.h>
 /////////////////////////////////////////////////////////////////////////////
 CULCDlg::CULCDlg():

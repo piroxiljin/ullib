@@ -1,8 +1,8 @@
 ///\file ULStatusBar.cpp
 ///\brief cpp файл класса статусбара(21.07.2007)
-#include "..\..\ULLib\Include\ULStatusbar.h"
-#include "..\..\ULLib\Include\ULOther.h"
-#include "..\..\ULLib\Include\ULRes.h"
+#include "ULStatusbar.h"
+#include "ULOther.h"
+#include "ULRes.h"
 namespace ULWnds
 {
 	namespace ULBars

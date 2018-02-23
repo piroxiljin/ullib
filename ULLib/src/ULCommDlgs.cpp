@@ -1,8 +1,8 @@
 ///\file ULCommDlgs.cpp
 ///\brief cpp файл классов стандартных диалоговых окон(02.01.2007)
-#include "..\\include\\ULCommDlgs.h"
-#include "..\\include\\ULRes.h"
-#include "..\\include\\ULGObjs.h"
+#include "ULCommDlgs.h"
+#include "ULRes.h"
+#include "ULGObjs.h"
 
 
 namespace ULWnds

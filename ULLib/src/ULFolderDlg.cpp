@@ -1,6 +1,6 @@
 ///\file FolderDlg.cpp
 ///\brief фаил реализации дл€ класса выбора директории
-#include "..\..\ULLib\Include\ULFolderDlg.h"
+#include "ULFolderDlg.h"
 
 namespace ULWnds
 {

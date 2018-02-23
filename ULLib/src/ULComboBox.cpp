@@ -1,7 +1,7 @@
 ///\file ULComboBox.cpp
 ///\brief фаил реализации класса лист контрола
-#include "..\..\ULLib\Include\ULComboBox.h"
-#include "..\..\ULLib\Include\ULRes.h"
+#include "ULComboBox.h"
+#include "ULRes.h"
 
 namespace ULWnds
 {

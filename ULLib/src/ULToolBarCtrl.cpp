@@ -1,6 +1,6 @@
 ///\file ULToolBarCtrl.cpp
 ///\brief cpp файл класса тулбара размещенного на плавающей панельке(04.08.2007)
-#include "..\..\ULLib\Include\ULToolBarCtrl.h"
+#include "ULToolBarCtrl.h"
 namespace ULWnds
 {
 	namespace ULWndCtrls

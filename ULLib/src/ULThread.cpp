@@ -1,6 +1,6 @@
 ///\file ULThread.cpp
 ///\brief Файл реализации класса потока(03.10.2007)
-#include "..\..\ULLib\Include\ULThread.h"
+#include "ULThread.h"
 #include <process.h> 
 namespace ULThreads
 {

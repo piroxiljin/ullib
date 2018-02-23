@@ -1,6 +1,6 @@
 #pragma once
-#include "..\..\ULLib\Include\ULDlgs.h"
-#include "..\..\ULLib\Include\ULLib.h"
+#include <ULDlgs.h>
+#include <ULLib.h>
 #include "resource.h"
 #include <assert.h>
 

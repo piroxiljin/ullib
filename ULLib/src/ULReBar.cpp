@@ -7,13 +7,13 @@
 #ifndef _WIN32_WINNT
 	#define _WIN32_WINNT 0x0501
 #endif
-#include "..\..\ULLib\Include\ULRebar.h"
+#include "ULRebar.h"
 
 
-#include "..\..\ULLib\Include\ULToolbar.h"
-#include "..\..\ULLib\Include\ULFrameWnd.h"
-#include "..\..\ULLib\Include\ULStates.h"
-#include "..\..\ULLib\Include\ULRes.h"
+#include "ULToolbar.h"
+#include "ULFrameWnd.h"
+#include "ULStates.h"
+#include "ULRes.h"
 
 namespace ULWnds
 {

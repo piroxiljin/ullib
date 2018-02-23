@@ -1,8 +1,8 @@
 ///\file ULConsole.cpp
 ///\brief cpp файл консоли
-#include "..\\include\\ULConsole.h"
+#include "ULConsole.h"
 #include <stdio.h>
-#include "..\\include\\ULPtr.inl"
+#include "ULPtr.inl"
 
 //Конструктор (с привязкой к потокам)
 CULConsole::CULConsole()

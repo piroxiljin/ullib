@@ -1,6 +1,6 @@
 ///\file ULDC.cpp
 ///\brief cpp файл классов контекстов(08.10.2007)
-#include "..\\include\\ULGDI.h"
+#include "ULGDI.h"
 
 namespace ULGDI
 {

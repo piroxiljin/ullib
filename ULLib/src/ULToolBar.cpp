@@ -1,8 +1,8 @@
 ///\file ULToolBar.cpp
 ///\brief cpp файл класса тулбара(11.08.2007)
-#include "..\..\ULLib\Include\ULToolbar.h"
-#include "..\..\ULLib\Include\ULMenu.h"
-#include "..\..\ULLib\Include\ULRes.h"
+#include "ULToolbar.h"
+#include "ULMenu.h"
+#include "ULRes.h"
 namespace ULWnds
 {
 	namespace ULBars

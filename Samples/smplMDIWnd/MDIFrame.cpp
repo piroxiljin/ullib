@@ -1,7 +1,7 @@
 #include ".\mdiframe.h"
 
-#include "..\..\ULLib\Include\ULFrames.h"
-#include "..\..\ULLib\Include\ULGDI.h"
+#include <ULFrames.h>
+#include <ULGDI.h>
 
 
 

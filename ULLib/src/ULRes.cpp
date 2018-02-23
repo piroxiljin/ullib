@@ -1,6 +1,6 @@
 ///\file ULRes.cpp
 ///\brief фаил реализации функции установления хендлов фаилов ресурсов
-#include "..\..\ULLib\Include\ULRes.h"
+#include "ULRes.h"
 
 namespace ULOther
 {

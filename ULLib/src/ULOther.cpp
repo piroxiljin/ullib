@@ -1,7 +1,7 @@
 ///\file ULOther.cpp
 ///\brief cpp файл пространства имён просто для полезных функций(25.09.2007)
 
-#include "..\..\ULLib\Include\ULOther.h"
+#include "ULOther.h"
 
 BOOL ULOther::GetProcAddresses( HINSTANCE* hLibrary, LPCTSTR lpszLibrary, INT nCount, ... )
 {

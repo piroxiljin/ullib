@@ -1,7 +1,7 @@
 ///\file ULFileVersionInfo.cpp
 ///\brief cpp файл класса версии фаила(29.12.2007)
 
-#include "..\\include\\ULFileVersionInfo.h"
+#include "ULFileVersionInfo.h"
 
 ULOther::CULFileVersionInfo::CULFileVersionInfo(LPTSTR lpszFileName):
 	m_lpszFileName(lpszFileName)

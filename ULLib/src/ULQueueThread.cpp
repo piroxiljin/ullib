@@ -1,6 +1,6 @@
 ///\file ULQueueThread.cpp
 ///\brief Файл реализации класса потока с очередью(27.08.2007)
-#include "..\..\ULLib\Include\ULQueueThread.h"
+#include "ULQueueThread.h"
 namespace ULThreads
 {
 	CULQueueThread::CULQueueThread(void):CULThread()
