@@ -9,7 +9,11 @@
 #include "ULDateTimePicker.h"
 #include "ULButtons.h"
 #include <uxtheme.h>
+#if _MSC_VER < 1600
 #include <tmschema.h>
+#else
+#include <vssym32.h>
+#endif
 
 namespace ULWnds
 {
