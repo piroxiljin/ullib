@@ -1,6 +1,6 @@
 ///\file ULRebarCtrl.cpp
 ///\brief cpp файл класса ребара размещенного на плавающей панельке(31.08.2008)
-#include "..\..\ULLib\Include\ULRebarCtrl.h"
+#include "ULRebarCtrl.h"
 
 namespace ULWnds
 {

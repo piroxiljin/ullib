@@ -1,5 +1,5 @@
 #pragma once
-#include "..\..\ULLib\Include\ULFrames.h"
+#include <ULFrames.h>
 
 class CMDIChild :
 	public ULWnds::ULFrames::CULMDIChildWnd

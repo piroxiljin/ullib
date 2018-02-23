@@ -1,7 +1,7 @@
 ///\file ULListBox.cpp
 ///\brief cpp файл класса обёртки лдя LISTBOX контрола(08.09.2007)
-#include "..\..\ULLib\Include\ULListBox.h"
-#include "..\..\ULLib\Include\ULRes.h"
+#include "ULListBox.h"
+#include "ULRes.h"
 namespace ULWnds
 {
 	namespace ULControls

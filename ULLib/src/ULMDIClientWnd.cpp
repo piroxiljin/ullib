@@ -1,7 +1,7 @@
 ///\file ULMDIClientWnd.cpp
 ///\brief cpp файл класса клиентского окна архетектуры MDI(26.07.2007)
-#include "..\..\ULLib\Include\ULMDIClientWnd.h"
-#include "..\..\ULLib\Include\ULRes.h"
+#include "ULMDIClientWnd.h"
+#include "ULRes.h"
 namespace ULWnds
 {
 	namespace ULFrames

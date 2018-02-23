@@ -3,7 +3,7 @@
 #define __UL_UDLG_H__
 
 #include "..\\resource.h"
-#include "..\\..\\..\\ULLib\\Include\\ULLib.h"
+#include <ULLib.h>
 
 using namespace ULWnds;
 using namespace ULControls;

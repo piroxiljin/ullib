@@ -1,7 +1,7 @@
 ///\file ULListCtrl.cpp
 ///\brief фаил реализации класса лист контрола
-#include "..\..\ULLib\Include\ULListCtrl.h"
-#include "..\..\ULLib\Include\ULRes.h"
+#include "ULListCtrl.h"
+#include "ULRes.h"
 
 namespace ULWnds
 {

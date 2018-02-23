@@ -1,6 +1,6 @@
+#include <ULApp.h>
+#include <ULGDI.h>
 #include ".\mdichild.h"
-#include "..\..\ULLib\Include\ULApp.h"
-#include "..\..\ULLib\Include\ULGDI.h"
 
 CMDIChild::CMDIChild(void):ULWnds::ULFrames::CULMDIChildWnd()
 {

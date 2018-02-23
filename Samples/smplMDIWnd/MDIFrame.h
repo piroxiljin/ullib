@@ -1,12 +1,11 @@
 #pragma once
-#include "..\..\ULLib\Include\ULFrames.h"
+#include <ULFrames.h>
+#include <ULControls.h>
+#include <ULWndCtrls.h>
+#include <ULRebarCtrl.h>
+
 #include ".\mdichild.h"
 #include "resource.h"
-#include "..\..\ULLib\Include\ULControls.h"
-#include "..\..\ULLib\Include\ULWndCtrls.h"
-
-#include "..\..\ULLib\Include\ULRebarCtrl.h"
-
 
 
 class CMDIClientWnd: public ULWnds::ULFrames::CULMDIClientWnd

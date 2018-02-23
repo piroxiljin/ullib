@@ -1,10 +1,9 @@
 ///\file ULPropPage.cpp
 ///\brief cpp файл класса root окна(21.07.2007)
-#include "..\..\ULLib\Include\ULPropPage.h"
-#include "..\..\ULLib\Include\ULPropSheet.h"
-#include "..\..\ULLib\Include\ULRes.h"
+#include "ULPropPage.h"
+#include "ULPropSheet.h"
+#include "ULRes.h"
 #include <uxtheme.h>
-#pragma comment(lib,"UxTheme.lib")
 namespace ULWnds
 {
 	namespace ULDlgs

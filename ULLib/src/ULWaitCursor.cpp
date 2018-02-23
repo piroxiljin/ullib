@@ -1,6 +1,6 @@
 ///\file ULWaitCursor.cpp
 ///\brief фаил реализации класса курсора ожидания
-#include "..\..\ULLib\Include\ULWaitCursor.h"
+#include "ULWaitCursor.h"
 
 namespace ULOther
 {

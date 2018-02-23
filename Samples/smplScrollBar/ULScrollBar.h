@@ -1,4 +1,4 @@
-#include "..\..\ULLib\Include\ULSubClass.h"
+#include <ULSubClass.h>
 
 class CULScrollBar:ULWnds::CULSubClass
 {

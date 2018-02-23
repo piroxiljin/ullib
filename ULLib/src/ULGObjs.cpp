@@ -1,10 +1,9 @@
 ///\file ULGObjs.cpp
 ///\brief cpp файл графических объектов(08.10.2007)
-#include "..\..\ULLib\Include\ULGObjs.h"
-#include "..\..\ULLib\Include\ULOther.h"
+#include "ULGObjs.h"
+#include "ULOther.h"
 #include <olectl.h>
 #include <shlwapi.h>
-#pragma comment(lib,"shlwapi.lib")
 #include <tchar.h>
 
 namespace ULGDI

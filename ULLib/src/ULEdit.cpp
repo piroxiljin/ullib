@@ -1,7 +1,7 @@
 ///\file ULEdit.cpp
 ///\brief cpp файл класса обёртки лдя EDIT контрола(16.08.2007)
-#include "..\..\ULLib\Include\ULEdit.h"
-#include "..\..\ULLib\Include\ULRes.h"
+#include "ULEdit.h"
+#include "ULRes.h"
 #include <tchar.h>
 namespace ULWnds
 {

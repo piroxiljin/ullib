@@ -1,7 +1,7 @@
 ///\file ULPropSheet.cpp
 ///\brief cpp файл класса root окна(2006)
-#include "..\..\ULLib\Include\ULPropSheet.h"
-#include "..\..\ULLib\Include\ULRes.h"
+#include "ULPropSheet.h"
+#include "ULRes.h"
 namespace ULWnds
 {
 	namespace ULDlgs

@@ -1,6 +1,6 @@
 ///\file ULSubClass.cpp
 ///\brief cpp файл класса для сабклассирования контролов(07.10.2007)
-#include "..\..\ULLib\Include\ULSubClass.h"
+#include "ULSubClass.h"
 #include <commctrl.h>
 namespace ULWnds
 {

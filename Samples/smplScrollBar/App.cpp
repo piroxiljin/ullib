@@ -1,12 +1,7 @@
 // smplULFrameWnd.cpp : Defines the entry point for the application.
 //
-#ifdef _DEBUG
-	#pragma comment(lib,"..\\..\\ULLib\\Lib\\uULLibd.lib")
-#else
-	#pragma comment(lib,"..\\..\\ULLib\\Lib\\uULLib.lib")
-#endif
 
-#include "..\..\ULLib\Include\ULLib.h"
+#include <ULLib.h>
 
 #include "MainFrame.h"
 //#include "resource.h"

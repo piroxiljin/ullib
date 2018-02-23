@@ -3,7 +3,7 @@
 #ifndef _WIN32_WINNT		
 	#define _WIN32_WINNT 0x0500
 #endif	
-#include "..\..\ULLib\Include\ulskindlg.h"
+#include "ulskindlg.h"
 namespace ULWnds
 {
 	namespace ULDlgs

@@ -1,6 +1,6 @@
 ///\file ULWnd.cpp
 ///\brief cpp файл класса root окна(07.10.2007)
-#include "..\..\ULLib\Include\UlWnd.h"
+#include "UlWnd.h"
 namespace ULWnds
 {
 

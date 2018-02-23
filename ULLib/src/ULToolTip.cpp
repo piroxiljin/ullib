@@ -1,7 +1,7 @@
 ///\file ULToolTip.cpp
 ///\brief cpp файл класса контрола подсказок(20.07.2007)
-#include "..\\..\\ULLib\\Include\\ULToolTip.h"
-#include "..\..\ULLib\Include\ULRes.h"
+#include "ULToolTip.h"
+#include "ULRes.h"
 namespace ULWnds
 {
 	namespace ULControls

@@ -1,7 +1,7 @@
 ///\file ULDllApp.cpp
 ///\brief cpp файл класса динамической библиотеки(03.01.2007)
-#include "..\..\ULLib\Include\ULDllApp.h"
-#include "..\..\ULLib\Include\ULRes.h"
+#include "ULDllApp.h"
+#include "ULRes.h"
 namespace ULApps
 {
 	HINSTANCE CULDllApp::m_hInstance=NULL;

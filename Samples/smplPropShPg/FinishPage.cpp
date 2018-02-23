@@ -1,5 +1,5 @@
+#include <ULGDI.h>
 #include ".\finishpage.h"
-#include "..\..\ULLib\Include\ULGDI.h"
 
 CFinishPage::CFinishPage(void):ULWnds::ULDlgs::CULPropPage()
 {

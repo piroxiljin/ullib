@@ -1,9 +1,9 @@
 ///\file ULMDIChildWnd.cpp
 ///\brief cpp файл класса дочернего окна архетектуры MDI(03.08.2007)
-#include "..\..\ULLib\Include\ULMDIChildWnd.h"
-#include "..\..\ULLib\Include\ULApp.h"
-#include "..\..\ULLib\Include\ULFrameWnd.h"
-#include "..\..\ULLib\Include\ULRes.h"
+#include "ULMDIChildWnd.h"
+#include "ULApp.h"
+#include "ULFrameWnd.h"
+#include "ULRes.h"
 namespace ULWnds
 {
 	namespace ULFrames

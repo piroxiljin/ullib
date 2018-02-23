@@ -1,6 +1,6 @@
 ///\file ULThemeClient.cpp
 ///\brief файл реализации класса оконной темы(06.08.2008)
-#include "..\..\ULLib\Include\ULThemeClient.h"
+#include "ULThemeClient.h"
 namespace ULWnds
 {
 	CULThemeClient::CULThemeClient():

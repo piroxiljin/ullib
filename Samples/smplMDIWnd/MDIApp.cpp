@@ -1,15 +1,8 @@
-#ifdef _DEBUG
-	#pragma comment(lib,"..\\..\\ULLib\\Lib\\uULLibd.lib")
-#else
-	#pragma comment(lib,"..\\..\\ULLib\\Lib\\uULLib.lib")
-#endif
-
-
-#include "..\..\ULLib\Include\ULStates.h"
-#include "..\..\ULLib\Include\ULApp.h"
-#include "..\..\ULLib\Include\ULWnd.h"
-#include "..\..\ULLib\Include\ULMDIFrameWnd.h"
-#include "..\..\ULLib\Include\ULMDIChildWnd.h"
+#include <ULStates.h>
+#include <ULApp.h>
+#include <ULWnd.h>
+#include <ULMDIFrameWnd.h>
+#include <ULMDIChildWnd.h>
 /////////////////////////////////////////////////////
 #include ".\mdichild.h"
 #include ".\mdiframe.h"

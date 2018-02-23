@@ -1,6 +1,6 @@
 ///\file ULWndCtrlList.cpp
 ///\brief cpp файл класса контейнера дл€ плавающих панелек(03.08.2007)
-#include "..\..\ULLib\Include\ULWndCtrlList.h"
+#include "ULWndCtrlList.h"
 #include "malloc.h"
 namespace ULWnds
 {

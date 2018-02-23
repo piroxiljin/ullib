@@ -1,6 +1,6 @@
 ///\file ULProfileReg.cpp
 ///\brief cpp файл класса профиля приложения в реестре(17.08.2007)
-#include "..\\..\\ULLib\\Include\\ULProfileReg.h"
+#include "ULProfileReg.h"
 #include <tchar.h>
 namespace ULOther
 {

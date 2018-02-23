@@ -1,6 +1,6 @@
 ///\file ULStatusBarCtrl.cpp
 ///\brief cpp файл класса статусбара размещенного на плавающей панельке(2006)
-#include "..\..\ULLib\Include\ULStatusBarCtrl.h"
+#include "ULStatusBarCtrl.h"
 namespace ULWnds
 {
 	namespace ULWndCtrls

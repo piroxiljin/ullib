@@ -1,6 +1,6 @@
 ///\file ULCOMDllApp.cpp
 ///\brief cpp файл класса динамической библиотеки COM-сервера(05.01.2007)
-#include "..\\include\\ULCOMDllApp.h"
+#include "ULCOMDllApp.h"
 
 namespace ULApps
 {

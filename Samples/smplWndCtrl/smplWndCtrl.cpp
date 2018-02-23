@@ -1,14 +1,9 @@
 
-#ifdef _DEBUG
-	#pragma comment(lib,"..\\..\\ULLib\\Lib\\uULLibd.lib")
-#else
-	#pragma comment(lib,"..\\..\\ULLib\\Lib\\uULLib.lib")
-#endif
+#include <ULApp.h>
+#include <ULStates.h>
 
 #include "smplWndCtrl.h"
-#include "..\..\ULLib\Include\ULApp.h"
-#include ".\mainframe.h"
-#include "..\..\ULLib\Include\ULStates.h"
+#include "mainframe.h"
 
 class CCWApp:public ULApps::CULApp
 {

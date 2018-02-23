@@ -1,8 +1,8 @@
 ///\file ULProgressBar.cpp
 ///\brief фаил реализации класса обёртки для ProgressBar
 #define _WIN32_WINNT 0x0501
-#include "..\Include\ULProgressBar.h"
-#include "..\Include\ULStates.h"
+#include "ULProgressBar.h"
+#include "ULStates.h"
 #include <commctrl.h>
 namespace ULWnds
 {
